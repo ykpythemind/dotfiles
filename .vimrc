@@ -125,11 +125,12 @@ call neobundle#begin(expand('~/.vim/bundle'))
 "NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'Shougo/unite-outline.vim'
 
