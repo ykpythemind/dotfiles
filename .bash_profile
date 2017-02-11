@@ -10,7 +10,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 export PATH=/usr/local/ruby/bin:$PATH
-export PATH=/Users/ykpy/.rbenv/shims/:$PATH
+export PATH=$HOME/.rbenv/shims/:$PATH
 
 #bashrc
 source ~/.bashrc
