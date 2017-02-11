@@ -1,0 +1,23 @@
+
+# Direnv stuff
+.direnv
+.envrc
+
+# OS generated files #
+######################
+.DS_Store
+ehthumbs.db
+Thumbs.db
+
+# Editor files #
+################
+*~
+*.swp
+*.swo
+*.orig
+
+.idea/
+
+.vscode/
+
+.vim/coc-settings.json

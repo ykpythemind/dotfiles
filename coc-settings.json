@@ -1,0 +1,40 @@
+{
+  "coc.preferences.hoverTarget": "float",
+  "coc.preferences.useQuickfixForLocations": true,
+  "coc.preferences.jumpCommand": "edit",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "Markdown",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+    "json",
+    "go"
+  ],
+  "suggest.floatEnable": true,
+  "suggest.maxCompleteItemCount": 20,
+  "suggest.noselect": true,
+  "suggest.keepCompleteopt": true,
+  "languageserver": {
+    "go": {
+      "enable": true,
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/"],
+      "trace.server": "verbose",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
+    }
+  },
+  "go.enable": false,
+  "go.goplsOptions": {
+    "gofumpt": true
+  },
+  "solargraph.useBundler": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true
+}

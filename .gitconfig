@@ -1,0 +1,38 @@
+[core]
+    editor = nvim
+    quotepath = false
+    excludesfile = ~/.gitignore_global
+    precomposeunicode = true
+    autocrlf = false
+    ignorecase = false
+[rebase]
+    autostash = true
+[push]
+    default = simple
+[pull]
+    rebase = false
+[alias]
+    log-graph = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format-local:'%Y/%m/%d %H:%M:%S'
+    d1 = diff HEAD~
+    d2 = diff HEAD~~
+    d3 = diff HEAD~~~
+    d4 = diff HEAD~~~~
+    d5 = diff HEAD~~~~~
+    d10 = diff HEAD~~~~~~~~~~
+    s = status
+    d = diff
+    ds = diff --staged
+    c = commit
+    # for safety cancel https://thinca.hatenablog.com/entry/20120924/1348491052
+    cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
+[pager]
+    log = diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
+    show = diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
+    diff = diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
+[ghq]
+    root = ~/git
+[user]
+    name = Yukito Ito
+    email = yukibukiyou@gmail.com
+[url "git@github.com:"]
+    insteadOf = https://github.com/

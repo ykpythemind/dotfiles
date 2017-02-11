@@ -1,0 +1,15 @@
+font:
+    size: 16
+
+env:
+  TERM_PROGRAM: alacritty
+  TERM: xterm-256color
+
+key_bindings:
+  # https://github.com/alacritty/alacritty/issues/1359
+  - { key: Q, mods: Control, chars: "\x11" }
+
+colors:
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
