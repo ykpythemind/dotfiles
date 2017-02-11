@@ -34,26 +34,20 @@ highlight clear CursorLine
 "シンタックスハイライト
 syntax enable
 
-"オートインデント
 set autoindent
 
-"インデント幅
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-"タブをスペースに変換
 set expandtab
 set smarttab
 
-"長い行の折り返し表示
 set wrap
 
 "インクリメンタルサーチしない
 set noincsearch
-"最後尾になったら先頭に戻る
 set wrapscan
-"置換の時gオプションをデフォルトで有効にする
 set gdefault
 
 
@@ -64,10 +58,8 @@ set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%
 "コマンドラインモードのファイル補完設定
 set wildmode=list:longest,full
 
-"入力中のコマンドを表示
 set showcmd
 
-"クリップボードの共有
 set clipboard=unnamed,autoselect
 
 "カーソル移動で行をまたげるようにする
@@ -84,7 +76,6 @@ set showmatch
 set matchtime=1
 source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する
 
-"ウィンドウの最後の行もできるだけ表示
 set display=lastline
 
 
@@ -98,6 +89,8 @@ nnoremap r <C-r>
 "Yで行末までヤンク
 nnoremap Y y$
 
+"NERDTreeToggleをC-eで開く
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 "ペースト時に自動インデントで崩れるのを防ぐ
 if &term =~ "xterm"
@@ -133,12 +126,13 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'Shougo/unite-outline.vim'
+NeoBundle 'scrooloose/nerdtree'
 
 call neobundle#end()
 
 filetype plugin indent on
 
-let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#enable_at_startup = 1
 
 " 挿入モードで開始する  
 let g:unite_enable_start_insert=1
@@ -149,6 +143,7 @@ let g:unite_enable_smart_case = 1
  
 " ESCキーを2回押すと終了する  
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 "history and yank ... neoyank.vim
@@ -169,17 +164,47 @@ nnoremap <silent> [unite]d :<C-u>Unite<Space>directory_mru<CR>
 nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
 "スペースキーとrキーでレジストリを表示
 nnoremap <silent> [unite]r :<C-u>Unite<Space>register<CR>
-"スペースキーとtキーでタブを表示
-nnoremap <silent> [unite]t :<C-u>Unite<Space>tab<CR>
 "スペースキーとhキーでヒストリ/ヤンクを表示
 nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
-"スペースキーとoキーでoutline
-nnoremap <silent> [unite]o :<C-u>Unite<Space>outline<CR>
-"スペースキーとENTERキーでfile_rec:!
-nnoremap <silent> [unite]<CR> :<C-u>Unite<Space>file_rec:!<CR>
 "unite.vimを開いている間のキーマッピング
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
     " ESCでuniteを終了
     nmap <buffer> <ESC> <Plug>(unite_exit)
 endfunction"}}}
+
+
+
+" NEOCOMPLACHE=================
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : ''
+    \ }
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplcache#smart_close_popup() . "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
