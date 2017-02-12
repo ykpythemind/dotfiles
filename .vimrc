@@ -24,6 +24,14 @@ set smarttab
 
 set clipboard=unnamed
 
+"シンタックスハイライト
+syntax enable
+set autoindent
+set expandtab
+set smarttab
+set wrap
+
+au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
 
 "行番号の色や現在行の設定
 autocmd ColorScheme * highlight LineNr ctermfg=12
@@ -31,19 +39,8 @@ highlight CursorLineNr ctermbg=4 ctermfg=0
 set cursorline
 highlight clear CursorLine
 
-"シンタックスハイライト
-syntax enable
 
-set autoindent
-
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-
-set expandtab
-set smarttab
-
-set wrap
+"
 
 "インクリメンタルサーチしない
 set noincsearch
@@ -117,6 +114,7 @@ endif
 call neobundle#begin(expand('~/.vim/bundle'))
 "NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/unite.vim'
@@ -127,12 +125,26 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'Shougo/unite-outline.vim'
 NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'marijnh/tern_for_vim'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'mojako/ref-sources.vim'
+NeoBundle 'mustardamus/jqapi'
+NeoBundle 'tokuhirom/jsref'
+
 
 call neobundle#end()
 
 filetype plugin indent on
 
 "let g:neocomplete#enable_at_startup = 1
+
+" for JS 
+let g:ref_jquery_doc_path = $HOME . '/.bundle/jqapi'
+let g:ref_javascript_doc_path = $HOME . '/.bundle/jsref/htdocs'
+
+
 
 " 挿入モードで開始する  
 let g:unite_enable_start_insert=1
@@ -208,3 +220,43 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+
+autocmd FileType javascript :set dictionary=$HOME/.vim/dict/javascript.dict,$HOME/.vim/dict/jQuery.dict
+
+
+
+" https://sites.google.com/site/fudist/Home/vim-nihongo-ban/-vimrc-sample
+""""""""""""""""""""""""""""""
+" 挿入モード時、ステータスラインの色を変更
+""""""""""""""""""""""""""""""
+let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
+
+if has('syntax')
+  augroup InsertHook
+    autocmd!
+    autocmd InsertEnter * call s:StatusLine('Enter')
+    autocmd InsertLeave * call s:StatusLine('Leave')
+  augroup END
+endif
+
+let s:slhlcmd = ''
+function! s:StatusLine(mode)
+  if a:mode == 'Enter'
+    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
+    silent exec g:hi_insert
+  else
+    highlight clear StatusLine
+    silent exec s:slhlcmd
+  endif
+endfunction
+
+function! s:GetHighlight(hi)
+  redir => hl
+  exec 'highlight '.a:hi
+  redir END
+  let hl = substitute(hl, '[\r\n]', '', 'g')
+  let hl = substitute(hl, 'xxx', '', '')
+  return hl
+endfunction
+""""""""""""""""""""""""""""""
