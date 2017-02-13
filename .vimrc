@@ -56,17 +56,17 @@ source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する
 
 set display=lastline
 
-";;でノーマルモード
-inoremap ;; <esc>
+"jjでノーマルモード
+inoremap jj <esc>
 
 "rだけでリドゥ
-nnoremap r <C-r>
+"nnoremap r <C-r>
 
 "Yで行末までヤンク
 nnoremap Y y$
 
 "NERDTreeToggleをC-eで開く
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+"nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 "ペースト時に自動インデントで崩れるのを防ぐ
 if &term =~ "xterm"
@@ -102,15 +102,14 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/neoyank.vim'
-NeoBundle 'Shougo/unite-outline.vim'
-NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'scrooloose/nerdtree'
 "NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'mojako/ref-sources.vim'
-NeoBundle 'mustardamus/jqapi'
-NeoBundle 'tokuhirom/jsref'
+"NeoBundle 'thinca/vim-ref'
+"NeoBundle 'mojako/ref-sources.vim'
+"NeoBundle 'mustardamus/jqapi'
+"NeoBundle 'tokuhirom/jsref'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'w0ng/vim-hybrid'
 
@@ -119,10 +118,9 @@ filetype plugin indent on
 
 "let g:neocomplete#enable_at_startup = 1
 
-" for JS 
 "let g:ref_jquery_doc_path = $HOME . '/.bundle/jqapi'
 "let g:ref_javascript_doc_path = $HOME . '/.bundle/jsref/htdocs'
-
+let g:neosnippet#snippets_directory='~/.vim/snippets/'
 
 "color
 set cursorline
@@ -138,10 +136,9 @@ if &term == "xterm-256color"
     hi Visual  ctermbg=236
 endif
 
-let g:hybrid_custom_term_colors = 1
+"let g:hybrid_custom_term_colors = 1
 "let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 "colorscheme hybrid
-hi Comment ctermfg=102
 
 " 挿入モードで開始する  
 let g:unite_enable_start_insert=1
@@ -161,9 +158,9 @@ let g:neoyank#registers = 1
 "prefix keyの設定
 nmap <Space> [unite]
 
-"noremap :uff :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
-"スペースキーとaキーでカレントディレクトリを表示
-nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file file/new -default-action=vsplit<CR>
+"space+a -> directory menu /  space+o -> open new window 
+nnoremap <silent> [unite]o :<C-u>UniteWithBufferDir -buffer-name=files file file/new -default-action=vsplit<CR>
+nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file file/new <CR>
 "スペースキーとfキーでバッファと最近開いたファイル一覧を表示
 nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer file_mru<CR>
 "スペースキーとdキーで最近開いたディレクトリを表示

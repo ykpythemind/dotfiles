@@ -1,3 +1,6 @@
+#
+# .zshrc 
+#
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -26,8 +29,6 @@ setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
 
 
-# Emacs ライクな操作を有効にする（文字入力中に Ctrl-F,B でカーソル移動など）
-# Vi ライクな操作が好みであれば `bindkey -v` とする
 bindkey -v
 
 # 自動補完を有効にする
@@ -39,14 +40,8 @@ autoload -U compinit; compinit
 # 例： /usr/bin と入力すると /usr/bin ディレクトリに移動
 setopt auto_cd
 
-# ↑を設定すると、 .. とだけ入力したら1つ上のディレクトリに移動できるので……
-# 2つ上、3つ上にも移動できるようにする
 alias ...='cd ../..'
 alias ....='cd ../../..'
-
-# "~hoge" が特定のパス名に展開されるようにする（ブックマークのようなもの）
-# 例： cd ~hoge と入力すると /long/path/to/hogehoge ディレクトリに移動
-#hash -d hoge=/long/path/to/hogehoge
 
 # cd した先のディレクトリをディレクトリスタックに追加する
 # ディレクトリスタックとは今までに行ったディレクトリの履歴のこと
@@ -85,7 +80,6 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 
 #gitのブランチ名表示
-
 
 # vcs_infoロード    
 autoload -Uz vcs_info    
