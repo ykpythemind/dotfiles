@@ -124,9 +124,9 @@ let g:neosnippet#snippets_directory='~/.vim/snippets/'
 
 "color
 set cursorline
-"highlight clear CursorLine
-"autocmd ColorScheme * highlight Normal ctermbg=none
-"autocmd ColorScheme * highlight LineNr ctermbg=none
+autocmd ColorScheme * highlight String  ctermfg=166 guifg=#E5345B
+autocmd ColorScheme * highlight Character ctermfg=166 guifg=#E5345B
+autocmd ColorScheme * highlight Delimiter  ctermfg=183 guifg=#E58599
 
 colorscheme molokai 
 set t_Co=256
