@@ -6,6 +6,7 @@ fi
 
 source ${HOME}/.bash_profile
 
+export TERM=xterm-256color
 
 # Customize to your needs...
 #

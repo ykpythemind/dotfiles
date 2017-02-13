@@ -1,8 +1,7 @@
 filetype plugin indent on
 
 syntax on
-
-set nowrap
+set wrap
 
 set hlsearch
 set ignorecase
@@ -12,9 +11,8 @@ set autoindent
 
 set ruler
 set number
-set list
 set wildmenu
-set showcmd
+set laststatus=2 "常にステータスを表示
 
 set shiftwidth=4
 set softtabstop=4
@@ -24,30 +22,14 @@ set smarttab
 
 set clipboard=unnamed
 
-"シンタックスハイライト
 syntax enable
-set autoindent
-set expandtab
-set smarttab
-set wrap
 
 au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
-
-"行番号の色や現在行の設定
-autocmd ColorScheme * highlight LineNr ctermfg=12
-highlight CursorLineNr ctermbg=4 ctermfg=0
-set cursorline
-highlight clear CursorLine
-
-"color
-colorscheme molokai 
-set t_Co=256
 
 "インクリメンタルサーチしない
 set noincsearch
 set wrapscan
 set gdefault
-
 
 "不可視文字の設定
 set list
@@ -55,9 +37,7 @@ set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%
 
 "コマンドラインモードのファイル補完設定
 set wildmode=list:longest,full
-
 set showcmd
-
 set clipboard=unnamed,autoselect
 
 "カーソル移動で行をまたげるようにする
@@ -76,10 +56,8 @@ source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する
 
 set display=lastline
 
-
 ";;でノーマルモード
 inoremap ;; <esc>
-
 
 "rだけでリドゥ
 nnoremap r <C-r>
@@ -133,7 +111,7 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'mojako/ref-sources.vim'
 NeoBundle 'mustardamus/jqapi'
 NeoBundle 'tokuhirom/jsref'
-
+NeoBundle 'tomasr/molokai'
 
 call neobundle#end()
 
@@ -146,17 +124,30 @@ let g:ref_jquery_doc_path = $HOME . '/.bundle/jqapi'
 let g:ref_javascript_doc_path = $HOME . '/.bundle/jsref/htdocs'
 
 
+"color
+set cursorline
+"highlight clear CursorLine
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight LineNr ctermbg=none
+
+colorscheme molokai 
+set t_Co=256
+if &term == "xterm-256color"
+    colorscheme molokai
+    hi Comment ctermfg=102
+    hi Visual  ctermbg=236
+endif
+
+
 
 " 挿入モードで開始する  
 let g:unite_enable_start_insert=1
  
-" 大文字小文字を区別しない  
 let g:unite_enable_ignore_case = 1  
 let g:unite_enable_smart_case = 1
  
 " ESCキーを2回押すと終了する  
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 "history and yank ... neoyank.vim
@@ -167,8 +158,9 @@ let g:neoyank#registers = 1
 "prefix keyの設定
 nmap <Space> [unite]
 
+"noremap :uff :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
 "スペースキーとaキーでカレントディレクトリを表示
-nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
 "スペースキーとfキーでバッファと最近開いたファイル一覧を表示
 nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer file_mru<CR>
 "スペースキーとdキーで最近開いたディレクトリを表示
