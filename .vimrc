@@ -39,8 +39,9 @@ highlight CursorLineNr ctermbg=4 ctermfg=0
 set cursorline
 highlight clear CursorLine
 
-
-"
+"color
+colorscheme molokai 
+set t_Co=256
 
 "インクリメンタルサーチしない
 set noincsearch
