@@ -1,8 +1,7 @@
 filetype plugin indent on
 
-syntax on
+"syntax on
 set wrap
-
 set hlsearch
 set ignorecase
 set smartcase
@@ -21,6 +20,7 @@ set tabstop=4
 set smarttab
 
 set clipboard=unnamed
+set vb t_vb=
 
 syntax enable
 
@@ -112,33 +112,35 @@ NeoBundle 'mojako/ref-sources.vim'
 NeoBundle 'mustardamus/jqapi'
 NeoBundle 'tokuhirom/jsref'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'w0ng/vim-hybrid'
 
 call neobundle#end()
-
 filetype plugin indent on
 
 "let g:neocomplete#enable_at_startup = 1
 
 " for JS 
-let g:ref_jquery_doc_path = $HOME . '/.bundle/jqapi'
-let g:ref_javascript_doc_path = $HOME . '/.bundle/jsref/htdocs'
+"let g:ref_jquery_doc_path = $HOME . '/.bundle/jqapi'
+"let g:ref_javascript_doc_path = $HOME . '/.bundle/jsref/htdocs'
 
 
 "color
 set cursorline
 "highlight clear CursorLine
-autocmd ColorScheme * highlight Normal ctermbg=none
-autocmd ColorScheme * highlight LineNr ctermbg=none
+"autocmd ColorScheme * highlight Normal ctermbg=none
+"autocmd ColorScheme * highlight LineNr ctermbg=none
 
 colorscheme molokai 
 set t_Co=256
 if &term == "xterm-256color"
     colorscheme molokai
-    hi Comment ctermfg=102
-    hi Visual  ctermbg=236
+"    hi Comment ctermfg=102
+"    hi Visual  ctermbg=236
 endif
 
-
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+colorscheme hybrid
 
 " 挿入モードで開始する  
 let g:unite_enable_start_insert=1
