@@ -160,7 +160,7 @@ nmap <Space> [unite]
 
 "noremap :uff :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
 "スペースキーとaキーでカレントディレクトリを表示
-nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
+nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file file/new -default-action=vsplit<CR>
 "スペースキーとfキーでバッファと最近開いたファイル一覧を表示
 nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer file_mru<CR>
 "スペースキーとdキーで最近開いたディレクトリを表示
