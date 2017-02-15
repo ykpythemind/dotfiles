@@ -98,11 +98,11 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
+" NeoBundle 'Shougo/neosnippet.vim'
+" NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/neoyank.vim'
-NeoBundle 'scrooloose/nerdtree'
+" NeoBundle 'scrooloose/nerdtree'
 "NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'pangloss/vim-javascript'
@@ -112,6 +112,7 @@ NeoBundle 'pangloss/vim-javascript'
 "NeoBundle 'tokuhirom/jsref'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'basyura/unite-rails'
 
 call neobundle#end()
 filetype plugin indent on
@@ -120,8 +121,8 @@ filetype plugin indent on
 
 "let g:ref_jquery_doc_path = $HOME . '/.bundle/jqapi'
 "let g:ref_javascript_doc_path = $HOME . '/.bundle/jsref/htdocs'
-let g:neosnippet#snippets_directory='~/.vim/snippets/'
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+" let g:neosnippet#snippets_directory='~/.vim/snippets/'
+" nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 "color
 set cursorline
