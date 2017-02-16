@@ -3,6 +3,7 @@ filetype plugin indent on
 "syntax on
 set wrap
 set hlsearch
+" set incsearch 
 set ignorecase
 set smartcase
 
@@ -12,6 +13,7 @@ set ruler
 set number
 set wildmenu
 set laststatus=2 "常にステータスを表示
+set cmdheight=2
 
 set shiftwidth=4
 set softtabstop=4
@@ -21,6 +23,7 @@ set smarttab
 
 set clipboard=unnamed
 set vb t_vb=
+set noerrorbells
 
 syntax enable
 
@@ -59,8 +62,6 @@ set display=lastline
 "jjでノーマルモード
 inoremap jj <esc>
 
-"rだけでリドゥ
-"nnoremap r <C-r>
 
 "Yで行末までヤンク
 nnoremap Y y$
