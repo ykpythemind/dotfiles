@@ -9,7 +9,7 @@
 # Browser
 #
 
-source ~/.bash_profile
+#source ~/.bash_profile
 autoload -Uz compinit
 compinit
 
