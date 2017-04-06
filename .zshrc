@@ -1,5 +1,5 @@
 #
-# .zshrc 
+# .zshrc
 #
 
 # Source Prezto.
@@ -7,7 +7,23 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-source ${HOME}/.bash_profile
+################################################
+
+export PATH=/usr/local:$PATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$HOME/local/node/bin:$PATH
+
+# node_modules
+export NODE_PATH=/usr/local/lib/node_modules
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+export PATH=/usr/local/ruby/bin:$PATH
+export PATH=$HOME/.rbenv/shims/:$PATH
+
+################################################
+
 
 export TERM=xterm-256color
 
@@ -29,7 +45,7 @@ setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
 
 
-bindkey -v
+bindkey -e
 
 # 自動補完を有効にする
 # コマンドの引数やパス名を途中まで入力して <Tab> を押すといい感じに補完してくれる
@@ -75,21 +91,3 @@ zstyle ':completion:*:default' menu select=1
 # ここではデフォルトのセットから / を抜いたものとする
 # こうすると、 Ctrl-W でカーソル前の1単語を削除したとき、 / までで削除が止まる
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-
-
-
-
-#gitのブランチ名表示
-#
-# # vcs_infoロード    
-# autoload -Uz vcs_info    
-# # PROMPT変数内で変数参照する    
-# setopt prompt_subst    
-#
-# # vcsの表示    
-# zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'    
-# zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'    
-# # プロンプト表示直前にvcs_info呼び出し    
-# precmd() { vcs_info }    
-# # プロンプト表示    
-# PROMPT='[${vcs_info_msg_0_}]:%~/%f '
