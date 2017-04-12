@@ -20,13 +20,16 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 export PATH=/usr/local/ruby/bin:$PATH
-export PATH=$HOME/.rbenv/shims/:$PATH
+export PATH=$HOME/.rbenv/shims:$PATH
 
 if [ -d ${HOME}/node_modules/.bin ]; then
     export PATH=${PATH}:${HOME}/node_modules/.bin
 fi
 ################################################
+# alias 
+alias be='bundle exec'
 
+################################################
 
 export TERM=xterm-256color
 
