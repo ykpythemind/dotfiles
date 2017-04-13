@@ -15,6 +15,9 @@ cd dotfiles
 sh ./dotfilesLink.sh
 ```
 
+## install prezto
+https://github.com/sorin-ionescu/prezto 
+
 ## vim
 ```
 :NeoBundleInstall 
