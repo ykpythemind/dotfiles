@@ -79,7 +79,7 @@ setopt pushd_ignore_dups
 # （たとえば `mv hoge.* ~/dir` における "*"）
 # 拡張 glob を有効にすると # ~ ^ もパターンとして扱われる
 # どういう意味を持つかは `man zshexpn` の FILENAME GENERATION を参照
-setopt extended_glob
+#setopt extended_glob
 
 # 入力したコマンドがすでにコマンド履歴に含まれる場合、履歴から古いほうのコマンドを削除する
 # コマンド履歴とは今まで入力したコマンドの一覧のことで、上下キーでたどれる
