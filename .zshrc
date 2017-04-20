@@ -21,6 +21,7 @@ eval "$(rbenv init -)"
 
 export PATH=/usr/local/ruby/bin:$PATH
 export PATH=$HOME/.rbenv/shims:$PATH
+export PATH="/usr/local/bin:${PATH}"
 
 if [ -d ${HOME}/node_modules/.bin ]; then
     export PATH=${PATH}:${HOME}/node_modules/.bin
