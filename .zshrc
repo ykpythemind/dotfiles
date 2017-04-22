@@ -14,7 +14,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH=$HOME/local/node/bin:$PATH
 
 # node_modules
-export NODE_PATH=/usr/local/lib/node_modules
+export PATH=/usr/local/lib/node_modules:$PATH
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
@@ -100,11 +100,24 @@ zstyle ':completion:*:default' menu select=1
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 
-function peco-history-selection() {
+function peco-history-selection__() {
     BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
 
+function peco-history-selection() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
