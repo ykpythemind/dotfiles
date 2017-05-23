@@ -16,5 +16,9 @@ sh ./init.sh
 ## molokai
 ```
 mkdir ~/.vim/colors -p
-mv molokai.vim ~/.vim/colors/
+cp molokai.vim ~/.vim/colors/
 ```
+
+
+## prezto update
+``git pull && git submodule update --init --recursive``
