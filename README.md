@@ -6,19 +6,31 @@
 https://github.com/sorin-ionescu/prezto
 
 
+
+0. install Zsh with Homebrew ( brew install zsh)
+
+1. Launch Zsh:
+
+      `zsh`
+
+2. Clone the repository:
+
+      `git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"`
+
+3. Skip(alias)
+
+4. Set Zsh as your default shell:
+
+      `chsh -s usr/local/bin/zsh`
+
+
+
 ## alias
-clone this repository first
 ```console
-cd dotfiles
+git clone https://github.com/ykpythemind/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 sh ./init.sh
 ```
-
-## molokai
-```console
-mkdir -p ~/.vim/colors
-cp molokai.vim ~/.vim/colors/
-```
-
 
 ## prezto update
 ```console
@@ -26,12 +38,14 @@ cd ~/.zprezto
 git pull && git submodule update --init --recursive
 ```
 
-## filetype
-```console
-~/.vim/ftplugin/ruby.vim
+### vimplug
 
-set expandtab
-set tabstop=2 shiftwidth=2 softtabstop=2
-set autoindent
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+```
+:PlugInstall to install plugins.
 ```
 

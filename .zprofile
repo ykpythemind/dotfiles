@@ -23,7 +23,8 @@ fi
 # Paths
 
 # Ensure path arrays do not contain duplicates.
-typeset -U cdpath fpath mailpath path
+typeset -U cdpath fpath mailpath
+typeset -U path PATH
 
 # Set the the list of directories that cd searches.
 # cdpath=(
@@ -33,6 +34,7 @@ typeset -U cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
+  /usr/sbin
   $path
 )
 

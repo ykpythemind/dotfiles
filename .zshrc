@@ -13,7 +13,6 @@ fi
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-export PATH="$PATH:/usr/sbin"
 
 #
 # alias
@@ -24,13 +23,13 @@ alias psg='ps aux|grep'
 alias ..='cd ./..'
 alias la='ls -laG'
 alias l1='ls -1G'
-
+alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`'
 
 export TERM=xterm-256color
 
 HISTFILE=${HOME}/.zsh_history
-HISTSIZE=100
-SAVEHIST=1000
+HISTSIZE=500
+SAVEHIST=10000
 setopt hist_ignore_dups
 setopt extended_history
 
@@ -63,3 +62,11 @@ zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 ### 
 
+case "$(uname)" in
+    Darwin) # OSがMac
+        if [[ -d /Applications/MacVim.app ]]; then # MacVimが存在
+          alias mvim=/Applications/MacVim.app/Contents/bin/mvim
+        fi
+        ;;
+    *) ;;
+esac
