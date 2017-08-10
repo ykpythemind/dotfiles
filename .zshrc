@@ -20,8 +20,6 @@ eval "$(rbenv init -)"
 
 alias be='bundle exec'
 alias psg='ps aux|grep'
-alias ..='cd ./..'
-alias la='ls -laG'
 alias l1='ls -1G'
 alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`'
 
@@ -63,9 +61,9 @@ bindkey '^R' peco-history-selection
 ### 
 
 case "$(uname)" in
-    Darwin) # OSがMac
-        if [[ -d /Applications/MacVim.app ]]; then # MacVimが存在
-          alias mvim=/Applications/MacVim.app/Contents/bin/mvim
+    Darwin) # Mac
+        if [[ -d /Applications/MacVim.app ]]; then
+          export PATH=/Applications/MacVim.app/Contents/bin:$PATH
         fi
         ;;
     *) ;;
