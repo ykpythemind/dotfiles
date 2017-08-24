@@ -4,6 +4,7 @@ syntax on
 
 set autoread
 set hidden
+set noswapfile
 
 set title
 set ruler
@@ -12,7 +13,7 @@ set wrap
 set autoindent
 set smartindent
 set breakindent
-" set wildmenu
+set wildmenu
 set laststatus=2
 set cmdheight=2
 set display=lastline
