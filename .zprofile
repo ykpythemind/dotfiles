@@ -35,6 +35,7 @@ typeset -U path PATH
 path=(
   /usr/local/{bin,sbin}
   /usr/sbin
+  /sbin
   $path
 )
 
