@@ -22,6 +22,7 @@ alias be='bundle exec'
 alias psg='ps aux|grep'
 alias l1='ls -1G'
 alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`'
+alias -g H='$(git-hash)'
 
 export TERM=xterm-256color
 
@@ -58,6 +59,10 @@ function peco-history-selection() {
 }
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
+# git-hash
+function git-hash(){
+   git log --oneline --branches | peco | awk '{print $1}'
+ }
 ### 
 
 case "$(uname)" in
