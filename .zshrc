@@ -51,22 +51,16 @@ setopt hist_ignore_space
 
 unsetopt extended_glob
 
-# Ctrl+R -> コマンド履歴
-function history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | fzf`
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-zle -N history-selection
-bindkey '^R' history-selection
 # git-hash
 function git-hash(){
    git log --oneline --branches | fzf | awk '{print $1}'
  }
 ### 
 
-# source zsh-interactive-cd
-source "${HOME}/dotfiles/zsh-interactive-cd.plugin.zsh"
+# source zsh-key-bindings
+source "${HOME}/dotfiles/key-bindings.zsh"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 case "$(uname)" in
     Darwin) # Mac
