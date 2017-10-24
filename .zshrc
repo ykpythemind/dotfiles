@@ -21,7 +21,7 @@ eval "$(rbenv init -)"
 alias be='bundle exec'
 alias psg='ps aux|grep'
 alias l1='ls -1G'
-alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`'
+alias -g B='`git branch | fzf | sed -e "s/^\*[ ]*//g"`'
 alias -g H='$(git-hash)'
 
 export TERM=xterm-256color
@@ -51,17 +51,17 @@ setopt hist_ignore_space
 
 unsetopt extended_glob
 
-# Ctrl+R -> pecoでコマンド履歴
-function peco-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+# Ctrl+R -> コマンド履歴
+function history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | fzf`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
+zle -N history-selection
+bindkey '^R' history-selection
 # git-hash
 function git-hash(){
-   git log --oneline --branches | peco | awk '{print $1}'
+   git log --oneline --branches | fzf | awk '{print $1}'
  }
 ### 
 
