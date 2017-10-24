@@ -65,6 +65,9 @@ function git-hash(){
  }
 ### 
 
+# source zsh-interactive-cd
+source "${HOME}/dotfiles/zsh-interactive-cd.plugin.zsh"
+
 case "$(uname)" in
     Darwin) # Mac
         if [[ -d /Applications/MacVim.app ]]; then
