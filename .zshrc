@@ -84,7 +84,7 @@ gcor() {
 gshow() {
   git log --graph --color=always \
       --abbrev-commit --date=format-local:'%Y/%m/%d %H:%M:%S' \
-      --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' "$@" |
+      --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
   --bind "ctrl-y:accept,enter:execute:
                 (grep -o '[a-f0-9]\{7\}' | head -1 |
