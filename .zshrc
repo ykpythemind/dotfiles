@@ -63,6 +63,46 @@ source "${HOME}/dotfiles/zsh-interactive-cd.plugin.zsh"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
+# checkout git branch
+gco() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+# checkout git branch (including remote branches)
+gcor() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+# gshow - git commit browser
+gshow() {
+  git log --graph --color=always \
+      --abbrev-commit --date=format-local:'%Y/%m/%d %H:%M:%S' \
+      --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+  --bind "ctrl-y:accept,enter:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
+}
+
+
+# fcd - cd to selected directory, and preview
+fcd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m --preview "ls -a {}" --height 100%) &&
+  cd "$dir"
+}
+
+# MacVimへのパス
 case "$(uname)" in
     Darwin) # Mac
         if [[ -d /Applications/MacVim.app ]]; then
