@@ -23,6 +23,11 @@ alias psg='ps aux|grep'
 alias l1='ls -1G'
 alias -g B='`git branch | fzf | sed -e "s/^\*[ ]*//g"`'
 alias -g H='$(git-hash)'
+alias gs='git status'
+alias rails='bin/rails'
+alias rake='bin/rake'
+alias rspec='bin/rspec'
+#alias rg='rg --colors "match:none" --colors "match:bg:magenta"'
 
 export TERM=xterm-256color
 
