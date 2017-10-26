@@ -34,8 +34,7 @@ sh ./init.sh
 
 ## prezto update
 ```console
-cd ~/.zprezto
-git pull && git submodule update --init --recursive
+zprezto-update
 ```
 
 ### vimplug
@@ -46,6 +45,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```
 
 ```
-:PlugInstall to install plugins.
+vim
+:PlugInstall
 ```
 
