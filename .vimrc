@@ -17,6 +17,9 @@ set wildmenu
 set laststatus=2
 set cmdheight=2
 set display=lastline
+set showcmd
+set nocursorline
+set noshowmatch
 
 set shiftwidth=2
 set softtabstop=0
@@ -33,23 +36,24 @@ set wrapscan
 set ignorecase
 set smartcase
 
-set nocursorline
-set noshowmatch
-
 set list
 set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
 set wildmode=list:longest,full
-set showcmd
 set clipboard=unnamed,autoselect
 set whichwrap=b,s,h,l,<,>,~,[,]
 set backspace=indent,eol,start
 set nrformats-=octal
 
+let mapleader = "\<space>"
+
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q <Nop>
-
 nnoremap Y y$
+
+" 中央に固定しつつスクロール
+nnoremap <C-f> <C-f>zz
+nnoremap <C-b> <C-b>zz
 
 noremap <C-j> <esc>
 noremap! <C-j> <esc>
@@ -74,30 +78,31 @@ nnoremap gk k
 nnoremap <silent> <Space>o   :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
 nnoremap <silent> <Space>O   :<C-u>for i in range(1, v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 
-" auto open QuickFix
-autocmd QuickFixCmdPost vimgrep cwindow
-
 " redraw and :noh
 nnoremap <silent> <C-L> :noh<C-L><CR>
 
 call plug#begin('~/.vim/plugged')
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/neoyank.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
 Plug 'tpope/vim-rails'
 Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
-Plug 'jremmen/vim-ripgrep'
 Plug 'szw/vim-tags'
 Plug 'thinca/vim-ref'
+Plug 'othree/yajs.vim'
+Plug 'othree/es.next.syntax.vim'
 call plug#end()
 
 nnoremap <silent><C-t> :IndentGuidesToggle<CR>
+
+" Use ripgrep
+set grepprg=rg\ --vimgrep
 
 " ctags
 nnoremap <C-]> g<C-]>
@@ -106,8 +111,8 @@ nnoremap <C-]> g<C-]>
 
 colorscheme molokai
 set t_Co=256
-hi String  ctermfg=166 guifg=#E5345B
-hi Character ctermfg=166 guifg=#E5345B
+hi String  ctermfg=166 guifg=#ef3434
+hi Character ctermfg=166 guifg=#ef3434
 hi Delimiter  ctermfg=183 guifg=#E58599
 hi IncSearch ctermfg=193 ctermbg=16
 hi Search ctermfg=23 ctermbg=117 guifg=#005f5f guibg=#87dfff
@@ -118,16 +123,23 @@ hi Visual  ctermbg=236
 highlight JpSpace cterm=reverse ctermfg=166 gui=reverse guifg=Red
 au BufRead,BufNew * match JpSpace /　/
 
-" Unite
-let g:unite_enable_start_insert=1
-let g:unite_source_file_mru_limit = 100
-let g:unite_enable_ignore_case = 1
-let g:unite_enable_smart_case = 1
-nnoremap <silent> <Space>y :<C-u>Unite history/yank<CR>
-nnoremap <silent> <Space>b :<C-u>Unite buffer<CR>
-nnoremap <silent> <Space>c :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
-nnoremap <silent> <Space>f :<C-u>UniteWithCurrentDir -buffer-name=files file file/new<CR>
-nnoremap <silent> <Space>u :<C-u>Unite file_mru buffer<CR>
+" fzf
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>x :Commands<CR>
+nnoremap <Leader>f :GFiles<CR>
+nnoremap <Leader>: :History:<CR>
+command! FZFMru call fzf#run({
+\  'source':  v:oldfiles,
+\  'sink':    'e',
+\  'options': '-m -x +s',
+\  'down':    '40%'})
+nnoremap <Leader>r :FZFMru<CR>
 
 " Lightline
 let g:lightline = {
