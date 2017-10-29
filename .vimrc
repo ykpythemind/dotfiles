@@ -61,8 +61,8 @@ nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
 
-" noremap <C-j> <esc>
-" noremap! <C-j> <esc>
+noremap <C-j> <esc>
+noremap! <C-j> <esc>
 
 cnoremap <C-f>  <Right>
 cnoremap <C-b>  <Left>
@@ -92,6 +92,9 @@ au BufRead,BufNew * match JpSpace /　/
 call plug#begin('~/.vim/plugged')
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neoyank.vim'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -101,13 +104,14 @@ Plug 'vim-jp/vimdoc-ja'
 Plug 'tpope/vim-rails'
 Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
+Plug 'jremmen/vim-ripgrep'
 Plug 'szw/vim-tags'
 Plug 'thinca/vim-ref'
 Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
 Plug 'bronson/vim-trailing-whitespace'
 " Plug 'ykpythemind/vim-fontzoom'
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
+" Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
@@ -130,23 +134,35 @@ hi Search ctermfg=23 ctermbg=117 guifg=#005f5f guibg=#87dfff
 hi Comment ctermfg=102
 hi Visual  ctermbg=236
 
+" Unite
+ let g:unite_enable_start_insert=1
+ let g:unite_source_file_mru_limit = 100
+ let g:unite_enable_ignore_case = 1
+ let g:unite_enable_smart_case = 1
+ nnoremap <Leader>y :<C-u>Unite history/yank<CR>
+ nnoremap <Leader>b :<C-u>Unite buffer<CR>
+ nnoremap <Leader>F :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
+ " nnoremap <Leader>f :<C-u>UniteWithCurrentDir -buffer-name=files file file/new<CR>
+ nnoremap <Leader>f :<C-u>Unite file_rec/async:!<CR>
+ nnoremap <Leader>r :<C-u>Unite file_mru buffer<CR>
+
 " fzf
-command! -bang -nargs=* Rg
+command! -bang -nargs=* Rgfind
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
-nnoremap <Leader>b :Buffers<CR>
+" nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>x :Commands<CR>
-nnoremap <Leader>f :GFiles<CR>
-nnoremap <Leader>: :History:<CR>
+" nnoremap <Leader>f :GFiles<CR>
+" nnoremap <Leader>: :History:<CR>
 command! FZFMru call fzf#run({
 \  'source':  v:oldfiles,
 \  'sink':    'e',
 \  'options': '-m -x +s',
 \  'down':    '40%'})
-nnoremap <Leader>r :FZFMru<CR>
+" nnoremap <Leader>r :FZFMru<CR>
 
 " Lightline
 let g:lightline = {
