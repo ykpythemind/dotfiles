@@ -2,6 +2,7 @@ scriptencoding utf-8
 filetype plugin indent on
 syntax on
 
+set nocompatible
 set autoread
 set hidden
 set noswapfile
@@ -36,6 +37,7 @@ set incsearch
 set wrapscan
 set ignorecase
 set smartcase
+nnoremap <ESC><ESC> :nohlsearch<CR>
 
 set list
 set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
@@ -88,13 +90,16 @@ nnoremap <silent> <Space>O   :<C-u>for i in range(1, v:count1) \| call append(li
 highlight JpSpace cterm=reverse ctermfg=166 gui=reverse guifg=Red
 au BufRead,BufNew * match JpSpace /　/
 
+autocmd QuickfixCmdPost vimgrep copen
+autocmd QuickfixCmdPost grep copen
+
 " Plugin
 call plug#begin('~/.vim/plugged')
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/neoyank.vim'
+" Plug 'Shougo/unite.vim'
+" Plug 'Shougo/neomru.vim'
+" Plug 'Shougo/neoyank.vim'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -110,15 +115,13 @@ Plug 'thinca/vim-ref'
 Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
 Plug 'bronson/vim-trailing-whitespace'
-" Plug 'ykpythemind/vim-fontzoom'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ykpythemind/vim-fontzoom'
 " Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
 nnoremap <silent><C-t> :IndentGuidesToggle<CR>
-
-" Use ripgrep
-set grepprg=rg\ --vimgrep
 
 " ctags
 nnoremap <C-]> g<C-]>
@@ -134,35 +137,33 @@ hi Search ctermfg=23 ctermbg=117 guifg=#005f5f guibg=#87dfff
 hi Comment ctermfg=102
 hi Visual  ctermbg=236
 
-" Unite
- let g:unite_enable_start_insert=1
- let g:unite_source_file_mru_limit = 100
- let g:unite_enable_ignore_case = 1
- let g:unite_enable_smart_case = 1
- nnoremap <Leader>y :<C-u>Unite history/yank<CR>
- nnoremap <Leader>b :<C-u>Unite buffer<CR>
- nnoremap <Leader>F :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
- " nnoremap <Leader>f :<C-u>UniteWithCurrentDir -buffer-name=files file file/new<CR>
- nnoremap <Leader>f :<C-u>Unite file_rec/async:!<CR>
- nnoremap <Leader>r :<C-u>Unite file_mru buffer<CR>
+if executable('rg')
+  " Use ripgrep
+  set grepprg=rg\ --vimgrep
+endif
 
 " fzf
 command! -bang -nargs=* Rgfind
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-" nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>x :Commands<CR>
-" nnoremap <Leader>f :GFiles<CR>
-" nnoremap <Leader>: :History:<CR>
+  \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'options': '--exact --reverse --delimiter : --nth 3..'}, 'right:50%:wrap'))
+command! -bang -nargs=* Rgfile
+  \ call fzf#vim#grep(
+  \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'options': '--exact --reverse'}, 'right:50%:wrap'))
+nnoremap <Leader>b :<C-u>Buffers<CR>
+nnoremap <Leader>x :<C-u>Commands<CR>
+nnoremap <Leader>f :<C-u>GFiles<CR>
+nnoremap <Leader>: :<C-u>History:<CR>
+nnoremap <C-h> :<C-u>FZFMru<CR>
+nnoremap <C-p> :<C-u>GFiles<CR>
+nnoremap <C-e> :<C-u>Buffers<CR>
 command! FZFMru call fzf#run({
 \  'source':  v:oldfiles,
 \  'sink':    'e',
 \  'options': '-m -x +s',
 \  'down':    '40%'})
-" nnoremap <Leader>r :FZFMru<CR>
+nnoremap <Leader>r :FZFMru<CR>
 
 " Lightline
 let g:lightline = {
@@ -186,8 +187,8 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_save = 1
 let g:ale_linters = {
-      \ 'javascript': ['eslint'],
-      \ }
+  \ 'javascript': ['eslint'],
+  \ }
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
