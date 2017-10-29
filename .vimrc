@@ -5,6 +5,7 @@ syntax on
 set autoread
 set hidden
 set noswapfile
+set ambiwidth=double
 
 set title
 set ruler
@@ -45,6 +46,7 @@ set backspace=indent,eol,start
 set nrformats-=octal
 
 let mapleader = "\<space>"
+nnoremap <Leader>k :bd<CR>
 
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
@@ -54,9 +56,13 @@ nnoremap Y y$
 " 中央に固定しつつスクロール
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
 
-noremap <C-j> <esc>
-noremap! <C-j> <esc>
+" noremap <C-j> <esc>
+" noremap! <C-j> <esc>
 
 cnoremap <C-f>  <Right>
 cnoremap <C-b>  <Left>
@@ -78,9 +84,11 @@ nnoremap gk k
 nnoremap <silent> <Space>o   :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
 nnoremap <silent> <Space>O   :<C-u>for i in range(1, v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 
-" redraw and :noh
-nnoremap <silent> <C-L> :noh<C-L><CR>
+" Two-byte space
+highlight JpSpace cterm=reverse ctermfg=166 gui=reverse guifg=Red
+au BufRead,BufNew * match JpSpace /　/
 
+" Plugin
 call plug#begin('~/.vim/plugged')
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
@@ -97,7 +105,11 @@ Plug 'szw/vim-tags'
 Plug 'thinca/vim-ref'
 Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
+Plug 'bronson/vim-trailing-whitespace'
+" Plug 'ykpythemind/vim-fontzoom'
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 call plug#end()
+source $VIMRUNTIME/macros/matchit.vim
 
 nnoremap <silent><C-t> :IndentGuidesToggle<CR>
 
@@ -108,7 +120,6 @@ set grepprg=rg\ --vimgrep
 nnoremap <C-]> g<C-]>
 
 "color
-
 colorscheme molokai
 set t_Co=256
 hi String  ctermfg=166 guifg=#ef3434
@@ -118,10 +129,6 @@ hi IncSearch ctermfg=193 ctermbg=16
 hi Search ctermfg=23 ctermbg=117 guifg=#005f5f guibg=#87dfff
 hi Comment ctermfg=102
 hi Visual  ctermbg=236
-
-" Two-byte space
-highlight JpSpace cterm=reverse ctermfg=166 gui=reverse guifg=Red
-au BufRead,BufNew * match JpSpace /　/
 
 " fzf
 command! -bang -nargs=* Rg
@@ -162,3 +169,9 @@ let g:ale_lint_delay = 200
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_save = 1
+let g:ale_linters = {
+      \ 'javascript': ['eslint'],
+      \ }
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
