@@ -7,6 +7,7 @@ set autoread
 set hidden
 set noswapfile
 set ambiwidth=double
+set mouse=a
 
 set title
 set ruler
