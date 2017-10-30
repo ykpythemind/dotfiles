@@ -43,7 +43,8 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 set list
 set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
 set wildmode=list:longest,full
-set clipboard=unnamed,autoselect
+set clipboard&
+set clipboard^=unnamedplus
 set whichwrap=b,s,h,l,<,>,~,[,]
 set backspace=indent,eol,start
 set nrformats-=octal
