@@ -111,7 +111,7 @@ fcd() {
 case "$(uname)" in
     Darwin) # Mac
         if [[ -d /Applications/MacVim.app ]]; then
-          export PATH=/Applications/MacVim.app/Contents/bin:$PATH
+          # export PATH=/Applications/MacVim.app/Contents/bin:$PATH
         fi
         ;;
     *) ;;

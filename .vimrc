@@ -44,7 +44,7 @@ set list
 set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
 set wildmode=list:longest,full
 set clipboard&
-set clipboard^=unnamedplus
+set clipboard^=unnamed,unnamedplus
 set whichwrap=b,s,h,l,<,>,~,[,]
 set backspace=indent,eol,start
 set nrformats-=octal
@@ -99,12 +99,11 @@ autocmd QuickfixCmdPost grep copen
 call plug#begin('~/.vim/plugged')
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'Shougo/unite.vim'
-" Plug 'Shougo/neomru.vim'
-" Plug 'Shougo/neoyank.vim'
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neoyank.vim'
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
@@ -119,6 +118,8 @@ Plug 'othree/es.next.syntax.vim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ykpythemind/vim-fontzoom'
+Plug 'Townk/vim-autoclose'
+Plug 'tpope/vim-endwise'
 " Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
@@ -144,28 +145,27 @@ if executable('rg')
   set grepprg=rg\ --vimgrep
 endif
 
-" fzf
-command! -bang -nargs=* Rgfind
-  \ call fzf#vim#grep(
-  \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
-  \   fzf#vim#with_preview({'options': '--exact --reverse --delimiter : --nth 3..'}, 'right:50%:wrap'))
-command! -bang -nargs=* Rgfile
-  \ call fzf#vim#grep(
-  \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
-  \   fzf#vim#with_preview({'options': '--exact --reverse'}, 'right:50%:wrap'))
-nnoremap <Leader>b :<C-u>Buffers<CR>
-nnoremap <Leader>x :<C-u>Commands<CR>
-nnoremap <Leader>f :<C-u>GFiles<CR>
-nnoremap <Leader>: :<C-u>History:<CR>
-nnoremap <C-h> :<C-u>FZFMru<CR>
-nnoremap <C-p> :<C-u>GFiles<CR>
-nnoremap <C-e> :<C-u>Buffers<CR>
-command! FZFMru call fzf#run({
-\  'source':  v:oldfiles,
-\  'sink':    'e',
-\  'options': '-m -x +s',
-\  'down':    '40%'})
-nnoremap <Leader>r :FZFMru<CR>
+" denite
+" Ripgrep command on grep source
+call denite#custom#var('file_rec', 'command',
+  \ ['rg', '--files', '--hidden', '--glob', '!.git', ''])
+call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'sorter_rank', 'matcher_regexp'])
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+    \ ['--vimgrep', '--no-heading'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+let g:python3_host_prog = expand('/usr/local/bin/python3')
+nnoremap <Leader>f :<C-u>Denite file_rec<CR>
+nnoremap <Leader>b :<C-u>Denite buffer<CR>
+nnoremap <Leader>y :<C-u>Denite neoyank<CR>
+nnoremap <Leader>r :<C-u>Denite file_mru<CR>
+nnoremap <C-p> :<C-u>DeniteProjectDir file_rec<CR>
+nnoremap <C-g> :<C-u>DeniteCursorWord -mode=normal grep<CR>
+hi CursorLine guifg=#E19972
+
 
 " Lightline
 let g:lightline = {
