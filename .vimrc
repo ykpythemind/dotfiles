@@ -157,6 +157,8 @@ call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#map('insert', "<C-k>", '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', "<C-j>", '<denite:move_to_next_line>', 'noremap')
 let g:python3_host_prog = expand('/usr/local/bin/python3')
 nnoremap <Leader>f :<C-u>Denite file_rec<CR>
 nnoremap <Leader>b :<C-u>Denite buffer<CR>
