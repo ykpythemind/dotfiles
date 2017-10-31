@@ -149,7 +149,7 @@ endif
 " Ripgrep command on grep source
 call denite#custom#var('file_rec', 'command',
   \ ['rg', '--files', '--hidden', '--glob', '!.git', ''])
-call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'sorter_rank', 'matcher_regexp'])
+call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'sorter_rank'])
 call denite#custom#var('grep', 'command', ['rg'])
 call denite#custom#var('grep', 'default_opts',
     \ ['--vimgrep', '--no-heading'])
@@ -159,15 +159,16 @@ call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#map('insert', "<C-k>", '<denite:move_to_previous_line>', 'noremap')
 call denite#custom#map('insert', "<C-j>", '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#option('default', { 'reversed': 1, 'auto_resize': 1})
 let g:python3_host_prog = expand('/usr/local/bin/python3')
 nnoremap <Leader>f :<C-u>Denite file_rec<CR>
 nnoremap <Leader>b :<C-u>Denite buffer<CR>
 nnoremap <Leader>y :<C-u>Denite neoyank<CR>
 nnoremap <Leader>r :<C-u>Denite file_mru<CR>
 nnoremap <C-p> :<C-u>DeniteProjectDir file_rec<CR>
-nnoremap <C-g> :<C-u>DeniteCursorWord -mode=normal grep<CR>
-hi CursorLine guifg=#E19972
-
+nnoremap <C-g> :<C-u>DeniteCursorWord grep<CR>
 
 " Lightline
 let g:lightline = {
