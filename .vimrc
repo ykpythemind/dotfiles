@@ -161,14 +161,17 @@ call denite#custom#map('insert', "<C-k>", '<denite:move_to_previous_line>', 'nor
 call denite#custom#map('insert', "<C-j>", '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
 call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#option('default', { 'reversed': 1, 'auto_resize': 1})
+call denite#custom#option('default', { 'reversed': 1, 'auto_resize': 1, 'smartcase': 1,
+  \ 'highlight_mode_insert': 'Search',
+  \ 'highlight_matched_char': 'Visual' })
 let g:python3_host_prog = expand('/usr/local/bin/python3')
-nnoremap <Leader>f :<C-u>Denite file_rec<CR>
+nnoremap <Leader>f :<C-u>Denite file<CR>
 nnoremap <Leader>b :<C-u>Denite buffer<CR>
 nnoremap <Leader>y :<C-u>Denite neoyank<CR>
 nnoremap <Leader>r :<C-u>Denite file_mru<CR>
+nnoremap <C-l> :<C-u>Denite buffer<CR>
 nnoremap <C-p> :<C-u>DeniteProjectDir file_rec<CR>
-nnoremap <C-g> :<C-u>DeniteCursorWord grep<CR>
+nnoremap <C-g> :<C-u>DeniteProjectDir grep<CR>
 
 " Lightline
 let g:lightline = {
