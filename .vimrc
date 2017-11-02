@@ -1,13 +1,14 @@
 scriptencoding utf-8
-filetype plugin indent on
-syntax on
+filetype off
+filetype plugin indent off
 
-set nocompatible
 set autoread
 set hidden
 set noswapfile
 set ambiwidth=double
 set mouse=a
+set lazyredraw
+autocmd FileType ruby :set re=1
 
 set title
 set ruler
@@ -21,8 +22,6 @@ set laststatus=2
 set cmdheight=2
 set display=lastline
 set showcmd
-set nocursorline
-set noshowmatch
 
 set shiftwidth=2
 set softtabstop=0
@@ -38,7 +37,6 @@ set incsearch
 set wrapscan
 set ignorecase
 set smartcase
-nnoremap <ESC><ESC> :nohlsearch<CR>
 
 set list
 set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
@@ -49,7 +47,7 @@ set whichwrap=b,s,h,l,<,>,~,[,]
 set backspace=indent,eol,start
 set nrformats-=octal
 
-let mapleader = "\<space>"
+let g:mapleader = "\<space>"
 nnoremap <Leader>k :bd<CR>
 
 nnoremap ZZ <Nop>
@@ -83,6 +81,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+" nnoremap > >>
+" nnoremap < <<
 
 " 空行挿入
 nnoremap <silent> <Space>o   :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
@@ -92,8 +92,21 @@ nnoremap <silent> <Space>O   :<C-u>for i in range(1, v:count1) \| call append(li
 highlight JpSpace cterm=reverse ctermfg=166 gui=reverse guifg=Red
 au BufRead,BufNew * match JpSpace /　/
 
+nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+
+if executable('rg')
+  " Use ripgrep
+  set grepprg=rg\ --vimgrep
+endif
 autocmd QuickfixCmdPost vimgrep copen
 autocmd QuickfixCmdPost grep copen
+
+if has('vim_starting')
+    " 縦カーソル
+    let &t_SI .= "\e[6 q"
+    let &t_EI .= "\e[2 q"
+    let &t_SR .= "\e[4 q"
+endif
 
 " Plugin
 call plug#begin('~/.vim/plugged')
@@ -101,26 +114,28 @@ Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'Shougo/unite.vim'
-Plug 'Shougo/denite.nvim'
+" Plug 'Shougo/denite.nvim'
 Plug 'Shougo/neomru.vim'
-Plug 'Shougo/neoyank.vim'
+" Plug 'Shougo/neoyank.vim'
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
 Plug 'tpope/vim-rails'
 Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
-Plug 'jremmen/vim-ripgrep'
+" Plug 'jremmen/vim-ripgrep'
 Plug 'szw/vim-tags'
 Plug 'thinca/vim-ref'
 Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ykpythemind/vim-fontzoom'
+" Plug 'ykpythemind/vim-fontzoom'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-endwise'
 " Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
+ " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
@@ -140,16 +155,13 @@ hi Search ctermfg=23 ctermbg=117 guifg=#005f5f guibg=#87dfff
 hi Comment ctermfg=102
 hi Visual  ctermbg=236
 
-if executable('rg')
-  " Use ripgrep
-  set grepprg=rg\ --vimgrep
-endif
-
 " denite
 " Ripgrep command on grep source
+if 0
 call denite#custom#var('file_rec', 'command',
   \ ['rg', '--files', '--hidden', '--glob', '!.git', ''])
-call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'sorter_rank'])
+call denite#custom#source('file_rec', 'matchers', ['matcher_project_files', 'matcher_fuzzy', 'sorter_sublime'])
+call denite#custom#source('line', 'matchers', ['matcher_fuzzy', 'sorter_sublime'])
 call denite#custom#var('grep', 'command', ['rg'])
 call denite#custom#var('grep', 'default_opts',
     \ ['--vimgrep', '--no-heading'])
@@ -165,24 +177,58 @@ call denite#custom#option('default', { 'reversed': 1, 'auto_resize': 1, 'smartca
   \ 'highlight_mode_insert': 'Search',
   \ 'highlight_matched_char': 'Visual' })
 let g:python3_host_prog = expand('/usr/local/bin/python3')
-nnoremap <Leader>f :<C-u>Denite file<CR>
+nnoremap <Leader>f :<C-u>Denite file file:new<CR>
+" nnoremap <Leader>c :<C-u>Denite directory_rec<CR>
+nnoremap <Leader>x :<C-u>Denite command_history<CR>
 nnoremap <Leader>b :<C-u>Denite buffer<CR>
-nnoremap <Leader>y :<C-u>Denite neoyank<CR>
+" nnoremap <Leader>y :<C-u>Denite neoyank<CR>
 nnoremap <Leader>r :<C-u>Denite file_mru<CR>
-nnoremap <C-l> :<C-u>Denite buffer<CR>
-nnoremap <C-p> :<C-u>DeniteProjectDir file_rec<CR>
-nnoremap <C-g> :<C-u>DeniteProjectDir grep<CR>
+nnoremap <C-t> :<C-u>Denite buffer<CR>
+" nnoremap <C-p> :<C-u>DeniteProjectDir file_rec<CR>
+" nnoremap <C-g> :<C-u>DeniteProjectDir grep<CR>
+nnoremap <C-p> :<C-u>Denite file_rec<CR>
+nnoremap <C-l> :<C-u>Denite line<CR>
+endif
+
+" fzf
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+let g:fzf_layout = { 'down': '~40%' }
+nnoremap <Leader>b :<C-u>Buffers<CR>
+nnoremap <Leader>f :<C-u>GFiles<CR>
+nnoremap <Leader>: :<C-u>History:<CR>
+nnoremap <C-h> :<C-u>FZFMru<CR>
+nnoremap <C-p> :<C-u>GFiles<CR>
+nnoremap <C-e> :<C-u>Buffers<CR>
+command! FZFMru call fzf#run({
+  \  'source':  v:oldfiles,
+  \  'sink':    'e',
+  \  'options': '-m -x +s',
+  \  'down':    '40%'})
+nnoremap <Leader>r :FZFMru<CR>
 
 " Lightline
+function! LightlineFilename()
+  return expand('%:t') !=# '' ? expand('%') : '[No Name]'
+endfunction
+function! CurrentDir()
+  return 0 "getcwd()
+endfunction
 let g:lightline = {
   \'active': {
   \  'left': [
   \    ['mode', 'paste'],
-  \    ['readonly', 'filename', 'modified', 'ale'],
-  \  ]
+  \    ['readonly', 'filename', 'modified', 'ale'] ],
+  \ 'right': [
+  \            [ 'currentdir', 'filetype' ] ]
   \},
   \'component_function': {
-  \  'ale': 'ALEGetStatusLine'
+    \   'filename': 'LightlineFilename',
+    \   'ale': 'ALEGetStatusLine'
   \}
 \ }
 
@@ -200,3 +246,19 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
+let g:ale_statusline_format = ['[E]%d', '[W]%d', 'ok']
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_error_str = 'Error'
+let g:ale_echo_msg_warning_str = 'Warn'
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
+
+filetype plugin indent on
+syntax on
+" syntax が有効にならないバグ?
+" autocmd BufEnter * :syntax on
+
+if has("multi_lang")
+  language C
+endif
