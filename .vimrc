@@ -1,12 +1,17 @@
 scriptencoding utf-8
-filetype off
-filetype plugin indent off
+" filetype off
+" filetype plugin indent off
 
-set autoread
+" set autoread
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
 set hidden
 set noswapfile
+set nobackup
 set ambiwidth=double
-set mouse=a
+" set mouse=a
 set lazyredraw
 autocmd FileType ruby :set re=1
 
@@ -18,6 +23,7 @@ set autoindent
 set smartindent
 set breakindent
 set wildmenu
+set wildignore+=*/.git/*,*/tmp/*,*.swp
 set laststatus=2
 set cmdheight=2
 set display=lastline
@@ -112,11 +118,12 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'Shougo/unite.vim'
 " Plug 'Shougo/denite.nvim'
-Plug 'Shougo/neomru.vim'
+" Plug 'Shougo/neomru.vim'
 " Plug 'Shougo/neoyank.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
@@ -126,20 +133,25 @@ Plug 'tomasr/molokai'
 " Plug 'jremmen/vim-ripgrep'
 Plug 'szw/vim-tags'
 Plug 'thinca/vim-ref'
-Plug 'othree/yajs.vim'
-Plug 'othree/es.next.syntax.vim'
-Plug 'bronson/vim-trailing-whitespace'
+" Plug 'othree/yajs.vim'
+" Plug 'othree/es.next.syntax.vim'
+" Plug 'bronson/vim-trailing-whitespace'
 " Plug 'ykpythemind/vim-fontzoom'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-endwise'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 " Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
  " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+" Plug '/usr/local/opt/fzf'
+" Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
-nnoremap <silent><C-t> :IndentGuidesToggle<CR>
+" nnoremap <silent><C-t> :IndentGuidesToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
 
 " ctags
 nnoremap <C-]> g<C-]>
@@ -147,6 +159,7 @@ nnoremap <C-]> g<C-]>
 "color
 colorscheme molokai
 set t_Co=256
+let g:rehash256 = 1
 hi String  ctermfg=166 guifg=#ef3434
 hi Character ctermfg=166 guifg=#ef3434
 hi Delimiter  ctermfg=183 guifg=#E58599
@@ -191,32 +204,43 @@ nnoremap <C-l> :<C-u>Denite line<CR>
 endif
 
 " fzf
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-let g:fzf_layout = { 'down': '~40%' }
-nnoremap <Leader>b :<C-u>Buffers<CR>
-nnoremap <Leader>f :<C-u>GFiles<CR>
-nnoremap <Leader>: :<C-u>History:<CR>
-nnoremap <C-h> :<C-u>FZFMru<CR>
-nnoremap <C-p> :<C-u>GFiles<CR>
-nnoremap <C-e> :<C-u>Buffers<CR>
-command! FZFMru call fzf#run({
-  \  'source':  v:oldfiles,
-  \  'sink':    'e',
-  \  'options': '-m -x +s',
-  \  'down':    '40%'})
-nnoremap <Leader>r :FZFMru<CR>
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \   <bang>0)
+" let g:fzf_layout = { 'down': '~40%' }
+" nnoremap <Leader>b :<C-u>Buffers<CR>
+" nnoremap <Leader>f :<C-u>GFiles<CR>
+" nnoremap <Leader>: :<C-u>History:<CR>
+" nnoremap <C-h> :<C-u>FZFMru<CR>
+" nnoremap <C-p> :<C-u>GFiles<CR>
+" nnoremap <C-e> :<C-u>Buffers<CR>
+" command! FZFMru call fzf#run({
+"   \  'source':  v:oldfiles,
+"   \  'sink':    'e',
+"   \  'options': '-m -x +s',
+"   \  'down':    '40%'})
+" nnoremap <Leader>r :FZFMru<CR>
+
+" CtrlP
+if executable('rg')
+  " set grepprg=rg\ --color=never
+  " let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
+  " let g:ctrlp_use_caching = 0
+endif
+nnoremap <C-e> :<C-u>CtrlPBuffer<CR>
+nnoremap <Leader>h :<C-u>CtrlPMRU<CR>
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](.git|doc|tmp|node_modules)',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 " Lightline
 function! LightlineFilename()
   return expand('%:t') !=# '' ? expand('%') : '[No Name]'
-endfunction
-function! CurrentDir()
-  return 0 "getcwd()
 endfunction
 let g:lightline = {
   \'active': {
@@ -224,7 +248,7 @@ let g:lightline = {
   \    ['mode', 'paste'],
   \    ['readonly', 'filename', 'modified', 'ale'] ],
   \ 'right': [
-  \            [ 'currentdir', 'filetype' ] ]
+  \            [ 'filetype' ] ]
   \},
   \'component_function': {
     \   'filename': 'LightlineFilename',
@@ -258,6 +282,7 @@ filetype plugin indent on
 syntax on
 " syntax が有効にならないバグ?
 " autocmd BufEnter * :syntax on
+" autocmd BufEnter * :filetype plugin indent on
 
 if has("multi_lang")
   language C
