@@ -149,6 +149,7 @@ Plug 'prettier/vim-prettier', {
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
+setlocal omnifunc=syntaxcomplete#Complete
 
 " nnoremap <silent><C-t> :IndentGuidesToggle<CR>
 map <C-t> :NERDTreeToggle<CR>
