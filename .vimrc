@@ -164,8 +164,8 @@ let g:rehash256 = 1
 hi String  ctermfg=166 guifg=#ef3434
 hi Character ctermfg=166 guifg=#ef3434
 hi Delimiter  ctermfg=183 guifg=#E58599
-hi IncSearch ctermfg=193 ctermbg=16
-hi Search ctermfg=23 ctermbg=117 guifg=#005f5f guibg=#87dfff
+" hi IncSearch ctermfg=193 ctermbg=16
+" hi Search ctermfg=23 ctermbg=117 guifg=#005f5f guibg=#87dfff
 hi Comment ctermfg=102
 hi Visual  ctermbg=236
 
