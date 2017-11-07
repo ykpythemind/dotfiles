@@ -2,7 +2,7 @@ scriptencoding utf-8
 " filetype off
 " filetype plugin indent off
 
-" set autoread
+set autoread
 augroup vimrc-checktime
   autocmd!
   autocmd WinEnter * checktime
@@ -230,12 +230,11 @@ endif
 "   \  'down':    '40%'})
 " nnoremap <Leader>r :FZFMru<CR>
 
-" CtrlP
 if executable('rg')
-  " set grepprg=rg\ --color=never
-  " let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git/*"'
   " let g:ctrlp_use_caching = 0
 endif
+" CtrlP
 nnoremap <C-e> :<C-u>CtrlPBuffer<CR>
 nnoremap <Leader>h :<C-u>CtrlPMRU<CR>
 let g:ctrlp_working_path_mode = 'ra'
