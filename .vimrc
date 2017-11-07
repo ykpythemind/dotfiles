@@ -147,9 +147,14 @@ Plug 'prettier/vim-prettier', {
 " Plug '/usr/local/opt/fzf'
 " Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'posva/vim-vue'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
+
+" Vue
+autocmd FileType vue syntax sync fromstart
+let g:vue_disable_pre_processors=1
 
 " nnoremap <silent><C-t> :IndentGuidesToggle<CR>
 map <C-t> :NERDTreeToggle<CR>
