@@ -1,6 +1,6 @@
 scriptencoding utf-8
-" filetype off
-" filetype plugin indent off
+filetype plugin indent on
+syntax on
 
 set autoread
 augroup vimrc-checktime
@@ -87,8 +87,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
-" nnoremap > >>
-" nnoremap < <<
 
 " 空行挿入
 nnoremap <silent> <Space>o   :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
@@ -102,7 +100,8 @@ nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
 if executable('rg')
   " Use ripgrep
-  set grepprg=rg\ --vimgrep
+  " set grepprg=rg\ --no-heading\ --vimgrep\ --smart-case
+  " set grepformat=%f:%l:%c:%m
 endif
 autocmd QuickfixCmdPost vimgrep copen
 autocmd QuickfixCmdPost grep copen
@@ -130,7 +129,7 @@ Plug 'vim-jp/vimdoc-ja'
 Plug 'tpope/vim-rails'
 Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
-" Plug 'jremmen/vim-ripgrep'
+Plug 'jremmen/vim-ripgrep'
 Plug 'szw/vim-tags'
 Plug 'thinca/vim-ref'
 " Plug 'othree/yajs.vim'
@@ -148,6 +147,8 @@ Plug 'prettier/vim-prettier', {
 " Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'posva/vim-vue'
+Plug 'kana/vim-textobj-user'
+Plug 'tek/vim-textobj-ruby'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
