@@ -168,7 +168,6 @@ nnoremap <C-]> g<C-]>
 "color
 colorscheme molokai
 set t_Co=256
-let g:rehash256 = 1
 hi String  ctermfg=166 guifg=#ef3434
 hi Character ctermfg=166 guifg=#ef3434
 hi Delimiter  ctermfg=183 guifg=#E58599
