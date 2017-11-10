@@ -100,11 +100,13 @@ nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
 if executable('rg')
   " Use ripgrep
-  " set grepprg=rg\ --no-heading\ --vimgrep\ --smart-case
-  " set grepformat=%f:%l:%c:%m
+  set grepprg=rg\ --vimgrep\ --smart-case
+  set grepformat=%f:%l:%c:%m
 endif
 autocmd QuickfixCmdPost vimgrep copen
 autocmd QuickfixCmdPost grep copen
+nnoremap [n :<C-u>cn<CR>
+nnoremap [p :<C-u>cp<CR>
 
 if has('vim_starting')
     " 縦カーソル
@@ -268,6 +270,7 @@ let g:ale_sign_error = '!!'
 let g:ale_sign_warning = '=='
 let g:ale_lint_delay = 200
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_save = 1
 let g:ale_linters = {
@@ -280,9 +283,8 @@ let g:ale_statusline_format = ['[E]%d', '[W]%d', 'ok']
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_echo_msg_error_str = 'Error'
 let g:ale_echo_msg_warning_str = 'Warn'
-let g:ale_set_loclist = 0
+let g:ale_set_localist = 0
 let g:ale_set_quickfix = 1
-
 
 filetype plugin indent on
 syntax on
