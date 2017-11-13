@@ -3,16 +3,16 @@ filetype plugin indent on
 syntax on
 
 set autoread
-augroup vimrc-checktime
-  autocmd!
-  autocmd WinEnter * checktime
-augroup END
+" augroup vimrc-checktime
+"   autocmd!
+"   autocmd WinEnter * checktime
+" augroup END
 set hidden
 set noswapfile
 set nobackup
 set ambiwidth=double
 " set mouse=a
-set lazyredraw
+" set lazyredraw
 autocmd FileType ruby :set re=1
 
 set title
@@ -151,6 +151,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'posva/vim-vue'
 Plug 'kana/vim-textobj-user'
 Plug 'tek/vim-textobj-ruby'
+Plug 'archseer/colibri.vim'
+Plug 'gosukiwi/vim-atom-dark'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tacahiroy/ctrlp-funky'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
@@ -166,6 +170,8 @@ map <C-t> :NERDTreeToggle<CR>
 nnoremap <C-]> g<C-]>
 
 "color
+"
+if 0
 colorscheme molokai
 set t_Co=256
 hi String  ctermfg=166 guifg=#ef3434
@@ -175,6 +181,14 @@ hi Delimiter  ctermfg=183 guifg=#E58599
 " hi Search ctermfg=23 ctermbg=117 guifg=#005f5f guibg=#87dfff
 hi Comment ctermfg=102
 hi Visual  ctermbg=236
+end
+
+set t_Co=256
+" set termguicolors
+set background=dark
+colorscheme atom-dark-256
+" colorscheme solarized
+" let g:solarized_termcolors=256
 
 " denite
 " Ripgrep command on grep source
@@ -244,6 +258,8 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](.git|doc|tmp|node_modules)',
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
+let g:ctrlp_funky_syntax_highlight = 1
+nnoremap <leader>f :CtrlPFunky<CR>
 
 " Lightline
 function! LightlineFilename()
@@ -285,12 +301,17 @@ let g:ale_echo_msg_warning_str = 'Warn'
 let g:ale_set_localist = 0
 let g:ale_set_quickfix = 1
 
+" syntax が有効にならないバグ?
 filetype plugin indent on
 syntax on
-" syntax が有効にならないバグ?
-" autocmd BufEnter * :syntax on
+" autocmd WinEnter * :filetype detect
+" autocmd BufEnter * :filetype detect
 " autocmd BufEnter * :filetype plugin indent on
 
 if has("multi_lang")
   language C
 endif
+
+" for nvim
+tnoremap <silent> <ESC> <C-\><C-n>
+
