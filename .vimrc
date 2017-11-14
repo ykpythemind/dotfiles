@@ -140,6 +140,7 @@ Plug 'thinca/vim-ref'
 " Plug 'ykpythemind/vim-fontzoom'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-endwise'
+" Plug 'heavenshell/vim-prettier'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
@@ -168,6 +169,9 @@ map <C-t> :NERDTreeToggle<CR>
 
 " ctags
 nnoremap <C-]> g<C-]>
+
+" prettier
+nnoremap <Leader>p :Prettier<CR>
 
 "color
 "
