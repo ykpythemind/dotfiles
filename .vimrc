@@ -69,8 +69,13 @@ nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
 
-noremap <C-j> <esc>
-noremap! <C-j> <esc>
+inoremap jj <Esc>
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-a> <C-o>^
+inoremap <C-e> <C-o>$
 
 cnoremap <C-f>  <Right>
 cnoremap <C-b>  <Left>
