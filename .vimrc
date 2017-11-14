@@ -255,7 +255,7 @@ nnoremap <C-e> :<C-u>CtrlPBuffer<CR>
 nnoremap <Leader>h :<C-u>CtrlPMRU<CR>
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](.git|doc|tmp|node_modules)',
+  \ 'dir':  '\v[\/](.git|doc|tmp|node_modules|vendor)',
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
 let g:ctrlp_funky_syntax_highlight = 1
