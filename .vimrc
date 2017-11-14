@@ -162,6 +162,7 @@ Plug 'gosukiwi/vim-atom-dark'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'Lokaltog/vim-easymotion'
+Plug 'kana/vim-submode'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
@@ -171,6 +172,15 @@ let g:EasyMotion_do_mapping = 0 "Disable default mappings
 let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-s2)
+
+" undo - http://haya14busa.com/improve-x-with-vim-submode/
+function! s:my_x()
+    undojoin
+    normal! "_x
+endfunction
+nnoremap <silent> <Plug>(my-x) :<C-u>call <SID>my_x()<CR>
+call submode#enter_with('my_x', 'n', '', 'x', '"_x')
+call submode#map('my_x', 'n', 'r', 'x', '<Plug>(my-x)')
 
 " Vue
 autocmd FileType vue syntax sync fromstart
