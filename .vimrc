@@ -28,6 +28,7 @@ set laststatus=2
 set cmdheight=2
 set display=lastline
 set showcmd
+set synmaxcol=200
 
 set shiftwidth=2
 set softtabstop=0
