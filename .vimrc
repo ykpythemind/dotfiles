@@ -3,16 +3,11 @@ filetype plugin indent on
 syntax on
 
 set autoread
-" augroup vimrc-checktime
-"   autocmd!
-"   autocmd WinEnter * checktime
-" augroup END
 set hidden
 set noswapfile
 set nobackup
 set ambiwidth=double
 " set mouse=a
-" set lazyredraw
 autocmd FileType ruby :set re=1
 
 set title
@@ -75,10 +70,7 @@ inoremap <C-p> <Up>
 inoremap <C-n> <Down>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
-inoremap <C-k> <Up>
-inoremap <C-j> <Down>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
+inoremap <C-k> <C-o>D
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
 
