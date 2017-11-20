@@ -121,10 +121,8 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
-" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'Shougo/unite.vim'
 " Plug 'Shougo/denite.nvim'
-" Plug 'Shougo/neomru.vim'
 " Plug 'Shougo/neoyank.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
@@ -136,10 +134,6 @@ Plug 'tomasr/molokai'
 Plug 'jremmen/vim-ripgrep'
 Plug 'szw/vim-tags'
 Plug 'thinca/vim-ref'
-" Plug 'othree/yajs.vim'
-" Plug 'othree/es.next.syntax.vim'
-" Plug 'bronson/vim-trailing-whitespace'
-" Plug 'ykpythemind/vim-fontzoom'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-endwise'
 " Plug 'heavenshell/vim-prettier'
@@ -183,7 +177,6 @@ call submode#map('my_x', 'n', 'r', 'x', '<Plug>(my-x)')
 autocmd FileType vue syntax sync fromstart
 let g:vue_disable_pre_processors=1
 
-" nnoremap <silent><C-t> :IndentGuidesToggle<CR>
 map <C-t> :NERDTreeToggle<CR>
 
 " ctags
@@ -320,17 +313,13 @@ let g:ale_echo_msg_warning_str = 'Warn'
 let g:ale_set_localist = 0
 let g:ale_set_quickfix = 1
 
-" syntax が有効にならないバグ?
-filetype plugin indent on
-syntax on
-" autocmd WinEnter * :filetype detect
-" autocmd BufEnter * :filetype detect
-" autocmd BufEnter * :filetype plugin indent on
-
 if has("multi_lang")
   language C
 endif
 
 " for nvim
-tnoremap <silent> <ESC> <C-\><C-n>
-
+if has('nvim')
+  " nnoremap @t :tabe<CR>:terminal<CR>
+  tnoremap <C-q> <C-\><C-n>:q<CR>
+  tnoremap <ESC> <C-\><C-n>
+endif
