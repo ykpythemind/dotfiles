@@ -1,14 +1,17 @@
-term "screen-256color"
+defutf8 on
+defencoding utf8
+encoding utf8 utf8
 
 termcapinfo linux ti@:te@
-termcapinfo xterm ti@:te@
-termcapinfo xterm-color ti@:te@
+termcapinfo xterm* ti@:te@
 
 escape ^Zz
 escape ^Z^Z # C-z C-z : send ^Z to process
 
-hardstatus on
+# $ brew tap homebrew/dupes
+# $ brew install screen
 defbce on
+term "screen-256color"
 
 # Protection from attacks
 multiuser off
@@ -17,6 +20,7 @@ idle off
 vbell off
 autodetach on
 startup_message off
+altscreen on
 
 # set $TERM env
 term screen
@@ -24,6 +28,7 @@ term screen
 bind w windowlist -b
 defscrollback 8192
 
+shell $SHELL
 shelltitle '$ |shell'
 
 # message display time
