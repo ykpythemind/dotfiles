@@ -1,8 +1,11 @@
-term screen-256color
+term "screen-256color"
 
 termcapinfo linux ti@:te@
 termcapinfo xterm ti@:te@
 termcapinfo xterm-color ti@:te@
+
+escape ^Zz
+escape ^Z^Z # C-z C-z : send ^Z to process
 
 hardstatus on
 defbce on

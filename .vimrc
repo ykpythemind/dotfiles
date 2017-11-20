@@ -202,7 +202,6 @@ nnoremap <Leader>p :Prettier<CR>
 
 "color
 "
-if 0
 colorscheme molokai
 set t_Co=256
 hi String  ctermfg=166 guifg=#ef3434
@@ -212,12 +211,9 @@ hi Delimiter  ctermfg=183 guifg=#E58599
 " hi Search ctermfg=23 ctermbg=117 guifg=#005f5f guibg=#87dfff
 hi Comment ctermfg=102
 hi Visual  ctermbg=236
-end
 
-set t_Co=256
-" set termguicolors
 set background=dark
-colorscheme atom-dark-256
+" colorscheme atom-dark-256
 " colorscheme solarized
 " let g:solarized_termcolors=256
 
