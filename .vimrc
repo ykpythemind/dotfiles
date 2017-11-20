@@ -131,7 +131,7 @@ Plug 'vim-jp/vimdoc-ja'
 Plug 'tpope/vim-rails'
 Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
-Plug 'jremmen/vim-ripgrep'
+" Plug 'jremmen/vim-ripgrep'
 Plug 'szw/vim-tags'
 Plug 'thinca/vim-ref'
 Plug 'Townk/vim-autoclose'
@@ -142,8 +142,8 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 " Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
  " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug '/usr/local/opt/fzf'
-" Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'posva/vim-vue'
 Plug 'kana/vim-textobj-user'
@@ -199,72 +199,16 @@ hi Visual  ctermbg=236
 
 set background=dark
 " colorscheme atom-dark-256
-" colorscheme solarized
 " let g:solarized_termcolors=256
 
-" denite
-" Ripgrep command on grep source
-if 0
-call denite#custom#var('file_rec', 'command',
-  \ ['rg', '--files', '--hidden', '--glob', '!.git', ''])
-call denite#custom#source('file_rec', 'matchers', ['matcher_project_files', 'matcher_fuzzy', 'sorter_sublime'])
-call denite#custom#source('line', 'matchers', ['matcher_fuzzy', 'sorter_sublime'])
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-    \ ['--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-call denite#custom#map('insert', "<C-k>", '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('insert', "<C-j>", '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#option('default', { 'reversed': 1, 'auto_resize': 1, 'smartcase': 1,
-  \ 'highlight_mode_insert': 'Search',
-  \ 'highlight_matched_char': 'Visual' })
-let g:python3_host_prog = expand('/usr/local/bin/python3')
-nnoremap <Leader>f :<C-u>Denite file file:new<CR>
-" nnoremap <Leader>c :<C-u>Denite directory_rec<CR>
-nnoremap <Leader>x :<C-u>Denite command_history<CR>
-nnoremap <Leader>b :<C-u>Denite buffer<CR>
-" nnoremap <Leader>y :<C-u>Denite neoyank<CR>
-nnoremap <Leader>r :<C-u>Denite file_mru<CR>
-nnoremap <C-t> :<C-u>Denite buffer<CR>
-" nnoremap <C-p> :<C-u>DeniteProjectDir file_rec<CR>
-" nnoremap <C-g> :<C-u>DeniteProjectDir grep<CR>
-nnoremap <C-p> :<C-u>Denite file_rec<CR>
-nnoremap <C-l> :<C-u>Denite line<CR>
-endif
-
-" fzf
-" command! -bang -nargs=* Rg
-"   \ call fzf#vim#grep(
-"   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
-"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-"   \   <bang>0)
-" let g:fzf_layout = { 'down': '~40%' }
-" nnoremap <Leader>b :<C-u>Buffers<CR>
-" nnoremap <Leader>f :<C-u>GFiles<CR>
-" nnoremap <Leader>: :<C-u>History:<CR>
-" nnoremap <C-h> :<C-u>FZFMru<CR>
-" nnoremap <C-p> :<C-u>GFiles<CR>
-" nnoremap <C-e> :<C-u>Buffers<CR>
-" command! FZFMru call fzf#run({
-"   \  'source':  v:oldfiles,
-"   \  'sink':    'e',
-"   \  'options': '-m -x +s',
-"   \  'down':    '40%'})
-" nnoremap <Leader>r :FZFMru<CR>
-
+" CtrlP
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git/*"'
   " let g:ctrlp_use_caching = 0
 endif
-" CtrlP
-nnoremap <C-e> :<C-u>CtrlPBuffer<CR>
-nnoremap <Leader>h :<C-u>CtrlPMRU<CR>
+" nnoremap <C-e> :<C-u>CtrlPBuffer<CR>
+" nnoremap <Leader>h :<C-u>CtrlPMRU<CR>
+let g:ctrlp_map = ''
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](.git|doc|tmp|node_modules|vendor)',
@@ -272,6 +216,26 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_funky_syntax_highlight = 1
 nnoremap <leader>f :CtrlPFunky<CR>
+
+" fzf
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+let g:fzf_layout = { 'down': '~40%' }
+nnoremap <Leader>: :<C-u>History:<CR>
+nnoremap <C-h> :<C-u>FZFMru<CR>
+nnoremap <C-p> :<C-u>GFiles<CR>
+nnoremap <C-e> :<C-u>Buffers<CR>
+command! FZFMru call fzf#run({
+  \  'source':  v:oldfiles,
+  \  'sink':    'e',
+  \  'options': '-m -x +s',
+  \  'down':    '40%'})
+" nnoremap <Leader>r :FZFMru<CR>
+
 
 " Lightline
 function! LightlineFilename()
