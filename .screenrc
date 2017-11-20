@@ -1,0 +1,38 @@
+term screen-256color
+
+termcapinfo linux ti@:te@
+termcapinfo xterm ti@:te@
+termcapinfo xterm-color ti@:te@
+
+hardstatus on
+defbce on
+
+# Protection from attacks
+multiuser off
+idle off
+
+vbell off
+autodetach on
+startup_message off
+
+# set $TERM env
+term screen
+
+bind w windowlist -b
+defscrollback 8192
+
+shelltitle '$ |shell'
+
+# message display time
+msgwait 3
+msgminwait 2
+
+# display status
+hardstatus alwayslastline "%?%h%:#%n %t @%H)%? %{= dd}%-035= %{= wB}%l %Y-%m-%d %02c:%s"
+caption always "%{=r dd}%-Lw%40L>%?%F%{+b kG}%:[%{=r dd}%? %n%f %t %?%F%{-}%:]%?%+Lw"
+
+# split line color
+sorendition "+rb .R"
+
+# change directory to home
+chdir
