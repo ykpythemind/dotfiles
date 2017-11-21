@@ -12,11 +12,16 @@ fi
 #
 
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
 
 if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
 
-#
+if [ `uname` = "Linux" ]; then
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+fi
+
 # alias
 #
 
@@ -108,14 +113,4 @@ fcd() {
                   -o -type d -print 2> /dev/null | fzf +m --preview "ls -a {}" --height 100%) &&
   cd "$dir"
 }
-
-# MacVimへのパス
-case "$(uname)" in
-    Darwin) # Mac
-        if [[ -d /Applications/MacVim.app ]]; then
-          # export PATH=/Applications/MacVim.app/Contents/bin:$PATH
-        fi
-        ;;
-    *) ;;
-esac
 
