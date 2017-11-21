@@ -172,6 +172,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'kana/vim-submode'
 Plug 'ReekenX/vim-rename2'
 Plug 'mattn/ctrlp-register'
+Plug 'mattn/emmet-vim'
 " OLD--
 " Plug 'Shougo/unite.vim'
 " Plug 'Shougo/denite.nvim'
