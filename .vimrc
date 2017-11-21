@@ -65,7 +65,12 @@ nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
 
-inoremap jj <Esc>
+" improve tab key
+for i in range(1, 9)
+    execute 'nnoremap <Tab>' . i . ' ' . i . 'gt'
+endfor
+
+inoremap <C-j> <Esc>
 inoremap <C-p> <Up>
 inoremap <C-n> <Down>
 inoremap <C-b> <Left>
@@ -117,6 +122,11 @@ if has('vim_starting')
     let &t_SR .= "\e[4 q"
 endif
 
+if has("multi_lang")
+  language C
+endif
+
+
 " Plugin
 call plug#begin('~/.vim/plugged')
 Plug 'tyru/caw.vim'
@@ -142,8 +152,8 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 " Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
  " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+" Plug '/usr/local/opt/fzf'
+" Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'posva/vim-vue'
 Plug 'kana/vim-textobj-user'
@@ -209,10 +219,11 @@ if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git/*"'
   " let g:ctrlp_use_caching = 0
 endif
-" nnoremap <C-e> :<C-u>CtrlPBuffer<CR>
-" nnoremap <Leader>h :<C-u>CtrlPMRU<CR>
-let g:ctrlp_map = ''
+nnoremap <C-e> :<C-u>CtrlPBuffer<CR>
+nnoremap <Leader>h :<C-u>CtrlPMRU<CR>
+" let g:ctrlp_map = ''
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](.git|doc|tmp|node_modules|vendor)',
   \ 'file': '\v\.(exe|so|dll)$',
@@ -222,6 +233,7 @@ nnoremap <leader>f :CtrlPFunky<CR>
 nnoremap <leader>r :CtrlPRegister<CR>
 
 " fzf
+if 0
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
@@ -239,7 +251,7 @@ command! FZFMru call fzf#run({
   \  'options': '-m -x +s',
   \  'down':    '40%'})
 " nnoremap <Leader>r :FZFMru<CR>
-
+endif
 
 " Lightline
 function! LightlineFilename()
@@ -280,10 +292,6 @@ let g:ale_echo_msg_error_str = 'Error'
 let g:ale_echo_msg_warning_str = 'Warn'
 let g:ale_set_localist = 0
 let g:ale_set_quickfix = 1
-
-if has("multi_lang")
-  language C
-endif
 
 " for nvim
 if has('nvim')
