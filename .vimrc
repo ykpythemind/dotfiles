@@ -131,9 +131,6 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
-" Plug 'Shougo/unite.vim'
-" Plug 'Shougo/denite.nvim'
-" Plug 'Shougo/neoyank.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
@@ -141,19 +138,14 @@ Plug 'vim-jp/vimdoc-ja'
 Plug 'tpope/vim-rails'
 Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
-" Plug 'jremmen/vim-ripgrep'
 Plug 'szw/vim-tags'
 Plug 'thinca/vim-ref'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-endwise'
-" Plug 'heavenshell/vim-prettier'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
-" Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
- " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug '/usr/local/opt/fzf'
-" Plug 'junegunn/fzf.vim'
+" Plug 'roman/golden-ratio'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'posva/vim-vue'
 Plug 'kana/vim-textobj-user'
@@ -166,6 +158,16 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'kana/vim-submode'
 Plug 'ReekenX/vim-rename2'
 Plug 'mattn/ctrlp-register'
+" OLD--
+" Plug 'Shougo/unite.vim'
+" Plug 'Shougo/denite.nvim'
+" Plug 'Shougo/neoyank.vim'
+" Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
+ " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug '/usr/local/opt/fzf'
+" Plug 'junegunn/fzf.vim'
+" Plug 'heavenshell/vim-prettier'
+" Plug 'jremmen/vim-ripgrep'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
@@ -199,7 +201,6 @@ nnoremap <C-]> g<C-]>
 nnoremap <Leader>p :Prettier<CR>
 
 "color
-"
 colorscheme molokai
 set t_Co=256
 hi String  ctermfg=166 guifg=#ef3434
@@ -209,10 +210,7 @@ hi Delimiter  ctermfg=183 guifg=#E58599
 " hi Search ctermfg=23 ctermbg=117 guifg=#005f5f guibg=#87dfff
 hi Comment ctermfg=102
 hi Visual  ctermbg=236
-
 set background=dark
-" colorscheme atom-dark-256
-" let g:solarized_termcolors=256
 
 " CtrlP
 if executable('rg')
