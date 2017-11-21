@@ -155,6 +155,7 @@ Plug 'tacahiroy/ctrlp-funky'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'kana/vim-submode'
 Plug 'ReekenX/vim-rename2'
+Plug 'mattn/ctrlp-register'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
@@ -218,6 +219,7 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_funky_syntax_highlight = 1
 nnoremap <leader>f :CtrlPFunky<CR>
+nnoremap <leader>r :CtrlPRegister<CR>
 
 " fzf
 command! -bang -nargs=* Rg
