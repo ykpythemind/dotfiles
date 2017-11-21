@@ -154,6 +154,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'kana/vim-submode'
+Plug 'ReekenX/vim-rename2'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
@@ -163,6 +164,7 @@ let g:EasyMotion_do_mapping = 0 "Disable default mappings
 let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-s2)
+vmap s <Plug>(easymotion-s2)
 
 " undo - http://haya14busa.com/improve-x-with-vim-submode/
 function! s:my_x()
