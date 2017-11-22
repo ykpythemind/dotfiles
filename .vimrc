@@ -173,6 +173,7 @@ Plug 'kana/vim-submode'
 Plug 'ReekenX/vim-rename2'
 Plug 'mattn/ctrlp-register'
 Plug 'mattn/emmet-vim'
+Plug 'FelikZ/ctrlp-py-matcher'
 " OLD--
 " Plug 'Shougo/unite.vim'
 " Plug 'Shougo/denite.nvim'
@@ -244,6 +245,13 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_funky_syntax_highlight = 1
 nnoremap <leader>f :CtrlPFunky<CR>
 nnoremap <leader>r :CtrlPRegister<CR>
+
+" PyMatcher for CtrlP 
+if !has('python3')
+  echo 'In order to use pymatcher plugin, you need +python compiled vim'
+else
+  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+endif
 
 " fzf
 if 0
