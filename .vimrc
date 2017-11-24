@@ -9,7 +9,7 @@ set nobackup
 set ambiwidth=double
 " set mouse=a
 autocmd FileType ruby :set re=1
-
+set ttimeoutlen=100
 set title
 set ruler
 set number
@@ -50,7 +50,6 @@ set backspace=indent,eol,start
 set nrformats-=octal
 
 let g:mapleader = "\<space>"
-nnoremap <Leader>k :bd<CR>
 
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
@@ -192,8 +191,12 @@ setlocal omnifunc=syntaxcomplete#Complete
 let g:EasyMotion_do_mapping = 0 "Disable default mappings
 let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_smartcase = 1
+" nmap s <Plug>(easymotion-s2)
 nmap s <Plug>(easymotion-s2)
 vmap s <Plug>(easymotion-s2)
+nmap S <Plug>(easymotion-overwin-f2)
+nmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
 
 " undo - http://haya14busa.com/improve-x-with-vim-submode/
 function! s:my_x()
