@@ -311,8 +311,8 @@ let g:ale_statusline_format = ['[E]%d', '[W]%d', 'ok']
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_echo_msg_error_str = 'Error'
 let g:ale_echo_msg_warning_str = 'Warn'
-let g:ale_set_localist = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_localist = 1
+let g:ale_set_quickfix = 0
 
 " for nvim
 if has('nvim')
