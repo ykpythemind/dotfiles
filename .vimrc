@@ -173,6 +173,7 @@ Plug 'ReekenX/vim-rename2'
 Plug 'mattn/ctrlp-register'
 Plug 'mattn/emmet-vim'
 Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'thinca/vim-quickrun'
 " OLD--
 " Plug 'Shougo/unite.vim'
 " Plug 'Shougo/denite.nvim'
@@ -186,6 +187,9 @@ Plug 'FelikZ/ctrlp-py-matcher'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
+
+" quickrun
+nnoremap <Leader>q :QuickRun<CR>
 
 " easymotion
 let g:EasyMotion_do_mapping = 0 "Disable default mappings
