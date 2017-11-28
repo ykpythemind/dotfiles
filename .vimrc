@@ -104,6 +104,13 @@ au BufRead,BufNew * match JpSpace /　/
 
 nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
+" http://io-fia.blogspot.jp/2012/11/vimvimrc.html 
+set completeopt=menuone
+for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
+  exec "imap " . k . " " . k . "<C-X><C-N><C-P>"
+endfor
+imap <expr> <TAB> pumvisible() ? "\<Down>" : "\<Tab>"
+
 if executable('rg')
   " Use ripgrep
   set grepprg=rg\ --vimgrep\ --smart-case
