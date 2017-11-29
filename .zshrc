@@ -33,7 +33,8 @@ alias -g H='$(git-hash)'
 alias gs='git status'
 alias rails='bin/rails'
 alias rake='bin/rake'
-alias rspec='bin/rspec'
+alias gcom='git checkout master'
+alias grebase='git rebase -i origin/master'
 #alias rg='rg --colors "match:none" --colors "match:bg:magenta"'
 
 export TERM=xterm-256color
