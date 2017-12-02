@@ -22,6 +22,10 @@ if [ `uname` = "Linux" ]; then
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 fi
 
+
+export GOPATH=$HOME
+export PATH="$GOPATH/bin:$PATH"
+
 # alias
 #
 
