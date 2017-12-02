@@ -23,7 +23,7 @@ if [ `uname` = "Linux" ]; then
 fi
 
 
-export GOPATH=$HOME
+export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$PATH"
 
 # alias
@@ -119,3 +119,9 @@ fcd() {
   cd "$dir"
 }
 
+# move to ghq dir
+frepo() {
+  local dir
+  dir=$(ghq list > /dev/null | fzf --reverse +m) &&
+    cd $(ghq root)/$dir
+}
