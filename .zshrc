@@ -18,6 +18,8 @@ fi
 
 if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
 
+if which atom-beta > /dev/null; then alias atom='atom-beta'; fi
+
 if [ `uname` = "Linux" ]; then
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 fi
