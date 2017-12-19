@@ -8,7 +8,7 @@ set noswapfile
 set nobackup
 set ambiwidth=double
 " set mouse=a
-autocmd FileType ruby :set re=1
+" autocmd FileType ruby :set re=1
 set ttimeoutlen=100
 set title
 set ruler
@@ -126,7 +126,7 @@ if has("multi_lang")
 endif
 
 " http://vim-jp.org/vim-users-jp/2010/11/03/Hack-181.html
-" Open junk file."{{{
+" Open junk file."
 command! -nargs=0 JunkFile call s:open_junk_file()
 function! s:open_junk_file()
   let l:junk_dir = $HOME . '/.vim_junk'. strftime('/%Y/%m')
@@ -138,7 +138,7 @@ function! s:open_junk_file()
   if l:filename != ''
     execute 'edit ' . l:filename
   endif
-endfunction "}}}
+endfunction
 
 " Plugin
 call plug#begin('~/.vim/plugged')
@@ -158,7 +158,6 @@ Plug 'tpope/vim-endwise'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
-" Plug 'roman/golden-ratio'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'posva/vim-vue'
 Plug 'kana/vim-textobj-user'
@@ -174,16 +173,6 @@ Plug 'mattn/ctrlp-register'
 Plug 'mattn/emmet-vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'thinca/vim-quickrun'
-" OLD--
-" Plug 'Shougo/unite.vim'
-" Plug 'Shougo/denite.nvim'
-" Plug 'Shougo/neoyank.vim'
-" Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
- " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug '/usr/local/opt/fzf'
-" Plug 'junegunn/fzf.vim'
-" Plug 'heavenshell/vim-prettier'
-" Plug 'jremmen/vim-ripgrep'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
@@ -253,32 +242,11 @@ let g:ctrlp_funky_syntax_highlight = 1
 nnoremap <leader>f :CtrlPFunky<CR>
 nnoremap <leader>r :CtrlPRegister<CR>
 
-" PyMatcher for CtrlP 
+" PyMatcher for CtrlP
 if !has('python3')
   echo 'In order to use pymatcher plugin, you need +python compiled vim'
 else
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-endif
-
-" fzf
-if 0
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-let g:fzf_layout = { 'down': '~40%' }
-nnoremap <Leader>: :<C-u>History:<CR>
-nnoremap <C-h> :<C-u>FZFMru<CR>
-nnoremap <C-p> :<C-u>GFiles<CR>
-nnoremap <C-e> :<C-u>Buffers<CR>
-command! FZFMru call fzf#run({
-  \  'source':  v:oldfiles,
-  \  'sink':    'e',
-  \  'options': '-m -x +s',
-  \  'down':    '40%'})
-" nnoremap <Leader>r :FZFMru<CR>
 endif
 
 " Lightline
