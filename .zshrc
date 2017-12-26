@@ -77,6 +77,9 @@ function git-hash(){
  }
 ### 
 
+# ignore
+function gitignore() { curl -L -s "https://www.gitignore.io/api/$@" ;}
+
 # source zsh-key-bindings
 source "${HOME}/dotfiles/key-bindings.zsh"
 source "${HOME}/dotfiles/zsh-interactive-cd.plugin.zsh"
