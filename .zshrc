@@ -47,8 +47,8 @@ alias grebase='git rebase -i origin/master'
 export TERM=xterm-256color
 
 HISTFILE=${HOME}/.zsh_history
-HISTSIZE=500
-SAVEHIST=10000
+HISTSIZE=2000
+SAVEHIST=50000
 setopt hist_ignore_dups
 setopt extended_history
 
