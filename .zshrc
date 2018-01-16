@@ -29,6 +29,11 @@ if [ `uname` = "Linux" ]; then
   export XDG_DATA_DIRS="/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
 fi
 
+if [ `uname` = "Darwin" ]; then
+  openxcode () {
+    find . -d 1 -name *.xcworkspace | head -n 1 | xargs open
+  }
+fi
 
 export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$PATH"
