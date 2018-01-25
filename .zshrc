@@ -35,6 +35,15 @@ if [ `uname` = "Darwin" ]; then
   }
 fi
 
+
+switch-machine () {
+  eval $(docker-machine env $1)
+}
+alias docker-m='docker-machine'
+alias docker-c='docker-compose'
+
+# go
+
 export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$PATH"
 
