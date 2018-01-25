@@ -41,6 +41,8 @@ switch-machine () {
 }
 alias docker-m='docker-machine'
 alias docker-c='docker-compose'
+alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker-clean-containers='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 
 # go
 
