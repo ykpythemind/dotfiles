@@ -7,22 +7,22 @@ https://github.com/sorin-ionescu/prezto
 
 
 
-0. install Zsh with Homebrew ( brew install zsh)
+1. install Zsh 
 
-1. Launch Zsh:
-
-      `zsh`
+  - brew install zsh (Mac OS)
+  - sudo apt-get update && sudo apt-get install zsh (Ubuntu)
 
 2. Clone the repository:
 
       `git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"`
 
-3. Skip(alias)
+3. Alias
+
+      `sh ~/dotfiles/init.sh`
 
 4. Set Zsh as your default shell:
 
-      `chsh -s usr/local/bin/zsh`
-
+      `chsh -s $(which zsh)`
 
 
 ## alias
@@ -30,6 +30,7 @@ https://github.com/sorin-ionescu/prezto
 git clone https://github.com/ykpythemind/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 sh ./init.sh
+sh ./completion.sh
 ```
 
 ## prezto update
