@@ -101,7 +101,6 @@ function gitignore() { curl -L -s "https://www.gitignore.io/api/$@" ;}
 
 # source zsh-key-bindings
 source "${HOME}/dotfiles/key-bindings.zsh"
-source "${HOME}/dotfiles/zsh-interactive-cd.plugin.zsh"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
