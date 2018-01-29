@@ -14,5 +14,9 @@ end
 if file
   system "open #{file}"
 else
-  system 'open -a xcode'
+  puts 'Not Xcode Project Directory, launch Xcode ??  y/n'
+  res = gets.chomp
+  if ['y', 'Y'].include? res
+    system 'open -a xcode'
+  end
 end

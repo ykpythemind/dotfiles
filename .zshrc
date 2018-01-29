@@ -16,10 +16,6 @@ if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
 
-if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
-
-# if which atom-beta > /dev/null; then alias atom='atom-beta'; fi
-#
 if [ -d ${HOME}/node_modules/.bin ]; then
     export PATH="$HOME/node_modules/.bin:$PATH"
 fi
@@ -30,11 +26,14 @@ if [ `uname` = "Linux" ]; then
 fi
 
 if [ `uname` = "Darwin" ]; then
+  if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
   openxcode () {
-    find . -d 1 -name *.xcworkspace | head -n 1 | xargs open
+    ruby "$HOME/dotfiles/openxcode.rb"
   }
 fi
 
+
+# docker
 
 switch-machine () {
   eval $(docker-machine env $1)
@@ -95,7 +94,7 @@ unsetopt extended_glob
 function git-hash(){
    git log --oneline --branches | fzf | awk '{print $1}'
  }
-### 
+###
 
 # ignore
 function gitignore() { curl -L -s "https://www.gitignore.io/api/$@" ;}
