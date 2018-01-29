@@ -7,7 +7,7 @@ https://github.com/sorin-ionescu/prezto
 
 
 
-1. install Zsh 
+1. install Zsh
 
   - brew install zsh (Mac OS)
   - sudo apt-get update && sudo apt-get install zsh (Ubuntu)
@@ -31,6 +31,7 @@ git clone https://github.com/ykpythemind/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 sh ./init.sh
 sh ./completion.sh
+exec $SHELL -l
 ```
 
 ## prezto update
@@ -60,4 +61,3 @@ in vim
 ```
 :PlugInstall
 ```
-
