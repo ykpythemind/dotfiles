@@ -155,9 +155,9 @@ Plug 'szw/vim-tags'
 Plug 'thinca/vim-ref'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-endwise'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'yarn install',
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'posva/vim-vue'
 Plug 'kana/vim-textobj-user'
@@ -192,13 +192,13 @@ nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
 
 " undo - http://haya14busa.com/improve-x-with-vim-submode/
-function! s:my_x()
-    undojoin
-    normal! "_x
-endfunction
-nnoremap <silent> <Plug>(my-x) :<C-u>call <SID>my_x()<CR>
-call submode#enter_with('my_x', 'n', '', 'x', '"_x')
-call submode#map('my_x', 'n', 'r', 'x', '<Plug>(my-x)')
+" function! s:my_x()
+"     undojoin
+"     normal! "_x
+" endfunction
+" nnoremap <silent> <Plug>(my-x) :<C-u>call <SID>my_x()<CR>
+" call submode#enter_with('my_x', 'n', '', 'x', '"_x')
+" call submode#map('my_x', 'n', 'r', 'x', '<Plug>(my-x)')
 
 " Vue
 autocmd FileType vue syntax sync fromstart
@@ -210,7 +210,7 @@ map <C-t> :NERDTreeToggle<CR>
 nnoremap <C-]> g<C-]>
 
 " prettier
-nnoremap <Leader>p :Prettier<CR>
+" nnoremap <Leader>p :Prettier<CR>
 
 "color
 colorscheme molokai
@@ -289,9 +289,3 @@ let g:ale_echo_msg_warning_str = 'Warn'
 let g:ale_set_localist = 1
 let g:ale_set_quickfix = 0
 
-" for nvim
-if has('nvim')
-  " nnoremap @t :tabe<CR>:terminal<CR>
-  tnoremap <C-q> <C-\><C-n>:q<CR>
-  tnoremap <ESC> <C-\><C-n>
-endif
