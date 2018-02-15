@@ -99,6 +99,10 @@ function git-hash(){
 # ignore
 function gitignore() { curl -L -s "https://www.gitignore.io/api/$@" ;}
 
+function pushupstream() {
+  git push -u origin `git branch | grep \* | cut -d ' ' -f2`
+}
+
 # source zsh-key-bindings
 source "${HOME}/dotfiles/key-bindings.zsh"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
