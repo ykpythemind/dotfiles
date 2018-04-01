@@ -62,6 +62,7 @@ alias rake='bin/rake'
 alias gcom='git checkout master'
 alias grebase='git rebase -i origin/master'
 #alias rg='rg --colors "match:none" --colors "match:bg:magenta"'
+alias atom='atom-beta'
 
 export TERM=xterm-256color
 
@@ -106,7 +107,7 @@ function pushupstream() {
 # source zsh-key-bindings
 source "${HOME}/dotfiles/key-bindings.zsh"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+export FZF_DEFAULT_OPTS='--reverse --border'
 
 # checkout git branch
 gco() {
