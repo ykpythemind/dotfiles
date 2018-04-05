@@ -38,6 +38,11 @@ fi
 switch-machine () {
   eval $(docker-machine env $1)
 }
+unset-machine () {
+  eval $(docker-machine env --unset)
+}
+alias active-machine='docker-machine active'
+
 alias docker-m='docker-machine'
 alias docker-c='docker-compose'
 alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
