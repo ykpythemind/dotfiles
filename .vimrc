@@ -243,11 +243,11 @@ nnoremap <leader>f :CtrlPFunky<CR>
 nnoremap <leader>r :CtrlPRegister<CR>
 
 " PyMatcher for CtrlP
-if !has('python3')
-  echo 'In order to use pymatcher plugin, you need +python compiled vim'
-else
-  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-endif
+" if !has('python3')
+"   echo 'In order to use pymatcher plugin, you need +python compiled vim'
+" else
+"   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" endif
 
 " Lightline
 function! LightlineFilename()
