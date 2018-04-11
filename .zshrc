@@ -20,6 +20,9 @@ if [ -d ${HOME}/node_modules/.bin ]; then
     export PATH="$HOME/node_modules/.bin:$PATH"
 fi
 
+# z
+. `brew --prefix`/etc/profile.d/z.sh
+
 if [ `uname` = "Linux" ]; then
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
   export XDG_DATA_DIRS="/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
@@ -167,3 +170,16 @@ function ghq-fzf() {
 
 zle -N ghq-fzf
 bindkey "^G" ghq-fzf
+
+
+function fzf-z-search() {
+  local res=$(z | sort -rn | cut -c 12- | fzf)
+  if [ -n "$res" ]; then
+    BUFFER+="cd $res"
+    zle accept-line
+  else
+    return 1
+  fi
+}
+zle -N fzf-z-search
+bindkey '^[' fzf-z-search
