@@ -183,3 +183,7 @@ function fzf-z-search() {
 }
 zle -N fzf-z-search
 bindkey '^[' fzf-z-search
+
+function rubyserver() {
+  ruby -run -e httpd -- --port=${1:-5000} .
+}
