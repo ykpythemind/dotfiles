@@ -116,6 +116,11 @@ function rubyserver() {
   ruby -run -e httpd -- --port=${1:-5000} .
 }
 
+function localhost() {
+  open http://localhost:${1:-3000}
+}
+
+
 # source zsh-key-bindings
 source "${HOME}/dotfiles/key-bindings.zsh"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
@@ -191,7 +196,7 @@ function fzf-cdr() {
         BUFFER="cd ${selected_dir}"
         zle accept-line
     fi
-    zle clear-screen
+    zle reset-prompt
 }
 zle -N fzf-cdr
 bindkey '^[' fzf-cdr
