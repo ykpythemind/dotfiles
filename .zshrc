@@ -112,6 +112,10 @@ function pushupstream() {
   git push -u origin `git branch | grep \* | cut -d ' ' -f2`
 }
 
+function rubyserver() {
+  ruby -run -e httpd -- --port=${1:-5000} .
+}
+
 # source zsh-key-bindings
 source "${HOME}/dotfiles/key-bindings.zsh"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
@@ -172,18 +176,23 @@ zle -N ghq-fzf
 bindkey "^G" ghq-fzf
 
 
-function fzf-z-search() {
-  local res=$(z | sort -rn | cut -c 12- | fzf)
-  if [ -n "$res" ]; then
-    BUFFER+="cd $res"
-    zle accept-line
-  else
-    return 1
-  fi
-}
-zle -N fzf-z-search
-bindkey '^[' fzf-z-search
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
 
-function rubyserver() {
-  ruby -run -e httpd -- --port=${1:-5000} .
+zstyle ':completion:*' recent-dirs-insert both
+zstyle ':chpwd:*' recent-dirs-max 200
+zstyle ':chpwd:*' recent-dirs-default true
+zstyle ':chpwd:*' recent-dirs-file "$HOME/.chpwd-recent-dirs"
+zstyle ':chpwd:*' recent-dirs-pushd true
+
+function fzf-cdr() {
+    local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf)
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
 }
+zle -N fzf-cdr
+bindkey '^[' fzf-cdr
+
