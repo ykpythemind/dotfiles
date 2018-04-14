@@ -139,6 +139,7 @@ endfunction
 
 " Plugin
 call plug#begin('~/.vim/plugged')
+Plug 'mileszs/ack.vim'
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -203,6 +204,10 @@ nmap <Leader>t :Files<CR>
 nmap <C-p> :Files<CR>
 nmap <Leader>a :Ag<CR>
 endif
+
+" ack.vim
+" Tell ack.vim to use ag (the Silver Searcher) instead
+let g:ackprg = 'ag --vimgrep'
 
 " Vue
 autocmd FileType vue syntax sync fromstart
