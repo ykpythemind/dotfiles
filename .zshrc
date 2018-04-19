@@ -70,7 +70,7 @@ alias rake='bin/rake'
 alias gcom='git checkout master'
 alias grebase='git rebase -i origin/master'
 #alias rg='rg --colors "match:none" --colors "match:bg:magenta"'
-alias atom='atom-beta'
+alias atomb='atom-beta'
 
 export TERM=xterm-256color
 
