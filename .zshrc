@@ -20,6 +20,10 @@ if [ -d ${HOME}/node_modules/.bin ]; then
     export PATH="$HOME/node_modules/.bin:$PATH"
 fi
 
+if which direnv > /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
 # z
 . `brew --prefix`/etc/profile.d/z.sh
 
