@@ -2,6 +2,18 @@
 # dotfiles
 
 
+## install fish shell
+
+```
+brew install fish
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman
+fisher fzf
+fisher decors/fish-ghq
+fisher z
+```
+
+
+
 ## install prezto
 https://github.com/sorin-ionescu/prezto
 

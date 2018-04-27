@@ -205,3 +205,4 @@ function fzf-cdr() {
 zle -N fzf-cdr
 bindkey '^[' fzf-cdr
 
+
