@@ -71,7 +71,7 @@ set PATH $GOPATH/bin $PATH
 # utils
 
 function pushupstream
-  git push -u origin `git branch | grep \* | cut -d ' ' -f2`
+  git push -u origin (git branch | grep \* | cut -d ' ' -f2)
 end
 
 function rubyserver
