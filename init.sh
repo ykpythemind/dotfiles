@@ -1,10 +1,14 @@
 #!/bin/sh
+
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.gvimrc ~/.gvimrc
-# ln -sf ~/dotfiles/.zpreztorc ~/.zpreztorc
-# ln -sf ~/dotfiles/.zprofile ~/.zprofile
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.zshenv ~/.zshenv
-# ln -sf ~/dotfiles/.zlogout ~/.zlogout
+ln -sf ~/dotfiles/.zprofile ~/.zprofile
 ln -sf ~/dotfiles/.screenrc ~/.screenrc
 ln -sf ~/dotfiles/config.fish ~/.config/fish/
+
+curl -fL --create-dirs https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish -o ~/.config/fish/completions/docker.fish
+curl -fL --create-dirs https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish -o ~/.config/fish/completions/docker-compose.fish
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

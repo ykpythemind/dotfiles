@@ -1,3 +1,0 @@
-# .zlogout
-# nothing to do
-
