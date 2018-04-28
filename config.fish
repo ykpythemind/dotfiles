@@ -1,4 +1,5 @@
 set PATH /usr/local/bin /usr/sbin $PATH
+set -x PATH $HOME/.rbenv/bin $PATH
 
 rbenv init - | source
 
@@ -15,6 +16,19 @@ case Darwin
     ruby "$HOME/dotfiles/openxcode.rb"
   end
 end
+
+
+# Editors
+
+set EDITOR vim
+set VISUAL vim
+set PAGER less
+set LESS '-g -i -M -R -S -w -z-4'
+
+
+# fzf settings
+set FZF_DEFAULT_OPTS '--reverse --border'
+set FZF_REVERSE_ISEARCH_OPTS "--height 50%"
 
 
 # alias
@@ -98,4 +112,16 @@ function fzf_z
 end
 
 bind \x1b fzf_z # Ctrl-[
+
+function gco -d "Fuzzy-find and checkout a branch"
+  git branch | grep -v HEAD | string trim | fzf | xargs git checkout
+end
+
+function gcor -d "Fuzzy-find and checkout a branch (include remote)"
+  git branch --all | grep -v HEAD | string trim | fzf | xargs git checkout
+end
+
+function fssh -d "Fuzzy-find ssh host and ssh into it"
+  ag '^host [^*]' ~/.ssh/config | cut -d ' ' -f 2 | fzf | xargs -o ssh
+end
 
