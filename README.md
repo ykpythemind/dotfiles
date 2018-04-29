@@ -10,6 +10,7 @@ curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman
 fisher fzf
 fisher decors/fish-ghq
 fisher z
+fisher ykpythemind/fish_fzf_z
 ```
 
 
