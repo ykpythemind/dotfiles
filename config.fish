@@ -95,24 +95,6 @@ function fish_right_prompt
   printf '%s' (__fish_git_prompt)
 end
 
-
-function fzf_z
-  set -l query (commandline)
-
-  if test -n $query
-    set peco_flags --query "$query"
-  end
-
-  z -l | fzf | awk '{ print $2 }' | read recent
-  if [ $recent ]
-      cd $recent
-      commandline -r ''
-      commandline -f repaint
-  end
-end
-
-bind \x1b fzf_z # Ctrl-[
-
 function gco -d "Fuzzy-find and checkout a branch"
   git branch | grep -v HEAD | string trim | fzf | xargs git checkout
 end
