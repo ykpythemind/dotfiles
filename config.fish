@@ -75,11 +75,11 @@ function pushupstream
 end
 
 function rubyserver
-  # ruby -run -e httpd -- --port=${1:-5000} .
+  ruby -run -e httpd -- --port=$argv .
 end
 
 function localhost
-  # open http://localhost:${1:-3000}
+  open "http://localhost:$argv"
 end
 
 # fish git prompt
