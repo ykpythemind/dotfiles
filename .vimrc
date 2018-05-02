@@ -1,4 +1,3 @@
-scriptencoding utf-8
 filetype plugin indent on
 syntax on
 
@@ -8,7 +7,6 @@ set noswapfile
 set nobackup
 set ambiwidth=double
 " set mouse=a
-" autocmd FileType ruby :set re=1
 set ttimeoutlen=100
 set title
 set ruler
@@ -78,10 +76,10 @@ inoremap <C-k> <C-o>D
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
 
-cnoremap <C-f>  <Right>
-cnoremap <C-b>  <Left>
-cnoremap <C-a>  <C-b>
-cnoremap <C-e>  <C-e>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+cnoremap <C-a> <C-b>
+cnoremap <C-e> <C-e>
 cnoremap <C-u> <C-e><C-u>
 cnoremap <C-v> <C-f>a
 
@@ -159,20 +157,20 @@ Plug 'tpope/vim-endwise'
 " Plug 'prettier/vim-prettier', {
 "   \ 'do': 'yarn install',
 "   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
-Plug 'ctrlpvim/ctrlp.vim'
+if executable('fzf')
+  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf.vim'
+endif
 Plug 'posva/vim-vue'
 Plug 'kana/vim-textobj-user'
 Plug 'tek/vim-textobj-ruby'
 Plug 'archseer/colibri.vim'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'altercation/vim-colors-solarized'
-Plug 'tacahiroy/ctrlp-funky'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'kana/vim-submode'
 Plug 'ReekenX/vim-rename2'
-Plug 'mattn/ctrlp-register'
 Plug 'mattn/emmet-vim'
-Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'thinca/vim-quickrun'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
@@ -191,15 +189,6 @@ vmap s <Plug>(easymotion-s2)
 nmap S <Plug>(easymotion-overwin-f2)
 nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
-
-" undo - http://haya14busa.com/improve-x-with-vim-submode/
-" function! s:my_x()
-"     undojoin
-"     normal! "_x
-" endfunction
-" nnoremap <silent> <Plug>(my-x) :<C-u>call <SID>my_x()<CR>
-" call submode#enter_with('my_x', 'n', '', 'x', '"_x')
-" call submode#map('my_x', 'n', 'r', 'x', '<Plug>(my-x)')
 
 " ack.vim
 " Tell ack.vim to use ag (the Silver Searcher) instead
@@ -229,30 +218,14 @@ hi Comment ctermfg=102
 hi Visual  ctermbg=236
 set background=dark
 
-" CtrlP
-if executable('rg')
-  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git/*"'
-  " let g:ctrlp_use_caching = 0
-endif
-nnoremap <C-e> :<C-u>CtrlPBuffer<CR>
-nnoremap <Leader>h :<C-u>CtrlPMRU<CR>
-" let g:ctrlp_map = ''
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](.git|doc|tmp|node_modules|vendor)',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
-let g:ctrlp_funky_syntax_highlight = 1
-nnoremap <leader>f :CtrlPFunky<CR>
-nnoremap <leader>r :CtrlPRegister<CR>
 
-" PyMatcher for CtrlP
-" if !has('python3')
-"   echo 'In order to use pymatcher plugin, you need +python compiled vim'
-" else
-"   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-" endif
+if executable('fzf')
+  nmap ; :Buffers<CR>
+  nmap <Leader>r :Tags<CR>
+  nmap <Leader>t :Files<CR>
+  nmap <C-p> :Files<CR>
+  nmap <Leader>a :Ag<CR>
+endif
 
 " Lightline
 function! LightlineFilename()
