@@ -5,6 +5,8 @@
 #
 # path
 #
+#
+PS1='%m %1d$ '
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then
