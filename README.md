@@ -4,13 +4,19 @@
 
 ## install fish shell
 
+Mac OS
+
 ```
 brew install fish
+sudo vim /etc/shells # specify fish path (e.g. /usr/local/bin/fish)
+chsh -s $(which fish)
+```
+
+restart terminal
+
+```
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman
-fisher fzf
-fisher decors/fish-ghq
-fisher z
-fisher ykpythemind/fish_fzf_z
+fisher fzf decors/fish-ghq z ykpythemind/fish_fzf_z
 ```
 
 
