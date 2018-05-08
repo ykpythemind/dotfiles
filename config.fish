@@ -1,5 +1,6 @@
 set PATH /usr/local/bin /usr/sbin $PATH
 set -x PATH $HOME/.rbenv/bin $PATH
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 rbenv init - | source
 

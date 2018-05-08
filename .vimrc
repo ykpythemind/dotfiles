@@ -267,3 +267,7 @@ let g:ale_echo_msg_warning_str = 'Warn'
 let g:ale_set_localist = 1
 let g:ale_set_quickfix = 0
 
+if $SHELL =~ '/fish$'
+  set shell=bash
+endif
+
