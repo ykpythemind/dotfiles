@@ -37,9 +37,6 @@ caption always "%{=r dd}%-Lw%40L>%?%F%{+b kG}%:[%{=r dd}%? %n%f %t %?%F%{-}%:]%?
 # split line color
 sorendition "+rb .R"
 
-# change directory to home
-chdir
-
 screen
 screen
 screen
