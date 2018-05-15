@@ -225,6 +225,7 @@ if executable('fzf')
   nmap <Leader>t :Files<CR>
   nmap <C-p> :Files<CR>
   nmap <Leader>a :Ag<CR>
+  nmap <Leader>h :History<CR>
 endif
 
 " Lightline
