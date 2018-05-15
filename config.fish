@@ -114,7 +114,17 @@ function gco -d "Fuzzy-find and checkout a branch"
 end
 
 function gcor -d "Fuzzy-find and checkout a branch (include remote)"
-  git branch --all | grep -v HEAD | string trim | fzf | xargs git checkout
+   git branch -a | fzf | tr -d ' ' | read branch
+   echo $branch
+   if [ $branch ]
+       if contains $branch "remotes/"
+           set -l b (echo $branch | awk -F'/' '{print $3}')
+           git checkout -b $b $branch
+       else
+           git checkout $branch
+       end
+   end
+   commandline -f repaint
 end
 
 function fssh -d "Fuzzy-find ssh host and ssh into it"
