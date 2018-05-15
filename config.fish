@@ -119,7 +119,8 @@ function gcor -d "Fuzzy-find and checkout a branch (include remote)"
    if [ $branch ]
        if contains $branch "remotes/"
            set -l b (echo $branch | awk -F'/' '{print $3}')
-           git checkout -b $b $branch
+           echo $b
+           # git checkout -b $b $branch
        else
            git checkout $branch
        end
