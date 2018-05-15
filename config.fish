@@ -117,7 +117,7 @@ function gcor -d "Fuzzy-find and checkout a branch (include remote)"
    git branch -a | fzf | tr -d ' ' | read branch
    echo $branch
    if [ $branch ]
-       set -l b (echo $branch | string replace '^remotes/' '' -r)
+       set -l b (echo $branch | string replace '^remotes/.+?/' '' -r)
        if test $status -eq 0
            git checkout -b $b $branch
        else
