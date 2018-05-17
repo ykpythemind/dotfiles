@@ -28,9 +28,9 @@ set LESS '-g -i -M -R -S -w -z-4'
 
 
 # fzf settings
-set FZF_DEFAULT_OPTS '--reverse --border'
-set FZF_REVERSE_ISEARCH_OPTS "--height 50%"
-
+set -x FZF_DEFAULT_OPTS '--reverse --border'
+set -x FZF_REVERSE_ISEARCH_OPTS "--height 50%"
+set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
 
 # alias
 
@@ -94,6 +94,13 @@ set __fish_git_prompt_color_upstream_behind red
 
 function fish_right_prompt
   printf '%s' (__fish_git_prompt)
+  printf '%s' (fish_active_machine)
+end
+
+function fish_active_machine
+  if test -n "$DOCKER_MACHINE_NAME"
+    echo $DOCKER_MACHINE_NAME
+  end
 end
 
 function history-merge --on-event fish_preexec
