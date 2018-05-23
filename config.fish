@@ -94,12 +94,13 @@ set __fish_git_prompt_color_upstream_behind red
 
 function fish_right_prompt
   printf '%s' (__fish_git_prompt)
-  printf '%s' (fish_active_machine)
+  fish_active_machine
 end
 
 function fish_active_machine
   if test -n "$DOCKER_MACHINE_NAME"
-    echo $DOCKER_MACHINE_NAME
+    # printf '🐳'  # wip
+    printf "$DOCKER_MACHINE_NAME"
   end
 end
 
