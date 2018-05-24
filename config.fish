@@ -75,6 +75,10 @@ function pushupstream
   git push -u origin (git branch | grep \* | cut -d ' ' -f2)
 end
 
+function git-delete-merged
+  git branch --merged | egrep -v '\*|develop|master'  | xargs git branch -d
+end
+
 function rubyserver
   ruby -run -e httpd -- --port=$argv .
 end
