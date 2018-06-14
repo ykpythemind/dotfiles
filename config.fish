@@ -4,9 +4,7 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 rbenv init - | source
 
-if test -x "direnv"
-  eval (direnv hook fish)
-end
+eval (direnv hook fish)
 
 switch (uname)
 case Linux
