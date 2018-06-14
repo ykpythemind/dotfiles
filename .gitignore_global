@@ -1,0 +1,17 @@
+
+# Direnv stuff
+.direnv
+.envrc
+
+# OS generated files #
+######################
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Editor files #
+################
+*~
+*.swp
+*.swo
