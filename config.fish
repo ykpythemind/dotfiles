@@ -1,4 +1,4 @@
-set PATH /usr/local/bin /usr/sbin $PATH
+set -x PATH /usr/local/bin /usr/sbin $PATH
 set -x PATH $HOME/.rbenv/bin $PATH
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
@@ -21,10 +21,10 @@ end
 
 # Editors
 
-set EDITOR vim
-set VISUAL vim
-set PAGER less
-set LESS '-g -i -M -R -S -w -z-4'
+set -x EDITOR vim
+set -x VISUAL vim
+set -x PAGER less
+set -x LESS '-g -i -M -R -S -w -z-4'
 
 
 # fzf settings
