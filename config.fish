@@ -39,6 +39,7 @@ alias gs='git status'
 alias gcom='git checkout master'
 alias grebase='git rebase -i origin/master'
 alias atomb='atom-beta'
+alias g='git'
 
 
 # docker
