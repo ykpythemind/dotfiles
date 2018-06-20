@@ -164,9 +164,6 @@ endif
 Plug 'posva/vim-vue'
 Plug 'kana/vim-textobj-user'
 Plug 'tek/vim-textobj-ruby'
-Plug 'archseer/colibri.vim'
-Plug 'gosukiwi/vim-atom-dark'
-Plug 'altercation/vim-colors-solarized'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'kana/vim-submode'
 Plug 'ReekenX/vim-rename2'
@@ -176,6 +173,13 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
+
+" go
+nnoremap <Leader>gf :GoFmt<CR>
+nnoremap <Leader>gr :GoRun<CR>
+nnoremap <Leader>gb :GoBuild<CR>
+nnoremap <Leader>gt :GoTest<CR>
+let g:go_fmt_command = "goimports"
 
 " quickrun
 nnoremap <Leader>q :QuickRun<CR>
