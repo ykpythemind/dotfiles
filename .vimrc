@@ -192,8 +192,6 @@ let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-s2)
 vmap s <Plug>(easymotion-s2)
 nmap S <Plug>(easymotion-overwin-f2)
-nmap <Leader>j <Plug>(easymotion-j)
-nmap <Leader>k <Plug>(easymotion-k)
 
 " ack.vim
 " Tell ack.vim to use ag (the Silver Searcher) instead
@@ -203,7 +201,7 @@ let g:ackprg = 'ag --vimgrep'
 autocmd FileType vue syntax sync fromstart
 let g:vue_disable_pre_processors=1
 
-map <C-t> :NERDTreeToggle<CR>
+nnoremap <Leader>t :NERDTreeToggle<CR>
 
 " ctags
 nnoremap <C-]> g<C-]>
@@ -217,8 +215,6 @@ set t_Co=256
 hi String  ctermfg=166 guifg=#ef3434
 hi Character ctermfg=166 guifg=#ef3434
 hi Delimiter  ctermfg=183 guifg=#E58599
-" hi IncSearch ctermfg=193 ctermbg=16
-" hi Search ctermfg=23 ctermbg=117 guifg=#005f5f guibg=#87dfff
 hi Comment ctermfg=102
 hi Visual  ctermbg=236
 set background=dark
@@ -227,7 +223,6 @@ set background=dark
 if executable('fzf')
   nmap ; :Buffers<CR>
   nmap <Leader>r :Tags<CR>
-  nmap <Leader>t :Files<CR>
   nmap <C-p> :Files<CR>
   nmap <Leader>a :Ag<CR>
   nmap <Leader>h :History<CR>
