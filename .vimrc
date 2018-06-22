@@ -109,8 +109,6 @@ if executable('rg')
 endif
 autocmd QuickfixCmdPost vimgrep copen
 autocmd QuickfixCmdPost grep copen
-nnoremap [n :<C-u>cn<CR>
-nnoremap [p :<C-u>cp<CR>
 
 if has('vim_starting')
     " 縦カーソル
@@ -147,7 +145,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
 Plug 'szw/vim-tags'
@@ -161,9 +159,9 @@ if executable('fzf')
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
 endif
-Plug 'posva/vim-vue'
+Plug 'posva/vim-vue', { 'for': 'javascript' }
 Plug 'kana/vim-textobj-user'
-Plug 'tek/vim-textobj-ruby'
+Plug 'tek/vim-textobj-ruby', { 'for': 'ruby' }
 Plug 'Lokaltog/vim-easymotion'
 Plug 'kana/vim-submode'
 Plug 'ReekenX/vim-rename2'
@@ -174,12 +172,19 @@ call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
 
-" go
+" golang
 nnoremap <Leader>gf :GoFmt<CR>
 nnoremap <Leader>gr :GoRun<CR>
 nnoremap <Leader>gb :GoBuild<CR>
 nnoremap <Leader>gt :GoTest<CR>
 let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+
+" quickfix
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>cc :cclose<CR>
 
 " quickrun
 nnoremap <Leader>q :QuickRun<CR>
@@ -219,9 +224,8 @@ hi Comment ctermfg=102
 hi Visual  ctermbg=236
 set background=dark
 
-
 if executable('fzf')
-  nmap ; :Buffers<CR>
+  nmap <C-b> :Buffers<CR>
   nmap <Leader>r :Tags<CR>
   nmap <C-p> :Files<CR>
   nmap <Leader>a :Ag<CR>
