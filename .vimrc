@@ -168,6 +168,7 @@ Plug 'ReekenX/vim-rename2'
 Plug 'mattn/emmet-vim'
 Plug 'thinca/vim-quickrun'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'SirVer/ultisnips'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
