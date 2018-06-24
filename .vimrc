@@ -207,6 +207,7 @@ let g:ackprg = 'ag --vimgrep'
 autocmd FileType vue syntax sync fromstart
 let g:vue_disable_pre_processors=1
 
+" NERDTree
 nnoremap <Leader>t :NERDTreeToggle<CR>
 
 " ctags
@@ -226,7 +227,8 @@ hi Visual  ctermbg=236
 set background=dark
 
 if executable('fzf')
-  nmap <C-b> :Buffers<CR>
+  let g:fzf_buffers_jump = 1
+  nmap <Leader>b :Buffers<CR>
   nmap <Leader>r :Tags<CR>
   nmap <C-p> :Files<CR>
   nmap <Leader>a :Ag<CR>
