@@ -102,9 +102,9 @@ au BufRead,BufNew * match JpSpace /　/
 
 nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
-if executable('rg')
-  " Use ripgrep
-  set grepprg=rg\ --vimgrep\ --smart-case
+if executable('ag')
+  " Use ag
+  set grepprg=ag\ --vimgrep\ $*
   set grepformat=%f:%l:%c:%m
 endif
 autocmd QuickfixCmdPost vimgrep copen
@@ -234,6 +234,7 @@ if executable('fzf')
   nmap <C-p> :Files<CR>
   nmap <Leader>a :Ag<CR>
   nmap <Leader>h :History<CR>
+  nmap <Leader>x :History:<CR>
 endif
 
 " Lightline
