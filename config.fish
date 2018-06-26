@@ -28,7 +28,9 @@ set -x LESS '-g -i -M -R -S -w -z-4'
 # fzf settings
 set -x FZF_DEFAULT_OPTS '--reverse --border'
 set -x FZF_REVERSE_ISEARCH_OPTS "--height 50%"
-set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
+if which rg ^ /dev/null > /dev/null
+  set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
+end
 
 # alias
 
@@ -64,7 +66,6 @@ alias docker-clean-containers='docker rm (docker ps --filter=status=exited --fil
 set GOPATH $HOME/go
 set PATH $GOPATH/bin $PATH
 
-
 # utils
 
 function pushupstream
@@ -99,7 +100,6 @@ end
 
 function fish_active_machine
   if test -n "$DOCKER_MACHINE_NAME"
-    # printf '🐳'  # wip
     printf "$DOCKER_MACHINE_NAME"
   end
 end
