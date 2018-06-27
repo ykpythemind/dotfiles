@@ -109,12 +109,23 @@ function history-merge --on-event fish_preexec
   history --merge
 end
 
-# override
-function __fzf_reverse_isearch
+function __original_reverse_isearch
   history-merge
   history -z | eval (__fzfcmd) --read0 --tiebreak=index --toggle-sort=ctrl-r $FZF_DEFAULT_OPTS $FZF_REVERSE_ISEARCH_OPTS -q '(commandline)' | perl -pe 'chomp if eof' | read -lz result
   and commandline -- $result
   commandline -f repaint
+end
+
+# override
+function __fzf_reverse_isearch
+  if which fish_uniq_history > /dev/null ^ /dev/null
+    history-merge
+    eval fish_uniq_history | fzf --tiebreak=index --toggle-sort=ctrl-r --reverse --height=40% | perl -pe 'chomp if eof' | read -lz result
+    and commandline -- $result
+    commandline -f repaint
+  else
+    __original_reverse_isearch
+  end
 end
 
 function gco -d "Fuzzy-find and checkout a branch"
