@@ -3,13 +3,13 @@ syntax on
 
 set autoread
 set hidden
+set scrolloff=10
 set noswapfile
 set nobackup
 set ambiwidth=double
 " set mouse=a
 set ttimeoutlen=100
 set title
-set ruler
 set number
 set wrap
 set autoindent
@@ -17,11 +17,21 @@ set smartindent
 set breakindent
 set wildmenu
 set wildignore+=*/.git/*,*/tmp/*,*.swp
-set laststatus=2
 set cmdheight=2
+set laststatus=2
 set display=lastline
 set showcmd
 set synmaxcol=200
+set list
+set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
+set wildmode=list:longest,full
+set clipboard&
+set clipboard^=unnamed,unnamedplus
+set whichwrap=b,s,h,l,<,>,~,[,]
+set backspace=indent,eol,start
+set nrformats-=octal
+set lazyredraw
+set ttyfast
 
 set shiftwidth=2
 set softtabstop=0
@@ -37,15 +47,6 @@ set incsearch
 set wrapscan
 set ignorecase
 set smartcase
-
-set list
-set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
-set wildmode=list:longest,full
-set clipboard&
-set clipboard^=unnamed,unnamedplus
-set whichwrap=b,s,h,l,<,>,~,[,]
-set backspace=indent,eol,start
-set nrformats-=octal
 
 let g:mapleader = "\<space>"
 
@@ -64,7 +65,7 @@ nnoremap # #zz
 
 " improve tab key
 for i in range(1, 9)
-    execute 'nnoremap <Tab>' . i . ' ' . i . 'gt'
+  execute 'nnoremap <Tab>' . i . ' ' . i . 'gt'
 endfor
 
 inoremap <C-j> <Esc>
@@ -75,6 +76,7 @@ inoremap <C-f> <Right>
 inoremap <C-k> <C-o>D
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
+inoremap <C-d> <Del>
 
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
@@ -111,10 +113,10 @@ autocmd QuickfixCmdPost vimgrep copen
 autocmd QuickfixCmdPost grep copen
 
 if has('vim_starting')
-    " 縦カーソル
-    let &t_SI .= "\e[6 q"
-    let &t_EI .= "\e[2 q"
-    let &t_SR .= "\e[4 q"
+  " 縦カーソル
+  let &t_SI .= "\e[6 q"
+  let &t_EI .= "\e[2 q"
+  let &t_SR .= "\e[4 q"
 endif
 
 if has("multi_lang")
@@ -145,13 +147,13 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'tpope/vim-rails'
 Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
 Plug 'szw/vim-tags'
 Plug 'thinca/vim-ref'
-Plug 'Townk/vim-autoclose'
-Plug 'tpope/vim-endwise'
+Plug 'cohama/lexima.vim'
+Plug 'mbbill/undotree'
 " Plug 'prettier/vim-prettier', {
 "   \ 'do': 'yarn install',
 "   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
@@ -159,9 +161,9 @@ if executable('fzf')
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
 endif
-Plug 'posva/vim-vue', { 'for': 'javascript' }
+Plug 'posva/vim-vue'
 Plug 'kana/vim-textobj-user'
-Plug 'tek/vim-textobj-ruby', { 'for': 'ruby' }
+Plug 'tek/vim-textobj-ruby'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'kana/vim-submode'
 Plug 'ReekenX/vim-rename2'
@@ -175,7 +177,6 @@ source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
 
 " golang
-nnoremap <Leader>gf :GoFmt<CR>
 nnoremap <Leader>gr :GoRun<CR>
 nnoremap <Leader>gb :GoBuild<CR>
 nnoremap <Leader>gt :GoTest<CR>
