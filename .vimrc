@@ -1,3 +1,4 @@
+scriptencoding utf-8
 filetype plugin indent on
 syntax on
 
@@ -99,8 +100,12 @@ nnoremap <silent> <Space>o   :<C-u>for i in range(1, v:count1) \| call append(li
 nnoremap <silent> <Space>O   :<C-u>for i in range(1, v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 
 " Two-byte space
-highlight JpSpace cterm=reverse ctermfg=166 gui=reverse guifg=Red
-au BufRead,BufNew * match JpSpace /　/
+"   must before 'colorscheme'
+augroup highlightIdegraphicSpace
+  autocmd!
+  autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+augroup END
 
 nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
@@ -111,6 +116,13 @@ if executable('ag')
 endif
 autocmd QuickfixCmdPost vimgrep copen
 autocmd QuickfixCmdPost grep copen
+
+" quickfix
+" map <C-n> :cnext<CR>
+" map <C-m> :cprevious<CR>
+nnoremap <Leader>n :cnext<CR>
+nnoremap <Leader>m :cprevious<CR>
+nnoremap <leader>cc :cclose<CR>
 
 if has('vim_starting')
   " 縦カーソル
@@ -155,6 +167,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'thinca/vim-ref'
 Plug 'cohama/lexima.vim'
 Plug 'mbbill/undotree'
+Plug 'ntpeters/vim-better-whitespace'
 " Plug 'prettier/vim-prettier', {
 "   \ 'do': 'yarn install',
 "   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
@@ -185,12 +198,9 @@ let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
-" quickfix
-" map <C-n> :cnext<CR>
-" map <C-m> :cprevious<CR>
-nnoremap <Leader>n :cnext<CR>
-nnoremap <Leader>m :cprevious<CR>
-nnoremap <leader>cc :cclose<CR>
+" white space
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
 
 " quickrun
 nnoremap <Leader>q :QuickRun<CR>
@@ -280,6 +290,8 @@ let g:ale_echo_msg_error_str = 'Error'
 let g:ale_echo_msg_warning_str = 'Warn'
 let g:ale_set_localist = 1
 let g:ale_set_quickfix = 0
+
+" other
 
 if $SHELL =~ '/fish$'
   set shell=bash
