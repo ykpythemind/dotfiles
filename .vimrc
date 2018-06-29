@@ -151,6 +151,7 @@ Plug 'tpope/vim-rails'
 Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
 Plug 'szw/vim-tags'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'thinca/vim-ref'
 Plug 'cohama/lexima.vim'
 Plug 'mbbill/undotree'
@@ -185,8 +186,10 @@ let g:go_list_type = "quickfix"
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
 " quickfix
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
+" map <C-n> :cnext<CR>
+" map <C-m> :cprevious<CR>
+nnoremap <Leader>n :cnext<CR>
+nnoremap <Leader>m :cprevious<CR>
 nnoremap <leader>cc :cclose<CR>
 
 " quickrun
