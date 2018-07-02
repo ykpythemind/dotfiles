@@ -187,6 +187,7 @@ Plug 'thinca/vim-quickrun'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'SirVer/ultisnips'
 Plug 'slim-template/vim-slim'
+Plug 'thinca/vim-qfreplace'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
