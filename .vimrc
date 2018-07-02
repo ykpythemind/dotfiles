@@ -12,6 +12,7 @@ set ambiwidth=double
 set ttimeoutlen=100
 set title
 set number
+set ruler
 set wrap
 set autoindent
 set smartindent
