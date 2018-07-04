@@ -169,9 +169,9 @@ Plug 'thinca/vim-ref'
 Plug 'cohama/lexima.vim'
 Plug 'mbbill/undotree'
 Plug 'ntpeters/vim-better-whitespace'
-" Plug 'prettier/vim-prettier', {
-"   \ 'do': 'yarn install',
-"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue'] }
 if executable('fzf')
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
@@ -226,12 +226,13 @@ let g:vue_disable_pre_processors=1
 
 " NERDTree
 nnoremap <Leader>t :NERDTreeToggle<CR>
+let g:NERDTreeShowHidden=1
 
 " ctags
 nnoremap <C-]> g<C-]>
 
 " prettier
-" nnoremap <Leader>p :Prettier<CR>
+nnoremap <Leader>p :Prettier<CR>
 
 "color
 colorscheme molokai
