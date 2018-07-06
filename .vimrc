@@ -226,6 +226,7 @@ let g:vue_disable_pre_processors=1
 
 " NERDTree
 nnoremap <Leader>t :NERDTreeToggle<CR>
+nnoremap <Leader>ft :NERDTreeFocus<CR>
 let g:NERDTreeShowHidden=1
 
 " ctags
