@@ -84,6 +84,10 @@ function localhost
   open "http://localhost:$argv"
 end
 
+function envrc-for-rails
+  echo "PATH_add bin" >? .envrc
+end
+
 # fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
