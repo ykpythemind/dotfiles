@@ -8,6 +8,7 @@ set scrolloff=10
 set noswapfile
 set nobackup
 set ambiwidth=double
+set foldmethod=manual
 " set mouse=a
 set ttimeoutlen=100
 set title
@@ -179,6 +180,7 @@ endif
 Plug 'posva/vim-vue'
 Plug 'kana/vim-textobj-user'
 Plug 'tek/vim-textobj-ruby'
+Plug 'vim-ruby/vim-ruby'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'kana/vim-submode'
 Plug 'ReekenX/vim-rename2'
@@ -280,7 +282,6 @@ let g:ale_sign_warning = '=='
 let g:ale_lint_delay = 200
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
-let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_save = 1
 let g:ale_linters = {
   \ 'javascript': ['eslint'],
@@ -294,6 +295,7 @@ let g:ale_echo_msg_error_str = 'Error'
 let g:ale_echo_msg_warning_str = 'Warn'
 let g:ale_set_localist = 1
 let g:ale_set_quickfix = 0
+let g:ale_set_highlights = 0
 
 " other
 
