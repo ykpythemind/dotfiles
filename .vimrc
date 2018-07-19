@@ -2,11 +2,6 @@ scriptencoding utf-8
 filetype plugin indent on
 syntax on
 
-" https://github.com/SirVer/ultisnips/issues/996
-if has('python3')
-  silent! python3 1
-endif
-
 set autoread
 set hidden
 set scrolloff=10
@@ -132,7 +127,6 @@ nnoremap <Leader>m :cprevious<CR>
 nnoremap <leader>cc :cclose<CR>
 
 if has('vim_starting')
-  " 縦カーソル
   let &t_SI .= "\e[6 q"
   let &t_EI .= "\e[2 q"
   let &t_SR .= "\e[4 q"
@@ -159,19 +153,17 @@ endfunction
 
 " Plugin
 call plug#begin('~/.vim/plugged')
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim' " depricated!
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
-Plug 'tpope/vim-rails'
 Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
-Plug 'szw/vim-tags'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'thinca/vim-ref'
 Plug 'cohama/lexima.vim'
 Plug 'mbbill/undotree'
 Plug 'ntpeters/vim-better-whitespace'
@@ -183,11 +175,9 @@ if executable('fzf')
   Plug 'junegunn/fzf.vim'
 endif
 Plug 'posva/vim-vue'
-Plug 'kana/vim-textobj-user'
-Plug 'tek/vim-textobj-ruby'
 Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'kana/vim-submode'
 Plug 'ReekenX/vim-rename2'
 Plug 'mattn/emmet-vim'
 Plug 'thinca/vim-quickrun'
@@ -207,9 +197,16 @@ let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
+" ultisnips
+let g:UltiSnipsNoPythonWarning = 1
+
 " white space
-let g:better_whitespace_enabled=1
+let g:better_whitespace_enabled=0  " disable! (slow down)
 let g:strip_whitespace_on_save=1
+
+" ruby
+let g:ruby_no_expensive = 1
+let g:ruby_foldable_groups = 'def class module'
 
 " quickrun
 nnoremap <Leader>q :QuickRun<CR>
@@ -235,9 +232,6 @@ let g:vue_disable_pre_processors=1
 nnoremap <Leader>t :NERDTreeToggle<CR>
 nnoremap <Leader>ft :NERDTreeFocus<CR>
 let g:NERDTreeShowHidden=1
-
-" ctags
-nnoremap <C-]> g<C-]>
 
 " prettier
 nnoremap <Leader>p :Prettier<CR>
