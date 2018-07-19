@@ -2,6 +2,11 @@ scriptencoding utf-8
 filetype plugin indent on
 syntax on
 
+" https://github.com/SirVer/ultisnips/issues/996
+if has('python3')
+  silent! python3 1
+endif
+
 set autoread
 set hidden
 set scrolloff=10
