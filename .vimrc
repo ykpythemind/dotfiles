@@ -116,10 +116,8 @@ augroup END
 
 nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
-if executable('ag')
-  " Use ag
-  set grepprg=ag\ --vimgrep\ $*
-  set grepformat=%f:%l:%c:%m
+if executable('git')
+  " set grepprg=git\ grep\ --no-index\ -I\ --line-number
 endif
 autocmd QuickfixCmdPost vimgrep copen
 autocmd QuickfixCmdPost grep copen
