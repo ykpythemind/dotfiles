@@ -166,7 +166,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
 Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'cohama/lexima.vim'
 Plug 'mbbill/undotree'
 Plug 'ntpeters/vim-better-whitespace'
@@ -188,6 +188,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'SirVer/ultisnips'
 Plug 'slim-template/vim-slim'
 Plug 'thinca/vim-qfreplace'
+Plug 'haya14busa/vim-asterisk'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
@@ -202,6 +203,17 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
 " ultisnips
 let g:UltiSnipsNoPythonWarning = 1
+
+" asterisk
+
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
 
 " white space
 let g:better_whitespace_enabled=0  " disable! (slow down)
