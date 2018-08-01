@@ -68,8 +68,6 @@ nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
 nnoremap n nzz
 nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
 
 " improve tab key
 for i in range(1, 9)
@@ -117,14 +115,12 @@ augroup END
 nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
 if executable('git')
-  " set grepprg=git\ grep\ --no-index\ -I\ --line-number
+  set grepprg=git\ grep\ --no-index\ -I\ --line-number
 endif
 autocmd QuickfixCmdPost vimgrep copen
 autocmd QuickfixCmdPost grep copen
 
 " quickfix
-" map <C-n> :cnext<CR>
-" map <C-m> :cprevious<CR>
 nnoremap <Leader>n :cnext<CR>
 nnoremap <Leader>m :cprevious<CR>
 nnoremap <leader>cc :cclose<CR>
@@ -156,8 +152,7 @@ endfunction
 
 " Plugin
 call plug#begin('~/.vim/plugged')
-" Plug 'mileszs/ack.vim'
-Plug 'rking/ag.vim' " depricated!
+Plug 'rking/ag.vim' " depricated!  ( Plug 'mileszs/ack.vim' )
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -166,7 +161,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
 Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
-" Plug 'terryma/vim-multiple-cursors'
 Plug 'cohama/lexima.vim'
 Plug 'mbbill/undotree'
 Plug 'ntpeters/vim-better-whitespace'
@@ -205,7 +199,6 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 let g:UltiSnipsNoPythonWarning = 1
 
 " asterisk
-
 map *   <Plug>(asterisk-*)
 map #   <Plug>(asterisk-#)
 map g*  <Plug>(asterisk-g*)
@@ -230,14 +223,9 @@ nnoremap <Leader>q :QuickRun<CR>
 let g:EasyMotion_do_mapping = 0 "Disable default mappings
 let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_smartcase = 1
-" nmap s <Plug>(easymotion-s2)
 nmap s <Plug>(easymotion-s2)
 vmap s <Plug>(easymotion-s2)
 nmap S <Plug>(easymotion-overwin-f2)
-
-" ack.vim
-" Tell ack.vim to use ag (the Silver Searcher) instead
-let g:ackprg = 'ag --vimgrep'
 
 " Vue
 autocmd FileType vue syntax sync fromstart
@@ -312,7 +300,6 @@ let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0
 
 " other
-
 if $SHELL =~ '/fish$'
   set shell=bash
 endif
