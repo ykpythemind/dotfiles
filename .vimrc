@@ -254,7 +254,6 @@ if executable('fzf')
   nmap <Leader>b :Buffers<CR>
   nmap <Leader>r :Tags<CR>
   nmap <C-p> :Files<CR>
-  nmap <Leader>a :Ag<CR>
   nmap <Leader>h :History<CR>
   nmap <Leader>x :History:<CR>
 endif
