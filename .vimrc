@@ -183,6 +183,7 @@ Plug 'SirVer/ultisnips'
 Plug 'slim-template/vim-slim'
 Plug 'thinca/vim-qfreplace'
 Plug 'haya14busa/vim-asterisk'
+Plug 'rhysd/vim-crystal'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
