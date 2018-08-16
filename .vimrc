@@ -185,6 +185,7 @@ Plug 'thinca/vim-qfreplace'
 Plug 'haya14busa/vim-asterisk'
 Plug 'rhysd/vim-crystal'
 Plug 'elixir-editors/vim-elixir'
+Plug 'junegunn/goyo.vim'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
