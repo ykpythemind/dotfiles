@@ -261,6 +261,8 @@ if executable('fzf')
   nmap <Leader>x :History:<CR>
 endif
 
+nmap <Leader>a :Ag<Space>
+
 " Lightline
 function! LightlineFilename()
   return expand('%:t') !=# '' ? expand('%') : '[No Name]'
