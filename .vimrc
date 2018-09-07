@@ -197,6 +197,8 @@ nnoremap <Leader>gt :GoTest<CR>
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go :highlight goErr cterm=bold ctermfg=214
+autocmd FileType go :match goErr /\<err\>/
 
 " ultisnips
 let g:UltiSnipsNoPythonWarning = 1
