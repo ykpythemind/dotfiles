@@ -100,6 +100,8 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
+nnoremap <Leader>w :<C-u>write<CR>
+
 " 空行挿入
 nnoremap <silent> <Space>o   :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
 nnoremap <silent> <Space>O   :<C-u>for i in range(1, v:count1) \| call append(line('.')-1, '') \| endfor<CR>
