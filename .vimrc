@@ -29,7 +29,7 @@ set cmdheight=2
 set laststatus=2
 set display=lastline
 set showcmd
-set synmaxcol=200
+set synmaxcol=400
 set list
 set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
 set wildmode=list:longest,full
@@ -47,8 +47,9 @@ set tabstop=4
 set smarttab
 set expandtab
 
-set vb t_vb=
 set noerrorbells
+set novisualbell
+set t_vb=
 
 set hlsearch
 set incsearch
@@ -126,6 +127,9 @@ autocmd QuickfixCmdPost grep copen
 nnoremap <Leader>n :cnext<CR>
 nnoremap <Leader>m :cprevious<CR>
 nnoremap <leader>cc :cclose<CR>
+
+nnoremap <expr> n  'Nn'[v:searchforward]
+nnoremap <expr> N  'nN'[v:searchforward]
 
 if has('vim_starting')
   let &t_SI .= "\e[6 q"
