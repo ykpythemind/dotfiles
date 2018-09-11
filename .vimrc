@@ -75,8 +75,8 @@ for i in range(1, 9)
 endfor
 
 inoremap <C-j> <Esc>
-inoremap <C-p> <Up>
-inoremap <C-n> <Down>
+" inoremap <C-p> <Up>
+" inoremap <C-n> <Down>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-k> <C-o>D
