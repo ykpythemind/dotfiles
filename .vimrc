@@ -192,6 +192,8 @@ Plug 'haya14busa/vim-asterisk'
 Plug 'rhysd/vim-crystal'
 Plug 'elixir-editors/vim-elixir'
 Plug 'junegunn/goyo.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'rhysd/vim-textobj-ruby'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 setlocal omnifunc=syntaxcomplete#Complete
