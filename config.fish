@@ -6,6 +6,11 @@ rbenv init - | source
 
 eval (direnv hook fish)
 
+for mode in insert default visual
+  fish_default_key_bindings -M $mode
+end
+fish_vi_key_bindings --no-erase
+
 switch (uname)
 case Linux
   set PATH $HOME/linuxbrew/.linuxbrew/bin $PATH
@@ -15,7 +20,6 @@ case Darwin
     ruby "$HOME/dotfiles/openxcode.rb"
   end
 end
-
 
 # Editors
 

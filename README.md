@@ -16,7 +16,7 @@ restart terminal
 
 ```
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman
-fisher fzf decors/fish-ghq z ykpythemind/fish_fzf_z done
+fisher fzf decors/fish-ghq z ykpythemind/fish_vi_binding_helper ykpythemind/fish_fzf_z done
 ```
 
 
