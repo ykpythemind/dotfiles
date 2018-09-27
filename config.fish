@@ -6,13 +6,6 @@ rbenv init - | source
 
 eval (direnv hook fish)
 
-# for mode in insert default visual
-#   fish_default_key_bindings -M $mode
-# end
-# fish_vi_key_bindings --no-erase
-#
-# bind -M insert \cF accept-autosuggestion
-
 switch (uname)
 case Linux
   set PATH $HOME/linuxbrew/.linuxbrew/bin $PATH
