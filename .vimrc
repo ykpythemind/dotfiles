@@ -209,6 +209,7 @@ let g:go_list_type = "quickfix"
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go :highlight goErr cterm=bold ctermfg=214
 autocmd FileType go :match goErr /\<err\>/
+autocmd FileType go setlocal sw=4 ts=4 sts=4 noet
 
 " ultisnips
 let g:UltiSnipsNoPythonWarning = 1
