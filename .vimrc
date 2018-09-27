@@ -206,10 +206,16 @@ nnoremap <Leader>gb :GoBuild<CR>
 nnoremap <Leader>gt :GoTest<CR>
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
-autocmd FileType go nmap <Leader>i <Plug>(go-info)
-autocmd FileType go :highlight goErr cterm=bold ctermfg=214
-autocmd FileType go :match goErr /\<err\>/
-autocmd FileType go setlocal sw=4 ts=4 sts=4 noet
+let g:go_highlight_extra_types = 1
+let g:go_highlight_structs = 1
+
+augroup GolangSettings
+  autocmd!
+  autocmd FileType go nmap <Leader>i <Plug>(go-info)
+  autocmd FileType go :highlight goErr cterm=bold ctermfg=214
+  autocmd FileType go :match goErr /\<err\>/
+  autocmd FileType go setlocal sw=4 ts=4 sts=4 noet
+augroup END
 
 " ultisnips
 let g:UltiSnipsNoPythonWarning = 1
