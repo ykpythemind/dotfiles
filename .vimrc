@@ -162,6 +162,7 @@ Plug 'rking/ag.vim' " depricated!  ( Plug 'mileszs/ack.vim' )
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'justinmk/vim-dirvish'
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
