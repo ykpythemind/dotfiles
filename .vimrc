@@ -117,6 +117,8 @@ augroup END
 
 nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
+nnoremap <Leader>l :ls<CR>
+
 if executable('git')
   set grepprg=git\ grep\ --no-index\ -I\ --line-number
 endif
@@ -198,7 +200,7 @@ Plug 'rhysd/vim-textobj-ruby'
 Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
-setlocal omnifunc=syntaxcomplete#Complete
+" setlocal omnifunc=syntaxcomplete#Complete
 
 " golang
 nnoremap <Leader>gr :GoRun<CR>
