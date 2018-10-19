@@ -15,8 +15,8 @@ chsh -s $(which fish)
 restart terminal
 
 ```
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman
-fisher fzf decors/fish-ghq z ykpythemind/fish_vi_binding_helper ykpythemind/fish_fzf_z done
+curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+fisher add fzf decors/fish-ghq z ykpythemind/fish_vi_binding_helper ykpythemind/fish_fzf_z done
 ```
 
 
