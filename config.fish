@@ -65,6 +65,10 @@ alias docker-clean-containers='docker rm (docker ps --filter=status=exited --fil
 set GOPATH $HOME/go
 set PATH $GOPATH/bin $PATH
 
+function cgosrc
+  cd $GOPATH/src/(go list ... ^ /dev/null | fzf)
+end
+
 # utils
 
 function pushupstream
