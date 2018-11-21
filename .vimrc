@@ -210,12 +210,11 @@ let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 let g:go_highlight_extra_types = 1
 let g:go_highlight_structs = 1
+au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
 
 augroup GolangSettings
   autocmd!
   autocmd FileType go nmap <Leader>i <Plug>(go-info)
-  autocmd FileType go :highlight goErr cterm=bold ctermfg=214 guifg=#ffa500
-  autocmd FileType go :match goErr /\<err\>/
   autocmd FileType go setlocal sw=4 ts=4 sts=4 noet
 augroup END
 
