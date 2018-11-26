@@ -14,7 +14,7 @@ set noswapfile
 set nobackup
 set ambiwidth=double
 set foldmethod=manual
-" set mouse=a
+set mouse=a
 set ttimeoutlen=100
 set title
 set number
@@ -38,8 +38,8 @@ set clipboard^=unnamed,unnamedplus
 set whichwrap=b,s,h,l,<,>,~,[,]
 set backspace=indent,eol,start
 set nrformats-=octal
-set lazyredraw
-set ttyfast
+" set lazyredraw
+" set ttyfast
 
 set shiftwidth=2
 set softtabstop=0
@@ -76,8 +76,6 @@ for i in range(1, 9)
 endfor
 
 inoremap <C-j> <Esc>
-" inoremap <C-p> <Up>
-" inoremap <C-n> <Down>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-k> <C-o>D
@@ -160,11 +158,12 @@ endfunction
 
 " Plugin
 call plug#begin('~/.vim/plugged')
-Plug 'rking/ag.vim' " depricated!  ( Plug 'mileszs/ack.vim' )
+" Plug 'rking/ag.vim' " depricated!  ( Plug 'mileszs/ack.vim' )
+Plug 'mileszs/ack.vim'
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'justinmk/vim-dirvish'
+" Plug 'justinmk/vim-dirvish'
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
@@ -177,30 +176,30 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue'] }
 if executable('fzf')
-  Plug '/usr/local/opt/fzf'
-  Plug 'junegunn/fzf.vim'
+  " Plug '/usr/local/opt/fzf'
+  " Plug 'junegunn/fzf.vim'
 endif
-Plug 'posva/vim-vue'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'ReekenX/vim-rename2'
 Plug 'mattn/emmet-vim'
 Plug 'thinca/vim-quickrun'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'SirVer/ultisnips'
-Plug 'slim-template/vim-slim'
 Plug 'thinca/vim-qfreplace'
 Plug 'haya14busa/vim-asterisk'
-Plug 'rhysd/vim-crystal'
-Plug 'elixir-editors/vim-elixir'
 Plug 'junegunn/goyo.vim'
+Plug 'terryma/vim-multiple-cursors'
+" lang
+Plug 'rhysd/vim-crystal'
+Plug 'slim-template/vim-slim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'posva/vim-vue'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'elixir-editors/vim-elixir'
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
-Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
-" setlocal omnifunc=syntaxcomplete#Complete
 
 " golang
 nnoremap <Leader>gr :GoRun<CR>
@@ -273,12 +272,12 @@ hi Visual  ctermbg=236
 set background=dark
 
 if executable('fzf')
-  let g:fzf_buffers_jump = 1
-  nmap <Leader>b :Buffers<CR>
-  nmap <Leader>r :Tags<CR>
-  nmap <C-p> :Files<CR>
-  nmap <Leader>h :History<CR>
-  nmap <Leader>x :History:<CR>
+  " let g:fzf_buffers_jump = 1
+  " nmap <Leader>b :Buffers<CR>
+  " nmap <Leader>r :Tags<CR>
+  " nmap <C-p> :Files<CR>
+  " nmap <Leader>h :History<CR>
+  " nmap <Leader>x :History:<CR>
 endif
 
 nmap <Leader>a :Ag<Space>
