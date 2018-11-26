@@ -162,12 +162,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'mileszs/ack.vim'
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
+" Plug 'nixprime/cpsm'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-" Plug 'justinmk/vim-dirvish'
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
-Plug 'nathanaelkane/vim-indent-guides', { 'on':  'IndentGuidesToggle' }
 Plug 'tomasr/molokai'
 Plug 'cohama/lexima.vim'
 Plug 'mbbill/undotree'
@@ -175,10 +176,10 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue'] }
-if executable('fzf')
-  " Plug '/usr/local/opt/fzf'
-  " Plug 'junegunn/fzf.vim'
-endif
+" if executable('fzf')
+"   " Plug '/usr/local/opt/fzf'
+"   " Plug 'junegunn/fzf.vim'
+" endif
 Plug 'Lokaltog/vim-easymotion'
 Plug 'ReekenX/vim-rename2'
 Plug 'mattn/emmet-vim'
@@ -270,6 +271,17 @@ hi Delimiter  ctermfg=183 guifg=#E58599
 hi Comment ctermfg=102
 hi Visual  ctermbg=236
 set background=dark
+
+" ctrl p
+
+nmap <Leader>b :CtrlPBuffer<CR>
+nmap <Leader>h :CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+" if executable('ag')
+"   let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
+" endif
+" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+nnoremap <Leader>fu :CtrlPFunky<Cr>
 
 if executable('fzf')
   " let g:fzf_buffers_jump = 1
