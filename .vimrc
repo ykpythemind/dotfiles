@@ -292,7 +292,11 @@ if executable('fzf')
   " nmap <Leader>x :History:<CR>
 endif
 
-nmap <Leader>a :Ag<Space>
+" ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+nmap <Leader>a :Ack<Space>
 
 " Lightline
 function! LightlineFilename()
