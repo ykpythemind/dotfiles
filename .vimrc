@@ -40,6 +40,7 @@ set backspace=indent,eol,start
 set nrformats-=octal
 " set lazyredraw
 " set ttyfast
+set updatetime=1000
 
 set shiftwidth=2
 set softtabstop=0
@@ -164,6 +165,7 @@ Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
+Plug 'FelikZ/ctrlp-py-matcher'
 " Plug 'nixprime/cpsm'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
@@ -189,6 +191,9 @@ Plug 'thinca/vim-qfreplace'
 Plug 'haya14busa/vim-asterisk'
 Plug 'junegunn/goyo.vim'
 Plug 'terryma/vim-multiple-cursors'
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 " lang
 Plug 'rhysd/vim-crystal'
 Plug 'slim-template/vim-slim'
@@ -277,11 +282,15 @@ set background=dark
 nmap <Leader>b :CtrlPBuffer<CR>
 nmap <Leader>h :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-" if executable('ag')
-"   let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
-" endif
-" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden --follow --ignore .git -g ""'
+  let g:ctrlp_use_caching = 0
+endif
+if has('python') || has('python3')
+  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+endif
 nnoremap <Leader>fu :CtrlPFunky<Cr>
+nnoremap <C-e> :CtrlPBuffer<CR>
 
 if executable('fzf')
   " let g:fzf_buffers_jump = 1
