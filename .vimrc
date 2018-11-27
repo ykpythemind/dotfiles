@@ -290,6 +290,13 @@ endif
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 nnoremap <C-e> :CtrlPBuffer<CR>
 
+let g:ctrlp_prompt_mappings = {
+  \ 'PrtSelectMove("j")':   ['<c-n>'],
+  \ 'PrtSelectMove("k")':   ['<c-p>'],
+  \ 'PrtHistory(-1)':       ['<c-j>'],
+  \ 'PrtHistory(1)':        ['<c-k>'],
+  \ }
+
 if executable('fzf')
   " let g:fzf_buffers_jump = 1
   " nmap <Leader>b :Buffers<CR>
