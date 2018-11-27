@@ -159,14 +159,12 @@ endfunction
 
 " Plugin
 call plug#begin('~/.vim/plugged')
-" Plug 'rking/ag.vim' " depricated!  ( Plug 'mileszs/ack.vim' )
 Plug 'mileszs/ack.vim'
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'FelikZ/ctrlp-py-matcher'
-" Plug 'nixprime/cpsm'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
@@ -303,7 +301,7 @@ endif
 
 " ack
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --vimgrep --hidden --ignore .git'
 endif
 nmap <Leader>a :Ack<Space>
 
@@ -315,13 +313,14 @@ let g:lightline = {
   \'active': {
   \  'left': [
   \    ['mode', 'paste'],
-  \    ['readonly', 'filename', 'modified', 'ale'] ],
+  \    ['gitbranch', 'readonly', 'filename', 'modified', 'ale'] ],
   \ 'right': [
   \            [ 'filetype' ] ]
   \},
   \'component_function': {
     \   'filename': 'LightlineFilename',
-    \   'ale': 'ALEGetStatusLine'
+    \   'ale': 'ALEGetStatusLine',
+    \   'gitbranch': 'fugitive#head'
   \}
 \ }
 
