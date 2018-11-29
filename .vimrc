@@ -114,7 +114,7 @@ augroup highlightIdegraphicSpace
   autocmd VimEnter,WinEnter * match IdeographicSpace /　/
 augroup END
 
-" nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
 nnoremap <Leader>l :ls<CR>
@@ -190,7 +190,7 @@ Plug 'thinca/vim-qfreplace'
 Plug 'haya14busa/vim-asterisk'
 Plug 'junegunn/goyo.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'matze/vim-move'
+Plug 'ykpythemind/vim-move'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -209,6 +209,7 @@ source $VIMRUNTIME/macros/matchit.vim
 
 " move
 let g:move_key_modifier = 'C'
+let g:move_map_horizontal_keys = 0
 
 " golang
 nnoremap <Leader>gr :GoRun<CR>
