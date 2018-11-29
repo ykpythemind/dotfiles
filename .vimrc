@@ -177,10 +177,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue'] }
-" if executable('fzf')
-"   " Plug '/usr/local/opt/fzf'
-"   " Plug 'junegunn/fzf.vim'
-" endif
 Plug 'Lokaltog/vim-easymotion'
 Plug 'ReekenX/vim-rename2'
 Plug 'mattn/emmet-vim'
@@ -302,15 +298,6 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtHistory(-1)':       ['<c-j>'],
   \ 'PrtHistory(1)':        ['<c-k>'],
   \ }
-
-if executable('fzf')
-  " let g:fzf_buffers_jump = 1
-  " nmap <Leader>b :Buffers<CR>
-  " nmap <Leader>r :Tags<CR>
-  " nmap <C-p> :Files<CR>
-  " nmap <Leader>h :History<CR>
-  " nmap <Leader>x :History:<CR>
-endif
 
 " ack
 if executable('ag')
