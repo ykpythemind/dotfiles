@@ -6,8 +6,8 @@ encoding utf8 utf8
 termcapinfo linux ti@:te@
 termcapinfo xterm* ti@:te@
 
-escape ^Zz
-escape ^Z^Z # C-z C-z : send ^Z to process
+escape ^Qq
+# escape ^Z^Z # C-z C-z : send ^Z to process
 
 # $ brew tap homebrew/dupes
 # $ brew install screen
