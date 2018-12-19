@@ -7,7 +7,7 @@ termcapinfo linux ti@:te@
 termcapinfo xterm* ti@:te@
 
 escape ^Qq
-# escape ^Z^Z # C-z C-z : send ^Z to process
+escape ^Z^Z # C-q C-z : send ^Z to process
 
 # $ brew tap homebrew/dupes
 # $ brew install screen
@@ -36,6 +36,8 @@ caption always "%{=r dd}%-Lw%40L>%?%F%{+b kG}%:[%{=r dd}%? %n%f %t %?%F%{-}%:]%?
 
 # split line color
 sorendition "+rb .R"
+
+zombie ^[
 
 screen
 screen
