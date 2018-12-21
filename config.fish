@@ -6,30 +6,12 @@ rbenv init - | source
 
 eval (direnv hook fish)
 
-switch (uname)
-case Linux
-  set PATH $HOME/linuxbrew/.linuxbrew/bin $PATH
-  set XDG_DATA_DIRS $HOME/linuxbrew/.linuxbrew/share $XDG_DATA_DIRS
-case Darwin
-  function openxcode
-    ruby "$HOME/dotfiles/openxcode.rb"
-  end
-end
-
 # Editors
 
 set -x EDITOR vim
 set -x VISUAL vim
 set -x PAGER less
 set -x LESS '-g -i -M -R -S -w -z-4'
-
-
-# fzf settings
-set -x FZF_DEFAULT_OPTS '--reverse --border'
-set -x FZF_REVERSE_ISEARCH_OPTS "--height 50%"
-if which rg ^ /dev/null > /dev/null
-  set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
-end
 
 # alias
 
@@ -39,9 +21,7 @@ alias l1='ls -1G'
 alias gs='git status'
 alias gcom='git checkout master'
 alias grebase='git rebase -i origin/master'
-alias atomb='atom-beta'
 alias g='git'
-
 
 # docker
 
@@ -54,12 +34,8 @@ function unset-machine
 end
 
 alias active-machine='docker-machine active'
-
-alias docker-m='docker-machine'
-alias docker-c='docker-compose'
 alias docker-clean-images='docker rmi (docker images -a --filter=dangling=true -q)'
 alias docker-clean-containers='docker rm (docker ps --filter=status=exited --filter=status=created -q)'
-
 
 # go
 set GOPATH $HOME/go
@@ -74,6 +50,7 @@ end
 function pushupstream
   git push -u origin (git branch | grep \* | cut -d ' ' -f2)
 end
+alias pushu='pushupstream'
 
 function git-delete-merged
   git branch --merged | egrep -v '\*|develop|master'  | xargs git branch -d
@@ -83,12 +60,8 @@ function rubyserver
   ruby -run -e httpd -- --port=$argv .
 end
 
-function localhost
-  open "http://localhost:$argv"
-end
-
-function envrc-for-rails
-  echo "PATH_add bin" >? .envrc
+function openxcode
+  ruby "$HOME/dotfiles/openxcode.rb"
 end
 
 # fish git prompt
@@ -118,7 +91,7 @@ end
 
 function __original_reverse_isearch
   history-merge
-  history -z | eval (__fzfcmd) --read0 --tiebreak=index --toggle-sort=ctrl-r $FZF_DEFAULT_OPTS $FZF_REVERSE_ISEARCH_OPTS -q '(commandline)' | perl -pe 'chomp if eof' | read -lz result
+  history -z | peco | perl -pe 'chomp if eof' | read -lz result
   and commandline -- $result
   commandline -f repaint
 end
@@ -127,7 +100,7 @@ end
 function __fzf_reverse_isearch
   if which fish_uniq_history > /dev/null ^ /dev/null
     history-merge
-    eval fish_uniq_history | fzf --tiebreak=index --toggle-sort=ctrl-r --reverse --height=40% | perl -pe 'chomp if eof' | read -lz result
+    eval fish_uniq_history | peco | perl -pe 'chomp if eof' | read -lz result
     and commandline -- $result
     commandline -f repaint
   else
@@ -136,11 +109,11 @@ function __fzf_reverse_isearch
 end
 
 function gco -d "Fuzzy-find and checkout a branch"
-  git branch | grep -v HEAD | string trim | fzf | xargs git checkout
+  git branch | grep -v HEAD | string trim | peco | xargs git checkout
 end
 
 function gcor -d "Fuzzy-find and checkout a branch (include remote)"
-   git branch -a | fzf | tr -d ' ' | read branch
+   git branch -a | peco | tr -d ' ' | read branch
    echo $branch
    if [ $branch ]
        set -l b (echo $branch | string replace '^remotes/.+?/' '' -r)
@@ -154,6 +127,6 @@ function gcor -d "Fuzzy-find and checkout a branch (include remote)"
 end
 
 function fssh -d "Fuzzy-find ssh host and ssh into it"
-  ag '^host [^*]' ~/.ssh/config | cut -d ' ' -f 2 | fzf | xargs -o ssh
+  ag '^host [^*]' ~/.ssh/config | cut -d ' ' -f 2 | peco | xargs -o ssh
 end
 
