@@ -6,6 +6,8 @@ rbenv init - | source
 
 eval (direnv hook fish)
 
+set -U GHQ_SELECTOR peco
+
 # Editors
 
 set -x EDITOR vim
@@ -17,8 +19,6 @@ set -x LESS '-g -i -M -R -S -w -z-4'
 
 alias be='bundle exec'
 alias psg='ps aux|grep'
-alias l1='ls -1G'
-alias gs='git status'
 alias gcom='git checkout master'
 alias grebase='git rebase -i origin/master'
 alias g='git'
