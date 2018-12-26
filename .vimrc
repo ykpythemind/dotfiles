@@ -301,9 +301,11 @@ let g:ctrlp_prompt_mappings = {
 
 " ack
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep --hidden --ignore .git'
+  let g:ackprg = 'ag --smart-case --vimgrep --hidden --ignore .git'
 endif
 nmap <Leader>a :Ack<Space>
+cnoreabbrev Ag Ack
+cnoreabbrev ag Ack
 
 " Lightline
 function! LightlineFilename()
