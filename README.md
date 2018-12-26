@@ -1,7 +1,6 @@
 
 # dotfiles
 
-
 ## install fish shell
 
 Mac OS
@@ -16,11 +15,12 @@ restart terminal
 
 ```
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-fisher add franciscolourenco/done decors/fish-ghq jethrokuan/z ykpythemind/fish_peco_z jethrokuan/fzf
+fisher add franciscolourenco/done decors/fish-ghq jethrokuan/z ykpythemind/fish_peco_z
 ```
 
 
-## init.sh
+## init
+
 ```console
 git clone https://github.com/ykpythemind/dotfiles.git ~/dotfiles
 cd ~/dotfiles
