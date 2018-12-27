@@ -15,7 +15,7 @@ restart terminal
 
 ```
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-fisher add franciscolourenco/done decors/fish-ghq jethrokuan/z ykpythemind/fish_peco_z
+fisher add franciscolourenco/done decors/fish-ghq jethrokuan/z ykpythemind/fish_peco_z jethrokuan/fzf
 ```
 
 
