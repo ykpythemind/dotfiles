@@ -8,6 +8,11 @@ eval (direnv hook fish)
 
 set -U GHQ_SELECTOR peco
 
+function history-merge --on-event fish_preexec
+  history --save
+  history --merge
+end
+
 # Editors
 
 set -x EDITOR vim
@@ -50,7 +55,6 @@ end
 function pushupstream
   git push -u origin (git branch | grep \* | cut -d ' ' -f2)
 end
-alias pushu='pushupstream'
 
 function git-delete-merged
   git branch --merged | egrep -v '\*|develop|master'  | xargs git branch -d
@@ -84,30 +88,6 @@ function fish_active_machine
   end
 end
 
-function history-merge --on-event fish_preexec
-  history --save
-  history --merge
-end
-
-function __original_reverse_isearch
-  history-merge
-  history -z | peco | perl -pe 'chomp if eof' | read -lz result
-  and commandline -- $result
-  commandline -f repaint
-end
-
-# override
-function __fzf_reverse_isearch
-  if which fish_uniq_history > /dev/null ^ /dev/null
-    history-merge
-    eval fish_uniq_history | peco | perl -pe 'chomp if eof' | read -lz result
-    and commandline -- $result
-    commandline -f repaint
-  else
-    __original_reverse_isearch
-  end
-end
-
 function gco -d "Fuzzy-find and checkout a branch"
   git branch | grep -v HEAD | string trim | peco | xargs git checkout
 end
@@ -129,4 +109,3 @@ end
 function fssh -d "Fuzzy-find ssh host and ssh into it"
   ag '^host [^*]' ~/.ssh/config | cut -d ' ' -f 2 | peco | xargs -o ssh
 end
-
