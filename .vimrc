@@ -166,6 +166,7 @@ Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'mattn/ctrlp-register'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
@@ -275,7 +276,6 @@ set background=dark
 
 " ctrl p
 
-nmap <Leader>b :CtrlPBuffer<CR>
 nmap <Leader>h :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 if executable('ag')
@@ -286,6 +286,7 @@ if has('python') || has('python3')
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 endif
 nnoremap <Leader>fu :CtrlPFunky<Cr>
+nnoremap <Leader>r :CtrlPRegister<Cr>
 nnoremap <C-e> :CtrlPBuffer<CR>
 
 let g:ctrlp_prompt_mappings = {
