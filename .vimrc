@@ -240,10 +240,6 @@ map gz# <Plug>(asterisk-gz#)
 let g:better_whitespace_enabled=0  " disable! (slow down)
 let g:strip_whitespace_on_save=1
 
-" ruby
-let g:ruby_no_expensive = 1
-let g:ruby_foldable_groups = 'def class module'
-
 " quickrun
 nnoremap <Leader>q :QuickRun<CR>
 
@@ -353,3 +349,5 @@ if $SHELL =~ '/fish$'
   set shell=bash
 endif
 
+" open Browser
+noremap <silent> <leader>md :<C-u>!open -a /Applications/Firefox\ Nightly.app "%:p"<cr>
