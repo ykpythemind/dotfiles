@@ -47,7 +47,7 @@ set GOPATH $HOME/go
 set PATH $GOPATH/bin $PATH
 
 function cgosrc
-  cd $GOPATH/src/(go list ... ^ /dev/null | fzf)
+  cd $GOPATH/src/(go list ... 2> /dev/null | fzf)
 end
 
 # utils
@@ -109,3 +109,31 @@ end
 function fssh -d "Fuzzy-find ssh host and ssh into it"
   ag '^host [^*]' ~/.ssh/config | cut -d ' ' -f 2 | peco | xargs -o ssh
 end
+
+function __fish_peco_history
+  history --save
+  history --merge
+
+  if which fish_uniq_history > /dev/null 2> /dev/null
+    eval fish_uniq_history | peco | perl -pe 'chomp if eof' | read -lz result
+    and commandline -- $result
+    commandline -f repaint
+  else
+    history -z | peco | perl -pe 'chomp if eof' | read -lz result
+    and commandline -- $result
+    commandline -f repaint
+  end
+end
+
+function __fish_peco_z -d 'z + peco'
+  set -l query (commandline)
+
+  z -l | peco | awk '{ print $2 }' | read recent
+  if [ $recent ]
+      cd $recent
+      commandline -r ''
+      commandline -f repaint
+  end
+end
+bind \c] '__fish_peco_z' # ctrl + ]
+bind \cr '__fish_peco_history' # ctrl + r
