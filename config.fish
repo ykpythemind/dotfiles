@@ -107,7 +107,7 @@ function gcor -d "Fuzzy-find and checkout a branch (include remote)"
 end
 
 function fssh -d "Fuzzy-find ssh host and ssh into it"
-  ag '^host [^*]' ~/.ssh/config | cut -d ' ' -f 2 | peco | xargs -o ssh
+  grep -E '^(H|h)ost' ~/.ssh/config | cut -d ' ' -f 2 | peco | xargs -o ssh
 end
 
 function __fish_peco_history

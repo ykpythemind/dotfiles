@@ -161,12 +161,13 @@ endfunction
 " Plugin
 call plug#begin('~/.vim/plugged')
 Plug 'mileszs/ack.vim'
-Plug 'tyru/caw.vim'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'mattn/ctrlp-register'
+Plug 'justinmk/vim-dirvish'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
@@ -267,15 +268,15 @@ nnoremap <Leader>p :Prettier<CR>
 "color
 colorscheme molokai
 set t_Co=256
-hi String  ctermfg=166 guifg=#ef3434
-hi Character ctermfg=166 guifg=#ef3434
-hi Delimiter  ctermfg=183 guifg=#E58599
-hi Comment ctermfg=102
-hi Visual  ctermbg=236
 set background=dark
+hi String ctermfg=166 guifg=#ef3434
+hi Character ctermfg=166 guifg=#ef3434
+hi Delimiter ctermfg=183 guifg=#E58599
+hi Comment ctermfg=102
+hi Visual ctermbg=236
+hi Search ctermbg=24 guibg=#13354A ctermfg=100 guifg=#dddddd
 
 " ctrl p
-
 nmap <Leader>h :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 if executable('ag')
@@ -324,7 +325,6 @@ let g:lightline = {
 \ }
 
 " ale lint
-" let g:ale_sign_column_always = 1
 let g:ale_sign_error = '!!'
 let g:ale_sign_warning = '=='
 let g:ale_lint_delay = 200
@@ -352,3 +352,5 @@ endif
 
 " open Browser
 noremap <silent> <leader>md :<C-u>!open -a /Applications/Firefox\ Nightly.app "%:p"<cr>
+
+" autocmd VimEnter * if !argc() | Explore | endif
