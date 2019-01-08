@@ -103,8 +103,8 @@ nnoremap gk k
 nnoremap <Leader>w :<C-u>write<CR>
 
 " 空行挿入
-nnoremap <silent> <Space>o   :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
-nnoremap <silent> <Space>O   :<C-u>for i in range(1, v:count1) \| call append(line('.')-1, '') \| endfor<CR>
+nnoremap <silent> <Leader>o :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
+nnoremap <silent> <Leader>O :<C-u>for i in range(1, v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 
 " Two-byte space
 "   must before 'colorscheme'
@@ -191,6 +191,7 @@ Plug 'haya14busa/vim-asterisk'
 Plug 'junegunn/goyo.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ykpythemind/vim-move'
+Plug 'rhysd/clever-f.vim'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
