@@ -133,6 +133,8 @@ nnoremap <leader>cc :cclose<CR>
 nnoremap <expr> n  'Nn'[v:searchforward]
 nnoremap <expr> N  'nN'[v:searchforward]
 
+command! -nargs=0 T tabe %
+
 if has('vim_starting')
   let &t_SI .= "\e[6 q"
   let &t_EI .= "\e[2 q"
