@@ -22,7 +22,6 @@
     d = diff
     ds = diff --staged
     c = commit
-    gsub = !/usr/local/bin/git-gsub.rb
 [pager]
     log = diff-highlight|less -c
     show = diff-highlight|less -c
