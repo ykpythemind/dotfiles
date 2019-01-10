@@ -28,6 +28,16 @@ alias gcom='git checkout master'
 alias grebase='git rebase -i origin/master'
 alias g='git'
 
+# wifi
+
+function wifion
+  sudo networksetup -setairportpower en0 on
+end
+
+function wifioff
+  sudo networksetup -setairportpower en0 off
+end
+
 # docker
 
 function switch-machine
