@@ -1,4 +1,6 @@
-PS1="\H@\u: \$(pwd)> "
+PS1="\u: \$(basename \"$PWD\")> "
+
+eval "$(direnv hook bash)"
 
 # peco-history
 # thx http://www.fisproject.jp/2015/01/peco/
