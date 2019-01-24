@@ -129,6 +129,7 @@ autocmd QuickfixCmdPost grep copen
 nnoremap <Leader>n :cnext<CR>
 nnoremap <Leader>m :cprevious<CR>
 nnoremap <leader>cc :cclose<CR>
+nnoremap <leader>co :copen<CR>
 
 nnoremap <expr> n  'Nn'[v:searchforward]
 nnoremap <expr> N  'nN'[v:searchforward]
@@ -304,9 +305,9 @@ let g:ctrlp_prompt_mappings = {
 if executable('ag')
   let g:ackprg = 'ag --smart-case --vimgrep --hidden --ignore .git'
 endif
-nmap <Leader>a :Ack<Space>
-cnoreabbrev Ag Ack
-cnoreabbrev ag Ack
+nmap <Leader>a :Ack!<Space>
+cnoreabbrev Ag Ack!
+cnoreabbrev ag Ack!
 
 " Lightline
 function! LightlineFilename()
