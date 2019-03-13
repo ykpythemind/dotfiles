@@ -39,7 +39,7 @@ set whichwrap=b,s,h,l,<,>,~,[,]
 set backspace=indent,eol,start
 set nrformats-=octal
 " set lazyredraw
-" set ttyfast
+set ttyfast
 set updatetime=1000
 
 set shiftwidth=2
@@ -70,11 +70,6 @@ nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
 nnoremap n nzz
 nnoremap N Nzz
-
-" improve tab key
-for i in range(1, 9)
-  execute 'nnoremap <Tab>' . i . ' ' . i . 'gt'
-endfor
 
 inoremap <C-j> <Esc>
 inoremap <C-b> <Left>
@@ -192,7 +187,6 @@ Plug 'haya14busa/vim-asterisk'
 Plug 'junegunn/goyo.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ykpythemind/vim-move'
-Plug 'rhysd/clever-f.vim'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
