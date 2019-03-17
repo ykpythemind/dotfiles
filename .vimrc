@@ -239,6 +239,7 @@ map gz# <Plug>(asterisk-gz#)
 " white space
 let g:better_whitespace_enabled=0  " disable! (slow down)
 let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
 
 " quickrun
 nnoremap <Leader>q :QuickRun<CR>
