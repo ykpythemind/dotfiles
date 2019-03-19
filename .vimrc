@@ -183,7 +183,6 @@ Plug 'prettier/vim-prettier', {
 Plug 'Lokaltog/vim-easymotion'
 Plug 'ReekenX/vim-rename2'
 Plug 'mattn/emmet-vim'
-Plug 'thinca/vim-quickrun'
 Plug 'SirVer/ultisnips'
 Plug 'thinca/vim-qfreplace'
 Plug 'haya14busa/vim-asterisk'
@@ -239,9 +238,6 @@ map gz# <Plug>(asterisk-gz#)
 let g:better_whitespace_enabled=0  " disable! (slow down)
 let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
-
-" quickrun
-nnoremap <Leader>q :QuickRun<CR>
 
 " easymotion
 let g:EasyMotion_do_mapping = 0 "Disable default mappings
