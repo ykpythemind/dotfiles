@@ -42,6 +42,10 @@ set nrformats-=octal
 set ttyfast
 set updatetime=1000
 
+if has('nvim')
+  set inccommand=split
+endif
+
 set shiftwidth=2
 set softtabstop=0
 set tabstop=4
@@ -54,7 +58,7 @@ set t_vb=
 
 set hlsearch
 set incsearch
-set wrapscan
+set nowrapscan
 set ignorecase
 set smartcase
 
@@ -96,6 +100,7 @@ nnoremap gj j
 nnoremap gk k
 
 nnoremap <Leader>w :<C-u>write<CR>
+nnoremap <C-s> :w<CR>
 
 " 空行挿入
 nnoremap <silent> <Leader>o :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
@@ -128,8 +133,6 @@ nnoremap <leader>co :copen<CR>
 
 nnoremap <expr> n  'Nn'[v:searchforward]
 nnoremap <expr> N  'nN'[v:searchforward]
-
-command! -nargs=0 T tabe %
 
 if has('vim_starting')
   let &t_SI .= "\e[6 q"
@@ -186,7 +189,7 @@ Plug 'thinca/vim-qfreplace'
 Plug 'haya14busa/vim-asterisk'
 Plug 'junegunn/goyo.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'ykpythemind/vim-move'
+Plug 'terryma/vim-expand-region'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -202,10 +205,6 @@ Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
-
-" move
-let g:move_key_modifier = 'C'
-let g:move_map_horizontal_keys = 0
 
 " golang
 nnoremap <Leader>gr :GoRun<CR>
