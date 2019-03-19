@@ -149,6 +149,8 @@ if has("multi_lang")
   language C
 endif
 
+map <Leader>bp obinding.pry<esc>:w<cr>
+
 " http://vim-jp.org/vim-users-jp/2010/11/03/Hack-181.html
 " Open junk file."
 command! -nargs=0 JunkFile call s:open_junk_file()
