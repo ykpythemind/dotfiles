@@ -64,6 +64,11 @@ set smartcase
 
 let g:mapleader = "\<space>"
 
+" 貼り付け時のカーソル移動
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q <Nop>
@@ -91,8 +96,8 @@ cnoremap <C-u> <C-e><C-u>
 cnoremap <C-v> <C-f>a
 
 " 置換
-nnoremap gs  :<C-u>%s///g<Left><Left><Left>
-vnoremap gs  :s///g<Left><Left><Left>
+nnoremap gs :<C-u>%s///g<Left><Left><Left>
+vnoremap gs :s///g<Left><Left><Left>
 
 nnoremap j gj
 nnoremap k gk
@@ -204,6 +209,10 @@ Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
+
+" expand region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " golang
 nnoremap <Leader>gr :GoRun<CR>
