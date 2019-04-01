@@ -58,7 +58,6 @@ set t_vb=
 
 set hlsearch
 set incsearch
-set nowrapscan
 set ignorecase
 set smartcase
 
@@ -104,7 +103,6 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-nnoremap <Leader>w :<C-u>write<CR>
 nnoremap <C-s> :w<CR>
 
 " 空行挿入
@@ -358,4 +356,6 @@ endif
 " open Browser
 noremap <silent> <leader>md :<C-u>!open -a /Applications/Firefox\ Nightly.app "%:p"<cr>
 
-" autocmd VimEnter * if !argc() | Explore | endif
+if !argc()
+  autocmd vimenter * NERDTree|normal gg3j
+endif
