@@ -174,13 +174,11 @@ Plug 'tpope/vim-surround'
 " Plug 'FelikZ/ctrlp-py-matcher'
 " Plug 'mattn/ctrlp-register'
 Plug 'srstevenson/vim-picker'
-Plug 'justinmk/vim-dirvish'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
 Plug 'tomasr/molokai'
-Plug 'cohama/lexima.vim'
 Plug 'mbbill/undotree'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'prettier/vim-prettier', {
