@@ -339,7 +339,3 @@ endif
 
 " open Browser
 noremap <silent> <leader>md :<C-u>!open -a /Applications/Firefox\ Nightly.app "%:p"<cr>
-
-if !argc()
-  autocmd vimenter * NERDTree|normal gg3j
-endif
