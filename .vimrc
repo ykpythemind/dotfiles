@@ -169,10 +169,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'mattn/ctrlp-register'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'tacahiroy/ctrlp-funky'
+" Plug 'FelikZ/ctrlp-py-matcher'
+" Plug 'mattn/ctrlp-register'
+Plug 'srstevenson/vim-picker'
 Plug 'justinmk/vim-dirvish'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
@@ -279,26 +280,9 @@ hi Comment ctermfg=102
 hi Visual ctermbg=236
 hi Search ctermbg=24 guibg=#13354A ctermfg=100 guifg=#dddddd
 
-" ctrl p
-nmap <Leader>h :CtrlPMRU<CR>
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden --follow --ignore .git -g ""'
-  let g:ctrlp_use_caching = 0
-endif
-if has('python') || has('python3')
-  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-endif
-nnoremap <Leader>fu :CtrlPFunky<Cr>
-nnoremap <Leader>r :CtrlPRegister<Cr>
-nnoremap <C-e> :CtrlPBuffer<CR>
-
-let g:ctrlp_prompt_mappings = {
-  \ 'PrtSelectMove("j")':   ['<c-n>'],
-  \ 'PrtSelectMove("k")':   ['<c-p>'],
-  \ 'PrtHistory(-1)':       ['<c-j>'],
-  \ 'PrtHistory(1)':        ['<c-k>'],
-  \ }
+" Picker
+nnoremap <C-p> :PickerEdit<CR>
+nnoremap <C-e> :PickerBuffer<CR>
 
 " ack
 if executable('ag')

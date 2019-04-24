@@ -39,3 +39,9 @@ in vim
 ```
 :PlugInstall
 ```
+
+### vim
+
+```
+brew install fzy
+```
