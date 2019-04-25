@@ -107,7 +107,6 @@ nnoremap <C-s> :w<CR>
 
 " replace modeに入らない
 map R <Nop>
-map r <Nop>
 
 " 空行挿入
 nnoremap <silent> <Leader>o :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
