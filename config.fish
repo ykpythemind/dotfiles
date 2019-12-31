@@ -13,8 +13,6 @@ function history-merge --on-event fish_preexec
   history --merge
 end
 
-# Editors
-
 set -x EDITOR vim
 set -x VISUAL vim
 set -x PAGER less
@@ -28,37 +26,14 @@ alias gcom='git checkout master'
 alias grebase='git rebase -i origin/master'
 alias g='git'
 
-# wifi
-
-function wifion
-  sudo networksetup -setairportpower en0 on
-end
-
-function wifioff
-  sudo networksetup -setairportpower en0 off
-end
-
 # docker
 
-function switch-machine
-  eval (docker-machine env $argv)
-end
-
-function unset-machine
-  eval (docker-machine env --unset)
-end
-
-alias active-machine='docker-machine active'
 alias docker-clean-images='docker rmi (docker images -a --filter=dangling=true -q)'
 alias docker-clean-containers='docker rm (docker ps --filter=status=exited --filter=status=created -q)'
 
 # go
 set GOPATH $HOME/go
 set PATH $GOPATH/bin $PATH
-
-function cgosrc
-  cd $GOPATH/src/(go list ... 2> /dev/null | fzf)
-end
 
 # utils
 
@@ -124,15 +99,9 @@ function __fish_peco_history
   history --save
   history --merge
 
-  if which fish_uniq_history > /dev/null 2> /dev/null
-    eval fish_uniq_history | peco | perl -pe 'chomp if eof' | read -lz result
-    and commandline -- $result
-    commandline -f repaint
-  else
-    history -z | peco | perl -pe 'chomp if eof' | read -lz result
-    and commandline -- $result
-    commandline -f repaint
-  end
+  history | peco | perl -pe 'chomp if eof' | read -lz result
+  and commandline -- $result
+  commandline -f repaint
 end
 
 function __fish_peco_z -d 'z + peco'
@@ -145,5 +114,6 @@ function __fish_peco_z -d 'z + peco'
       commandline -f repaint
   end
 end
+
 bind \c] '__fish_peco_z' # ctrl + ]
 bind \cr '__fish_peco_history' # ctrl + r
