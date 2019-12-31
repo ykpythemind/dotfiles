@@ -30,10 +30,11 @@ chsh -s $(which fish)
 
 ## ruby
 
-- rbenv https://github.com/rbenv/rbenv#basic-github-checkout
-- ruby-build https://github.com/rbenv/ruby-build#readme
-  - $ mkdir -p "$(rbenv root)"/plugins
-  - $ git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+- rbenv - https://github.com/rbenv/rbenv
+  - `git clone https://github.com/rbenv/rbenv.git ~/.rbenv`
+- ruby-build - https://github.com/rbenv/ruby-build
+  - `mkdir -p "$(rbenv root)"/plugins`
+  - `git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build`
 
 共にgit cloneでインストール
 
@@ -53,12 +54,11 @@ in vim
 **Vim拡張でキーリピートを利くようにする設定が必要**
 https://github.com/VSCodeVim/Vim#mac
 
-
 ## 他
 
 - FireFox Developer Edition
 - Chrome
 - 1password
-- XCode
+- Xcode
 - Amphetamine
-- Dash / https://kapeli.com/dash
+- Dash - https://kapeli.com/dash
