@@ -2,7 +2,7 @@
 
 ## Install dependencies
 
-```console
+```
 git clone https://github.com/ykpythemind/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 sh ./init.sh
@@ -10,11 +10,11 @@ sh ./init.sh
 
 homebrewを入れる
 
-```console
+```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-```console
+```
 cd ~/dotfiles
 ruby dep-install.rb
 ```
@@ -35,7 +35,7 @@ chsh -s $(which fish)
   - $ mkdir -p "$(rbenv root)"/plugins
   - $ git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 
-共にgit cloneでインストール
+共にgit cloneでインストール
 
 ### vim
 

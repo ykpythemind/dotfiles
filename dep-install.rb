@@ -20,3 +20,7 @@ psys "curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fis
 
 fisherlist = data["fisher"].to_a.join(" ")
 psys "fisher add #{fisherlist}"
+
+puts "* link diff-highlight"
+
+psys "ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight"
