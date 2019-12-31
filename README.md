@@ -37,7 +37,7 @@ chsh -s $(which fish)
 
 共にgit cloneでインストール
 
-### vim
+## vim
 
 - vimplugをインストール (init.shでインストール済み)
 
@@ -46,7 +46,7 @@ in vim
 :PlugInstall
 ```
 
-### vscode
+## vscode
 
 拡張 `Sync` をインストールし、GitHub連携で設定を同期させる
 
@@ -54,7 +54,7 @@ in vim
 https://github.com/VSCodeVim/Vim#mac
 
 
-### 他
+## 他
 
 - FireFox Developer Edition
 - Chrome
