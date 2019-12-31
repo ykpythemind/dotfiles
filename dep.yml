@@ -1,0 +1,13 @@
+brew:
+  - fish
+  - vim
+  - git
+  - direnv
+  - go
+  - fzy
+  - peco
+  - node
+fisher:
+  - franciscolourenco/done
+  - decors/fish-ghq
+  - jethrokuan/z
