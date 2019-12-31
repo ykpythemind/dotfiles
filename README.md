@@ -61,3 +61,4 @@ https://github.com/VSCodeVim/Vim#mac
 - 1password
 - XCode
 - Amphetamine
+- Dash / https://kapeli.com/dash
