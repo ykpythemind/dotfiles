@@ -49,10 +49,6 @@ function rubyserver
   ruby -run -e httpd -- --port=$argv .
 end
 
-function openxcode
-  ruby "$HOME/dotfiles/openxcode.rb"
-end
-
 # fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
