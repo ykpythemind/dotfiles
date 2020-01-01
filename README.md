@@ -24,8 +24,8 @@ ruby dep-install.rb
 Mac OS
 
 ```
-sudo vim /etc/shells # which fishでのpathを追加
-chsh -s $(which fish)
+sudo vim /etc/shells # /usr/local/bin/fish を追加
+chsh -s /usr/local/bin/fish
 ```
 
 ## ruby
