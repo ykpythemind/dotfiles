@@ -6,6 +6,7 @@
     excludesfile = ~/.gitignore_global
     precomposeunicode = true
     autocrlf = false
+    ignorecase = false
 [rebase]
     autostash = true
 [push]
