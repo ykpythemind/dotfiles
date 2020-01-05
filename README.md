@@ -62,3 +62,4 @@ https://github.com/VSCodeVim/Vim#mac
 - Xcode
 - Amphetamine
 - Dash - https://kapeli.com/dash
+- Gestimer
