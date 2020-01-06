@@ -1,8 +1,10 @@
 set -x PATH /usr/local/bin /usr/sbin $PATH
 set -x PATH $HOME/.rbenv/bin $PATH
+set -Ux fish_user_paths $HOME/.nodenv/bin $fish_user_paths
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 rbenv init - | source
+nodenv init - | source
 
 eval (direnv hook fish)
 
