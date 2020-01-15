@@ -6,7 +6,7 @@ brew:
   - go
   - fzy
   - peco
-  - node
+  - nodenv
   - ag
 fisher:
   - franciscolourenco/done
