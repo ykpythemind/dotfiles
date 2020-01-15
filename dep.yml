@@ -8,6 +8,7 @@ brew:
   - peco
   - nodenv
   - ag
+  - ghq
 fisher:
   - franciscolourenco/done
   - decors/fish-ghq
