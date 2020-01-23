@@ -115,3 +115,7 @@ end
 
 bind \c] '__fish_peco_z' # ctrl + ]
 bind \cr '__fish_peco_history' # ctrl + r
+
+function fish_title
+    echo (basename (pwd)) '-' $_
+end
