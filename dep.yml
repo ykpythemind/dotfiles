@@ -9,6 +9,8 @@ brew:
   - nodenv
   - ag
   - ghq
+brewcask:
+  - ngrok
 fisher:
   - franciscolourenco/done
   - decors/fish-ghq

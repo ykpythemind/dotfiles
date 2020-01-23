@@ -12,6 +12,11 @@ puts "* install via brew..."
 list = data["brew"].to_a.join(" ")
 psys "brew install #{list}"
 
+casklist = data["brewcask"].to_a
+casklist.each do |cask|
+  psys "brew cask install #{cask}"
+end
+
 psys "brew doctor"
 
 puts "* install fish plugins..."
