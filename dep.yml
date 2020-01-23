@@ -6,8 +6,9 @@ brew:
   - go
   - fzy
   - peco
-  - node
+  - nodenv
   - ag
+  - ghq
 fisher:
   - franciscolourenco/done
   - decors/fish-ghq
