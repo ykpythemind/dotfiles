@@ -9,6 +9,7 @@ brew:
   - nodenv
   - ag
   - ghq
+  - aws-sam-cli
 brewcask:
   - ngrok
 fisher:
