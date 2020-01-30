@@ -1,3 +1,4 @@
+set -x PATH $HOME/.pyenv/bin $PATH
 set -x PATH /usr/local/bin /usr/sbin $PATH
 set -x PATH $HOME/.rbenv/bin $PATH
 set -x PATH $HOME/.nodenv/bin $PATH
@@ -5,6 +6,7 @@ set -x PATH "/usr/local/sbin" $PATH
 
 rbenv init - | source
 nodenv init - | source
+pyenv init - | source
 
 eval (direnv hook fish)
 
