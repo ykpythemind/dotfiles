@@ -11,6 +11,8 @@ brew:
   - ag
   - ghq
   - aws-sam-cli
+  - postgresql
+  - heroku
 brewcask:
   - ngrok
 fisher:
