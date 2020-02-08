@@ -1,12 +1,22 @@
-set -x PATH $HOME/.pyenv/bin $PATH
 set -x PATH /usr/local/bin /usr/sbin $PATH
+set -x PATH "/usr/local/sbin" $PATH
+
+set -x PATH $HOME/.pyenv/bin $PATH
 set -x PATH $HOME/.rbenv/bin $PATH
 set -x PATH $HOME/.nodenv/bin $PATH
-set -x PATH "/usr/local/sbin" $PATH
+
+# Golang
+set -x GOENV_ROOT $HOME/.goenv
+set -x PATH $GOENV_ROOT/bin $PATH
 
 rbenv init - | source
 nodenv init - | source
 pyenv init - | source
+goenv init - | source
+
+# must after goenv init
+set -x PATH $GOROOT/bin $PATH
+set -x PATH $PATH $GOPATH/bin
 
 eval (direnv hook fish)
 
