@@ -17,3 +17,5 @@ Thumbs.db
 *.orig
 
 .idea/
+
+.vscode
