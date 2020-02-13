@@ -77,6 +77,12 @@ function fish_right_prompt
   fish_active_machine
 end
 
+
+function fish_prompt
+  printf '%s@%s%s%s%s> ' (whoami) (hostname | cut -d . -f 1) \
+            (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+end
+
 function fish_active_machine
   if test -n "$DOCKER_MACHINE_NAME"
     printf "$DOCKER_MACHINE_NAME"
