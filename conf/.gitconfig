@@ -32,3 +32,5 @@
 [user]
     name = Yukito Ito
     email = yukibukiyou@gmail.com
+[url "git@github.com:"]
+    insteadOf = https://github.com/
