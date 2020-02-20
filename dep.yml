@@ -12,6 +12,7 @@ brew:
   - postgresql
   - heroku
   - protobuf
+  - golangci/tap/golangci-lint
 brewcask:
   - ngrok
 fisher:
