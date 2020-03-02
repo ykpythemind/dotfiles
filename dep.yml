@@ -17,5 +17,4 @@ brewcask:
   - ngrok
 fisher:
   - franciscolourenco/done
-  - decors/fish-ghq
   - jethrokuan/z
