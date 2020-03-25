@@ -13,6 +13,7 @@ brew:
   - heroku
   - protobuf
   - golangci/tap/golangci-lint
+  - github/gh/gh
 brewcask:
   - ngrok
 fisher:
