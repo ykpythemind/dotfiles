@@ -1,5 +1,3 @@
-[color]
-    ui = auto
 [core]
     editor = vim
     quotepath = false
@@ -24,9 +22,9 @@
     ds = diff --staged
     c = commit
 [pager]
-    pager = delta --theme='GitHub'
-[interactive]
-    diffFilter = delta --color-only
+    log = diff-highlight|less -c
+    show = diff-highlight|less -c
+    diff = diff-highlight|less -c
 [ghq]
     root = ~/git
 [user]

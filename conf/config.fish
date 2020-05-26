@@ -51,6 +51,10 @@ set PATH $GOPATH/bin $PATH
 
 # utils
 
+function dp
+  git --no-pager diff | delta --theme='GitHub' --keep-plus-minus-markers
+end
+
 function pushupstream
   git push -u origin (git branch | grep \* | cut -d ' ' -f2)
 end
