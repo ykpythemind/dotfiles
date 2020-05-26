@@ -24,9 +24,9 @@
     ds = diff --staged
     c = commit
 [pager]
-    log = diff-highlight|less -c
-    show = diff-highlight|less -c
-    diff = diff-highlight|less -c
+    pager = delta --theme='GitHub'
+[interactive]
+    diffFilter = delta --color-only
 [ghq]
     root = ~/git
 [user]
