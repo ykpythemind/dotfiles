@@ -15,6 +15,7 @@ brew:
   - golangci/tap/golangci-lint
   - github/gh/gh
   - git-delta
+  - git-open
 brewcask:
   - ngrok
 fisher:
