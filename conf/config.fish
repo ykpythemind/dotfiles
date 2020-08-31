@@ -16,16 +16,10 @@ goenv init - | source
 
 # must after goenv init
 set -x PATH $GOROOT/bin $PATH
-set -x PATH $PATH $GOPATH/bin
 
 eval (direnv hook fish)
 
 set -U GHQ_SELECTOR peco
-
-function history-merge --on-event fish_preexec
-  history --save
-  history --merge
-end
 
 set -x EDITOR vim
 set -x VISUAL vim
@@ -47,7 +41,7 @@ alias docker-clean-containers='docker rm (docker ps --filter=status=exited --fil
 
 # go
 set GOPATH $HOME/go
-set PATH $GOPATH/bin $PATH
+set -x PATH $GOPATH/bin $PATH
 
 # utils
 
@@ -149,4 +143,9 @@ bind \cg '__peco_ghq' # ctrl + g
 
 function fish_title
     echo (basename (pwd)) '-' $_
+end
+
+if test -e ~/.git-brws-token
+  set -l token (cat ~/.git-brws-token)
+  set -x GIT_BRWS_GITHUB_TOKEN $token
 end
