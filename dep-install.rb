@@ -11,6 +11,7 @@ puts "* install via brew..."
 
 psys "brew tap aws/tap"
 psys "brew tap heroku/brew"
+psys %{brew tap "rhysd/git-brws" "https://github.com/rhysd/git-brws"}
 
 list = data["brew"].to_a.join(" ")
 psys "brew install #{list}"
