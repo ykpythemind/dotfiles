@@ -150,33 +150,16 @@ if has("multi_lang")
   language C
 endif
 
-map <Leader>bp obinding.pry<esc>:w<cr>
-
-" http://vim-jp.org/vim-users-jp/2010/11/03/Hack-181.html
-" Open junk file."
-command! -nargs=0 JunkFile call s:open_junk_file()
-function! s:open_junk_file()
-  let l:junk_dir = $HOME . '/.vim_junk'. strftime('/%Y/%m')
-  if !isdirectory(l:junk_dir)
-    call mkdir(l:junk_dir, 'p')
-  endif
-
-  let l:filename = input('Junk Code: ', l:junk_dir.strftime('/%Y-%m-%d-%H%M%S.'))
-  if l:filename != ''
-    execute 'edit ' . l:filename
-  endif
-endfunction
-
 " Plugin
 call plug#begin('~/.vim/plugged')
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'tacahiroy/ctrlp-funky'
 " Plug 'FelikZ/ctrlp-py-matcher'
 " Plug 'mattn/ctrlp-register'
-Plug 'srstevenson/vim-picker'
+" Plug 'srstevenson/vim-picker'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
@@ -192,21 +175,14 @@ Plug 'ReekenX/vim-rename2'
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'thinca/vim-qfreplace'
-Plug 'haya14busa/vim-asterisk'
-Plug 'junegunn/goyo.vim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'terryma/vim-expand-region'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 " lang
-Plug 'rhysd/vim-crystal'
 Plug 'slim-template/vim-slim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'posva/vim-vue'
 Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'elixir-editors/vim-elixir'
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
 call plug#end()
@@ -235,16 +211,6 @@ augroup END
 " ultisnips
 let g:UltiSnipsNoPythonWarning = 1
 
-" asterisk
-map *   <Plug>(asterisk-*)
-map #   <Plug>(asterisk-#)
-map g*  <Plug>(asterisk-g*)
-map g#  <Plug>(asterisk-g#)
-map z*  <Plug>(asterisk-z*)
-map gz* <Plug>(asterisk-gz*)
-map z#  <Plug>(asterisk-z#)
-map gz# <Plug>(asterisk-gz#)
-
 " white space
 let g:better_whitespace_enabled=0  " disable! (slow down)
 let g:strip_whitespace_on_save=1
@@ -257,10 +223,6 @@ let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-s2)
 vmap s <Plug>(easymotion-s2)
 nmap S <Plug>(easymotion-overwin-f2)
-
-" Vue
-autocmd FileType vue syntax sync fromstart
-let g:vue_disable_pre_processors=1
 
 " NERDTree
 nnoremap <Leader>t :NERDTreeToggle<CR>
@@ -281,9 +243,9 @@ hi Comment ctermfg=102
 hi Visual ctermbg=236
 hi Search ctermbg=24 guibg=#13354A ctermfg=100 guifg=#dddddd
 
-" Picker
-nnoremap <C-p> :PickerEdit<CR>
-nnoremap <C-e> :PickerBuffer<CR>
+" CtrlP
+" nnoremap <C-p> :CtrlP<CR>
+nnoremap <C-e> :CtrlPBuffer<CR>
 
 " ack
 if executable('ag')
@@ -338,5 +300,3 @@ if $SHELL =~ '/fish$'
   set shell=bash
 endif
 
-" open Browser
-noremap <silent> <leader>md :<C-u>!open -a /Applications/Firefox\ Nightly.app "%:p"<cr>
