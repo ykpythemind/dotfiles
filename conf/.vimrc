@@ -156,6 +156,7 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mattn/ctrlp-matchfuzzy'
 " Plug 'tacahiroy/ctrlp-funky'
 " Plug 'FelikZ/ctrlp-py-matcher'
 " Plug 'mattn/ctrlp-register'
@@ -194,7 +195,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 " golang
 nnoremap <Leader>gr :GoRun<CR>
-nnoremap <Leader>gb :GoBuild<CR>
 nnoremap <Leader>gt :GoTest<CR>
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
@@ -244,8 +244,14 @@ hi Visual ctermbg=236
 hi Search ctermbg=24 guibg=#13354A ctermfg=100 guifg=#dddddd
 
 " CtrlP
-" nnoremap <C-p> :CtrlP<CR>
 nnoremap <C-e> :CtrlPBuffer<CR>
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
+    \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
+    \ 'PrtHistory(-1)':       ['<down>'],
+    \ 'PrtHistory(1)':        ['<up>'],
+    \ }
+" let g:ctrlp_match_func = {'match': 'ctrlp_matchfuzzy#matcher'}
 
 " ack
 if executable('ag')

@@ -16,6 +16,7 @@ brew:
   - github/gh/gh
   - git-delta
   - git-brws
+  - tmux
 brewcask:
   - ngrok
 fisher:
