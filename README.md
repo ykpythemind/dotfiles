@@ -49,17 +49,10 @@ in vim
 
 ## vscode
 
-拡張 `Sync` をインストールし、GitHub連携で設定を同期させる
-
 **Vim拡張でキーリピートを利くようにする設定が必要**
 https://github.com/VSCodeVim/Vim#mac
 
 ## 他
 
-- FireFox Developer Edition
-- Chrome
-- 1password
-- Xcode
-- Amphetamine
-- Dash - https://kapeli.com/dash
-- Gestimer
+- https://scrapbox.io/ykpythemind/Mac%E3%81%AB%E5%85%A5%E3%82%8C%E3%81%A6%E3%82%8B%E3%82%A2%E3%83%97%E3%83%AA
+- ~/.git-brws-token にGitHub private tokenを置くとgit brwsコマンドで使える
