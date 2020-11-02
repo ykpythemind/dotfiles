@@ -1,6 +1,6 @@
 scriptencoding utf-8
 filetype plugin indent on
-syntax on
+syntax enable
 
 set autoread
 set hidden
@@ -15,7 +15,6 @@ set number
 set ruler
 set wrap
 set autoindent
-set smartindent
 set breakindent
 set wildmenu
 set wildignore+=*/.git/*,*/tmp/*,*.swp
@@ -37,7 +36,6 @@ set ttyfast
 set updatetime=1000
 
 set shiftwidth=2
-set softtabstop=0
 set tabstop=4
 set smarttab
 set expandtab
@@ -103,8 +101,8 @@ nnoremap <C-s> :w<CR>
 map R <Nop>
 
 " 空行挿入
-nnoremap <silent> <Leader>o :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
-nnoremap <silent> <Leader>O :<C-u>for i in range(1, v:count1) \| call append(line('.')-1, '') \| endfor<CR>
+nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
+nnoremap <silent> <Space>O :<C-u>for i in range(1, v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 
 " Two-byte space
 "   must before 'colorscheme'
@@ -117,8 +115,6 @@ augroup END
 nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
-nnoremap <Leader>l :ls<CR>
-
 if executable('git')
   set grepprg=git\ grep\ --no-index\ -I\ --line-number
 endif
@@ -126,13 +122,10 @@ autocmd QuickfixCmdPost vimgrep copen
 autocmd QuickfixCmdPost grep copen
 
 " quickfix
-nnoremap <Leader>n :cnext<CR>
-nnoremap <Leader>m :cprevious<CR>
+nnoremap <C-n> :cnext<CR>
+nnoremap <C-m> :cprevious<CR>
 nnoremap <leader>cc :cclose<CR>
 nnoremap <leader>co :copen<CR>
-
-nnoremap <expr> n  'Nn'[v:searchforward]
-nnoremap <expr> N  'nN'[v:searchforward]
 
 if has("multi_lang")
   language C
@@ -146,10 +139,10 @@ Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/ctrlp-matchfuzzy'
 Plug 'mattn/ctrlp-register'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
+Plug 'w0ng/vim-hybrid'
 Plug 'tomasr/molokai'
 Plug 'mbbill/undotree'
 Plug 'ntpeters/vim-better-whitespace'
@@ -173,13 +166,10 @@ call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
 " golang
-nnoremap <Leader>gr :GoRun<CR>
-nnoremap <Leader>gt :GoTest<CR>
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 let g:go_highlight_extra_types = 1
 let g:go_highlight_structs = 1
-au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
 
 augroup GolangSettings
   autocmd!
@@ -188,7 +178,7 @@ augroup GolangSettings
 augroup END
 
 " white space
-let g:better_whitespace_enabled=0  " disable! (slow down)
+let g:better_whitespace_enabled=0 " disable! (slow down)
 let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
 
@@ -200,18 +190,13 @@ nmap s <Plug>(easymotion-s2)
 vmap s <Plug>(easymotion-s2)
 nmap S <Plug>(easymotion-overwin-f2)
 
-" NERDTree
-nnoremap <Leader>t :NERDTreeToggle<CR>
-nnoremap <Leader>ft :NERDTreeFocus<CR>
-let g:NERDTreeShowHidden=1
-
 " prettier
 nnoremap <Leader>p :Prettier<CR>
 
 "color
-colorscheme molokai
-set t_Co=256
+set termguicolors
 set background=dark
+colorscheme hybrid
 hi String ctermfg=166 guifg=#ef3434
 hi Character ctermfg=166 guifg=#ef3434
 hi Delimiter ctermfg=183 guifg=#E58599
