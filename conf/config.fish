@@ -17,6 +17,8 @@ goenv init - | source
 # must after goenv init
 set -x PATH $GOROOT/bin $PATH
 
+set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
+
 eval (direnv hook fish)
 
 set -U GHQ_SELECTOR peco
