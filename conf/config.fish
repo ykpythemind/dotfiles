@@ -31,9 +31,7 @@ set -x LESS '-g -i -M -R -S -w -z-4'
 # alias
 
 alias be='bundle exec'
-alias psg='ps aux|grep'
 alias gcom='git checkout master'
-alias grebase='git rebase -i origin/master'
 alias g='git'
 
 # docker
@@ -47,16 +45,8 @@ set -x PATH $GOPATH/bin $PATH
 
 # utils
 
-function dp
-  git --no-pager diff | delta --theme='GitHub' --keep-plus-minus-markers
-end
-
 function pushupstream
   git push -u origin (git branch | grep \* | cut -d ' ' -f2)
-end
-
-function git-delete-merged
-  git branch --merged | egrep -v '\*|develop|master'  | xargs git branch -d
 end
 
 function rubyserver
@@ -83,14 +73,16 @@ function fish_prompt
             (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
 end
 
-function fish_active_machine
-  if test -n "$DOCKER_MACHINE_NAME"
-    printf "$DOCKER_MACHINE_NAME"
-  end
-end
-
 function gco -d "Fuzzy-find and checkout a branch"
   git branch | grep -v HEAD | string trim | peco | xargs git checkout
+end
+alias gsw='gco'
+
+function gpr -d "Open PR on GitHub"
+  gh pr list | tail -n +1 | peco | awk '{ print $1 }' | read num
+  if [ $num ]
+    gh pr view $num --web
+  end
 end
 
 function gcor -d "Fuzzy-find and checkout a branch (include remote)"
@@ -106,6 +98,7 @@ function gcor -d "Fuzzy-find and checkout a branch (include remote)"
    end
    commandline -f repaint
 end
+alias gswr='gcor'
 
 function fssh -d "Fuzzy-find ssh host and ssh into it"
   grep -E '^(H|h)ost' ~/.ssh/config | cut -d ' ' -f 2 | peco | xargs -o ssh
