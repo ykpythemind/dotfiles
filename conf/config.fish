@@ -64,7 +64,6 @@ set __fish_git_prompt_color_upstream_behind red
 
 function fish_right_prompt
   printf '%s' (__fish_git_prompt)
-  fish_active_machine
 end
 
 
