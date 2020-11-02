@@ -23,8 +23,14 @@ eval (direnv hook fish)
 
 set -U GHQ_SELECTOR peco
 
-set -x EDITOR vim
-set -x VISUAL vim
+if type -q nvim
+  set -x EDITOR nvim
+  set -x VISUAL nvim
+else
+  set -x EDITOR vim
+  set -x VISUAL vim
+end
+
 set -x PAGER less
 set -x LESS '-g -i -M -R -S -w -z-4'
 
