@@ -2,18 +2,12 @@ scriptencoding utf-8
 filetype plugin indent on
 syntax on
 
-" https://github.com/SirVer/ultisnips/issues/996
-if has('python3')
-  silent! python3 1
-endif
-
 set autoread
 set hidden
 set scrolloff=10
 set noswapfile
 set nobackup
 set ambiwidth=double
-set foldmethod=manual
 set mouse=a
 set ttimeoutlen=100
 set title
@@ -42,10 +36,6 @@ set nrformats-=octal
 set ttyfast
 set updatetime=1000
 
-if has('nvim')
-  set inccommand=split
-endif
-
 set shiftwidth=2
 set softtabstop=0
 set tabstop=4
@@ -60,6 +50,10 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
+if has('nvim')
+  set inccommand=split
+endif
 
 let g:mapleader = "\<space>"
 
@@ -140,12 +134,6 @@ nnoremap <leader>co :copen<CR>
 nnoremap <expr> n  'Nn'[v:searchforward]
 nnoremap <expr> N  'nN'[v:searchforward]
 
-if has('vim_starting')
-  let &t_SI .= "\e[6 q"
-  let &t_EI .= "\e[2 q"
-  let &t_SR .= "\e[4 q"
-endif
-
 if has("multi_lang")
   language C
 endif
@@ -157,10 +145,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/ctrlp-matchfuzzy'
-" Plug 'tacahiroy/ctrlp-funky'
-" Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'mattn/ctrlp-register'
-" Plug 'srstevenson/vim-picker'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
@@ -174,7 +159,6 @@ Plug 'prettier/vim-prettier', {
 Plug 'Lokaltog/vim-easymotion'
 Plug 'ReekenX/vim-rename2'
 Plug 'mattn/emmet-vim'
-Plug 'SirVer/ultisnips'
 Plug 'thinca/vim-qfreplace'
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -182,16 +166,11 @@ Plug 'tpope/vim-fugitive'
 " lang
 Plug 'slim-template/vim-slim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'posva/vim-vue'
 Plug 'vim-ruby/vim-ruby'
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
-
-" expand region
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
 
 " golang
 nnoremap <Leader>gr :GoRun<CR>
@@ -207,9 +186,6 @@ augroup GolangSettings
   autocmd FileType go nmap <Leader>i <Plug>(go-info)
   autocmd FileType go setlocal sw=4 ts=4 sts=4 noet
 augroup END
-
-" ultisnips
-let g:UltiSnipsNoPythonWarning = 1
 
 " white space
 let g:better_whitespace_enabled=0  " disable! (slow down)
