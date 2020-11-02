@@ -19,3 +19,7 @@ curl -fL --create-dirs https://raw.githubusercontent.com/docker/compose/master/c
 # vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# nvim
+mkdir -p ~/.config/nvim
+ln -sf $CONFPATH/init.vim ~/.config/nvim/init.vim
