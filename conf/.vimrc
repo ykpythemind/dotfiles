@@ -98,6 +98,10 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
+nnoremap tn :<C-u>tabnew<CR>
+nnoremap tl gt
+nnoremap th gT
+
 nnoremap <C-s> :w<CR>
 
 map R <Nop>
@@ -160,16 +164,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/ctrlp-matchfuzzy'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/lightline.vim'
-Plug 'vim-jp/vimdoc-ja'
 Plug 'w0ng/vim-hybrid'
 Plug 'koizuss/shareline.vim'
+" Plug 'eugen0329/vim-esearch'
 Plug 'tyru/open-browser.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue'] }
 Plug 'ReekenX/vim-rename2'
-Plug 'mattn/emmet-vim'
 Plug 'thinca/vim-qfreplace'
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -215,9 +215,6 @@ let g:better_whitespace_enabled=0 " disable! (slow down)
 let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
 
-" prettier
-nnoremap <Leader>p :Prettier<CR>
-
 " openbrowser
 nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)
@@ -236,9 +233,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Use <c-@> to trigger completion.
-inoremap <silent><expr> <c-@> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
