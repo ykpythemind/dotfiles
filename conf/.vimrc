@@ -272,7 +272,7 @@ let g:ctrlp_prompt_mappings = {
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast, respects .gitignore
   " and .agignore. Ignores hidden files by default.
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -f -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -f -g ""'
 else
   "ctrl+p ignore files in .gitignore
   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
@@ -280,7 +280,7 @@ endif
 
 " ack
 if executable('ag')
-  let g:ackprg = 'ag --smart-case --vimgrep --hidden --ignore .git'
+  let g:ackprg = 'ag --smart-case --vimgrep --hidden'
 endif
 nmap <Leader>a :Ack!<Space>
 cnoreabbrev Ag Ack!
