@@ -21,9 +21,6 @@ if which direnv &> /dev/null; then
 fi
 
 alias la='ls -la'
-alias be='bundle exec'
-alias gcom='git checkout master'
-alias grebase='git rebase -i origin/master'
 
 function peco-ghq {
   local selected_file=$(ghq list --full-path | peco --query "$LBUFFER")

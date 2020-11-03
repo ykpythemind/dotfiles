@@ -55,7 +55,7 @@ if has('nvim')
   set inccommand=split
   set pumblend=10
   " let g:ruby_host_prog = '~/.rbenv/versions/2.7.0/bin/neovim-ruby-host'
-  let g:python3_host_prog = '~/.pyenv/shims/python3'
+  " let g:python3_host_prog = '~/.pyenv/shims/python3'
 endif
 
 let g:mapleader = "\<space>"

@@ -1,5 +1,5 @@
 [core]
-    editor = vim
+    editor = nvim
     quotepath = false
     excludesfile = ~/.gitignore_global
     precomposeunicode = true
