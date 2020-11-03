@@ -85,6 +85,7 @@ cnoremap <C-a> <C-b>
 cnoremap <C-e> <C-e>
 cnoremap <C-u> <C-e><C-u>
 cnoremap <C-v> <C-f>a
+cnoremap <c-x> <c-r>=expand('%:p')<cr>
 
 " 置換
 nnoremap gs :<C-u>%s///g<Left><Left><Left>
@@ -134,6 +135,7 @@ endif
 " Plugin
 call plug#begin('~/.vim/plugged')
 Plug 'mileszs/ack.vim'
+Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -233,7 +235,7 @@ cnoreabbrev ag Ack!
 
 " Lightline
 function! LightlineFilename()
-  return expand('%:t') !=# '' ? expand('%') : '[No Name]'
+  return expand('%:t') !=# '' ? expand('%') : '[---]'
 endfunction
 let g:lightline = {
   \'active': {
