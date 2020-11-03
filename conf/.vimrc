@@ -53,6 +53,7 @@ set smartcase
 
 if has('nvim')
   set inccommand=split
+  set pumblend=10
 endif
 
 let g:mapleader = "\<space>"
@@ -179,6 +180,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-ruby/vim-ruby'
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
@@ -191,6 +194,16 @@ let g:go_fmt_autosave = 1
 let g:go_def_mode='gopls'
 let g:go_def_mapping_enabled = 0
 let g:go_gorename_command = "gopls"
+
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 augroup GolangSettings
   autocmd!
@@ -211,8 +224,6 @@ nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)
 
 " coc
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.

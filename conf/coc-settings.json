@@ -1,12 +1,30 @@
 {
   "coc.preferences.hoverTarget": "float",
   "coc.preferences.useQuickfixForLocations": true,
+  "coc.preferences.jumpCommand": "vsplit",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "Markdown",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+    "json"
+  ],
+  "suggest.floatEnable": true,
+  "suggest.maxCompleteItemCount": 100,
+  "suggest.noselect": false,
   "languageserver": {
     "go": {
       "command": "gopls",
-      "rootPatterns": ["go.mod"],
+      "rootPatterns": [
+        "go.mod"
+      ],
       "trace.server": "verbose",
-      "filetypes": ["go"]
+      "filetypes": [
+        "go"
+      ]
     }
   }
 }
