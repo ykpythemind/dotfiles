@@ -177,8 +177,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'slim-template/vim-slim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-ruby/vim-ruby'
-Plug 'kana/vim-textobj-user'
-Plug 'rhysd/vim-textobj-ruby'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
@@ -274,7 +272,7 @@ endif
 if executable('ag')
   let g:ackprg = 'ag --smart-case --vimgrep --hidden'
 endif
-nmap <Leader>a :Ack!<Space>
+nmap <Leader>f :Ack!<Space>
 cnoreabbrev Ag Ack!
 cnoreabbrev ag Ack!
 
