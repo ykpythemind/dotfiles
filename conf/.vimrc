@@ -103,6 +103,11 @@ nnoremap gk k
 nnoremap tn :<C-u>tabnew<CR>
 nnoremap tl gt
 nnoremap th gT
+noremap t1 1gt
+noremap t2 2gt
+noremap t3 3gt
+noremap t4 4gt
+noremap t5 5gt
 
 nnoremap <C-s> :w<CR>
 
@@ -173,8 +178,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'itchyny/lightline.vim'
-Plug 'w0ng/vim-hybrid'
 Plug 'koizuss/shareline.vim'
 " Plug 'eugen0329/vim-esearch'
 Plug 'tyru/open-browser.vim'
@@ -191,6 +194,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-ruby/vim-ruby'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+" view
+Plug 'itchyny/lightline.vim'
+Plug 'w0ng/vim-hybrid'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
@@ -257,15 +263,14 @@ function! s:show_documentation()
 endfunction
 
 "color
-set termguicolors
 set background=dark
 colorscheme hybrid
-hi String ctermfg=166 guifg=#ef3434
-hi Character ctermfg=166 guifg=#ef3434
-hi Delimiter ctermfg=183 guifg=#E58599
-hi Comment ctermfg=102
-hi Visual ctermbg=236
-hi Search ctermbg=24 guibg=#13354A ctermfg=100 guifg=#dddddd
+" hi String ctermfg=166 guifg=#ef3434
+" hi Character ctermfg=166 guifg=#ef3434
+" hi Delimiter ctermfg=183 guifg=#E58599
+" hi Comment ctermfg=102
+" hi Visual ctermbg=236
+" hi Search ctermbg=24 guibg=#13354A ctermfg=100 guifg=#dddddd
 
 " CtrlP
 nnoremap <C-e> :CtrlPBuffer<CR>
