@@ -1,0 +1,12 @@
+{
+  "coc.preferences.hoverTarget": "float",
+  "coc.preferences.useQuickfixForLocations": true,
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    }
+  }
+}

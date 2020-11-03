@@ -6,7 +6,8 @@ set autoread
 set hidden
 set scrolloff=10
 set noswapfile
-set nobackup
+set nobackup " coc
+set nowritebackup " coc
 set ambiwidth=double
 set mouse=a
 set ttimeoutlen=100
@@ -33,7 +34,8 @@ set backspace=indent,eol,start
 set nrformats-=octal
 " set lazyredraw
 set ttyfast
-set updatetime=1000
+set updatetime=300
+set shortmess+=c " coc
 
 set shiftwidth=2
 set tabstop=4
@@ -77,7 +79,6 @@ inoremap <C-f> <Right>
 inoremap <C-k> <C-o>D
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
-inoremap <C-d> <Del>
 
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
@@ -127,6 +128,16 @@ nnoremap <C-n> :cnext<CR>
 nnoremap <C-m> :cprevious<CR>
 nnoremap <leader>cc :cclose<CR>
 nnoremap <leader>co :copen<CR>
+" In the quickfix window, <CR> is used to jump to the error under the
+" cursor, so undefine the mapping there.
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+" window
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
 
 if has("multi_lang")
   language C
@@ -141,12 +152,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/ctrlp-matchfuzzy'
-Plug 'mattn/ctrlp-register'
-Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
 Plug 'w0ng/vim-hybrid'
-Plug 'tomasr/molokai'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -171,6 +180,10 @@ let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 let g:go_highlight_extra_types = 1
 let g:go_highlight_structs = 1
+let g:go_fmt_autosave = 1
+let g:go_def_mode='gopls'
+let g:go_def_mapping_enabled = 0
+let g:go_gorename_command = "gopls"
 
 augroup GolangSettings
   autocmd!
@@ -185,6 +198,15 @@ let g:strip_whitespace_confirm=0
 
 " prettier
 nnoremap <Leader>p :Prettier<CR>
+
+" coc
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 "color
 set termguicolors
@@ -232,40 +254,16 @@ let g:lightline = {
   \'active': {
   \  'left': [
   \    ['mode', 'paste'],
-  \    ['gitbranch', 'readonly', 'filename', 'modified', 'ale'] ],
+  \    ['gitbranch', 'readonly', 'filename', 'modified'] ],
   \ 'right': [
-  \            [ 'filetype' ] ]
+  \            [ 'filetype', 'coc' ] ]
   \},
   \'component_function': {
     \   'filename': 'LightlineFilename',
-    \   'ale': 'ALEGetStatusLine',
-    \   'gitbranch': 'fugitive#head'
+    \   'gitbranch': 'fugitive#head',
+    \   'coc': 'coc#status'
   \}
 \ }
 
-" ale lint
-let g:ale_sign_error = '!!'
-let g:ale_sign_warning = '=='
-let g:ale_lint_delay = 200
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save = 1
-let g:ale_linters = {
-  \ 'javascript': ['eslint'],
-  \ }
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
-let g:ale_statusline_format = ['[E]%d', '[W]%d', 'ok']
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_echo_msg_error_str = 'Error'
-let g:ale_echo_msg_warning_str = 'Warn'
-let g:ale_set_localist = 1
-let g:ale_set_quickfix = 0
-let g:ale_set_highlights = 0
-
 " other
-if $SHELL =~ '/fish$'
-  set shell=bash
-endif
-
+set shell=fish
