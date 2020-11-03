@@ -139,6 +139,13 @@ nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sh <C-w>h
 
+" 改行時にコメントさせない
+augroup auto_comment_off
+    autocmd!
+    autocmd BufEnter * setlocal formatoptions-=r
+    autocmd BufEnter * setlocal formatoptions-=o
+augroup END
+
 if has("multi_lang")
   language C
 endif
@@ -156,6 +163,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
 Plug 'w0ng/vim-hybrid'
+Plug 'koizuss/shareline.vim'
+Plug 'tyru/open-browser.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -198,6 +207,10 @@ let g:strip_whitespace_confirm=0
 
 " prettier
 nnoremap <Leader>p :Prettier<CR>
+
+" openbrowser
+nmap <Leader>b <Plug>(openbrowser-smart-search)
+vmap <Leader>b <Plug>(openbrowser-smart-search)
 
 " coc
 " Use <c-space> to trigger completion.
