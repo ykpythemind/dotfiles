@@ -55,6 +55,7 @@ if has('nvim')
   set inccommand=split
   set pumblend=10
   " let g:ruby_host_prog = '~/.rbenv/versions/2.7.0/bin/neovim-ruby-host'
+  let g:python3_host_prog = '~/.pyenv/shims/python3'
 endif
 
 let g:mapleader = "\<space>"
@@ -150,6 +151,14 @@ augroup auto_comment_off
     autocmd BufEnter * setlocal formatoptions-=o
 augroup END
 
+" term
+autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
+tnoremap <C-q> <C-\><C-n>:q<CR>
+tnoremap <C-j> <C-\><C-n>
+tnoremap <ESC> <C-\><C-n>
+
+nnoremap <leader>t :<C-u>Deol -split=floating<CR>
+
 if has("multi_lang")
   language C
 endif
@@ -171,6 +180,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-qfreplace'
+Plug 'Shougo/deol.nvim'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
