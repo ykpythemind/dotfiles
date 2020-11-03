@@ -31,11 +31,11 @@ set clipboard&
 set clipboard^=unnamed,unnamedplus
 set whichwrap=b,s,h,l,<,>,~,[,]
 set backspace=indent,eol,start
-set nrformats-=octal
 " set lazyredraw
 set ttyfast
 set updatetime=300
 set shortmess+=c " coc
+set shortmess-=S
 
 set shiftwidth=2
 set tabstop=4
@@ -99,23 +99,21 @@ nnoremap gk k
 
 nnoremap <C-s> :w<CR>
 
-" replace modeに入らない
 map R <Nop>
 
 " 空行挿入
 nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
 nnoremap <silent> <Space>O :<C-u>for i in range(1, v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 
-" Two-byte space
-"   must before 'colorscheme'
+" Two-byte space --- must before 'colorscheme'
 augroup highlightIdegraphicSpace
   autocmd!
   autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
   autocmd VimEnter,WinEnter * match IdeographicSpace /　/
 augroup END
 
-nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
-nnoremap <silent> <Esc><Esc> :nohlsearch<CR>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+nnoremap <C-l> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 
 if executable('git')
   set grepprg=git\ grep\ --no-index\ -I\ --line-number
