@@ -161,7 +161,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mattn/ctrlp-matchfuzzy'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
@@ -194,16 +193,6 @@ let g:go_fmt_autosave = 1
 let g:go_def_mode='gopls'
 let g:go_def_mapping_enabled = 0
 let g:go_gorename_command = "gopls"
-
-nnoremap <silent> gh :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
 
 augroup GolangSettings
   autocmd!
@@ -247,6 +236,15 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 "color
 set termguicolors
@@ -267,7 +265,6 @@ let g:ctrlp_prompt_mappings = {
     \ 'PrtHistory(-1)':       ['<down>'],
     \ 'PrtHistory(1)':        ['<up>'],
     \ }
-" let g:ctrlp_match_func = {'match': 'ctrlp_matchfuzzy#matcher'}
 
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -f -g ""'
