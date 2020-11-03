@@ -8,6 +8,7 @@ ln -sf $CONFPATH/.gitconfig ~/.gitconfig
 ln -sf $CONFPATH/.gitignore_global ~/.gitignore_global
 ln -sf $CONFPATH/.tmux.conf ~/.tmux.conf
 ln -sf $CONFPATH/.bashrc ~/.bashrc
+ln -sf $CONFPATH/.agignore ~/.agignore
 
 curl -fL https://raw.githubusercontent.com/eed3si9n/git-gone/master/git-gone -o /usr/local/bin/git-gone
 chmod +x /usr/local/bin/git-gone
