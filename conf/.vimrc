@@ -157,7 +157,8 @@ tnoremap <C-q> <C-\><C-n>:q<CR>
 tnoremap <C-j> <C-\><C-n>
 tnoremap <ESC> <C-\><C-n>
 
-nnoremap <leader>t :<C-u>Deol -split=floating<CR>
+nnoremap <C-t> :<C-u>Deol -split=floating<CR>
+tnoremap <C-t> <C-\><C-n>:q<CR>
 
 if has("multi_lang")
   language C
