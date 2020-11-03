@@ -136,6 +136,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'mileszs/ack.vim'
 Plug 'justinmk/vim-dirvish'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -146,12 +147,10 @@ Plug 'itchyny/lightline.vim'
 Plug 'vim-jp/vimdoc-ja'
 Plug 'w0ng/vim-hybrid'
 Plug 'tomasr/molokai'
-Plug 'mbbill/undotree'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue'] }
-Plug 'Lokaltog/vim-easymotion'
 Plug 'ReekenX/vim-rename2'
 Plug 'mattn/emmet-vim'
 Plug 'thinca/vim-qfreplace'
@@ -183,14 +182,6 @@ augroup END
 let g:better_whitespace_enabled=0 " disable! (slow down)
 let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
-
-" easymotion
-let g:EasyMotion_do_mapping = 0 "Disable default mappings
-let g:EasyMotion_enter_jump_first = 1
-let g:EasyMotion_smartcase = 1
-nmap s <Plug>(easymotion-s2)
-vmap s <Plug>(easymotion-s2)
-nmap S <Plug>(easymotion-overwin-f2)
 
 " prettier
 nnoremap <Leader>p :Prettier<CR>
