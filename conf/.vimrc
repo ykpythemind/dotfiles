@@ -207,7 +207,6 @@ endfunction
 
 augroup GolangSettings
   autocmd!
-  autocmd FileType go nmap <Leader>i <Plug>(go-info)
   autocmd FileType go setlocal sw=4 ts=4 sts=4 noet
 augroup END
 
