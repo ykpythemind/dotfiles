@@ -33,6 +33,7 @@ end
 
 set -x PAGER less
 set -x LESS '-g -i -M -R -S -w -z-4'
+set -x LESSCHARSET utf-8
 
 # alias
 

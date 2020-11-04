@@ -2,6 +2,7 @@ scriptencoding utf-8
 filetype plugin indent on
 syntax enable
 
+set encoding=utf-8
 set autoread
 set hidden
 set scrolloff=10
