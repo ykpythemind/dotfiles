@@ -17,6 +17,7 @@ set title
 set number
 set ruler
 set wrap
+set cursorline
 set autoindent
 set breakindent
 set wildmenu
@@ -42,7 +43,6 @@ set shortmess-=S
 set shiftwidth=2
 set tabstop=4
 set smarttab
-set expandtab
 
 set noerrorbells
 set novisualbell
@@ -186,8 +186,6 @@ Plug 'tyru/open-browser.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-qfreplace'
-Plug 'Shougo/deol.nvim'
-Plug 'lambdalisue/fern.vim'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -238,7 +236,6 @@ let g:coc_global_extensions = [
       \ 'coc-prettier',
       \ 'coc-solargraph',
       \ 'coc-stylelint',
-      \ 'coc-ultisnips'
       \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -282,12 +279,7 @@ endfunction
 set background=dark
 set termguicolors
 colorscheme hybrid
-" hi String ctermfg=166 guifg=#ef3434
-" hi Character ctermfg=166 guifg=#ef3434
-" hi Delimiter ctermfg=183 guifg=#E58599
-" hi Comment ctermfg=102
-" hi Visual ctermbg=236
-" hi Search ctermbg=24 guibg=#13354A ctermfg=100 guifg=#dddddd
+hi String ctermfg=166 guifg=#d75f00
 
 " CtrlP
 nnoremap <C-e> :CtrlPBuffer<CR>
