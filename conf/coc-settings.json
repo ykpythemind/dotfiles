@@ -13,18 +13,18 @@
     "json"
   ],
   "suggest.floatEnable": true,
-  "suggest.maxCompleteItemCount": 100,
+  "suggest.maxCompleteItemCount": 20,
   "suggest.noselect": false,
   "languageserver": {
     "go": {
       "command": "gopls",
-      "rootPatterns": [
-        "go.mod"
-      ],
+      "rootPatterns": ["go.mod"],
       "trace.server": "verbose",
-      "filetypes": [
-        "go"
-      ]
+      "filetypes": ["go"]
     }
-  }
+  },
+  "solargraph.useBundler": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true
 }

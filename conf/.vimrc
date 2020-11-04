@@ -168,9 +168,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'koizuss/shareline.vim'
 Plug 'eugen0329/vim-esearch'
 Plug 'tyru/open-browser.vim'
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-qfreplace'
+Plug 'ntpeters/vim-better-whitespace'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -201,14 +201,14 @@ augroup GolangSettings
   autocmd FileType go setlocal sw=4 ts=4 sts=4 noet
 augroup END
 
+" openbrowser
+nmap <Leader>b <Plug>(openbrowser-smart-search)
+vmap <Leader>b <Plug>(openbrowser-smart-search)
+
 " white space
 let g:better_whitespace_enabled=0 " disable! (slow down)
 let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
-
-" openbrowser
-nmap <Leader>b <Plug>(openbrowser-smart-search)
-vmap <Leader>b <Plug>(openbrowser-smart-search)
 
 " coc
 let g:coc_global_extensions = [
