@@ -171,6 +171,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-qfreplace'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'lambdalisue/fern.vim'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -191,7 +192,6 @@ let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 let g:go_highlight_extra_types = 1
 let g:go_highlight_structs = 1
-let g:go_fmt_autosave = 1
 let g:go_def_mode='gopls'
 let g:go_def_mapping_enabled = 0
 let g:go_gorename_command = "gopls"
@@ -266,6 +266,18 @@ set termguicolors
 colorscheme hybrid
 hi String ctermfg=166 guifg=#d75f00
 hi LineNr ctermfg=2 guifg=#4c535c
+
+" fern
+nnoremap <C-t> :Fern .<CR>
+let g:fern#default_hidden = 1
+
+function! s:init_fern() abort
+  nmap <buffer> h <Plug>(fern-action-leave)
+endfunction
+augroup fern-custom
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
+augroup END
 
 " CtrlP
 nnoremap <C-e> :CtrlPBuffer<CR>
