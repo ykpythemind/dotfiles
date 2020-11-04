@@ -3,6 +3,7 @@ filetype plugin indent on
 syntax enable
 
 set encoding=utf-8
+set fenc=utf-8
 set autoread
 set hidden
 set scrolloff=10
@@ -180,12 +181,13 @@ Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'koizuss/shareline.vim'
-" Plug 'eugen0329/vim-esearch'
+Plug 'eugen0329/vim-esearch'
 Plug 'tyru/open-browser.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-qfreplace'
 Plug 'Shougo/deol.nvim'
+Plug 'lambdalisue/fern.vim'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -226,6 +228,19 @@ nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)
 
 " coc
+let g:coc_global_extensions = [
+      \ 'coc-html',
+      \ 'coc-css',
+      \ 'coc-json',
+      \ 'coc-tsserver',
+      \ 'coc-eslint',
+      \ 'coc-tslint-plugin',
+      \ 'coc-prettier',
+      \ 'coc-solargraph',
+      \ 'coc-stylelint',
+      \ 'coc-ultisnips'
+      \ ]
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -265,6 +280,7 @@ endfunction
 
 "color
 set background=dark
+set termguicolors
 colorscheme hybrid
 " hi String ctermfg=166 guifg=#ef3434
 " hi Character ctermfg=166 guifg=#ef3434
