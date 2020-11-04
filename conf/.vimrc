@@ -15,7 +15,6 @@ set mouse=a
 set ttimeoutlen=100
 set title
 set number
-set ruler
 set wrap
 set cursorline
 set autoindent
@@ -71,12 +70,7 @@ nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q <Nop>
 nnoremap Y y$
-
-" 中央に固定しつつスクロール
-nnoremap <C-f> <C-f>zz
-nnoremap <C-b> <C-b>zz
-nnoremap n nzz
-nnoremap N Nzz
+map R <Nop>
 
 inoremap <C-j> <Esc>
 inoremap <C-b> <Left>
@@ -94,8 +88,9 @@ cnoremap <C-v> <C-f>a
 cnoremap <c-x> <c-r>=expand('%:p')<cr>
 
 " 置換
-nnoremap gs :<C-u>%s///g<Left><Left><Left>
-vnoremap gs :s///g<Left><Left><Left>
+nnoremap sg :<C-u>%s///g<Left><Left><Left>
+vnoremap sg :s///g<Left><Left><Left>
+vnoremap s <Nop>
 
 nnoremap j gj
 nnoremap k gk
@@ -105,15 +100,8 @@ nnoremap gk k
 nnoremap tn :<C-u>tabnew<CR>
 nnoremap tl gt
 nnoremap th gT
-noremap t1 1gt
-noremap t2 2gt
-noremap t3 3gt
-noremap t4 4gt
-noremap t5 5gt
 
 nnoremap <C-s> :w<CR>
-
-map R <Nop>
 
 " 空行挿入
 nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
@@ -140,8 +128,7 @@ nnoremap <C-n> :cnext<CR>
 nnoremap <C-m> :cprevious<CR>
 nnoremap <leader>cc :cclose<CR>
 nnoremap <leader>co :copen<CR>
-" In the quickfix window, <CR> is used to jump to the error under the
-" cursor, so undefine the mapping there.
+" In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " window
@@ -171,6 +158,7 @@ endif
 " Plugin
 call plug#begin('~/.vim/plugged')
 Plug 'mileszs/ack.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'justinmk/vim-dirvish'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
