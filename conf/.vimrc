@@ -20,8 +20,9 @@ set wrap
 set cursorline
 set autoindent
 set breakindent
+set splitbelow
+set splitright
 set wildmenu
-set wildignore+=*/.git/*,*/tmp/*,*.swp
 set cmdheight=2
 set laststatus=2
 set display=lastline
@@ -33,7 +34,6 @@ set wildmode=list:longest,full
 set clipboard&
 set clipboard^=unnamed,unnamedplus
 set whichwrap=b,s,h,l,<,>,~,[,]
-set backspace=indent,eol,start
 " set lazyredraw
 set ttyfast
 set updatetime=300
@@ -164,9 +164,6 @@ tnoremap <C-q> <C-\><C-n>:q<CR>
 tnoremap <C-j> <C-\><C-n>
 tnoremap <ESC> <C-\><C-n>
 
-nnoremap <C-t> :<C-u>Deol -split=floating<CR>
-tnoremap <C-t> <C-\><C-n>:q<CR>
-
 if has("multi_lang")
   language C
 endif
@@ -280,6 +277,7 @@ set background=dark
 set termguicolors
 colorscheme hybrid
 hi String ctermfg=166 guifg=#d75f00
+hi LineNr ctermfg=2 guifg=#4c535c
 
 " CtrlP
 nnoremap <C-e> :CtrlPBuffer<CR>
@@ -298,9 +296,7 @@ endif
 if executable('ag')
   let g:ackprg = 'ag --smart-case --vimgrep --hidden'
 endif
-nmap <Leader>f :Ack!<Space>
-cnoreabbrev Ag Ack!
-cnoreabbrev ag Ack!
+nmap <Leader>a :Ack!<Space>
 
 " Lightline
 function! LightlineFilename()
