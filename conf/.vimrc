@@ -158,6 +158,7 @@ endif
 " Plugin
 call plug#begin('~/.vim/plugged')
 Plug 'mileszs/ack.vim'
+Plug 'cohama/lexima.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'justinmk/vim-dirvish'
 Plug 'editorconfig/editorconfig-vim'
