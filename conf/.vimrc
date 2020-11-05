@@ -45,6 +45,7 @@ set completeopt=menuone,noinsert
 set shiftwidth=2
 set tabstop=4
 set smarttab
+set expandtab
 
 set noerrorbells
 set novisualbell
@@ -175,6 +176,7 @@ Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-qfreplace'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'lambdalisue/fern.vim'
+Plug 'mhinz/vim-grepper'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -273,6 +275,15 @@ set termguicolors
 colorscheme hybrid
 hi String ctermfg=166 guifg=#d75f00
 hi LineNr ctermfg=2 guifg=#4c535c
+
+" grepper
+let g:grepper = {
+  \ 'tools': ['ag', 'git'],
+  \ 'ag': {
+  \   'grepprg': 'ag --hidden --vimgrep',
+  \ }}
+nnoremap <leader>g :Grepper -tool ag<cr>
+nnoremap <leader>G :Grepper -tool ag -buffers<cr>
 
 " fern
 nnoremap <C-t> :Fern . -reveal=%<CR>
