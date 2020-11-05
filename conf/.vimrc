@@ -268,7 +268,7 @@ hi String ctermfg=166 guifg=#d75f00
 hi LineNr ctermfg=2 guifg=#4c535c
 
 " fern
-nnoremap <C-t> :Fern .<CR>
+nnoremap <C-t> :Fern . -reveal=%<CR>
 let g:fern#default_hidden = 1
 
 function! s:init_fern() abort

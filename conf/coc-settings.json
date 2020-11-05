@@ -12,7 +12,7 @@
     "typescript.tsx",
     "json"
   ],
-  "suggest.floatEnable": true,
+  "suggest.floatEnable": false,
   "suggest.maxCompleteItemCount": 20,
   "suggest.noselect": false,
   "languageserver": {
