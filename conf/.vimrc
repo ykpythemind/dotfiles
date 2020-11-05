@@ -177,6 +177,7 @@ Plug 'thinca/vim-qfreplace'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'lambdalisue/fern.vim'
 Plug 'mhinz/vim-grepper'
+Plug 'rhysd/git-messenger.vim'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -296,6 +297,9 @@ augroup fern-custom
   autocmd! *
   autocmd FileType fern call s:init_fern()
 augroup END
+
+" git
+nmap <C-w>m <Plug>(git-messenger)
 
 " CtrlP
 nnoremap <C-e> :CtrlPBuffer<CR>
