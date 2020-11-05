@@ -12,9 +12,10 @@
     "typescript.tsx",
     "json"
   ],
-  "suggest.floatEnable": false,
+  "suggest.floatEnable": true,
   "suggest.maxCompleteItemCount": 20,
   "suggest.noselect": false,
+  "suggest.keepCompleteopt": true,
   "languageserver": {
     "go": {
       "command": "gopls",

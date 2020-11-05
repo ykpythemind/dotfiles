@@ -25,6 +25,7 @@ set wildmenu
 set cmdheight=2
 set laststatus=2
 set display=lastline
+set backspace=indent,eol,start
 set showcmd
 set synmaxcol=400
 set list
@@ -38,6 +39,8 @@ set ttyfast
 set updatetime=300
 set shortmess+=c " coc
 set shortmess-=S
+
+set completeopt=menuone,noinsert
 
 set shiftwidth=2
 set tabstop=4
@@ -227,10 +230,10 @@ let g:coc_global_extensions = [
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? "\<down>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> pumvisible() ? "\<up>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -245,6 +248,10 @@ if exists('*complete_info')
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
+inoremap <silent><expr><C-n> pumvisible() ? "\<Down>" : "\<C-n>"
+inoremap <silent><expr><C-p> pumvisible() ? "\<Up>" : "\<C-p>"
+" inoremap <expr> <C-p> pumvisible() ? '<C-y><Up>' : '<Up>'
+" inoremap <expr> <C-n> pumvisible() ? '<C-y><Down>' : '<Down>'
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
