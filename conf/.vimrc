@@ -303,6 +303,7 @@ nmap <C-w>m <Plug>(git-messenger)
 
 " CtrlP
 nnoremap <C-e> :CtrlPBuffer<CR>
+command! -nargs=0 Mru CtrlPMRUFiles
 let g:ctrlp_prompt_mappings = {
     \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
     \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
