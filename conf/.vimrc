@@ -167,7 +167,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'commit': 'ad1793dce0a59afcf8b324b45a1168c032deb162'}
 Plug 'koizuss/shareline.vim'
 Plug 'eugen0329/vim-esearch'
 Plug 'tyru/open-browser.vim'
