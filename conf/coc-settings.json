@@ -1,7 +1,7 @@
 {
   "coc.preferences.hoverTarget": "float",
   "coc.preferences.useQuickfixForLocations": true,
-  "coc.preferences.jumpCommand": "vsplit",
+  "coc.preferences.jumpCommand": "edit",
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
