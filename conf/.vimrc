@@ -121,9 +121,6 @@ augroup END
 nnoremap <C-l> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 
-if executable('git')
-  set grepprg=git\ grep\ --no-index\ -I\ --line-number
-endif
 autocmd QuickfixCmdPost vimgrep copen
 autocmd QuickfixCmdPost grep copen
 
@@ -286,8 +283,11 @@ let g:grepper = {
   \ 'ag': {
   \   'grepprg': 'ag --hidden --vimgrep',
   \ }}
-nnoremap <leader>g :Grepper -tool ag<cr>
-nnoremap <leader>G :Grepper -tool ag -buffers<cr>
+nnoremap F :Grepper -tool ag<cr>
+nnoremap <leader>F :Grepper -tool ag -buffers<cr>
+" nmap F <plug>(GrepperOperator)
+xmap F <plug>(GrepperOperator)
+let g:grepper.highlight = 0
 
 " fern
 nnoremap <C-t> :Fern . -reveal=%<CR>
