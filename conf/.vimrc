@@ -121,9 +121,6 @@ augroup END
 nnoremap <C-l> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 
-autocmd QuickfixCmdPost vimgrep copen
-autocmd QuickfixCmdPost grep copen
-
 " quickfix
 nnoremap <C-n> :cnext<CR>
 nnoremap <C-m> :cprevious<CR>
@@ -171,9 +168,9 @@ Plug 'thinca/vim-qfreplace'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'lambdalisue/fern.vim'
 Plug 'mhinz/vim-grepper'
-Plug 'rhysd/git-messenger.vim'
 Plug 'terryma/vim-expand-region'
 " Git
+Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 " lang
@@ -209,6 +206,7 @@ let g:strip_whitespace_confirm=0
 
 " git-messenger
 let g:git_messenger_date_format = "%Y/%M/%d %X"
+nmap <C-g>m <Plug>(git-messenger)
 
 " coc
 let g:coc_global_extensions = [
@@ -284,7 +282,8 @@ nnoremap F :Grepper -tool ag<cr>
 nnoremap <leader>F :Grepper -tool ag -buffers<cr>
 " nmap F <plug>(GrepperOperator)
 xmap F <plug>(GrepperOperator)
-let g:grepper.highlight = 0
+let g:grepper.highlight = 1
+let g:grepper.switch = 0
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -300,9 +299,6 @@ augroup fern-custom
   autocmd! *
   autocmd FileType fern call s:init_fern()
 augroup END
-
-" git
-nmap <C-w>m <Plug>(git-messenger)
 
 " CtrlP
 nnoremap <C-e> :CtrlPBuffer<CR>
