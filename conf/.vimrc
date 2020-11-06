@@ -160,7 +160,6 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'mileszs/ack.vim'
 Plug 'cohama/lexima.vim'
-Plug 'justinmk/vim-dirvish'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -212,6 +211,9 @@ vmap <Leader>b <Plug>(openbrowser-smart-search)
 let g:better_whitespace_enabled=0 " disable! (slow down)
 let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
+
+" git-messenger
+let g:git_messenger_date_format = "%Y/%M/%d %X"
 
 " coc
 let g:coc_global_extensions = [
