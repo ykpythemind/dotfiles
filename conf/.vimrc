@@ -167,13 +167,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'commit': 'ad1793dce0a59afcf8b324b45a1168c032deb162'}
 Plug 'koizuss/shareline.vim'
 Plug 'eugen0329/vim-esearch'
-Plug 'tyru/open-browser.vim'
-Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-qfreplace'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'lambdalisue/fern.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'rhysd/git-messenger.vim'
+Plug 'terryma/vim-expand-region'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -202,10 +201,6 @@ augroup GolangSettings
   autocmd!
   autocmd FileType go setlocal sw=4 ts=4 sts=4 noet
 augroup END
-
-" openbrowser
-nmap <Leader>b <Plug>(openbrowser-smart-search)
-vmap <Leader>b <Plug>(openbrowser-smart-search)
 
 " white space
 let g:better_whitespace_enabled=0 " disable! (slow down)
@@ -290,6 +285,9 @@ nnoremap <leader>F :Grepper -tool ag -buffers<cr>
 " nmap F <plug>(GrepperOperator)
 xmap F <plug>(GrepperOperator)
 let g:grepper.highlight = 0
+
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " fern
 nnoremap <C-t> :Fern . -reveal=%<CR>
