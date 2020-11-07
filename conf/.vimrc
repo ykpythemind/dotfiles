@@ -30,7 +30,6 @@ set showcmd
 set synmaxcol=400
 set list
 set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
-set wildmode=list:longest,full
 set clipboard&
 set clipboard^=unnamed,unnamedplus
 set whichwrap=b,s,h,l,<,>,~,[,]
@@ -106,10 +105,6 @@ nnoremap tl gt
 nnoremap th gT
 
 nnoremap <C-s> :w<CR>
-
-" 空行挿入
-nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
-nnoremap <silent> <Space>O :<C-u>for i in range(1, v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 
 " Two-byte space --- must before 'colorscheme'
 augroup highlightIdegraphicSpace
@@ -293,6 +288,8 @@ nnoremap <leader>F :Grepper -tool ag -buffers<cr>
 xmap F <plug>(GrepperOperator)
 let g:grepper.highlight = 1
 let g:grepper.switch = 0
+
+autocmd QuickfixCmdPost vimgrep copen
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
