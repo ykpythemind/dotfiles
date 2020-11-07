@@ -146,7 +146,6 @@ augroup END
 " term
 autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 tnoremap <C-q> <C-\><C-n>:q<CR>
-tnoremap <C-j> <C-\><C-n>
 tnoremap <ESC> <C-\><C-n>
 
 if has("multi_lang")
@@ -170,6 +169,7 @@ Plug 'lambdalisue/fern.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'
@@ -185,6 +185,16 @@ Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
+
+" fzf
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+let g:fzf_layout = { 'down': '30%' }
+autocmd! FileType fzf set laststatus=0 noshowmode noruler
+  \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+if has("nvim")
+  au TermOpen * tnoremap <Esc> <c-\><c-n>
+  au FileType fzf tunmap <Esc>
+endif
 
 " golang
 let g:go_fmt_command = "goimports"
@@ -340,3 +350,10 @@ let g:lightline = {
 
 " other
 set shell=fish
+
+" https://dev.classmethod.jp/articles/trouble-shoot-ctrlv-in-vim/
+set nocompatible
+map ^[OA ^[ka
+map ^[OB ^[ja
+map ^[OC ^[la
+map ^[OD ^[ha
