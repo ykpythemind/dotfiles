@@ -154,7 +154,7 @@ Plug 'cohama/lexima.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'commit': 'ad1793dce0a59afcf8b324b45a1168c032deb162'}
 Plug 'koizuss/shareline.vim'
 Plug 'eugen0329/vim-esearch'
@@ -165,6 +165,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'
@@ -190,6 +191,9 @@ if has("nvim")
   au TermOpen * tnoremap <Esc> <c-\><c-n>
   au FileType fzf tunmap <Esc>
 endif
+nmap <C-P> :Files<CR>
+nmap <leader>m :History<CR>
+let g:fzf_preview_window = []
 
 " golang
 let g:go_fmt_command = "goimports"
@@ -307,24 +311,25 @@ augroup fern-custom
 augroup END
 
 " CtrlP
-nnoremap <C-e> :CtrlPBuffer<CR>
-command! -nargs=0 Mru CtrlPMRUFiles
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
-    \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
-    \ 'PrtHistory(-1)':       ['<down>'],
-    \ 'PrtHistory(1)':        ['<up>'],
-    \ }
-
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -f -g ""'
-endif
+" nnoremap <C-e> :CtrlPBuffer<CR>
+" command! -nargs=0 Mru CtrlPMRUFiles
+" let g:ctrlp_prompt_mappings = {
+"     \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
+"     \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
+"     \ 'PrtHistory(-1)':       ['<down>'],
+"     \ 'PrtHistory(1)':        ['<up>'],
+"     \ }
+" if executable('ag')
+"   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -f -g ""'
+" endif
 
 " ack
 if executable('ag')
   let g:ackprg = 'ag --smart-case --vimgrep --hidden'
 endif
 nmap <Leader>a :Ack!<Space>
+let g:ackhighlight = 1
+vnoremap <Leader>a y:Ack! <C-r>=fnameescape(@")<CR>
 
 " Lightline
 function! LightlineFilename()
