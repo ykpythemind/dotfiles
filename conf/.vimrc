@@ -169,6 +169,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'lambdalisue/fern.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'terryma/vim-expand-region'
+Plug 'ConradIrwin/vim-bracketed-paste'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'
@@ -235,18 +236,16 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position. Coc only does snippet and additional edit on confirm.
 " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
 if exists('*complete_info')
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
+" not working...
 inoremap <silent><expr><C-n> pumvisible() ? "\<Down>" : "\<C-n>"
 inoremap <silent><expr><C-p> pumvisible() ? "\<Up>" : "\<C-p>"
-" inoremap <expr> <C-p> pumvisible() ? '<C-y><Up>' : '<Up>'
-" inoremap <expr> <C-n> pumvisible() ? '<C-y><Down>' : '<Down>'
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
