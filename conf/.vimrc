@@ -173,6 +173,7 @@ Plug 'tpope/vim-fugitive'
 " lang
 Plug 'slim-template/vim-slim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'mattn/vim-goimports'
 Plug 'vim-ruby/vim-ruby'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -197,11 +198,13 @@ let g:fzf_preview_window = []
 
 " golang
 let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 0 " disable: coc.nvimを壊す
 let g:go_list_type = "quickfix"
 let g:go_highlight_extra_types = 1
 let g:go_highlight_structs = 1
 let g:go_def_mode='gopls'
 let g:go_def_mapping_enabled = 0
+let g:go_doc_keywordprg_enabled = 0
 let g:go_gorename_command = "gopls"
 
 augroup GolangSettings
@@ -219,6 +222,7 @@ let g:git_messenger_date_format = "%Y/%M/%d %X"
 nmap <C-g>m <Plug>(git-messenger)
 
 " coc
+" let $NVIM_COC_LOG_LEVEL = 'debug'
 let g:coc_global_extensions = [
       \ 'coc-html',
       \ 'coc-css',
@@ -229,6 +233,7 @@ let g:coc_global_extensions = [
       \ 'coc-prettier',
       \ 'coc-solargraph',
       \ 'coc-stylelint',
+      \ 'coc-go',
       \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.

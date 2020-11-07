@@ -10,7 +10,8 @@
     "typescript",
     "typescriptreact",
     "typescript.tsx",
-    "json"
+    "json",
+    "go"
   ],
   "suggest.floatEnable": true,
   "suggest.maxCompleteItemCount": 20,
@@ -18,11 +19,15 @@
   "suggest.keepCompleteopt": true,
   "languageserver": {
     "go": {
+      "enable": false,
       "command": "gopls",
       "rootPatterns": ["go.mod"],
       "trace.server": "verbose",
       "filetypes": ["go"]
     }
+  },
+  "go.goplsOptions": {
+    "gofumpt": true
   },
   "solargraph.useBundler": true,
   "solargraph.diagnostics": true,
