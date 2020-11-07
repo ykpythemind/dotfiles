@@ -19,6 +19,8 @@ set -x PATH $GOROOT/bin $PATH
 
 set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 
+source ~/google-cloud-sdk/path.fish.inc
+
 eval (direnv hook fish)
 
 set -U GHQ_SELECTOR peco
