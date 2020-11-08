@@ -154,7 +154,7 @@ Plug 'cohama/lexima.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'commit': 'ad1793dce0a59afcf8b324b45a1168c032deb162'}
 Plug 'koizuss/shareline.vim'
 Plug 'eugen0329/vim-esearch'
@@ -316,7 +316,8 @@ augroup fern-custom
 augroup END
 
 " CtrlP
-" nnoremap <C-e> :CtrlPBuffer<CR>
+let g:ctrlp_map = '<leader><c-p>'
+nnoremap <C-e> :CtrlPBuffer<CR>
 " command! -nargs=0 Mru CtrlPMRUFiles
 " let g:ctrlp_prompt_mappings = {
 "     \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
