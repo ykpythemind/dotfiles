@@ -5,6 +5,7 @@ brew:
   - direnv
   - go
   - fzy
+  - fzf
   - peco
   - ag
   - ghq

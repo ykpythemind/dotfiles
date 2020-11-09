@@ -65,9 +65,9 @@ endif
 let g:mapleader = "\<space>"
 
 " 貼り付け時のカーソル移動
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
+" vnoremap <silent> y y`]
+" vnoremap <silent> p p`]
+" nnoremap <silent> p p`]
 
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
