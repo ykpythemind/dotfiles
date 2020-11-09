@@ -33,7 +33,6 @@ set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
 set clipboard&
 set clipboard^=unnamed,unnamedplus
 set whichwrap=b,s,h,l,<,>,~,[,]
-" set lazyredraw
 set ttyfast
 set updatetime=300
 set shortmess+=c " coc
@@ -64,10 +63,7 @@ endif
 
 let g:mapleader = "\<space>"
 
-" 貼り付け時のカーソル移動
-" vnoremap <silent> y y`]
-" vnoremap <silent> p p`]
-" nnoremap <silent> p p`]
+vnoremap <silent> y y`]
 
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
@@ -90,7 +86,6 @@ cnoremap <C-u> <C-e><C-u>
 cnoremap <C-v> <C-f>a
 cnoremap <c-x> <c-r>=expand('%:p')<cr>
 
-" 置換
 nnoremap sg :<C-u>%s///g<Left><Left><Left>
 vnoremap sg :s///g<Left><Left><Left>
 vnoremap s <Nop>
@@ -124,13 +119,6 @@ nnoremap <leader>co :copen<CR>
 " In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
-" window
-nnoremap s <Nop>
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sl <C-w>l
-nnoremap sh <C-w>h
-
 " 改行時にコメントさせない
 augroup auto_comment_off
     autocmd!
@@ -142,10 +130,6 @@ augroup END
 autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 tnoremap <C-q> <C-\><C-n>:q<CR>
 tnoremap <ESC> <C-\><C-n>
-
-if has("multi_lang")
-  language C
-endif
 
 " Plugin
 call plug#begin('~/.vim/plugged')
@@ -170,6 +154,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'lambdalisue/fern-git-status.vim'
 " lang
 Plug 'slim-template/vim-slim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -198,7 +183,7 @@ let g:fzf_preview_window = []
 
 " golang
 let g:go_fmt_command = "goimports"
-let g:go_fmt_autosave = 0 " disable: coc.nvimを壊す
+let g:go_fmt_autosave = 0 " 0 == disable: coc.nvimを壊す
 let g:go_list_type = "quickfix"
 let g:go_highlight_extra_types = 1
 let g:go_highlight_structs = 1
@@ -218,7 +203,7 @@ let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
 
 " git-messenger
-let g:git_messenger_date_format = "%Y/%M/%d %X"
+let g:git_messenger_date_format = "%Y/%m/%d %X"
 nmap <C-g>m <Plug>(git-messenger)
 
 " coc
@@ -237,8 +222,7 @@ let g:coc_global_extensions = [
       \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<down>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -266,7 +250,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> gh :call <SID>show_documentation()<CR>
-
 nmap <silent> g] <Plug>(coc-diagnostic-next)
 nmap <silent> g[ <Plug>(coc-diagnostic-prev)
 
@@ -284,6 +267,7 @@ set termguicolors
 colorscheme hybrid
 hi String ctermfg=166 guifg=#d75f00
 hi LineNr ctermfg=2 guifg=#4c535c
+hi Normal ctermfg=250 guifg=#f0f5f2
 
 " grepper
 let g:grepper = {
@@ -305,6 +289,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 " fern
 nnoremap <C-t> :Fern . -reveal=%<CR>
+nnoremap <Leader>t :Fern . -drawer -reveal=% -toggle<CR>
 let g:fern#default_hidden = 1
 
 function! s:init_fern() abort
@@ -319,12 +304,12 @@ augroup END
 let g:ctrlp_map = '<leader><c-p>'
 nnoremap <C-e> :CtrlPBuffer<CR>
 " command! -nargs=0 Mru CtrlPMRUFiles
-" let g:ctrlp_prompt_mappings = {
-"     \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
-"     \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
-"     \ 'PrtHistory(-1)':       ['<down>'],
-"     \ 'PrtHistory(1)':        ['<up>'],
-"     \ }
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
+    \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
+    \ 'PrtHistory(-1)':       ['<down>'],
+    \ 'PrtHistory(1)':        ['<up>'],
+    \ }
 " if executable('ag')
 "   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -f -g ""'
 " endif
