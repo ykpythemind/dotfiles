@@ -358,6 +358,7 @@ let g:lightline = {
 
 " other
 set shell=fish
+lang en_US.UTF-8
 
 " https://dev.classmethod.jp/articles/trouble-shoot-ctrlv-in-vim/
 set nocompatible
