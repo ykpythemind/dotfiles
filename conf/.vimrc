@@ -191,6 +191,7 @@ let g:go_def_mode='gopls'
 let g:go_def_mapping_enabled = 0
 let g:go_doc_keywordprg_enabled = 0
 let g:go_gorename_command = "gopls"
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 augroup GolangSettings
   autocmd!

@@ -19,13 +19,17 @@
   "suggest.keepCompleteopt": true,
   "languageserver": {
     "go": {
-      "enable": false,
+      "enable": true,
       "command": "gopls",
-      "rootPatterns": ["go.mod"],
+      "rootPatterns": ["go.mod", ".vim/", ".git/"],
       "trace.server": "verbose",
-      "filetypes": ["go"]
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
     }
   },
+  "go.enable": false,
   "go.goplsOptions": {
     "gofumpt": true
   },
