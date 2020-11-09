@@ -96,8 +96,6 @@ nnoremap gj j
 nnoremap gk k
 
 nnoremap tn :<C-u>tabnew<CR>
-nnoremap tl gt
-nnoremap th gT
 
 nnoremap <C-s> :w<CR>
 
@@ -158,7 +156,6 @@ Plug 'lambdalisue/fern-git-status.vim'
 " lang
 Plug 'slim-template/vim-slim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'mattn/vim-goimports'
 Plug 'vim-ruby/vim-ruby'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -182,7 +179,7 @@ nmap <leader>m :History<CR>
 let g:fzf_preview_window = []
 
 " golang
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "goimports" " todo remove
 let g:go_fmt_autosave = 0 " 0 == disable: coc.nvimを壊す
 let g:go_list_type = "quickfix"
 let g:go_highlight_extra_types = 1
@@ -307,16 +304,12 @@ augroup END
 " CtrlP
 let g:ctrlp_map = '<leader><c-p>'
 nnoremap <C-e> :CtrlPBuffer<CR>
-" command! -nargs=0 Mru CtrlPMRUFiles
 let g:ctrlp_prompt_mappings = {
     \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
     \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
     \ 'PrtHistory(-1)':       ['<down>'],
     \ 'PrtHistory(1)':        ['<up>'],
     \ }
-" if executable('ag')
-"   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -f -g ""'
-" endif
 
 " ack
 if executable('ag')
@@ -348,6 +341,17 @@ let g:lightline = {
 " other
 set shell=fish
 lang en_US.UTF-8
+
+command! CopyCurrentPath :call s:copy_current_path()
+function! s:copy_current_path() abort
+  let c = expand('%:p')
+
+  if &clipboard =~# 'plus$'
+      let @+ = c
+  else
+      let @* = c
+  endif
+endfunction
 
 " https://dev.classmethod.jp/articles/trouble-shoot-ctrlv-in-vim/
 set nocompatible
