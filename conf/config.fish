@@ -19,8 +19,6 @@ set -x PATH $GOROOT/bin $PATH
 
 set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 
-source ~/google-cloud-sdk/path.fish.inc
-
 eval (direnv hook fish)
 
 set -U GHQ_SELECTOR peco
@@ -151,4 +149,9 @@ end
 if test -e ~/.git-brws-token
   set -l token (cat ~/.git-brws-token)
   set -x GIT_BRWS_GITHUB_TOKEN $token
+end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f ~/google-cloud-sdk/path.fish.inc ];
+  source ~/google-cloud-sdk/path.fish.inc
 end
