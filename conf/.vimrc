@@ -148,6 +148,8 @@ Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" Plug 'ykpythemind/tnite.vim', { 'branch': 'neovim' }
+Plug '/Users/ykpythemind/git/github.com/ykpythemind/tnite.vim'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'
@@ -164,6 +166,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
+
+nnoremap <silent><Space>n :<C-u>call tnite#start(["sh", "-c", "git ls-files \| peco --initial-filter Fuzzy"], "edit", {})<CR>
 
 " fzf
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
