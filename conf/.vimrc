@@ -345,13 +345,17 @@ let g:lightline = {
 
 " other
 set shell=fish
-" set shell=bash
-lang en_US.UTF-8
+lang en_US.UTF-8 " paste issue
+
+augroup vimrcEx
+  " 前開いていた場所
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
 
 command! CopyCurrentPath :call s:copy_current_path()
 function! s:copy_current_path() abort
   let c = expand('%:p')
-
   if &clipboard =~# 'plus$'
       let @+ = c
   else
