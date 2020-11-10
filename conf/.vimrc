@@ -95,8 +95,6 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-nnoremap tn :<C-u>tabnew<CR>
-
 nnoremap <C-s> :w<CR>
 
 " Two-byte space --- must before 'colorscheme'
@@ -116,6 +114,7 @@ nnoremap <leader>cc :cclose<CR>
 nnoremap <leader>co :copen<CR>
 " In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+autocmd FileType qf nnoremap <buffer><silent> q :<C-u>cclose<CR>
 
 " 改行時にコメントさせない
 augroup auto_comment_off
@@ -136,7 +135,7 @@ Plug 'cohama/lexima.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'commit': 'ad1793dce0a59afcf8b324b45a1168c032deb162'}
 Plug 'koizuss/shareline.vim'
 Plug 'eugen0329/vim-esearch'
@@ -177,6 +176,7 @@ if has("nvim")
 endif
 nmap <C-P> :Files<CR>
 nmap <leader>h :History<CR>
+nnoremap <C-E> :Buffers<CR>
 let g:fzf_preview_window = []
 
 " golang
@@ -291,22 +291,13 @@ nnoremap <Leader>t :Fern . -drawer -reveal=% -toggle<CR>
 let g:fern#default_hidden = 1
 
 function! s:init_fern() abort
-  nmap <buffer> h <Plug>(fern-action-leave)
+  nmap <buffer> H <Plug>(fern-action-leave)
+  nmap <buffer> h <Plug>(fern-action-collapse)
 endfunction
 augroup fern-custom
   autocmd! *
   autocmd FileType fern call s:init_fern()
 augroup END
-
-" CtrlP
-let g:ctrlp_map = '<leader><c-p>'
-nnoremap <C-e> :CtrlPBuffer<CR>
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
-    \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
-    \ 'PrtHistory(-1)':       ['<down>'],
-    \ 'PrtHistory(1)':        ['<up>'],
-    \ }
 
 " ack
 if executable('ag')
@@ -338,6 +329,7 @@ let g:lightline = {
 " other
 set shell=fish
 lang en_US.UTF-8 " paste issue
+autocmd FileType help nnoremap <buffer> q <C-w>c
 
 augroup vimrcEx
   " 前開いていた場所
