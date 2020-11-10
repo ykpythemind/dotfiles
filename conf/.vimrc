@@ -167,10 +167,11 @@ Plug 'w0ng/vim-hybrid'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
-nnoremap <silent><Space>n :<C-u>call tnite#start(["sh", "-c", "git ls-files \| peco --initial-filter Fuzzy"], "edit", {})<CR>
+" nnoremap <silent><Space>n :<C-u>call tnite#start(["sh", "-c", "git ls-files \| peco --initial-filter Fuzzy"], "edit", {})<CR>
 
 " fzf
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0)
 let g:fzf_layout = { 'down': '30%' }
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
   \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
@@ -179,7 +180,7 @@ if has("nvim")
   au FileType fzf tunmap <Esc>
 endif
 nmap <C-P> :Files<CR>
-nmap <leader>m :History<CR>
+nmap <leader>h :History<CR>
 let g:fzf_preview_window = []
 
 " golang
@@ -344,6 +345,7 @@ let g:lightline = {
 
 " other
 set shell=fish
+" set shell=bash
 lang en_US.UTF-8
 
 command! CopyCurrentPath :call s:copy_current_path()
