@@ -263,6 +263,7 @@ let s:true_color_enabled = $TERM_PROGRAM ==# 'iTerm.app'
 if s:true_color_enabled
   set termguicolors
 endif
+
 colorscheme hybrid
 hi String ctermfg=166 guifg=#d75f00
 hi LineNr ctermfg=2 guifg=#4c535c
