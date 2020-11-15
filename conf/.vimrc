@@ -95,6 +95,11 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
+nnoremap n nzvzz
+nnoremap N Nzvzz
+" xでレジスタ使わない
+nnoremap x "_x
+
 nnoremap <C-s> :w<CR>
 
 " Two-byte space --- must before 'colorscheme'
@@ -110,8 +115,6 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 " quickfix
 nnoremap <C-n> :cnext<CR>
 nnoremap <C-m> :cprevious<CR>
-nnoremap <leader>cc :cclose<CR>
-nnoremap <leader>co :copen<CR>
 " In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 autocmd FileType qf nnoremap <buffer><silent> q :<C-u>cclose<CR>
@@ -148,7 +151,6 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'kassio/neoterm'
-Plug 'uji/neoterm-rspec.vim'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'
@@ -158,6 +160,7 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'slim-template/vim-slim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 " view
