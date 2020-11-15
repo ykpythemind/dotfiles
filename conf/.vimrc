@@ -180,7 +180,7 @@ if has("nvim")
   au FileType fzf tunmap <Esc>
 endif
 nmap <C-P> :Files<CR>
-nmap <leader>h :History<CR>
+nmap <C-H> :History<CR>
 nnoremap <C-E> :Buffers<CR>
 let g:fzf_preview_window = []
 
