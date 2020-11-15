@@ -133,7 +133,6 @@ tnoremap <ESC> <C-\><C-n>
 
 " Plugin
 call plug#begin('~/.vim/plugged')
-Plug 'mileszs/ack.vim'
 Plug 'cohama/lexima.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
@@ -304,14 +303,6 @@ augroup fern-custom
   autocmd! *
   autocmd FileType fern call s:init_fern()
 augroup END
-
-" ack
-if executable('ag')
-  let g:ackprg = 'ag --smart-case --vimgrep --hidden'
-endif
-nmap <Leader>a :Ack!<Space>
-let g:ackhighlight = 1
-vnoremap <Leader>a y:Ack! <C-r>=fnameescape(@")<CR>
 
 " Lightline
 function! LightlineFilename()
