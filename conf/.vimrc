@@ -92,8 +92,6 @@ vnoremap s <Nop>
 
 nnoremap j gj
 nnoremap k gk
-nnoremap gj j
-nnoremap gk k
 
 nnoremap n nzvzz
 nnoremap N Nzvzz
@@ -113,11 +111,13 @@ nnoremap <C-l> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 
 " quickfix
-nnoremap <C-n> :cnext<CR>
-nnoremap <C-m> :cprevious<CR>
+nnoremap <C-n> :Cnext<CR>
+nnoremap <C-m> :Cprev<CR>
 " In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 autocmd FileType qf nnoremap <buffer><silent> q :<C-u>cclose<CR>
+command! Cnext try | cnext | catch | cfirst | catch | endtry
+command! Cprev try | cprev | catch | clast | catch | endtry
 
 " 改行時にコメントさせない
 augroup auto_comment_off
