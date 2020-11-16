@@ -23,4 +23,5 @@ brewcask:
 fisher:
   - franciscolourenco/done
   - jethrokuan/z
+  - fisherman/git_util
   - rafaelrinaldi/pure

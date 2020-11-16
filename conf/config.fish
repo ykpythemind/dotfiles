@@ -62,23 +62,23 @@ function rubyserver
 end
 
 # fish git prompt
-set __fish_git_prompt_showdirtystate 'yes'
-set __fish_git_prompt_showstashstate 'yes'
-set __fish_git_prompt_showuntrackedfiles 'yes'
-set __fish_git_prompt_showupstream 'yes'
-set __fish_git_prompt_color_branch yellow
-set __fish_git_prompt_color_upstream_ahead green
-set __fish_git_prompt_color_upstream_behind red
+# set __fish_git_prompt_showdirtystate 'yes'
+# set __fish_git_prompt_showstashstate 'yes'
+# set __fish_git_prompt_showuntrackedfiles 'yes'
+# set __fish_git_prompt_showupstream 'yes'
+# set __fish_git_prompt_color_branch yellow
+# set __fish_git_prompt_color_upstream_ahead green
+# set __fish_git_prompt_color_upstream_behind red
 
-function fish_right_prompt
-  printf '%s' (__fish_git_prompt)
-end
-
-
-function fish_prompt
-  printf '%s@%s%s%s%s> ' (whoami) (hostname | cut -d . -f 1) \
-            (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
-end
+# function fish_right_prompt
+#   printf '%s' (__fish_git_prompt)
+# end
+#
+#
+# function fish_prompt
+#   printf '%s@%s%s%s%s> ' (whoami) (hostname | cut -d . -f 1) \
+#             (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+# end
 
 function gco -d "Fuzzy-find and checkout a branch"
   git branch | grep -v HEAD | string trim | peco | xargs git checkout
