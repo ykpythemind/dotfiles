@@ -133,12 +133,10 @@ tnoremap <ESC> <C-\><C-n>
 
 " Plugin
 call plug#begin('~/.vim/plugged')
-Plug 'mileszs/ack.vim'
 Plug 'cohama/lexima.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'commit': 'ad1793dce0a59afcf8b324b45a1168c032deb162'}
 Plug 'koizuss/shareline.vim'
 Plug 'eugen0329/vim-esearch'
@@ -159,7 +157,6 @@ Plug 'lambdalisue/fern-git-status.vim'
 " lang
 Plug 'slim-template/vim-slim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -180,7 +177,7 @@ if has("nvim")
   au FileType fzf tunmap <Esc>
 endif
 nmap <C-P> :Files<CR>
-nmap <leader>h :History<CR>
+nmap <C-H> :History<CR>
 nnoremap <C-E> :Buffers<CR>
 let g:fzf_preview_window = []
 
@@ -304,14 +301,6 @@ augroup fern-custom
   autocmd! *
   autocmd FileType fern call s:init_fern()
 augroup END
-
-" ack
-if executable('ag')
-  let g:ackprg = 'ag --smart-case --vimgrep --hidden'
-endif
-nmap <Leader>a :Ack!<Space>
-let g:ackhighlight = 1
-vnoremap <Leader>a y:Ack! <C-r>=fnameescape(@")<CR>
 
 " Lightline
 function! LightlineFilename()
