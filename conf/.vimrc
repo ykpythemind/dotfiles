@@ -140,7 +140,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'commit': 'ad1793dce0a59afcf8b324b45a1168c032deb162'}
 Plug 'koizuss/shareline.vim'
-Plug 'eugen0329/vim-esearch'
 Plug 'thinca/vim-qfreplace'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'lambdalisue/fern.vim'
@@ -150,6 +149,7 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-test/vim-test'
+Plug 'nathanaelkane/vim-indent-guides'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'

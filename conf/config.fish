@@ -37,6 +37,7 @@ set -x LESSCHARSET utf-8
 
 # alias
 
+alias vim='nvim'
 alias be='bundle exec'
 alias gcom='git checkout master'
 alias g='git'
