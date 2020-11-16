@@ -70,6 +70,7 @@ nnoremap ZQ <Nop>
 nnoremap Q <Nop>
 nnoremap Y y$
 map R <Nop>
+noremap ; :
 
 inoremap <C-j> <Esc>
 inoremap <C-b> <Left>
