@@ -39,7 +39,6 @@ set -x LESSCHARSET utf-8
 
 alias vim='nvim'
 alias be='bundle exec'
-alias gcom='git checkout master'
 alias g='git'
 
 # docker
@@ -84,6 +83,15 @@ function gco -d "Fuzzy-find and checkout a branch"
   git branch | grep -v HEAD | string trim | peco | xargs git checkout
 end
 alias gsw='gco'
+
+function gcom -d "checkout master or main"
+  git branch | grep "main\$"
+  if test $status -eq 0
+    git switch main
+  else
+    git switch master
+  end
+end
 
 function gpr -d "Open PR on GitHub"
   gh pr list | tail -n +1 | peco | awk '{ print $1 }' | read num
