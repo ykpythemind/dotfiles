@@ -16,10 +16,6 @@ function peco-history
 }
 bind -x '"\C-r": peco-history'
 
-if which direnv &> /dev/null; then
-  eval "$(direnv hook bash)"
-fi
-
 alias la='ls -la'
 
 function peco-ghq {
