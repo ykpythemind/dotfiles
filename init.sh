@@ -10,6 +10,7 @@ ln -sf $CONFPATH/.tmux.conf ~/.tmux.conf
 ln -sf $CONFPATH/.bashrc ~/.bashrc
 ln -sf $CONFPATH/.agignore ~/.agignore
 ln -sf $CONFPATH/.alacritty.yml ~/.alacritty.yml
+ln -sf $PWD/completions/ag.fish ~/.config/fish/completions/ag.fish
 
 curl -fL https://raw.githubusercontent.com/eed3si9n/git-gone/master/git-gone -o /usr/local/bin/git-gone
 chmod +x /usr/local/bin/git-gone
