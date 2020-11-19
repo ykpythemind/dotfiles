@@ -179,11 +179,11 @@ if has("nvim")
 endif
 nmap <C-P> :Files<CR>
 nmap <C-H> :History<CR>
+nmap <Leader><C-H> :History:<CR>
 nnoremap <C-E> :Buffers<CR>
 let g:fzf_preview_window = []
 
 " golang
-let g:go_fmt_command = "goimports" " todo remove
 let g:go_fmt_autosave = 0 " 0 == disable: coc.nvimを壊す
 let g:go_list_type = "quickfix"
 let g:go_highlight_extra_types = 1
@@ -278,13 +278,11 @@ let g:grepper = {
   \ 'ag': {
   \   'grepprg': 'ag --hidden --vimgrep',
   \ }}
-nnoremap F :Grepper -tool ag<cr>
-nnoremap <leader>F :Grepper -tool ag -buffers<cr>
+nmap F :Grepper -tool ag<cr>
+nmap <leader>F :Grepper -tool ag -buffer<cr>
 xmap F <plug>(GrepperOperator)
 let g:grepper.highlight = 1
 let g:grepper.switch = 0
-
-autocmd QuickfixCmdPost vimgrep copen
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
