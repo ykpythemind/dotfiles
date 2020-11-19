@@ -5,19 +5,9 @@ set -x PATH $HOME/.pyenv/bin $PATH
 set -x PATH $HOME/.rbenv/bin $PATH
 set -x PATH $HOME/.nodenv/bin $PATH
 
-# Golang
-set -x GOENV_ROOT $HOME/.goenv
-set -x PATH $GOENV_ROOT/bin $PATH
-
 rbenv init - | source
 nodenv init - | source
 pyenv init - | source
-goenv init - | source
-
-# must after goenv init
-set -x PATH $GOROOT/bin $PATH
-
-set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 
 eval (direnv hook fish)
 
@@ -46,10 +36,8 @@ alias g='git'
 alias docker-clean-images='docker rmi (docker images -a --filter=dangling=true -q)'
 alias docker-clean-containers='docker rm (docker ps --filter=status=exited --filter=status=created -q)'
 
-# go
-
-set GOPATH $HOME/go
-set -x PATH $GOPATH/bin $PATH
+# java
+set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 
 # utils
 
