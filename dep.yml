@@ -1,10 +1,9 @@
 brew:
   - fish
-  - vim
+  - neovim
   - git
   - direnv
   - go
-  - fzy
   - fzf
   - peco
   - ag
@@ -15,7 +14,6 @@ brew:
   - protobuf
   - golangci/tap/golangci-lint
   - github/gh/gh
-  - git-delta
   - git-brws
   - tmux
 brewcask:
