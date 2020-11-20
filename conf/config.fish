@@ -25,6 +25,11 @@ set -x PAGER less
 set -x LESS '-g -i -M -R -S -w -z-4'
 set -x LESSCHARSET utf-8
 
+# go
+
+set GOPATH $HOME/go
+set -x PATH $GOPATH/bin $PATH
+
 # alias
 
 alias vim='nvim'
