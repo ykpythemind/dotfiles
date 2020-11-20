@@ -180,6 +180,7 @@ endif
 nmap <C-P> :Files<CR>
 nmap <C-H> :History<CR>
 nmap <Leader><C-H> :History:<CR>
+nmap <Leader><C-P> :Commands<CR>
 nnoremap <C-E> :Buffers<CR>
 let g:fzf_preview_window = []
 
