@@ -347,9 +347,3 @@ function! s:copy_current_path() abort
   endif
 endfunction
 
-" https://dev.classmethod.jp/articles/trouble-shoot-ctrlv-in-vim/
-set nocompatible
-map ^[OA ^[ka
-map ^[OB ^[ja
-map ^[OC ^[la
-map ^[OD ^[ha
