@@ -1,4 +1,5 @@
 brew:
+  - ripgrep
   - fish
   - neovim
   - git
