@@ -169,7 +169,7 @@ source $VIMRUNTIME/macros/matchit.vim
 
 " fzf
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0)
+  \ call fzf#vim#files(<q-args>, {'source': 'rg --hidden --files'}, <bang>0)
 let g:fzf_layout = { 'down': '30%' }
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
   \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
@@ -275,12 +275,16 @@ hi Normal ctermfg=250 guifg=#f0f5f2
 
 " grepper
 let g:grepper = {
-  \ 'tools': ['ag', 'git'],
+  \ 'tools': ['rg', 'ag', 'git'],
   \ 'ag': {
   \   'grepprg': 'ag --hidden --vimgrep',
-  \ }}
-nmap F :Grepper -tool ag<cr>
-nmap <leader>F :Grepper -tool ag -buffer<cr>
+  \ },
+  \ 'rg': {
+  \   'grepprg': 'rg --hidden --vimgrep'
+  \ }
+  \ }
+nmap F :Grepper -tool rg<cr>
+nmap <leader>F :Grepper -tool rg -buffer<cr>
 xmap F <plug>(GrepperOperator)
 let g:grepper.highlight = 1
 let g:grepper.switch = 0

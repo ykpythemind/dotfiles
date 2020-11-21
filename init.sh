@@ -8,7 +8,7 @@ ln -sf $CONFPATH/.gitconfig ~/.gitconfig
 ln -sf $CONFPATH/.gitignore_global ~/.gitignore_global
 ln -sf $CONFPATH/.tmux.conf ~/.tmux.conf
 ln -sf $CONFPATH/.bashrc ~/.bashrc
-ln -sf $CONFPATH/.agignore ~/.agignore
+ln -sf $CONFPATH/.ignore ~/.ignore
 ln -sf $CONFPATH/.alacritty.yml ~/.alacritty.yml
 ln -sf $PWD/completions/ag.fish ~/.config/fish/completions/ag.fish
 
