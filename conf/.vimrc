@@ -324,6 +324,7 @@ let g:lightline = {
     \   'coc': 'coc#status'
   \}
 \ }
+let g:lightline.colorscheme = 'solarized'
 
 " other
 set shell=fish
