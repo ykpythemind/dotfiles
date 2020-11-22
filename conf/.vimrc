@@ -293,8 +293,8 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 " fern
-nnoremap <C-t> :Fern . -reveal=%<CR>
-nnoremap <Leader>t :Fern . -drawer -reveal=% -toggle<CR>
+nnoremap - :Fern . -reveal=%<CR>
+nnoremap <Leader>- :Fern . -drawer -reveal=% -toggle<CR>
 let g:fern#default_hidden = 1
 
 function! s:init_fern() abort
