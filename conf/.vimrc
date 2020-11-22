@@ -326,6 +326,9 @@ let g:lightline = {
 \ }
 let g:lightline.colorscheme = 'solarized'
 
+" lexima
+let g:lexima_enable_endwise_rules = 0 " disable
+
 " other
 set shell=fish
 lang en_US.UTF-8 " paste issue
