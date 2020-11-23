@@ -150,6 +150,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-test/vim-test'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'junegunn/vim-peekaboo'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'
