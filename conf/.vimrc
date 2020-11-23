@@ -26,7 +26,6 @@ set cmdheight=2
 set laststatus=2
 set display=lastline
 set backspace=indent,eol,start
-set showcmd
 set synmaxcol=400
 set list
 set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
