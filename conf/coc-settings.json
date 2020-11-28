@@ -15,7 +15,7 @@
   ],
   "suggest.floatEnable": true,
   "suggest.maxCompleteItemCount": 20,
-  "suggest.noselect": false,
+  "suggest.noselect": true,
   "suggest.keepCompleteopt": true,
   "languageserver": {
     "go": {

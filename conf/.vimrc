@@ -37,7 +37,7 @@ set updatetime=300
 set shortmess+=c " coc
 set shortmess-=S
 
-set completeopt=menuone,noinsert
+set completeopt=menuone,noinsert,noselect
 
 set shiftwidth=2
 set tabstop=4
