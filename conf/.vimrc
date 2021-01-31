@@ -141,7 +141,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release', 'commit': 'ad1793dce0a59afcf8b32
 Plug 'koizuss/shareline.vim'
 Plug 'thinca/vim-qfreplace'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'lambdalisue/fern.vim'
+Plug 'preservim/nerdtree'
 Plug 'mhinz/vim-grepper'
 Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
@@ -154,7 +154,6 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'lambdalisue/fern-git-status.vim'
 " lang
 Plug 'slim-template/vim-slim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -290,19 +289,10 @@ let g:grepper.switch = 0
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" fern
-nnoremap - :Fern . -reveal=%<CR>
-nnoremap <Leader>- :Fern . -drawer -reveal=% -toggle<CR>
-let g:fern#default_hidden = 1
-
-function! s:init_fern() abort
-  nmap <buffer> H <Plug>(fern-action-leave)
-  nmap <buffer> h <Plug>(fern-action-collapse)
-endfunction
-augroup fern-custom
-  autocmd! *
-  autocmd FileType fern call s:init_fern()
-augroup END
+" nerdtree
+nmap <leader>t :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.DS_Store$', '\.git$'] " ignore files in nerd tree
 
 " Lightline
 function! LightlineFilename()
