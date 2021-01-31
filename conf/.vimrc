@@ -119,8 +119,12 @@ augroup END
 
 " term
 autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
-tnoremap <C-q> <C-\><C-n>:q<CR>
 tnoremap <ESC> <C-\><C-n>
+" Easier time when pasting content in terminal mode with <C-v> : https://github.com/vimlab/split-term.vim/blob/a4e28cab77ad07fc8a0ebb62a982768c02eb287c/plugin/split-term.vim#L41
+tnoremap <buffer> <expr> <C-v> '<C-\><C-N>pi'
+command! Spterm split | startinsert | term
+nnoremap <C-t> :Spterm<CR>
+tnoremap <C-t> <C-\><C-N><C-w><C-w>
 
 " Plugin
 call plug#begin('~/.vim/plugged')
@@ -129,7 +133,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'commit': 'ad1793dce0a59afcf8b324b45a1168c032deb162'}
-Plug 'koizuss/shareline.vim'
+" Plug 'k0kubun/vim-open-github'
 Plug 'thinca/vim-qfreplace'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'preservim/nerdtree'
@@ -165,7 +169,7 @@ nnoremap <C-E> :BuffergatorToggle<CR>
 
 " fzf
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, {'source': 'rg --hidden --files'}, <bang>0)
+  \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden -g ""'}, <bang>0)
 " command! -bang -nargs=? -complete=dir Buffers
 "   \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview(), <bang>0)
 let $FZF_DEFAULT_OPTS = '--reverse'
@@ -203,7 +207,7 @@ let g:better_whitespace_enabled=0 " disable! (slow down)
 let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
 
-" git-messenger
+" git
 let g:git_messenger_date_format = "%Y/%m/%d %X"
 nmap <C-g>m <Plug>(git-messenger)
 
