@@ -23,6 +23,8 @@
     d = diff
     ds = diff --staged
     c = commit
+    # for safety cancel https://thinca.hatenablog.com/entry/20120924/1348491052
+    cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
 [pager]
     log = diff-highlight|less -c
     show = diff-highlight|less -c
