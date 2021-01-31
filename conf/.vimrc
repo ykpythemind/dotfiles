@@ -122,9 +122,20 @@ autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 tnoremap <ESC> <C-\><C-n>
 " Easier time when pasting content in terminal mode with <C-v> : https://github.com/vimlab/split-term.vim/blob/a4e28cab77ad07fc8a0ebb62a982768c02eb287c/plugin/split-term.vim#L41
 tnoremap <buffer> <expr> <C-v> '<C-\><C-N>pi'
-command! Spterm split | startinsert | term
-nnoremap <C-t> :Spterm<CR>
+" command! Spterm split | startinsert | term
+nnoremap <C-t> :call Spterm()<CR>
 tnoremap <C-t> <C-\><C-N><C-w><C-w>
+
+function! Spterm()
+  let buf = bufexists("term-main")
+  if buf > 0
+    let pane = bufwinnr("term-main")
+    :exe pane . "wincmd w"
+  else
+    :exe "split | startinsert | term"
+    :exe "f term-main"
+  endif
+endfunction
 
 " Plugin
 call plug#begin('~/.vim/plugged')
