@@ -150,6 +150,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-test/vim-test'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'junegunn/vim-peekaboo'
+Plug 'haya14busa/vim-asterisk'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'
@@ -273,6 +274,12 @@ hi LineNr ctermfg=2 guifg=#4c535c
 hi Normal ctermfg=250 guifg=#f0f5f2
 hi QuickFixLine term=reverse ctermbg=52
 
+" vim-asterisk
+map *  <Plug>(asterisk-z*)
+map #  <Plug>(asterisk-z#)
+map g* <Plug>(asterisk-gz*)
+map g# <Plug>(asterisk-gz#)
+
 " grepper
 let g:grepper = {
   \ 'tools': ['ag', 'git'],
@@ -290,7 +297,9 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 " nerdtree
-nmap <leader>t :NERDTreeToggle<CR>
+" nmap <leader>t :NERDTreeToggle<CR>
+nmap - :NERDTreeToggle<CR>
+nmap = :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$', '\.git$'] " ignore files in nerd tree
 
