@@ -272,19 +272,17 @@ colorscheme hybrid
 hi String ctermfg=166 guifg=#d75f00
 hi LineNr ctermfg=2 guifg=#4c535c
 hi Normal ctermfg=250 guifg=#f0f5f2
+hi QuickFixLine term=reverse ctermbg=52
 
 " grepper
 let g:grepper = {
-  \ 'tools': ['rg', 'ag', 'git'],
+  \ 'tools': ['ag', 'git'],
   \ 'ag': {
   \   'grepprg': 'ag --hidden --vimgrep',
-  \ },
-  \ 'rg': {
-  \   'grepprg': 'rg --hidden --vimgrep'
   \ }
   \ }
-nmap F :Grepper -tool rg<cr>
-nmap <leader>F :Grepper -tool rg -buffer<cr>
+nmap F :Grepper -tool ag<cr>
+nmap <leader>F :Grepper -tool ag -buffer<cr>
 xmap F <plug>(GrepperOperator)
 let g:grepper.highlight = 1
 let g:grepper.switch = 0
