@@ -98,13 +98,6 @@ nnoremap x "_x
 
 nnoremap <C-s> :w<CR>
 
-" Two-byte space --- must before 'colorscheme'
-augroup highlightIdegraphicSpace
-  autocmd!
-  autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
-  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
-augroup END
-
 nnoremap <C-l> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 
@@ -150,6 +143,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'junegunn/vim-peekaboo'
 Plug 'haya14busa/vim-asterisk'
 Plug 'jeetsukumaran/vim-buffergator'
+Plug 'thinca/vim-zenspace'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'
@@ -165,6 +159,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
+
+" buffer
+nnoremap <C-E> :BuffergatorToggle<CR>
 
 " fzf
 command! -bang -nargs=? -complete=dir Files
@@ -183,7 +180,6 @@ nmap <C-P> :Files<CR>
 nmap <C-H> :History<CR>
 nmap <Leader><C-H> :History:<CR>
 nmap <Leader><C-P> :Commands<CR>
-nnoremap <C-E> :Buffers<CR>
 let g:fzf_preview_window = []
 
 " golang
