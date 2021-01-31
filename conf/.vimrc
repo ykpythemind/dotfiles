@@ -149,6 +149,7 @@ Plug 'vim-test/vim-test'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'junegunn/vim-peekaboo'
 Plug 'haya14busa/vim-asterisk'
+Plug 'jeetsukumaran/vim-buffergator'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'airblade/vim-gitgutter'
@@ -168,7 +169,10 @@ source $VIMRUNTIME/macros/matchit.vim
 " fzf
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, {'source': 'rg --hidden --files'}, <bang>0)
-let g:fzf_layout = { 'down': '30%' }
+" command! -bang -nargs=? -complete=dir Buffers
+"   \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview(), <bang>0)
+let $FZF_DEFAULT_OPTS = '--reverse'
+let g:fzf_layout = { 'up': '45%' }
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
   \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 if has("nvim")
