@@ -92,13 +92,11 @@ nnoremap k gk
 
 nnoremap n nzvzz
 nnoremap N Nzvzz
+
 nnoremap x "_x
 xnoremap p "_dP
-
-map <C-b> <Nop>
-" blackholes
-nnoremap <C-b>dd "_dd
-vnoremap <C-b>d "_d
+nnoremap dD "_dd
+vnoremap D "_d
 
 nnoremap <C-s> :w<CR>
 
