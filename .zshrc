@@ -19,7 +19,7 @@ if [ -e /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-alias la='ls -la'
+alias la='ls -laG'
 alias vim='nvim'
 
 alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
@@ -127,10 +127,14 @@ alias gsw='gco'
 alias gswr='gcor'
 
 gpr() {
-  local pr
+  local pr arg
   pr=$(gh pr list | tail -n +1 | fzf | awk '{ print $1 }')
   if [ -n "$pr" ]; then
-    gh pr view $pr --web
+    if [ $1 = "checkout" ]; then
+      gh pr checkout $pr
+    else
+      gh pr view $pr --web
+    fi
   fi
 }
 
@@ -163,7 +167,6 @@ function inc-cdr() {
         BUFFER="cd ${selected_dir}"
         zle accept-line
     fi
-    zle clear-screen
 }
 zle -N inc-cdr
-bindkey '^{' inc-cdr
+bindkey '^H' inc-cdr
