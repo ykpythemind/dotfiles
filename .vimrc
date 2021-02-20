@@ -212,7 +212,7 @@ let g:ghpr_github_auth_token = $GITHUB_TOKEN
 noremap <C-g>b :Gina browse :
 nnoremap <C-g>s :Gina status --opener=split --group=git<cr>
 nnoremap <C-g>c :Gina commit --opener=split --group=git<cr>
-nnoremap <C-g>d :Gina diff --opener=split --group=git<cr>
+nnoremap <C-g>d :Gina diff
 
 " coc
 " let $NVIM_COC_LOG_LEVEL = 'debug'
