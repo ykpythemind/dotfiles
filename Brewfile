@@ -20,12 +20,11 @@ brew "zsh"
 brew "golangci/tap/golangci-lint"
 brew "zsh-completions"
 brew "zsh-autosuggestions"
-brew "alacritty"
 
 brew "heroku"
 brew "aws-sam-cli"
-brew "github/gh/gh"
+brew "gh"
 brew "git-brws"
 
 cask "ngrok"
-
+cask "alacritty"
