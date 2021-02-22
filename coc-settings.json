@@ -34,6 +34,7 @@
     "gofumpt": true
   },
   "solargraph.useBundler": true,
+  "solargraph.bundlerPath": "/Users/ykpythemind/.rbenv/shims/bundle",
   "solargraph.diagnostics": true,
   "solargraph.formatting": true,
   "solargraph.hover": true
