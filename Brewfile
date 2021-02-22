@@ -1,6 +1,7 @@
 tap "aws/tap"
 tap "heroku/brew"
 tap "rhysd/git-brws"
+tap "bibendi/dip"
 
 brew "tig"
 brew "ripgrep"
@@ -20,11 +21,14 @@ brew "zsh"
 brew "golangci/tap/golangci-lint"
 brew "zsh-completions"
 brew "zsh-autosuggestions"
+brew "fswatch"
+brew "unison"
 
 brew "heroku"
 brew "aws-sam-cli"
 brew "gh"
 brew "git-brws"
+brew "dip"
 
 cask "ngrok"
 cask "alacritty"
