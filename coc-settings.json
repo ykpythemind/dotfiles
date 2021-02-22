@@ -13,6 +13,10 @@
     "json",
     "go"
   ],
+	"list.insertMappings": {
+		"<C-n>": "normal:j",
+		"<C-p>": "normal:k"
+	},
   "suggest.floatEnable": true,
   "suggest.maxCompleteItemCount": 20,
   "suggest.noselect": true,
