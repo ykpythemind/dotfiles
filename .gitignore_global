@@ -21,3 +21,4 @@ Thumbs.db
 .vscode/
 
 .vim/coc-settings.json
+.local.vimrc

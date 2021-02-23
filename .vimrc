@@ -165,6 +165,7 @@ if has('nvim')
 endif
 Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-quickrun'
+Plug 'thinca/vim-localrc'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify', {'branch': 'master', 'commit': 'd80e507c8ba31d7d071'} " https://github.com/mhinz/vim-signify/issues/366
