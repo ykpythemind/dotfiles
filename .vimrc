@@ -164,6 +164,7 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 endif
 Plug 'ReekenX/vim-rename2'
+Plug 'thinca/vim-quickrun'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify', {'branch': 'master', 'commit': 'd80e507c8ba31d7d071'} " https://github.com/mhinz/vim-signify/issues/366
@@ -181,6 +182,11 @@ call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
 nnoremap <Leader>s :CodeSearch<cr>
+
+" quickrun
+let g:quickrun_no_default_key_mappings = 1
+nmap <Leader>r <Plug>(quickrun)
+vmap <Leader>r <Plug>(quickrun)
 
 " fzf
 command! -bang -nargs=? -complete=dir Files
