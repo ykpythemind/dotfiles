@@ -23,6 +23,7 @@ brew "zsh-completions"
 brew "zsh-autosuggestions"
 brew "fswatch"
 brew "unison"
+brew "nodenv"
 
 brew "heroku"
 brew "aws-sam-cli"
