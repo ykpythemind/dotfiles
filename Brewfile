@@ -24,6 +24,8 @@ brew "zsh-autosuggestions"
 brew "fswatch"
 brew "unison"
 brew "nodenv"
+brew "cmake"
+brew "luarocks"
 
 brew "heroku"
 brew "aws-sam-cli"
