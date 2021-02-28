@@ -20,9 +20,9 @@ echo "* git-gone"
 curl -fL https://raw.githubusercontent.com/eed3si9n/git-gone/master/git-gone -o /usr/local/bin/git-gone
 chmod +x /usr/local/bin/git-gone
 
-echo "* fish"
-curl -fL --create-dirs https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish -o ~/.config/fish/completions/docker.fish
-curl -fL --create-dirs https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish -o ~/.config/fish/completions/docker-compose.fish
+echo "* zsh"
+mkdir -p ~/.zsh/completion
+curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose --version | awk 'NR==1{print $NF}')/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose
 
 echo "* vimplug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -43,4 +43,3 @@ echo "zsh / pure"
 mkdir -p ${HOME}/.zsh
 git clone https://github.com/sindresorhus/pure.git ${HOME}/.zsh/pure
 git -C ${HOME}/.zsh/pure pull
-

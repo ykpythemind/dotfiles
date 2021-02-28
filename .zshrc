@@ -3,20 +3,22 @@ fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
 
+autoload -Uz compinit; compinit -i
+# tabの補完候補から選択
+zstyle ':completion:*:default' menu select=1
+
 eval "$(direnv hook zsh)"
 
-if [ -e "/usr/local/opt/fzf/shell/key-bindings.zsh" ]; then
-  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
-else
-  echo "fzf key-bindings not found."
-fi
-
 if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
+    fpath=(/usr/local/share/zsh-completions/src $fpath)
 fi
 
 if [ -e /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+if [ -e ~/.zsh/completion ]; then
+    fpath=(~/.zsh/completion $fpath)
 fi
 
 alias la='ls -laG'
@@ -36,11 +38,6 @@ setopt extended_history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
-
-# tabキーで補完
-autoload -Uz compinit; compinit
-# tabの補完候補から選択
-zstyle ':completion:*:default' menu select=1
 
 bindkey -e
 

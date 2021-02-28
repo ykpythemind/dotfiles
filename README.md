@@ -16,13 +16,21 @@ cd ~/dotfiles
 brew bundle
 ```
 
-## Setup fish shell
+## zsh
+
+### Setup
 
 Mac OS
 
 ```
-sudo vim /etc/shells # /usr/local/bin/fish を追加
-chsh -s /usr/local/bin/fish
+sudo vim /etc/shells # /usr/local/bin/zsh を追加
+chsh -s /usr/local/bin/zsh
+```
+
+plugin インストールしたら
+
+```
+  rm -f ~/.zcompdump; compinit
 ```
 
 ## ruby
