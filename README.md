@@ -1,7 +1,5 @@
 # dotfiles
 
-## I nstall dependencies
-
 ```
 git clone https://github.com/ykpythemind/dotfiles.git ~/dotfiles
 cd ~/dotfiles
