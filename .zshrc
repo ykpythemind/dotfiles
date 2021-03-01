@@ -8,6 +8,7 @@ autoload -Uz compinit; compinit -i
 zstyle ':completion:*:default' menu select=1
 
 eval "$(direnv hook zsh)"
+stty eof undef
 
 if [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh-completions/src $fpath)
