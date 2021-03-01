@@ -353,7 +353,6 @@ inoremap "" ""<Left>
 inoremap [] []<Left>
 inoremap () ()<Left>
 inoremap {} {}<Left>
-inoremap <> <><Left>
 inoremap `` ``<Left>
 inoremap `3<Enter> ```<Enter>```<Left><Left><Left><Left>
 
