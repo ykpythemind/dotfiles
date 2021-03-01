@@ -355,6 +355,7 @@ inoremap () ()<Left>
 inoremap {} {}<Left>
 inoremap <> <><Left>
 inoremap `` ``<Left>
+inoremap `3<Enter> ```<Enter>```<Left><Left><Left><Left>
 
 " altr
 nmap <Leader>J <Plug>(altr-forward)
