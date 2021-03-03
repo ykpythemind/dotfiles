@@ -166,6 +166,7 @@ endif
 Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
+Plug 'wincent/ferret'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify', {'branch': 'master', 'commit': 'd80e507c8ba31d7d071'} " https://github.com/mhinz/vim-signify/issues/366
@@ -183,6 +184,8 @@ call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
 nnoremap <Leader>s :CodeSearch<cr>
+
+" let g:FerretExecutable='ag,rg'
 
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
