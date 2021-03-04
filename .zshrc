@@ -52,6 +52,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export FZF_DEFAULT_OPTS="--reverse"
 export GHQ_SELECTOR="fzf"
 
+export RIPGREP_CONFIG_PATH=$HOME/dotfiles/ripgrep_rc
+
 if [ -e ${HOME}/.git-token ]; then
   export GITHUB_TOKEN=$(cat "${HOME}/.git-token")
 fi
