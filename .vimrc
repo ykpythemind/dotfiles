@@ -169,6 +169,7 @@ Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'wincent/ferret'
+Plug 'tyru/capture.vim'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify', {'branch': 'master', 'commit': 'd80e507c8ba31d7d071'} " https://github.com/mhinz/vim-signify/issues/366
@@ -289,12 +290,13 @@ if s:true_color_enabled
   set termguicolors
 endif
 
-colorscheme hybrid
 " colorscheme dichromatic
 " colorscheme spring-night
 " hi String ctermfg=166 guifg=#d75f00
 " hi Normal ctermfg=250 guifg=#f0f5f2
 " hi Search ctermfg=250 ctermbg=237 guifg=#c5c8c6 guibg=#373b41
+colorscheme hybrid
+hi Normal ctermbg=0 guibg=#000000
 hi QuickFixLine ctermbg=none ctermfg=none
 hi MatchParen guifg=none guibg=#585858
 

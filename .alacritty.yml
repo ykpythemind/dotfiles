@@ -10,6 +10,8 @@ key_bindings:
   - { key: Q, mods: Control, chars: "\x11" }
 
 colors:
+  primary:
+    background: '#000000'
   cursor:
     text: CellBackground
     cursor: CellForeground
