@@ -190,8 +190,6 @@ source $VIMRUNTIME/macros/matchit.vim
 
 nnoremap <Leader>s :CodeSearch<cr>
 
-" let g:FerretExecutable='ag,rg'
-
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
@@ -310,13 +308,13 @@ map g# <Plug>(asterisk-gz#)
 
 " grepper
 let g:grepper = {
-  \ 'tools': ['ag', 'git'],
-  \ 'ag': {
-  \   'grepprg': 'ag --hidden --vimgrep',
+  \ 'tools': ['rg', 'git'],
+  \ 'rg': {
+  \   'grepprg': 'rg --hidden --vimgrep',
   \ }
   \ }
-nnoremap F :Grepper -tool ag<cr>
-nnoremap <leader>F :Grepper -tool ag -buffer<cr>
+nnoremap F :Grepper -tool rg<cr>
+nnoremap <leader>F :Grepper -tool rg -buffer<cr>
 xmap F <plug>(GrepperOperator)
 let g:grepper.highlight = 1
 let g:grepper.switch = 0
