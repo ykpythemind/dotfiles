@@ -19,6 +19,7 @@ set wrap
 set cursorline
 set autoindent
 set breakindent
+set nosmartindent
 set splitbelow
 set splitright
 set wildmenu
@@ -55,6 +56,8 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+nnoremap / /\v
+nnoremap ? ?\v
 
 let g:mapleader = "\<space>"
 
@@ -134,7 +137,6 @@ tnoremap <C-t> <C-\><C-n>:call ToggleMainTerm()<CR>
 nnoremap <Leader><C-t> :call HideMainTerm()<CR>
 
 " buffer
-
 nnoremap <C-k> :bnext<CR>
 nnoremap <C-j> :bprevious<CR>
 
