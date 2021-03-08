@@ -164,6 +164,7 @@ Plug 'mopp/autodirmake.vim'
 Plug 'thinca/vim-zenspace'
 Plug 'Asheq/close-buffers.vim'
 Plug 'kana/vim-altr'
+Plug 'dyng/ctrlsf.vim'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 endif
@@ -189,6 +190,8 @@ call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
 nnoremap <Leader>s :CodeSearch<cr>
+
+let g:ctrlsf_backend = 'rg'
 
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
