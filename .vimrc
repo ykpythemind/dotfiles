@@ -192,6 +192,9 @@ source $VIMRUNTIME/macros/matchit.vim
 nnoremap <Leader>s :CodeSearch<cr>
 
 let g:ctrlsf_backend = 'rg'
+nnoremap ,f :CtrlSF<Space>
+nnoremap ,f :CtrlSF<Space>
+nnoremap ,F :CtrlSFToggle<CR>
 
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
