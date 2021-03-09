@@ -203,7 +203,7 @@ vmap <Leader>r <Plug>(quickrun)
 
 " fzf
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden -g ""'}, <bang>0)
+  \ call fzf#vim#files(<q-args>, {'source': 'rg --hidden --files'}, <bang>0)
 let $FZF_DEFAULT_OPTS = '--reverse'
 let g:fzf_layout = { 'up': '45%' }
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
