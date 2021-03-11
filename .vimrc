@@ -137,8 +137,8 @@ tnoremap <C-t> <C-\><C-n>:call ToggleMainTerm()<CR>
 nnoremap <Leader><C-t> :call HideMainTerm()<CR>
 
 " buffer
-nnoremap <C-k> :bnext<CR>
-nnoremap <C-j> :bprevious<CR>
+" nnoremap <C-k> :bnext<CR>
+" nnoremap <C-j> :bprevious<CR>
 
 " Plugin
 call plug#begin('~/.vim/plugged')
@@ -173,6 +173,7 @@ Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'wincent/ferret'
 Plug 'tyru/capture.vim'
+Plug 'haya14busa/vim-edgemotion'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify', {'branch': 'master', 'commit': 'd80e507c8ba31d7d071'} " https://github.com/mhinz/vim-signify/issues/366
@@ -190,6 +191,10 @@ call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
 nnoremap <Leader>s :CodeSearch<cr>
+
+" edgemotion
+map <C-j> <Plug>(edgemotion-j)
+map <C-k> <Plug>(edgemotion-k)
 
 let g:ctrlsf_backend = 'rg'
 nnoremap ,f :CtrlSF<Space>
