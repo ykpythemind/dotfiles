@@ -174,6 +174,7 @@ Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'tyru/capture.vim'
 Plug 'haya14busa/vim-edgemotion'
+Plug 'wincent/ferret'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify', {'branch': 'master', 'commit': 'd80e507c8ba31d7d071'} " https://github.com/mhinz/vim-signify/issues/366
