@@ -139,6 +139,8 @@ nnoremap <Leader><C-t> :call HideMainTerm()<CR>
 " buffer
 " nnoremap <C-k> :bnext<CR>
 " nnoremap <C-j> :bprevious<CR>
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
 
 " Plugin
 call plug#begin('~/.vim/plugged')
@@ -372,7 +374,7 @@ inoremap [] []<Left>
 inoremap () ()<Left>
 inoremap {} {}<Left>
 inoremap `` ``<Left>
-inoremap \|\| \|\|<Left>
+" inoremap \|\| \|\|<Left>
 inoremap `3<Enter> ```<Enter>```<Left><Left><Left><Left>
 
 " altr
