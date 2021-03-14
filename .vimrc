@@ -165,21 +165,18 @@ Plug 'mopp/autodirmake.vim'
 Plug 'thinca/vim-zenspace'
 Plug 'Asheq/close-buffers.vim'
 Plug 'kana/vim-altr'
-Plug 'dyng/ctrlsf.vim'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 endif
 Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
-Plug 'wincent/ferret'
 Plug 'tyru/capture.vim'
 Plug 'haya14busa/vim-edgemotion'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify', {'branch': 'master', 'commit': 'd80e507c8ba31d7d071'} " https://github.com/mhinz/vim-signify/issues/366
 Plug 'lambdalisue/gina.vim'
-Plug 'rhysd/ghpr-blame.vim'
 " lang
 Plug 'slim-template/vim-slim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -196,11 +193,6 @@ nnoremap <Leader>s :CodeSearch<cr>
 " edgemotion
 map <C-j> <Plug>(edgemotion-j)
 map <C-k> <Plug>(edgemotion-k)
-
-let g:ctrlsf_backend = 'rg'
-nnoremap ,f :CtrlSF<Space>
-nnoremap ,f :CtrlSF<Space>
-nnoremap ,F :CtrlSFToggle<CR>
 
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
