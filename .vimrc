@@ -165,6 +165,7 @@ Plug 'mopp/autodirmake.vim'
 Plug 'thinca/vim-zenspace'
 Plug 'Asheq/close-buffers.vim'
 Plug 'kana/vim-altr'
+Plug 'mhinz/vim-grepper'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 endif
@@ -220,6 +221,19 @@ let g:go_def_mode='gopls'
 let g:go_def_mapping_enabled = 0
 let g:go_gorename_command = "gopls"
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
+" grepper
+let g:grepper = {
+  \ 'tools': ['rg', 'git'],
+  \ 'rg': {
+  \   'grepprg': 'rg --hidden --vimgrep',
+  \ }
+  \ }
+nnoremap F :Grepper -tool rg<cr>
+nnoremap <leader>F :Grepper -tool rg -buffer<cr>
+xmap F <plug>(GrepperOperator)
+let g:grepper.highlight = 1
+let g:grepper.switch = 0
 
 " git
 let g:git_messenger_date_format = "%Y/%m/%d %X"
