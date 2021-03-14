@@ -154,7 +154,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'branch': 'release', 'commit': 'ad1793dce0a59afcf8b324b45a1168c032deb162'}
 Plug 'thinca/vim-qfreplace'
 Plug 'preservim/nerdtree'
-Plug 'mhinz/vim-grepper'
 Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -319,19 +318,7 @@ map #  <Plug>(asterisk-z#)
 map g* <Plug>(asterisk-gz*)
 map g# <Plug>(asterisk-gz#)
 
-" grepper
-let g:grepper = {
-  \ 'tools': ['rg', 'git'],
-  \ 'rg': {
-  \   'grepprg': 'rg --hidden --vimgrep',
-  \ }
-  \ }
-nnoremap F :Grepper -tool rg<cr>
-nnoremap <leader>F :Grepper -tool rg -buffer<cr>
-xmap F <plug>(GrepperOperator)
-let g:grepper.highlight = 1
-let g:grepper.switch = 0
-
+" expand region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
