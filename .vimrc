@@ -245,6 +245,7 @@ noremap <C-g>b :Gina browse :
 nnoremap <C-g>s :Gina status --opener=split --group=git<cr>
 nnoremap <C-g>c :Gina commit --opener=split --group=git<cr>
 nnoremap <C-g>d :Gina diff
+nnoremap <C-g>p :Gina push
 
 " coc
 " let $NVIM_COC_LOG_LEVEL = 'debug'
