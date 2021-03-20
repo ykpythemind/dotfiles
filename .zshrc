@@ -2,6 +2,7 @@ fpath+=$HOME/.zsh/pure
 
 autoload -U promptinit; promptinit
 prompt pure
+zstyle ':prompt:pure:prompt:error' color yellow
 
 autoload -Uz compinit; compinit -i
 # tabの補完候補から選択
