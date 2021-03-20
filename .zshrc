@@ -33,8 +33,8 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 
 HISTFILE=${HOME}/.zsh_history
-HISTSIZE=2000000
-SAVEHIST=5000000
+HISTSIZE=10000
+SAVEHIST=1000000
 setopt hist_ignore_dups
 setopt extended_history
 setopt hist_ignore_all_dups

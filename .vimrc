@@ -167,6 +167,7 @@ Plug 'Asheq/close-buffers.vim'
 Plug 'kana/vim-altr'
 Plug 'mhinz/vim-grepper'
 Plug 'junegunn/vim-peekaboo'
+Plug 'tyru/open-browser.vim'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 endif
@@ -367,7 +368,6 @@ inoremap [] []<Left>
 inoremap () ()<Left>
 inoremap {} {}<Left>
 inoremap `` ``<Left>
-" inoremap \|\| \|\|<Left>
 inoremap `3<Enter> ```<Enter>```<Left><Left><Left><Left>
 
 " altr
@@ -388,8 +388,9 @@ nnoremap T :TestNearest<CR>
 let test#neovim#term_position = "botright 30"
 let test#strategy = 'neovim'
 
+nmap <Leader>b <Plug>(openbrowser-smart-search)
+vmap <Leader>b <Plug>(openbrowser-smart-search)
 command! CopyCurrentPath :let @+ = expand('%')
-
 command! Pr exe "!git brws --pr"
 
 
