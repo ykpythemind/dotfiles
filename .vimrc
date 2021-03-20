@@ -166,6 +166,7 @@ Plug 'thinca/vim-zenspace'
 Plug 'Asheq/close-buffers.vim'
 Plug 'kana/vim-altr'
 Plug 'mhinz/vim-grepper'
+Plug 'junegunn/vim-peekaboo'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 endif
@@ -185,8 +186,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " view
 Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
-Plug 'romainl/vim-dichromatic'
-Plug 'rhysd/vim-color-spring-night'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
@@ -310,8 +309,6 @@ if s:true_color_enabled
   set termguicolors
 endif
 
-" colorscheme dichromatic
-" colorscheme spring-night
 " hi String ctermfg=166 guifg=#d75f00
 " hi Normal ctermfg=250 guifg=#f0f5f2
 " hi Search ctermfg=250 ctermbg=237 guifg=#c5c8c6 guibg=#373b41
