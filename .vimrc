@@ -334,6 +334,7 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$', '\.git$'] " ignore files in nerd tree
 let NERDTreeQuitOnOpen = 1
 let g:NERDTreeWinSize=50
+let NERDTreeMapQuit='='
 
 " Lightline
 function! LightlineFilename()
