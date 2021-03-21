@@ -146,7 +146,6 @@ nnoremap <S-Tab> :bprevious<CR>
 call plug#begin('~/.vim/plugged')
 Plug '~/playground/codesearch'
 
-" Plug 'cohama/lexima.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -358,9 +357,6 @@ let g:lightline = {
   \'tabline': { 'left': [['gitbranch', 'tabs']], 'right': [] }
 \ }
 let g:lightline.colorscheme = 'ayu_dark'
-
-" lexima
-" let g:lexima_enable_endwise_rules = 0 " disable
 
 inoremap '' ''<Left>
 inoremap "" ""<Left>
