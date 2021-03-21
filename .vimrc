@@ -392,14 +392,14 @@ command! Pr exe "!git brws --pr"
 
 
 function! HideMainTerm()
-  let bufnum = get(s:, 'terminal_buffer', -1)
+  let bufnum = get(t:, 'terminal_buffer', -1)
   if bufexists(bufnum)
     silent execute bufwinnr(bufnum) . "hide"
   endif
 endfunction
 
 function! ToggleMainTerm()
-  if bufnr('') == get(s:, 'terminal_buffer', -1)
+  if bufnr('') == get(t:, 'terminal_buffer', -1)
     call LeaveMainTerm()
   else
     call EnterMainTerm()
@@ -408,21 +408,21 @@ endfunction
 
 function! s:NewMainTermWin()
   bot new
-  exec 'resize ' . get(g:, 'switch_term_height', 20)
+  exec 'resize ' . get(t:, 'switch_term_height', 20)
   call setbufvar(bufnr(''), '&buflisted', 0)
 endfunction
 
 function! EnterMainTerm()
-  let l:tid = get(s:, 'terminal_id', -1)
-  let s:previous_window_before_term = win_getid()
+  let l:tid = get(t:, 'toggle_terminal_id', -1)
+  let t:previous_window_before_term = win_getid()
 
   if !win_gotoid(tid)
     " show hidden buffer
-    if bufexists(get(s:, 'terminal_buffer', -1))
+    if bufexists(get(t:, 'terminal_buffer', -1))
       call s:NewMainTermWin()
-      exec 'buffer ' . s:terminal_buffer
+      exec 'buffer ' . t:terminal_buffer
       startinsert
-      let s:terminal_id = win_getid()
+      let t:toggle_terminal_id = win_getid()
       return
     end
 
@@ -431,13 +431,13 @@ function! EnterMainTerm()
     term
     startinsert
     call setbufvar(bufnr(''), '&buflisted', 0)
-    let s:terminal_buffer = bufnr('')
-    let s:terminal_id = win_getid()
+    let t:terminal_buffer = bufnr('')
+    let t:toggle_terminal_id = win_getid()
   endif
 endfunction
 
 function! LeaveMainTerm()
   hide
-  let prev = get(s:, 'previous_window_before_term', -1)
+  let prev = get(t:, 'previous_window_before_term', -1)
   call win_gotoid(prev)
 endfunction
