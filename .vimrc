@@ -178,7 +178,7 @@ Plug 'haya14busa/vim-edgemotion'
 Plug 'wincent/ferret'
 " Git
 Plug 'rhysd/git-messenger.vim'
-Plug 'mhinz/vim-signify', {'branch': 'master', 'commit': 'd80e507c8ba31d7d071'} " https://github.com/mhinz/vim-signify/issues/366
+Plug 'mhinz/vim-signify'
 Plug 'lambdalisue/gina.vim'
 " lang
 Plug 'slim-template/vim-slim'
