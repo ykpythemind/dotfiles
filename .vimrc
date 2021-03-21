@@ -132,9 +132,9 @@ autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 tnoremap <ESC> <C-\><C-n>
 " Easier time when pasting content in terminal mode with <C-v> : https://github.com/vimlab/split-term.vim/blob/a4e28cab77ad07fc8a0ebb62a982768c02eb287c/plugin/split-term.vim#L41
 tnoremap <buffer> <expr> <C-v> '<C-\><C-N>pi'
-nnoremap <C-t> :call ToggleMainTerm()<CR>
-tnoremap <C-t> <C-\><C-n>:call ToggleMainTerm()<CR>
-nnoremap <Leader><C-t> :call HideMainTerm()<CR>
+nnoremap <C-t> :ToggleTerm<CR>
+tnoremap <C-t> <C-\><C-n>:ToggleTerm<CR>
+nnoremap <Leader><C-t> :HideTerm<CR>
 
 " buffer
 " nnoremap <C-k> :bnext<CR>
@@ -168,6 +168,7 @@ Plug 'kana/vim-altr'
 Plug 'mhinz/vim-grepper'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tyru/open-browser.vim'
+Plug 'ykpythemind/toggle-term'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 endif
@@ -391,54 +392,3 @@ vmap <Leader>b <Plug>(openbrowser-smart-search)
 command! CopyCurrentPath :let @+ = expand('%')
 command! Pr exe "!git brws --pr"
 
-
-function! HideMainTerm()
-  let bufnum = get(t:, 'terminal_buffer', -1)
-  if bufexists(bufnum)
-    silent execute bufwinnr(bufnum) . "hide"
-  endif
-endfunction
-
-function! ToggleMainTerm()
-  if bufnr('') == get(t:, 'terminal_buffer', -1)
-    call LeaveMainTerm()
-  else
-    call EnterMainTerm()
-  endif
-endfunction
-
-function! s:NewMainTermWin()
-  bot new
-  exec 'resize ' . get(t:, 'switch_term_height', 20)
-  call setbufvar(bufnr(''), '&buflisted', 0)
-endfunction
-
-function! EnterMainTerm()
-  let l:tid = get(t:, 'toggle_terminal_id', -1)
-  let t:previous_window_before_term = win_getid()
-
-  if !win_gotoid(tid)
-    " show hidden buffer
-    if bufexists(get(t:, 'terminal_buffer', -1))
-      call s:NewMainTermWin()
-      exec 'buffer ' . t:terminal_buffer
-      startinsert
-      let t:toggle_terminal_id = win_getid()
-      return
-    end
-
-    " new term
-    call s:NewMainTermWin()
-    term
-    startinsert
-    call setbufvar(bufnr(''), '&buflisted', 0)
-    let t:terminal_buffer = bufnr('')
-    let t:toggle_terminal_id = win_getid()
-  endif
-endfunction
-
-function! LeaveMainTerm()
-  hide
-  let prev = get(t:, 'previous_window_before_term', -1)
-  call win_gotoid(prev)
-endfunction
