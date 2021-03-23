@@ -175,6 +175,7 @@ Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'tyru/capture.vim'
 Plug 'haya14busa/vim-edgemotion'
+Plug 'easymotion/vim-easymotion'
 Plug 'wincent/ferret'
 " Git
 Plug 'rhysd/git-messenger.vim'
@@ -192,8 +193,13 @@ source $VIMRUNTIME/macros/matchit.vim
 nnoremap <Leader>s :CodeSearch<cr>
 
 " edgemotion
-map <C-j> <Plug>(edgemotion-j)
-map <C-k> <Plug>(edgemotion-k)
+" map <C-j> <Plug>(edgemotion-j)
+" map <C-k> <Plug>(edgemotion-k)
+let g:EasyMotion_do_mapping = 0 "Disable default mappings
+" map <Leader>j <Plug>(easymotion-j)
+" map <Leader>k <Plug>(easymotion-k)
+nmap s <Plug>(easymotion-s2)
+nmap <Leader>f <Plug>(easymotion-overwin-f2)
 
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
@@ -239,7 +245,6 @@ let g:grepper.switch = 0
 let g:git_messenger_date_format = "%Y/%m/%d %X"
 nmap <C-g>m <Plug>(git-messenger)
 
-let g:ghpr_github_auth_token = $GITHUB_TOKEN
 noremap <C-g>b :Gina browse :
 nnoremap <C-g>s :Gina status --opener=split --group=git<cr>
 nnoremap <C-g>c :Gina commit --opener=split --group=git<cr>
@@ -365,6 +370,7 @@ inoremap [] []<Left>
 inoremap () ()<Left>
 inoremap {} {}<Left>
 inoremap `` ``<Left>
+inoremap <> <><Left>
 inoremap `3<Enter> ```<Enter>```<Left><Left><Left><Left>
 
 " altr
