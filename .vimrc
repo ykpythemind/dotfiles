@@ -38,9 +38,7 @@ set ttyfast
 set updatetime=300
 set shortmess+=c " coc
 set shortmess-=S
-
 set showtabline=2
-
 set completeopt=menuone,noinsert,noselect
 
 set shiftwidth=2
@@ -391,4 +389,10 @@ nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)
 command! CopyCurrentPath :let @+ = expand('%')
 command! Pr exe "!git brws --pr"
+command! Code :call Opencode()
+
+function! Opencode()
+  let c = expand('%')
+  execute("!code " . (c == '' ? getcwd() : c))
+endfunction
 
