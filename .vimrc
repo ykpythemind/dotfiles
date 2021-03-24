@@ -193,8 +193,8 @@ source $VIMRUNTIME/macros/matchit.vim
 nnoremap <Leader>s :CodeSearch<cr>
 
 " edgemotion
-" map <C-j> <Plug>(edgemotion-j)
-" map <C-k> <Plug>(edgemotion-k)
+map <C-j> <Plug>(edgemotion-j)
+map <C-k> <Plug>(edgemotion-k)
 let g:EasyMotion_do_mapping = 0 "Disable default mappings
 " map <Leader>j <Plug>(easymotion-j)
 " map <Leader>k <Plug>(easymotion-k)
