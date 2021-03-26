@@ -101,6 +101,15 @@ xnoremap p "_dP
 nnoremap dD "_dd
 vnoremap D "_d
 
+inoremap '' ''<Left>
+inoremap "" ""<Left>
+inoremap [] []<Left>
+inoremap () ()<Left>
+inoremap {} {}<Left>
+inoremap `` ``<Left>
+inoremap <> <><Left>
+inoremap `3<Enter> ```<Enter>```<Left><Left><Left><Left>
+
 nnoremap <C-s> :w<CR>
 
 nnoremap <C-l> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
@@ -164,7 +173,7 @@ Plug 'thinca/vim-zenspace'
 Plug 'Asheq/close-buffers.vim'
 Plug 'kana/vim-altr'
 Plug 'mhinz/vim-grepper'
-Plug 'junegunn/vim-peekaboo'
+" Plug 'junegunn/vim-peekaboo'
 Plug 'tyru/open-browser.vim'
 Plug 'ykpythemind/toggle-term'
 if has('nvim')
@@ -364,15 +373,6 @@ let g:lightline = {
 \ }
 let g:lightline.colorscheme = 'ayu_dark'
 
-inoremap '' ''<Left>
-inoremap "" ""<Left>
-inoremap [] []<Left>
-inoremap () ()<Left>
-inoremap {} {}<Left>
-inoremap `` ``<Left>
-inoremap <> <><Left>
-inoremap `3<Enter> ```<Enter>```<Left><Left><Left><Left>
-
 " altr
 nmap <Leader>J <Plug>(altr-forward)
 nmap <Leader>K <Plug>(altr-back)
@@ -399,6 +399,9 @@ command! Code :call Opencode()
 
 function! Opencode()
   let c = expand('%')
-  execute("!code " . (c == '' ? getcwd() : c))
+  execute("!code " . getcwd())
+  if c != ''
+    execute("!code -a " . c)
+  endif
 endfunction
 
