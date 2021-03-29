@@ -205,8 +205,6 @@ nnoremap <Leader>s :CodeSearch<cr>
 map <C-j> <Plug>(edgemotion-j)
 map <C-k> <Plug>(edgemotion-k)
 let g:EasyMotion_do_mapping = 0 "Disable default mappings
-" map <Leader>j <Plug>(easymotion-j)
-" map <Leader>k <Plug>(easymotion-k)
 nmap s <Plug>(easymotion-s2)
 nmap <Leader>f <Plug>(easymotion-overwin-f2)
 
@@ -226,7 +224,6 @@ nnoremap <C-P> :Files<CR>
 nnoremap <C-H> :History<CR>
 nnoremap <C-e> :Buffers<CR>
 nnoremap L :BLines<CR>
-nnoremap <Leader>L :Lines<CR>
 let g:fzf_preview_window = []
 
 " golang
