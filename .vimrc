@@ -116,7 +116,6 @@ nnoremap <C-l> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 
 nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
-nnoremap <silent> <Space>O :<C-u>for i in range(1, v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 
 " quickfix
 nnoremap <C-n> :Cnext<CR>
@@ -154,7 +153,6 @@ call plug#begin('~/.vim/plugged')
 Plug '~/playground/codesearch'
 
 Plug 'editorconfig/editorconfig-vim'
-" Plug 'tpope/vim-commentary'
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -401,4 +399,3 @@ function! Opencode()
     execute("!code -a " . c)
   endif
 endfunction
-
