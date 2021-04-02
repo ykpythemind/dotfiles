@@ -156,7 +156,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neoclide/coc.nvim', {'branch': 'release', 'commit': 'ad1793dce0a59afcf8b324b45a1168c032deb162'}
 Plug 'thinca/vim-qfreplace'
 Plug 'preservim/nerdtree'
 Plug 'terryma/vim-expand-region'
@@ -171,7 +170,6 @@ Plug 'thinca/vim-zenspace'
 Plug 'Asheq/close-buffers.vim'
 Plug 'kana/vim-altr'
 Plug 'mhinz/vim-grepper'
-" Plug 'junegunn/vim-peekaboo'
 Plug 'tyru/open-browser.vim'
 Plug 'ykpythemind/toggle-term'
 if has('nvim')
