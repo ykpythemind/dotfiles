@@ -10,3 +10,6 @@ set blob-view = line-number:no,interval=1 text
 set diff-view = line-number:no,interval=1 text:yes,commit-title-overflow=no
 
 set diff-context = 6
+
+bind generic G none
+bind main V !?git revert %(commit)
