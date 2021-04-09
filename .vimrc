@@ -101,15 +101,6 @@ xnoremap p "_dP
 nnoremap dD "_dd
 vnoremap D "_d
 
-inoremap '' ''<Left>
-inoremap "" ""<Left>
-inoremap [] []<Left>
-inoremap () ()<Left>
-inoremap {} {}<Left>
-inoremap `` ``<Left>
-inoremap <> <><Left>
-inoremap `3<Enter> ```<Enter>```<Left><Left><Left><Left>
-
 nnoremap <C-s> :w<CR>
 
 nnoremap <C-l> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
@@ -182,6 +173,7 @@ Plug 'tyru/capture.vim'
 Plug 'haya14busa/vim-edgemotion'
 Plug 'easymotion/vim-easymotion'
 Plug 'wincent/ferret'
+Plug 'mattn/vim-lexiv'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify'
