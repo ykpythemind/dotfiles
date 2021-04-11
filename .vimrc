@@ -98,15 +98,17 @@ nnoremap N Nzvzz
 
 nnoremap x "_x
 xnoremap p "_dP
-nnoremap dD "_dd
-vnoremap D "_d
+map <C-b> <Nop>
+" blackhole
+nnoremap <C-b>dd "_dd
+vnoremap <C-b>d "_d
 
 nnoremap <C-s> :w<CR>
 
 nnoremap <C-l> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 
-nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line('.'),   '') \| endfor<CR>
+nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line('.'), '') \| endfor<CR>
 
 " quickfix
 nnoremap <C-n> :Cnext<CR>
@@ -131,7 +133,6 @@ tnoremap <ESC> <C-\><C-n>
 tnoremap <buffer> <expr> <C-v> '<C-\><C-N>pi'
 nnoremap <C-t> :ToggleTerm<CR>
 tnoremap <C-t> <C-\><C-n>:ToggleTerm<CR>
-nnoremap <Leader><C-t> :HideTerm<CR>
 
 " buffer
 " nnoremap <C-k> :bnext<CR>
@@ -141,7 +142,7 @@ nnoremap <S-Tab> :bprevious<CR>
 
 " Plugin
 call plug#begin('~/.vim/plugged')
-Plug '~/playground/codesearch'
+Plug '~/git/github.com/ykpythemind/codesearch.vim'
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tyru/caw.vim'
