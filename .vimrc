@@ -144,6 +144,8 @@ nnoremap <S-Tab> :bprevious<CR>
 call plug#begin('~/.vim/plugged')
 Plug '~/git/github.com/ykpythemind/codesearch.vim'
 
+Plug 'Shougo/deol.nvim'
+
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'

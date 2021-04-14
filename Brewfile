@@ -33,5 +33,8 @@ brew "gh"
 brew "git-brws"
 brew "dip"
 
+brew "bluetoothconnector"
+brew "switchaudio-osx"
+
 cask "ngrok"
 cask "alacritty"
