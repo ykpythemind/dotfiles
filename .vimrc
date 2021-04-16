@@ -306,19 +306,19 @@ function! s:show_documentation()
 endfunction
 
 "color
-set background=dark
+colorscheme hybrid
+hi QuickFixLine ctermbg=none ctermfg=none
+hi MatchParen guifg=none guibg=#585858
+" hi String ctermfg=166 guifg=#d75f00
+" hi Search ctermfg=250 ctermbg=237 guifg=#c5c8c6 guibg=#373b41
+" hi Normal ctermbg=0 guibg=#000000
+
+" colorscheme より後におく
 let s:true_color_enabled = $TERM_PROGRAM ==# 'iTerm.app' || $TERM_PROGRAM ==# 'alacritty'
 if s:true_color_enabled
   set termguicolors
 endif
-
-" hi String ctermfg=166 guifg=#d75f00
-" hi Normal ctermfg=250 guifg=#f0f5f2
-" hi Search ctermfg=250 ctermbg=237 guifg=#c5c8c6 guibg=#373b41
-colorscheme hybrid
-hi Normal ctermbg=0 guibg=#000000
-hi QuickFixLine ctermbg=none ctermfg=none
-hi MatchParen guifg=none guibg=#585858
+set background=dark
 
 " vim-asterisk
 map *  <Plug>(asterisk-z*)
