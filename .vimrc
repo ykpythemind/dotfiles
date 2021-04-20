@@ -145,6 +145,7 @@ call plug#begin('~/.vim/plugged')
 Plug '~/git/github.com/ykpythemind/codesearch.vim'
 
 Plug 'Shougo/deol.nvim'
+Plug 'tommcdo/vim-exchange'
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tyru/caw.vim'
