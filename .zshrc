@@ -96,7 +96,7 @@ zstyle ':chpwd:*' recent-dirs-pushd true
 
 function gcom() {
   local ret
-  git branch | grep "main\$"
+  git branch | grep --silent "main\$"
   ret=$?
   if [ $ret = 0 ]; then
     git switch main
