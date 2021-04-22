@@ -135,10 +135,10 @@ nnoremap <C-t> :ToggleTerm<CR>
 tnoremap <C-t> <C-\><C-n>:ToggleTerm<CR>
 
 " buffer
-" nnoremap <C-k> :bnext<CR>
-" nnoremap <C-j> :bprevious<CR>
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+nnoremap <C-k> :bnext<CR>
+nnoremap <C-j> :bprevious<CR>
+" nnoremap <Tab> :bnext<CR>
+" nnoremap <S-Tab> :bprevious<CR>
 
 " Plugin
 call plug#begin('~/.vim/plugged')
@@ -174,7 +174,7 @@ Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'tyru/capture.vim'
-Plug 'haya14busa/vim-edgemotion'
+" Plug 'haya14busa/vim-edgemotion'
 Plug 'easymotion/vim-easymotion'
 Plug 'wincent/ferret'
 Plug 'mattn/vim-lexiv'
@@ -194,8 +194,8 @@ source $VIMRUNTIME/macros/matchit.vim
 nnoremap <Leader>s :CodeSearch<cr>
 
 " edgemotion
-map <C-j> <Plug>(edgemotion-j)
-map <C-k> <Plug>(edgemotion-k)
+" map <C-j> <Plug>(edgemotion-j)
+" map <C-k> <Plug>(edgemotion-k)
 let g:EasyMotion_do_mapping = 0 "Disable default mappings
 nmap s <Plug>(easymotion-s2)
 nmap <Leader>f <Plug>(easymotion-overwin-f2)

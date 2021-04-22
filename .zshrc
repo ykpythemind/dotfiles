@@ -50,6 +50,7 @@ unsetopt EXTENDED_GLOB
 #
 
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export FZF_DEFAULT_OPTS="--reverse"
 export GHQ_SELECTOR="fzf"
 
