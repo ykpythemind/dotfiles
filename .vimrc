@@ -105,7 +105,8 @@ vnoremap <C-b>d "_d
 
 nnoremap <C-s> :w<CR>
 
-nnoremap <C-l> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
+" nnoremap <C-l> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
+nnoremap <Leader>l :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 
 nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line('.'), '') \| endfor<CR>
@@ -135,10 +136,10 @@ nnoremap <C-t> :ToggleTerm<CR>
 tnoremap <C-t> <C-\><C-n>:ToggleTerm<CR>
 
 " buffer
-nnoremap <C-k> :bnext<CR>
-nnoremap <C-j> :bprevious<CR>
-" nnoremap <Tab> :bnext<CR>
-" nnoremap <S-Tab> :bprevious<CR>
+" nnoremap <C-k> :bnext<CR>
+" nnoremap <C-j> :bprevious<CR>
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
 
 " Plugin
 call plug#begin('~/.vim/plugged')
@@ -146,6 +147,7 @@ Plug '~/git/github.com/ykpythemind/codesearch.vim'
 
 Plug 'Shougo/deol.nvim'
 Plug 'tommcdo/vim-exchange'
+Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tyru/caw.vim'
@@ -213,7 +215,8 @@ let g:fzf_layout = { 'up': '45%' }
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
   \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 nnoremap <C-P> :Files<CR>
-nnoremap <C-H> :History<CR>
+" nnoremap <C-H> :History<CR>
+nnoremap <Leader>h :History<CR>
 nnoremap <C-e> :Buffers<CR>
 nnoremap L :BLines<CR>
 let g:fzf_preview_window = []
@@ -314,7 +317,6 @@ hi QuickFixLine ctermbg=none ctermfg=none
 hi MatchParen guifg=none guibg=#585858
 " hi String ctermfg=166 guifg=#d75f00
 " hi Search ctermfg=250 ctermbg=237 guifg=#c5c8c6 guibg=#373b41
-" hi Normal ctermbg=0 guibg=#000000
 
 " colorscheme より後におく
 let s:true_color_enabled = $TERM_PROGRAM ==# 'iTerm.app' || $TERM_PROGRAM ==# 'alacritty'
@@ -322,6 +324,7 @@ if s:true_color_enabled
   set termguicolors
 endif
 set background=dark
+hi Normal ctermfg=253 ctermbg=16 guifg=#c5c8c6 guibg=#1d1f21
 
 " vim-asterisk
 map *  <Plug>(asterisk-z*)
