@@ -324,7 +324,7 @@ if s:true_color_enabled
   set termguicolors
 endif
 set background=dark
-hi Normal ctermfg=253 ctermbg=16 guifg=#c5c8c6 guibg=#1d1f21
+hi Normal ctermfg=252 ctermbg=16 guifg=#c5c8c6 guibg=#1d1f21
 
 " vim-asterisk
 map *  <Plug>(asterisk-z*)
