@@ -148,6 +148,7 @@ Plug '~/git/github.com/ykpythemind/codesearch.vim'
 Plug 'Shougo/deol.nvim'
 Plug 'tommcdo/vim-exchange'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'preservim/vimux'
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tyru/caw.vim'
@@ -383,7 +384,8 @@ lang en_US.UTF-8 " paste issue
 autocmd FileType help nnoremap <buffer> q <C-w>c
 nnoremap T :TestNearest<CR>
 let test#neovim#term_position = "botright 30"
-let test#strategy = 'neovim'
+" let test#strategy = 'neovim'
+let test#strategy = 'vimux'
 
 nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)
