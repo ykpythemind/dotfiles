@@ -171,4 +171,4 @@ function inc-cdr() {
     fi
 }
 zle -N inc-cdr
-bindkey '^H' inc-cdr
+bindkey '^I' inc-cdr
