@@ -105,7 +105,6 @@ vnoremap <C-b>d "_d
 
 nnoremap <C-s> :w<CR>
 
-" nnoremap <C-l> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
 nnoremap <Leader>l :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 
@@ -115,6 +114,7 @@ nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line
 nnoremap <C-n> :Cnext<CR>
 nnoremap <C-m> :Cprev<CR>
 nnoremap <Leader>cl :cclose<CR>
+nnoremap <Leader>co :copen<CR>
 " In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 autocmd FileType qf nnoremap <buffer><silent> q :<C-u>cclose<CR>
@@ -137,10 +137,8 @@ nnoremap <C-t> :ToggleTerm<CR>
 tnoremap <C-t> <C-\><C-n>:ToggleTerm<CR>
 
 " buffer
-" nnoremap <C-k> :bnext<CR>
-" nnoremap <C-j> :bprevious<CR>
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+nnoremap <Leader>j :bnext<CR>
+nnoremap <Leader>k :bprevious<CR>
 
 " Plugin
 call plug#begin('~/.vim/plugged')
@@ -214,7 +212,6 @@ let g:fzf_layout = { 'up': '45%' }
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
   \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 nnoremap <C-P> :Files<CR>
-" nnoremap <C-H> :History<CR>
 nnoremap <Leader>h :History<CR>
 nnoremap <C-e> :Buffers<CR>
 nnoremap L :BLines<CR>
@@ -271,6 +268,7 @@ let g:coc_global_extensions = [
 
 nnoremap <silent> <Leader>cd :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <Leader>cf :<C-u>CocFix<cr>
+nnoremap <silent> <Leader>cc :<C-u>CocCommand<cr>
 let g:coc_disable_transparent_cursor= 1 " https://github.com/neoclide/coc.nvim/issues/1775
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -314,8 +312,6 @@ endfunction
 colorscheme hybrid
 hi QuickFixLine ctermbg=none ctermfg=none
 hi MatchParen guifg=none guibg=#585858
-" hi String ctermfg=166 guifg=#d75f00
-" hi Search ctermfg=250 ctermbg=237 guifg=#c5c8c6 guibg=#373b41
 
 " colorscheme より後におく
 let s:true_color_enabled = $TERM_PROGRAM ==# 'iTerm.app' || $TERM_PROGRAM ==# 'alacritty'
@@ -365,7 +361,6 @@ let g:lightline = {
   \'mode_map': { 'n': 'N', 'i': 'I', 'v': 'V' },
   \'tabline': { 'left': [['gitbranch', 'tabs']], 'right': [] }
 \ }
-" let g:lightline.colorscheme = 'ayu_dark'
 
 " altr
 nmap <Leader>J <Plug>(altr-forward)
