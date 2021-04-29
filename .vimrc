@@ -114,6 +114,7 @@ nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line
 " quickfix
 nnoremap <C-n> :Cnext<CR>
 nnoremap <C-m> :Cprev<CR>
+nnoremap <Leader>cl :cclose<CR>
 " In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 autocmd FileType qf nnoremap <buffer><silent> q :<C-u>cclose<CR>
@@ -146,7 +147,6 @@ call plug#begin('~/.vim/plugged')
 Plug '~/git/github.com/ykpythemind/codesearch.vim'
 
 Plug 'Shougo/deol.nvim'
-Plug 'tommcdo/vim-exchange'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/vimux'
 
@@ -170,6 +170,7 @@ Plug 'kana/vim-altr'
 Plug 'mhinz/vim-grepper'
 Plug 'tyru/open-browser.vim'
 Plug 'ykpythemind/toggle-term'
+Plug 'dhruvasagar/vim-zoom'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 endif
@@ -177,7 +178,6 @@ Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'tyru/capture.vim'
-" Plug 'haya14busa/vim-edgemotion'
 Plug 'easymotion/vim-easymotion'
 Plug 'wincent/ferret'
 Plug 'mattn/vim-lexiv'
@@ -196,9 +196,7 @@ source $VIMRUNTIME/macros/matchit.vim
 
 nnoremap <Leader>s :CodeSearch<cr>
 
-" edgemotion
-" map <C-j> <Plug>(edgemotion-j)
-" map <C-k> <Plug>(edgemotion-k)
+" easymotion
 let g:EasyMotion_do_mapping = 0 "Disable default mappings
 nmap s <Plug>(easymotion-s2)
 nmap <Leader>f <Plug>(easymotion-overwin-f2)
@@ -353,7 +351,7 @@ endfunction
 let g:lightline = {
   \'active': {
   \  'left': [
-  \    ['mode', 'paste'],
+  \    ['mode', 'paste', 'zoom'],
   \    ['readonly', 'filename', 'modified'] ],
   \ 'right': [
   \            [ 'filetype', 'coc' ] ]
@@ -361,12 +359,13 @@ let g:lightline = {
   \'component_function': {
     \   'filename': 'LightlineFilename',
     \   'gitbranch': 'gina#component#repo#branch',
-    \   'coc': 'coc#status'
+    \   'coc': 'coc#status',
+    \   'zoom': 'zoom#statusline'
   \},
   \'mode_map': { 'n': 'N', 'i': 'I', 'v': 'V' },
   \'tabline': { 'left': [['gitbranch', 'tabs']], 'right': [] }
 \ }
-let g:lightline.colorscheme = 'ayu_dark'
+" let g:lightline.colorscheme = 'ayu_dark'
 
 " altr
 nmap <Leader>J <Plug>(altr-forward)
