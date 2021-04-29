@@ -340,7 +340,7 @@ noremap - :NERDTreeToggle<CR>
 noremap = :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$', '\.git$'] " ignore files in nerd tree
-let NERDTreeQuitOnOpen = 1
+" let NERDTreeQuitOnOpen = 1
 let g:NERDTreeWinSize=50
 let NERDTreeMapQuit='='
 
@@ -391,6 +391,9 @@ vmap <Leader>b <Plug>(openbrowser-smart-search)
 command! CopyCurrentPath :let @+ = expand('%')
 command! Pr exe "!git brws --pr"
 command! Code :call Opencode()
+command! Reload bufdo e!
+
+autocmd InsertEnter * checktime
 
 function! Opencode()
   let c = expand('%')
