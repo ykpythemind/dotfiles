@@ -382,6 +382,8 @@ set shell=zsh
 lang en_US.UTF-8 " paste issue
 autocmd FileType help nnoremap <buffer> q <C-w>c
 nnoremap T :TestNearest<CR>
+nnoremap <Leader>tt :TestNearest<CR>
+nnoremap <Leader>tl :TestLast<CR>
 let test#neovim#term_position = "botright 30"
 " let test#strategy = 'neovim'
 let test#strategy = 'vimux'
