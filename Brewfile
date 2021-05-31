@@ -27,6 +27,7 @@ brew "unison"
 brew "nodenv"
 brew "cmake"
 brew "luarocks"
+brew "md5sha1sum"
 
 brew "heroku"
 brew "aws-sam-cli"
