@@ -176,3 +176,7 @@ function inc-cdr() {
 }
 zle -N inc-cdr
 bindkey '^Y' inc-cdr
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -e '^O' edit-command-line
