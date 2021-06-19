@@ -172,7 +172,6 @@ Plug 'dhruvasagar/vim-zoom'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 endif
-Plug 'ReekenX/vim-rename2'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'tyru/capture.vim'
