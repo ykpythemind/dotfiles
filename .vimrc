@@ -392,6 +392,7 @@ command! Reload bufdo e!
 autocmd InsertEnter * checktime
 
 function! Opencode()
+  silent
   let c = expand('%')
   execute("!code " . getcwd())
   if c != ''
