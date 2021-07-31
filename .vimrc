@@ -263,6 +263,7 @@ let g:coc_global_extensions = [
       \ 'coc-solargraph',
       \ 'coc-stylelint',
       \ 'coc-go',
+      \ 'coc-deno',
       \ ]
 
 nnoremap <silent> <Leader>cd :<C-u>CocList diagnostics<cr>

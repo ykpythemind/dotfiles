@@ -4,10 +4,6 @@ autoload -U promptinit; promptinit
 prompt pure
 zstyle ':prompt:pure:prompt:error' color yellow
 
-autoload -Uz compinit; compinit -i
-# tabの補完候補から選択
-zstyle ':completion:*:default' menu select=1
-
 eval "$(direnv hook zsh)"
 stty eof undef
 
@@ -26,6 +22,10 @@ fi
 if [ -e ~/.zsh/completion ]; then
     fpath=(~/.zsh/completion $fpath)
 fi
+
+autoload -Uz compinit; compinit -i
+# tabの補完候補から選択
+zstyle ':completion:*:default' menu select=1
 
 alias la='ls -laG'
 alias vim='nvim'
@@ -57,6 +57,9 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export FZF_DEFAULT_OPTS="--reverse"
 export GHQ_SELECTOR="fzf"
+
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 export RIPGREP_CONFIG_PATH=$HOME/dotfiles/ripgrep_rc
 

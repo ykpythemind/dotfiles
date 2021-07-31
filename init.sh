@@ -35,6 +35,10 @@ ln -sf $CONFPATH/coc-settings.json ~/.config/nvim/coc-settings.json
 
 mkdir -p ~/.cache/shell
 
+echo "* deno"
+mkdir ~/.zsh/completion # create a folder to save your completions. it can be anywhere
+deno completions zsh > ~/.zsh/completion/_deno
+
 echo "* link diff-highlight"
 
 ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
