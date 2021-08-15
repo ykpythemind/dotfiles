@@ -147,6 +147,16 @@ gpr() {
   fi
 }
 
+kp() {
+  local sig=${1:-15}
+  local pid=$(ps -ef | sed 1d | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[kill (${sig})]'" | awk '{print $2}')
+
+  if [ -n "$pid" ]; then
+    kill -$sig $pid
+    kp
+  fi
+}
+
 # move to ghq dir
 function inc-ghq() {
   local selected_dir=$(ghq list | fzf --query="$LBUFFER")
