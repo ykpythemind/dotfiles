@@ -176,8 +176,9 @@ Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'tyru/capture.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'wincent/ferret'
+" Plug 'wincent/ferret'
 Plug 'mattn/vim-lexiv'
+
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify'
@@ -246,9 +247,7 @@ nnoremap <C-g>s :Gina status -v --opener=split --group=git<cr>
 nnoremap <C-g>c :Gina commit --opener=split --group=git<cr>
 nnoremap <C-g>l :Gina log<cr>
 nnoremap <C-g>d :Gina diff<cr>
-nnoremap <C-g>ds :Gina diff --staged<cr>
 nnoremap <C-g>D :Gina diff
-nnoremap <C-g>p :Gina push<cr>
 
 " coc
 " let $NVIM_COC_LOG_LEVEL = 'debug'
@@ -336,7 +335,6 @@ noremap - :NERDTreeToggle<CR>
 noremap = :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$', '\.git$'] " ignore files in nerd tree
-" let NERDTreeQuitOnOpen = 1
 let g:NERDTreeWinSize=50
 let NERDTreeMapQuit='='
 
