@@ -47,3 +47,7 @@ echo "zsh / pure"
 mkdir -p ${HOME}/.zsh
 git clone https://github.com/sindresorhus/pure.git ${HOME}/.zsh/pure
 git -C ${HOME}/.zsh/pure pull
+
+echo "* kitty"
+mkdir -p ${HOME}/.config/kitty
+ln -sf $CONFPATH/kitty.conf ~/.config/kitty/kitty.conf
