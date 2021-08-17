@@ -38,3 +38,4 @@ brew "switchaudio-osx"
 
 cask "ngrok"
 cask "alacritty"
+cask "kitty"
