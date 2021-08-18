@@ -185,7 +185,8 @@ Plug 'mhinz/vim-signify'
 Plug 'lambdalisue/gina.vim'
 " lang
 Plug 'slim-template/vim-slim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'mattn/vim-goimports'
 " view
 Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
@@ -223,7 +224,7 @@ let g:go_list_type = "quickfix"
 let g:go_def_mode='gopls'
 let g:go_def_mapping_enabled = 0
 let g:go_gorename_command = "gopls"
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " grepper
 let g:grepper = {

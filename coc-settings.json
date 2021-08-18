@@ -13,10 +13,10 @@
     "json",
     "go"
   ],
-	"list.insertMappings": {
-		"<C-n>": "normal:j",
-		"<C-p>": "normal:k"
-	},
+  "list.insertMappings": {
+    "<C-n>": "normal:j",
+    "<C-p>": "normal:k"
+  },
   "suggest.floatEnable": true,
   "suggest.maxCompleteItemCount": 20,
   "suggest.noselect": true,
@@ -32,10 +32,6 @@
         "usePlaceholders": true
       }
     }
-  },
-  "go.enable": false,
-  "go.goplsOptions": {
-    "gofumpt": true
   },
   "solargraph.useBundler": true,
   "solargraph.bundlerPath": "/Users/ykpythemind/.rbenv/shims/bundle",
