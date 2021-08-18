@@ -219,11 +219,11 @@ nnoremap L :BLines<CR>
 let g:fzf_preview_window = []
 
 " golang
-let g:go_fmt_autosave = 0 " 0 == disable: coc.nvimを壊す
-let g:go_list_type = "quickfix"
-let g:go_def_mode='gopls'
-let g:go_def_mapping_enabled = 0
-let g:go_gorename_command = "gopls"
+" let g:go_fmt_autosave = 0 " 0 == disable: coc.nvimを壊す
+" let g:go_list_type = "quickfix"
+" let g:go_def_mode='gopls'
+" let g:go_def_mapping_enabled = 0
+" let g:go_gorename_command = "gopls"
 " autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " grepper

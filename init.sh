@@ -51,3 +51,6 @@ git -C ${HOME}/.zsh/pure pull
 echo "* kitty"
 mkdir -p ${HOME}/.config/kitty
 ln -sf $CONFPATH/kitty.conf ~/.config/kitty/kitty.conf
+
+echo "* go"
+go install golang.org/x/tools/cmd/goimports@latest

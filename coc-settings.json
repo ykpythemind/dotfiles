@@ -10,8 +10,7 @@
     "typescript",
     "typescriptreact",
     "typescript.tsx",
-    "json",
-    "go"
+    "json"
   ],
   "list.insertMappings": {
     "<C-n>": "normal:j",
