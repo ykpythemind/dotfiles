@@ -314,7 +314,7 @@ hi QuickFixLine ctermbg=none ctermfg=none
 hi MatchParen guifg=none guibg=#585858
 
 " colorscheme より後におく
-let s:true_color_enabled = $TERM_PROGRAM ==# 'iTerm.app' || $TERM_PROGRAM ==# 'alacritty'
+let s:true_color_enabled = $TERM_PROGRAM ==# 'iTerm.app' || $TERM_PROGRAM ==# 'alacritty' " || $COLORTERM ==# 'truecolor'
 if s:true_color_enabled
   set termguicolors
 endif
