@@ -4,7 +4,6 @@ CONFPATH="$PWD"
 
 echo "* symlink"
 ln -sf $CONFPATH/.vimrc ~/.vimrc
-ln -sf $CONFPATH/config.fish ~/.config/fish/
 ln -sf $CONFPATH/.gitconfig ~/.gitconfig
 ln -sf $CONFPATH/.gitignore_global ~/.gitignore_global
 ln -sf $CONFPATH/.tmux.conf ~/.tmux.conf
