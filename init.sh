@@ -16,6 +16,9 @@ ln -sf $CONFPATH/.tigrc ~/.tigrc
 ln -sf $CONFPATH/.zshrc ~/.zshrc
 ln -sf $CONFPATH/.zprofile ~/.zprofile
 
+echo "* zgen"
+git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
+
 echo "* git-gone"
 curl -fL https://raw.githubusercontent.com/eed3si9n/git-gone/master/git-gone -o /tmp/git-gone
 sudo cp /tmp/git-gone /usr/local/bin/git-gone

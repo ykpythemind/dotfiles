@@ -1,3 +1,11 @@
+source "${HOME}/.zgen/zgen.zsh"
+
+if ! zgen saved; then
+  zgen load "MichaelAquilina/zsh-auto-notify"
+
+  zgen save
+fi
+
 fpath+=$HOME/.zsh/pure
 
 autoload -U promptinit; promptinit
