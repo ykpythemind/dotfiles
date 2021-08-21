@@ -18,8 +18,9 @@ ln -sf $CONFPATH/.zshrc ~/.zshrc
 ln -sf $CONFPATH/.zprofile ~/.zprofile
 
 echo "* git-gone"
-curl -fL https://raw.githubusercontent.com/eed3si9n/git-gone/master/git-gone -o /usr/local/bin/git-gone
-chmod +x /usr/local/bin/git-gone
+curl -fL https://raw.githubusercontent.com/eed3si9n/git-gone/master/git-gone -o /tmp/git-gone
+sudo cp /tmp/git-gone /usr/local/bin/git-gone
+sudo chmod +x /usr/local/bin/git-gone
 
 echo "* zsh"
 mkdir -p ~/.zsh/completion
