@@ -21,8 +21,8 @@ brew bundle
 Mac OS
 
 ```
-sudo vim /etc/shells # /usr/local/bin/zsh を追加
-chsh -s /usr/local/bin/zsh
+sudo vim /etc/shells # `brew --prefix zsh` を追加
+chsh -s /usr/local/bin/zsh # brew --prefix zshの結果
 ```
 
 plugin インストールしたら
@@ -30,16 +30,6 @@ plugin インストールしたら
 ```
   rm -f ~/.zcompdump; compinit
 ```
-
-## ruby
-
-- rbenv - https://github.com/rbenv/rbenv
-  - `git clone https://github.com/rbenv/rbenv.git ~/.rbenv`
-- ruby-build - https://github.com/rbenv/ruby-build
-  - `mkdir -p "$(rbenv root)"/plugins`
-  - `git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build`
-
-共に git clone でインストール
 
 ## vim
 
@@ -51,10 +41,6 @@ in vim
 :PlugInstall
 ```
 
-## vscode
-
-**Vim 拡張でキーリピートを利くようにする設定が必要**
-https://github.com/VSCodeVim/Vim#mac
 
 ## 他
 
