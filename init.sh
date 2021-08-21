@@ -39,8 +39,16 @@ echo "* deno"
 mkdir ~/.zsh/completion # create a folder to save your completions. it can be anywhere
 deno completions zsh > ~/.zsh/completion/_deno
 
-echo "* link diff-highlight"
+echo "* ruby"
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+mkdir -p ~/.rbenv/plugins
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+git -C ${HOME}/.rbenv/plugins/ruby-build pull
+git clone https://github.com/rbenv/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems
+git -C ${HOME}/.rbenv/plugins/rbenv-default-gems pull
+ln -sf $CONFPATH/default_gems ~/.rbenv/default-gems
 
+echo "* link diff-highlight"
 ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
 
 echo "zsh / pure"
