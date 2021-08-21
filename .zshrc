@@ -2,6 +2,8 @@ source "${HOME}/.zgen/zgen.zsh"
 
 if ! zgen saved; then
   zgen load "MichaelAquilina/zsh-auto-notify"
+  zgen load "zsh-users/zsh-autosuggestions"
+  zgen load "zsh-users/zsh-completions"
 
   zgen save
 fi
@@ -14,22 +16,6 @@ zstyle ':prompt:pure:prompt:error' color yellow
 
 eval "$(direnv hook zsh)"
 stty eof undef
-
-if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions/src $fpath)
-fi
-
-if [ -e ~/.zsh/completion ]; then
-    fpath=(~/.zsh/completion $fpath)
-fi
-
-if [ -e /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-    source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
-
-if [ -e ~/.zsh/completion ]; then
-    fpath=(~/.zsh/completion $fpath)
-fi
 
 autoload -Uz compinit; compinit -i
 # tabの補完候補から選択
