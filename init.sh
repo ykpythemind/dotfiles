@@ -15,6 +15,7 @@ ln -sf $CONFPATH/.alacritty.yml ~/.alacritty.yml
 ln -sf $CONFPATH/.editorconfig ~/.editorconfig
 ln -sf $CONFPATH/.tigrc ~/.tigrc
 ln -sf $CONFPATH/.zshrc ~/.zshrc
+ln -sf $CONFPATH/.zprofile ~/.zprofile
 
 echo "* git-gone"
 curl -fL https://raw.githubusercontent.com/eed3si9n/git-gone/master/git-gone -o /usr/local/bin/git-gone
@@ -41,6 +42,7 @@ deno completions zsh > ~/.zsh/completion/_deno
 
 echo "* ruby"
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+git -C ${HOME}/.rbenv pull
 mkdir -p ~/.rbenv/plugins
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 git -C ${HOME}/.rbenv/plugins/ruby-build pull
@@ -49,7 +51,7 @@ git -C ${HOME}/.rbenv/plugins/rbenv-default-gems pull
 ln -sf $CONFPATH/default_gems ~/.rbenv/default-gems
 
 echo "* link diff-highlight"
-ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
+sudo ln -s `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
 
 echo "zsh / pure"
 mkdir -p ${HOME}/.zsh
