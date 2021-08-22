@@ -171,6 +171,8 @@ Plug 'ykpythemind/toggle-term'
 Plug 'dhruvasagar/vim-zoom'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
+  Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
@@ -193,6 +195,7 @@ Plug 'w0ng/vim-hybrid'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
+call wilder#setup({'modes': [':', '/', '?']})
 nnoremap <Leader>s :CodeSearch<cr>
 
 " easymotion
