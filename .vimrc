@@ -173,6 +173,7 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
   Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 endif
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
