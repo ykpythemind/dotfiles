@@ -3,7 +3,6 @@
 ```
 git clone https://github.com/ykpythemind/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-sh ./init.sh
 ```
 
 homebrew を入れる
@@ -12,6 +11,12 @@ homebrew を入れる
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 cd ~/dotfiles
 brew bundle
+```
+
+init script
+
+```
+sh ./init.sh
 ```
 
 ## zsh
@@ -31,11 +36,12 @@ plugin インストールしたら
   rm -f ~/.zcompdump; compinit
 ```
 
+reset zgen script
+```
+zgen reset
+```
+
 ## vim
-
-- vimplug をインストール (init.sh でインストール済み)
-
-in vim
 
 ```
 :PlugInstall
