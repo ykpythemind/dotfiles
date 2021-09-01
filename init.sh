@@ -18,6 +18,7 @@ ln -sf $CONFPATH/.zprofile ~/.zprofile
 
 echo "* zgen"
 git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
+git -C ${HOME}/.zgen pull
 
 echo "* git-gone"
 curl -fL https://raw.githubusercontent.com/eed3si9n/git-gone/master/git-gone -o /tmp/git-gone
