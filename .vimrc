@@ -172,14 +172,12 @@ Plug 'dhruvasagar/vim-zoom'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
-  Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 endif
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'tyru/capture.vim'
 Plug 'easymotion/vim-easymotion'
-" Plug 'wincent/ferret'
 Plug 'mattn/vim-lexiv'
 
 " Git
@@ -188,7 +186,6 @@ Plug 'mhinz/vim-signify'
 Plug 'lambdalisue/gina.vim'
 " lang
 Plug 'slim-template/vim-slim'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mattn/vim-goimports'
 " view
 Plug 'itchyny/lightline.vim'
@@ -196,7 +193,6 @@ Plug 'w0ng/vim-hybrid'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
 
-call wilder#setup({'modes': [':', '/', '?']})
 nnoremap <Leader>s :CodeSearch<cr>
 
 " easymotion
@@ -223,12 +219,6 @@ nnoremap L :BLines<CR>
 let g:fzf_preview_window = []
 
 " golang
-" let g:go_fmt_autosave = 0 " 0 == disable: coc.nvimを壊す
-" let g:go_list_type = "quickfix"
-" let g:go_def_mode='gopls'
-" let g:go_def_mapping_enabled = 0
-" let g:go_gorename_command = "gopls"
-" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " grepper
 let g:grepper = {
