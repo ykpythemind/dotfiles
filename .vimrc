@@ -381,6 +381,7 @@ vmap <Leader>b <Plug>(openbrowser-smart-search)
 command! CopyCurrentPath :let @+ = expand('%')
 command! Pr exe "!git brws --pr"
 command! Code :call Opencode()
+nnoremap <Leader>C :Code<CR>
 command! Reload bufdo e!
 
 autocmd InsertEnter * checktime
