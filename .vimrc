@@ -144,6 +144,9 @@ nnoremap <Leader>k :bprevious<CR>
 call plug#begin('~/.vim/plugged')
 Plug '~/git/github.com/ykpythemind/codesearch.vim'
 
+Plug 'Shougo/ddc.vim'
+Plug 'vim-denops/denops.vim'
+
 Plug 'Shougo/deol.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/vimux'
