@@ -144,8 +144,18 @@ nnoremap <Leader>k :bprevious<CR>
 call plug#begin('~/.vim/plugged')
 Plug '~/git/github.com/ykpythemind/codesearch.vim'
 
+if has('nvim')
+Plug 'neovim/nvim-lspconfig'
+endif
+
 Plug 'Shougo/ddc.vim'
 Plug 'vim-denops/denops.vim'
+
+Plug 'Shougo/ddc-nvim-lsp'
+Plug 'Shougo/ddc-around'
+Plug 'Shougo/ddc-matcher_head'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
 Plug 'Shougo/deol.nvim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -194,6 +204,41 @@ Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
 call plug#end()
 source $VIMRUNTIME/macros/matchit.vim
+
+" ddc
+call ddc#custom#patch_global('sources', [
+\ 'nvimlsp',
+\ 'around',
+\ 'vsnip',
+\ ])
+
+call ddc#custom#patch_global('sourceOptions', {
+\ '_': { 'matchers': ['matcher_head'] },
+\ 'around': {'matchers': ['matcher_head'], 'mark': 'A'},
+\ 'vsnip': {'mark': 'vsnip'},
+\ 'nvimlsp': {
+\   'mark': 'lsp',
+\   'forceCompletionPattern': '\\.|:|->',
+\   'minAutoCompleteLength': 1
+\ },
+\ })
+
+call ddc#custom#patch_global('sourceParams', {
+\ 'around': {'maxSize': 500},
+\ })
+
+call ddc#custom#patch_filetype(['typescript', 'go', 'rust'], 'sources', ['nvimlsp', 'vsnip'])
+call ddc#custom#patch_filetype(['ruby', 'vim'], 'sources', ['vsnip'])
+
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#manual_complete()
+
+inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
+
+call ddc#enable()
+
 
 nnoremap <Leader>s :CodeSearch<cr>
 
