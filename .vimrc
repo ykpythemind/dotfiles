@@ -130,7 +130,10 @@ augroup END
 " term
 autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 
-tnoremap <ESC> <C-\><C-n>
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-k> <C-\><C-n><C-w>k
+
+tnoremap <silent> <ESC> <C-\><C-n>
 " Easier time when pasting content in terminal mode with <C-v> : https://github.com/vimlab/split-term.vim/blob/a4e28cab77ad07fc8a0ebb62a982768c02eb287c/plugin/split-term.vim#L41
 tnoremap <buffer> <expr> <C-v> '<C-\><C-N>pi'
 nnoremap <C-t> :ToggleTerm<CR>
@@ -139,6 +142,8 @@ tnoremap <C-t> <C-\><C-n>:ToggleTerm<CR>
 " buffer
 nnoremap <Leader>j :bnext<CR>
 nnoremap <Leader>k :bprevious<CR>
+nnoremap <TAB> :tabn<CR>
+nnoremap <S-TAB> :tabp<CR>
 
 " Plugin
 call plug#begin('~/.vim/plugged')
