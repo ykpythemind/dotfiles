@@ -8,8 +8,8 @@ set autoread
 set hidden
 set scrolloff=10
 set noswapfile
-set nobackup " coc
-set nowritebackup " coc
+set nobackup
+set nowritebackup
 set ambiwidth=double
 set mouse=a
 set ttimeoutlen=100
@@ -36,7 +36,7 @@ set whichwrap=b,s,h,l,<,>,~,[,]
 set ttyfast
 " set lazyredraw
 set updatetime=300
-set shortmess+=c " coc
+set shortmess+=c
 set shortmess-=S
 set showtabline=2
 set completeopt=menuone,noinsert,noselect
@@ -151,7 +151,6 @@ Plug 'preservim/vimux'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'thinca/vim-qfreplace'
 Plug 'preservim/nerdtree'
 Plug 'terryma/vim-expand-region'
@@ -244,64 +243,6 @@ nnoremap <C-g>l :Gina log<cr>
 nnoremap <C-g>d :Gina diff<cr>
 nnoremap <C-g>D :Gina diff
 
-" coc
-" let $NVIM_COC_LOG_LEVEL = 'debug'
-let g:coc_global_extensions = [
-      \ 'coc-html',
-      \ 'coc-css',
-      \ 'coc-json',
-      \ 'coc-tsserver',
-      \ 'coc-eslint',
-      \ 'coc-tslint-plugin',
-      \ 'coc-prettier',
-      \ 'coc-solargraph',
-      \ 'coc-stylelint',
-      \ 'coc-go',
-      \ 'coc-deno',
-      \ ]
-
-nnoremap <silent> <Leader>cd :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <Leader>cf :<C-u>CocFix<cr>
-nnoremap <silent> <Leader>cc :<C-u>CocCommand<cr>
-let g:coc_disable_transparent_cursor= 1 " https://github.com/neoclide/coc.nvim/issues/1775
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<down>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<up>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> <Leader>gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> gh :call <SID>show_documentation()<CR>
-nmap <silent> g] <Plug>(coc-diagnostic-next)
-nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
 "color
 colorscheme hybrid
 hi QuickFixLine ctermbg=none ctermfg=none
@@ -343,12 +284,11 @@ let g:lightline = {
   \    ['mode', 'paste', 'zoom'],
   \    ['readonly', 'filename', 'modified'] ],
   \ 'right': [
-  \            [ 'filetype', 'coc' ] ]
+  \            [ 'filetype' ] ]
   \},
   \'component_function': {
     \   'filename': 'LightlineFilename',
     \   'gitbranch': 'gina#component#repo#branch',
-    \   'coc': 'coc#status',
     \   'zoom': 'zoom#statusline'
   \},
   \'mode_map': { 'n': 'N', 'i': 'I', 'v': 'V' },
