@@ -385,26 +385,15 @@ command! Reload bufdo e!
 autocmd InsertEnter * :call CheckFileIsEdited()
 
 function! CheckFileIsEdited()
-  if IsCmdWin()
-    return
-  endif
-
   if &buftype == 'terminal' || &buftype == 'nofile' " ignore some buffer type
     return
   endif
 
-  checktime
-endfunction
+  if getcmdwintype() != ''
+   return
+  endif
 
-function! IsCmdWin()
-  " https://gist.github.com/ujihisa/1011818
-  try
-    wincmd n
-    wincmd q
-  catch
-    return 1
-  endtry
-  return 0
+  checktime
 endfunction
 
 function! Opencode()
