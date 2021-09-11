@@ -24,8 +24,11 @@ function! s:small_terminal() abort
   startinsert
 endfunction
 
-" ANKI: Make a small terminal at the bottom of the screen.
 nnoremap <leader>st :call <SID>small_terminal()<CR>
+
+nnoremap <C-e> <cmd>Telescope buffers<CR>
+nnoremap <leader>lg <cmd>Telescope live_grep<cr>
+nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>
 
 set guicursor=n-c-v:block-nCursor,i-ci:blinkon0-blinkwait0-blinkoff0
 
@@ -51,7 +54,59 @@ EOF
 "     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
 " augroup END
 
-lua << EOF
+lua << TELESCOPE
+local actions = require('telescope.actions')
+local themes = require("telescope.themes")
+
+require('telescope').setup{
+  defaults = {
+    winblend = 0,
+
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close,
+        ["<c-u>"] = false,
+        ["<c-a>"] = { "<home>", type = "command" },
+        ["<c-e>"] = { "<end>", type = "command" },
+      },
+    },
+
+    layout_strategy = "horizontal",
+
+    layout_config = {
+      width = 0.95,
+      height = 0.85,
+      prompt_position = "bottom",
+
+      horizontal = {
+        preview_width = 0.5,
+      },
+
+      vertical = {
+        width = 0.9,
+        height = 0.95,
+        preview_height = 0.5,
+      },
+    },
+
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+  },
+}
+
+function launch_filer()
+  local opts = {
+    shorten_path = false,
+    layout_config = {},
+  }
+  local ok = pcall(require'telescope.builtin'.git_files, opts)
+  if not ok then require'telescope.builtin'.find_files(opts) end
+end
+
+vim.api.nvim_set_keymap('n', '<C-p>', '<CMD>lua launch_filer()<CR>', {noremap = true, silent = true})
+TELESCOPE
+
+lua << LSP
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.tsserver.setup{}
 
@@ -105,4 +160,4 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
-EOF
+LSP

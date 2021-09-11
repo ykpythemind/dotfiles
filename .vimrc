@@ -10,7 +10,7 @@ set scrolloff=10
 set noswapfile
 set nobackup
 set nowritebackup
-set ambiwidth=double
+"set ambiwidth=double " break telescope
 set mouse=a
 set ttimeoutlen=100
 set title
@@ -33,7 +33,7 @@ set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
 set clipboard&
 set clipboard^=unnamed,unnamedplus
 set whichwrap=b,s,h,l,<,>,~,[,]
-set ttyfast
+" set ttyfast
 " set lazyredraw
 set updatetime=300
 set shortmess+=c
@@ -155,7 +155,10 @@ call plug#begin('~/.vim/plugged')
 Plug '~/git/github.com/ykpythemind/codesearch.vim'
 
 if has('nvim')
-Plug 'neovim/nvim-lspconfig'
+  Plug 'neovim/nvim-lspconfig'
+
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
 endif
 
 Plug 'Shougo/ddc.vim'
@@ -178,8 +181,8 @@ Plug 'thinca/vim-qfreplace'
 Plug 'preservim/nerdtree'
 Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 Plug 'vim-test/vim-test'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'haya14busa/vim-asterisk'
@@ -192,8 +195,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'ykpythemind/toggle-term'
 Plug 'dhruvasagar/vim-zoom'
 if has('nvim')
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 endif
 Plug 'thinca/vim-quickrun'
