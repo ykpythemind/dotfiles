@@ -164,3 +164,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 LSP
+
+autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
