@@ -79,7 +79,7 @@ cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 cnoremap <C-a> <C-b>
 cnoremap <C-e> <C-e>
-cnoremap <C-v> <C-f>a
+cnoremap <C-v> <C-f>
 cnoremap <c-x> <c-r>=expand('%:p')<cr>
 cnoremap <c-d> <c-r>=expand('%:p:h')<cr>
 
@@ -215,7 +215,6 @@ Plug 'mattn/vim-goimports'
 Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
 call plug#end()
-" source $VIMRUNTIME/macros/matchit.vim
 
 " ddc
 call ddc#custom#patch_global('sources', [
@@ -248,10 +247,9 @@ inoremap <silent><expr> <TAB>
 \ '<TAB>' : ddc#manual_complete()
 
 inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
-
 call ddc#enable()
 
-
+" tmp
 nnoremap <Leader>s :CodeSearch<cr>
 
 " easymotion
@@ -384,7 +382,30 @@ command! Code :call Opencode()
 nnoremap <Leader>C :Code<CR>
 command! Reload bufdo e!
 
-autocmd InsertEnter * checktime
+autocmd InsertEnter * :call CheckFileIsEdited()
+
+function! CheckFileIsEdited()
+  if IsCmdWin()
+    return
+  endif
+
+  if &buftype == 'terminal' || &buftype == 'nofile' " ignore some buffer type
+    return
+  endif
+
+  checktime
+endfunction
+
+function! IsCmdWin()
+  " https://gist.github.com/ujihisa/1011818
+  try
+    wincmd n
+    wincmd q
+  catch
+    return 1
+  endtry
+  return 0
+endfunction
 
 function! Opencode()
   silent
