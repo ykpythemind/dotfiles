@@ -15,6 +15,18 @@ au TermOpen * tnoremap <Esc> <c-\><c-n>
 au FileType fzf tunmap <Esc>
 augroup end
 
+function! s:small_terminal() abort
+  new
+  wincmd J
+  call nvim_win_set_height(0, 12)
+  set winfixheight
+  term
+  startinsert
+endfunction
+
+" ANKI: Make a small terminal at the bottom of the screen.
+nnoremap <leader>st :call <SID>small_terminal()<CR>
+
 set guicursor=n-c-v:block-nCursor,i-ci:blinkon0-blinkwait0-blinkoff0
 
 highlight LspDiagnosticsSignError ctermbg=9 ctermfg=15
@@ -33,6 +45,11 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
+
+" augroup highlight_yank
+"     autocmd!
+"     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+" augroup END
 
 lua << EOF
 require'lspconfig'.gopls.setup{}

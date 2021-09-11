@@ -127,17 +127,22 @@ augroup disable_auto_comment_when_br
   autocmd BufEnter * setlocal formatoptions-=o
 augroup END
 
-" term
-autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
+" term {{{
 
+" autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-k> <C-\><C-n><C-w>k
 
 tnoremap <silent> <ESC> <C-\><C-n>
+tnoremap <silent> <C-j> <C-\><C-n>
+
 " Easier time when pasting content in terminal mode with <C-v> : https://github.com/vimlab/split-term.vim/blob/a4e28cab77ad07fc8a0ebb62a982768c02eb287c/plugin/split-term.vim#L41
-tnoremap <buffer> <expr> <C-v> '<C-\><C-N>pi'
+" tnoremap <buffer> <expr> <C-v> '<C-\><C-N>pi'
+
 nnoremap <C-t> :ToggleTerm<CR>
 tnoremap <C-t> <C-\><C-n>:ToggleTerm<CR>
+
+" }}}
 
 " buffer
 nnoremap <Leader>j :bnext<CR>
@@ -208,7 +213,7 @@ Plug 'mattn/vim-goimports'
 Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
 call plug#end()
-source $VIMRUNTIME/macros/matchit.vim
+" source $VIMRUNTIME/macros/matchit.vim
 
 " ddc
 call ddc#custom#patch_global('sources', [
