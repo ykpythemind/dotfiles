@@ -201,7 +201,9 @@ endif
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'tyru/capture.vim'
-Plug 'mattn/vim-lexiv'
+if $VIM_LEXIV != ""
+  Plug 'mattn/vim-lexiv'
+endif
 
 " Git
 Plug 'rhysd/git-messenger.vim'
