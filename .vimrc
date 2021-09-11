@@ -201,7 +201,6 @@ endif
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'tyru/capture.vim'
-Plug 'easymotion/vim-easymotion'
 Plug 'mattn/vim-lexiv'
 
 " Git
@@ -251,11 +250,6 @@ call ddc#enable()
 
 " tmp
 nnoremap <Leader>s :CodeSearch<cr>
-
-" easymotion
-let g:EasyMotion_do_mapping = 0 "Disable default mappings
-nmap s <Plug>(easymotion-s2)
-nmap <Leader>f <Plug>(easymotion-overwin-f2)
 
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
