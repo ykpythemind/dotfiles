@@ -159,6 +159,7 @@ if has('nvim')
 
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'ray-x/lsp_signature.nvim'
 endif
 
 Plug 'Shougo/ddc.vim'
