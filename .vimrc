@@ -147,8 +147,9 @@ tnoremap <C-t> <C-\><C-n>:ToggleTerm<CR>
 " buffer
 nnoremap <Leader>j :bnext<CR>
 nnoremap <Leader>k :bprevious<CR>
-nnoremap <TAB> :tabn<CR>
-nnoremap <S-TAB> :tabp<CR>
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
 
 " Plugin
 call plug#begin('~/.vim/plugged')
