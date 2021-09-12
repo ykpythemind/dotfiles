@@ -260,19 +260,6 @@ let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
 vmap <Leader>r <Plug>(quickrun)
 
-" fzf
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, {'source': 'rg --hidden --files'}, <bang>0)
-let $FZF_DEFAULT_OPTS = '--reverse'
-let g:fzf_layout = { 'up': '45%' }
-autocmd! FileType fzf set laststatus=0 noshowmode noruler
-  \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-nnoremap <C-P> :Files<CR>
-nnoremap <Leader>h :History<CR>
-nnoremap <C-e> :Buffers<CR>
-nnoremap L :BLines<CR>
-let g:fzf_preview_window = []
-
 " golang
 
 " grepper

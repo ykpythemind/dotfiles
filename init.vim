@@ -27,7 +27,7 @@ endfunction
 nnoremap <leader>st :call <SID>small_terminal()<CR>
 
 nnoremap <C-e> <cmd>Telescope buffers<CR>
-nnoremap <leader>lg <cmd>Telescope live_grep<cr>
+nnoremap L <cmd>Telescope live_grep<cr>
 nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>
 
 set guicursor=n-c-v:block-nCursor,i-ci:blinkon0-blinkwait0-blinkoff0
