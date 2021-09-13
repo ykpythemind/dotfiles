@@ -1,4 +1,9 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
+
+" deno debug
+" set runtimepath^=~/deno_altr
+" let g:denops#debug = 1
+
 let &packpath = &runtimepath
 
 source ~/.vimrc
