@@ -155,6 +155,8 @@ nnoremap <leader>3 3gt
 call plug#begin('~/.vim/plugged')
 Plug '~/git/github.com/ykpythemind/codesearch.vim'
 
+Plug 'jreybert/vimagit'
+
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
 
