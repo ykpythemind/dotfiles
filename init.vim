@@ -13,13 +13,6 @@ set inccommand=split
 
 autocmd TermOpen * setlocal nonumber
 
-" https://github.com/junegunn/fzf.vim/issues/544
-augroup fzfesc
-au!
-au TermOpen * tnoremap <Esc> <c-\><c-n>
-au FileType fzf tunmap <Esc>
-augroup end
-
 function! s:small_terminal() abort
   new
   wincmd J
@@ -115,6 +108,7 @@ lua << LSP
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.solargraph.setup{}
+--require'lspconfig'.denols.setup{}
 
 local nvim_lsp = require('lspconfig')
 
@@ -159,7 +153,7 @@ vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diag
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'gopls', 'rust_analyzer', 'tsserver', 'solargraph' }
+local servers = { 'gopls', 'rust_analyzer', 'tsserver', 'solargraph', 'denols' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
