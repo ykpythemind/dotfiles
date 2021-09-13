@@ -7,12 +7,10 @@ ln -sf $CONFPATH/.vimrc ~/.vimrc
 ln -sf $CONFPATH/.gitconfig ~/.gitconfig
 ln -sf $CONFPATH/.gitignore_global ~/.gitignore_global
 ln -sf $CONFPATH/.tmux.conf ~/.tmux.conf
-ln -sf $CONFPATH/.bashrc ~/.bashrc
 ln -sf $CONFPATH/.ignore ~/.ignore
 ln -sf $CONFPATH/.ignore ~/.agignore
 ln -sf $CONFPATH/.alacritty.yml ~/.alacritty.yml
 ln -sf $CONFPATH/.editorconfig ~/.editorconfig
-ln -sf $CONFPATH/.tigrc ~/.tigrc
 ln -sf $CONFPATH/.zshrc ~/.zshrc
 ln -sf $CONFPATH/.zprofile ~/.zprofile
 
