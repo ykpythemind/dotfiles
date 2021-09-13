@@ -8,9 +8,9 @@ set autoread
 set hidden
 set scrolloff=10
 set noswapfile
-set nobackup " coc
-set nowritebackup " coc
-set ambiwidth=double
+set nobackup
+set nowritebackup
+"set ambiwidth=double " break telescope
 set mouse=a
 set ttimeoutlen=100
 set title
@@ -33,10 +33,10 @@ set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
 set clipboard&
 set clipboard^=unnamed,unnamedplus
 set whichwrap=b,s,h,l,<,>,~,[,]
-set ttyfast
+" set ttyfast
 " set lazyredraw
 set updatetime=300
-set shortmess+=c " coc
+set shortmess+=c
 set shortmess-=S
 set showtabline=2
 set completeopt=menuone,noinsert,noselect
@@ -79,7 +79,7 @@ cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 cnoremap <C-a> <C-b>
 cnoremap <C-e> <C-e>
-cnoremap <C-v> <C-f>a
+cnoremap <C-v> <C-f>
 cnoremap <c-x> <c-r>=expand('%:p')<cr>
 cnoremap <c-d> <c-r>=expand('%:p:h')<cr>
 
@@ -127,22 +127,50 @@ augroup disable_auto_comment_when_br
   autocmd BufEnter * setlocal formatoptions-=o
 augroup END
 
-" term
-autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
+" term {{{
 
-tnoremap <ESC> <C-\><C-n>
+" autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-k> <C-\><C-n><C-w>k
+
+tnoremap <silent> <ESC> <C-\><C-n>
+tnoremap <silent> <C-j> <C-\><C-n>
+
 " Easier time when pasting content in terminal mode with <C-v> : https://github.com/vimlab/split-term.vim/blob/a4e28cab77ad07fc8a0ebb62a982768c02eb287c/plugin/split-term.vim#L41
-tnoremap <buffer> <expr> <C-v> '<C-\><C-N>pi'
+" tnoremap <buffer> <expr> <C-v> '<C-\><C-N>pi'
+
 nnoremap <C-t> :ToggleTerm<CR>
 tnoremap <C-t> <C-\><C-n>:ToggleTerm<CR>
+
+" }}}
 
 " buffer
 nnoremap <Leader>j :bnext<CR>
 nnoremap <Leader>k :bprevious<CR>
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
 
 " Plugin
 call plug#begin('~/.vim/plugged')
 Plug '~/git/github.com/ykpythemind/codesearch.vim'
+
+if has('nvim')
+  Plug 'neovim/nvim-lspconfig'
+
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'ray-x/lsp_signature.nvim'
+endif
+
+Plug 'Shougo/ddc.vim'
+Plug 'vim-denops/denops.vim'
+
+Plug 'Shougo/ddc-nvim-lsp'
+Plug 'Shougo/ddc-around'
+Plug 'Shougo/ddc-matcher_head'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
 Plug 'Shougo/deol.nvim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -151,13 +179,12 @@ Plug 'preservim/vimux'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'thinca/vim-qfreplace'
 Plug 'preservim/nerdtree'
 Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 Plug 'vim-test/vim-test'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'haya14busa/vim-asterisk'
@@ -170,15 +197,15 @@ Plug 'tyru/open-browser.vim'
 Plug 'ykpythemind/toggle-term'
 Plug 'dhruvasagar/vim-zoom'
 if has('nvim')
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 endif
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'tyru/capture.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'mattn/vim-lexiv'
+if $VIM_LEXIV != ""
+  Plug 'mattn/vim-lexiv'
+endif
 
 " Git
 Plug 'rhysd/git-messenger.vim'
@@ -191,32 +218,47 @@ Plug 'mattn/vim-goimports'
 Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
 call plug#end()
-source $VIMRUNTIME/macros/matchit.vim
 
+" ddc
+call ddc#custom#patch_global('sources', [
+\ 'nvimlsp',
+\ 'around',
+\ 'vsnip',
+\ ])
+
+call ddc#custom#patch_global('sourceOptions', {
+\ '_': { 'matchers': ['matcher_head'] },
+\ 'around': {'matchers': ['matcher_head'], 'mark': 'A'},
+\ 'vsnip': {'mark': 'vsnip'},
+\ 'nvimlsp': {
+\   'mark': 'lsp',
+\   'forceCompletionPattern': '\\.|:|->',
+\   'minAutoCompleteLength': 1
+\ },
+\ })
+
+call ddc#custom#patch_global('sourceParams', {
+\ 'around': {'maxSize': 500},
+\ })
+
+call ddc#custom#patch_filetype(['typescript', 'go', 'rust'], 'sources', ['nvimlsp', 'vsnip'])
+call ddc#custom#patch_filetype(['ruby', 'vim'], 'sources', ['vsnip'])
+
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#manual_complete()
+
+inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
+call ddc#enable()
+
+" tmp
 nnoremap <Leader>s :CodeSearch<cr>
-
-" easymotion
-let g:EasyMotion_do_mapping = 0 "Disable default mappings
-nmap s <Plug>(easymotion-s2)
-nmap <Leader>f <Plug>(easymotion-overwin-f2)
 
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
 vmap <Leader>r <Plug>(quickrun)
-
-" fzf
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, {'source': 'rg --hidden --files'}, <bang>0)
-let $FZF_DEFAULT_OPTS = '--reverse'
-let g:fzf_layout = { 'up': '45%' }
-autocmd! FileType fzf set laststatus=0 noshowmode noruler
-  \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-nnoremap <C-P> :Files<CR>
-nnoremap <Leader>h :History<CR>
-nnoremap <C-e> :Buffers<CR>
-nnoremap L :BLines<CR>
-let g:fzf_preview_window = []
 
 " golang
 
@@ -243,64 +285,6 @@ nnoremap <C-g>c :Gina commit --opener=split --group=git<cr>
 nnoremap <C-g>l :Gina log<cr>
 nnoremap <C-g>d :Gina diff<cr>
 nnoremap <C-g>D :Gina diff
-
-" coc
-" let $NVIM_COC_LOG_LEVEL = 'debug'
-let g:coc_global_extensions = [
-      \ 'coc-html',
-      \ 'coc-css',
-      \ 'coc-json',
-      \ 'coc-tsserver',
-      \ 'coc-eslint',
-      \ 'coc-tslint-plugin',
-      \ 'coc-prettier',
-      \ 'coc-solargraph',
-      \ 'coc-stylelint',
-      \ 'coc-go',
-      \ 'coc-deno',
-      \ ]
-
-nnoremap <silent> <Leader>cd :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <Leader>cf :<C-u>CocFix<cr>
-nnoremap <silent> <Leader>cc :<C-u>CocCommand<cr>
-let g:coc_disable_transparent_cursor= 1 " https://github.com/neoclide/coc.nvim/issues/1775
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<down>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<up>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> <Leader>gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> gh :call <SID>show_documentation()<CR>
-nmap <silent> g] <Plug>(coc-diagnostic-next)
-nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
 
 "color
 colorscheme hybrid
@@ -343,12 +327,11 @@ let g:lightline = {
   \    ['mode', 'paste', 'zoom'],
   \    ['readonly', 'filename', 'modified'] ],
   \ 'right': [
-  \            [ 'filetype', 'coc' ] ]
+  \            [ 'filetype' ] ]
   \},
   \'component_function': {
     \   'filename': 'LightlineFilename',
     \   'gitbranch': 'gina#component#repo#branch',
-    \   'coc': 'coc#status',
     \   'zoom': 'zoom#statusline'
   \},
   \'mode_map': { 'n': 'N', 'i': 'I', 'v': 'V' },
@@ -384,7 +367,19 @@ command! Code :call Opencode()
 nnoremap <Leader>C :Code<CR>
 command! Reload bufdo e!
 
-autocmd InsertEnter * checktime
+autocmd InsertEnter * :call CheckFileIsEdited()
+
+function! CheckFileIsEdited()
+  if &buftype == 'terminal' || &buftype == 'nofile' " ignore some buffer type
+    return
+  endif
+
+  if getcmdwintype() != ''
+   return
+  endif
+
+  checktime
+endfunction
 
 function! Opencode()
   silent
