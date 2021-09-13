@@ -234,7 +234,7 @@ call ddc#custom#patch_global('sourceOptions', {
 \ 'vsnip': {'mark': 'vsnip'},
 \ 'nvimlsp': {
 \   'mark': 'lsp',
-\   'forceCompletionPattern': '\\.|:|->',
+\   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
 \   'minAutoCompleteLength': 1
 \ },
 \ })

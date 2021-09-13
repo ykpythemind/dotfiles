@@ -3,6 +3,7 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 " deno debug
 " set runtimepath^=~/deno_altr
 " let g:denops#debug = 1
+" let g:denops#trace = 1
 
 let &packpath = &runtimepath
 
@@ -153,7 +154,7 @@ vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diag
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'gopls', 'rust_analyzer', 'tsserver', 'solargraph', 'denols' }
+local servers = { 'gopls', 'tsserver', 'solargraph' } -- 'denols'
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -164,5 +165,5 @@ for _, lsp in ipairs(servers) do
 end
 LSP
 
-autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
+" autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
+" autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
