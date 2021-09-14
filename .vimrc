@@ -168,11 +168,13 @@ endif
 Plug 'Shougo/ddc.vim'
 Plug 'vim-denops/denops.vim'
 
-Plug 'Shougo/ddc-nvim-lsp'
+" Plug 'Shougo/ddc-nvim-lsp'
 Plug 'Shougo/ddc-around'
 Plug 'Shougo/ddc-matcher_head'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'Shougo/deol.nvim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -253,6 +255,10 @@ inoremap <silent><expr> <TAB>
 
 inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
 call ddc#enable()
+
+" prettier
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
 " tmp
 nnoremap <Leader>s :CodeSearch<cr>
