@@ -27,6 +27,8 @@ alias vim='nvim'
 alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias docker-clean-containers='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 
+setopt rm_star_wait
+
 setopt auto_pushd
 setopt pushd_ignore_dups
 
