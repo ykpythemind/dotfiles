@@ -1,8 +1,8 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 
 " deno debug
-" set runtimepath^=~/deno_altr
-" let g:denops#debug = 1
+set runtimepath^=~/deno_altr
+let g:denops#debug = 1
 " let g:denops#trace = 1
 
 let &packpath = &runtimepath
@@ -46,6 +46,12 @@ require'nvim-treesitter.configs'.setup {
     }
   }
 }
+
+-- color
+require("github-theme").setup({
+  theme_style = "dark_default",
+  -- other config
+})
 EOF
 
 " augroup highlight_yank

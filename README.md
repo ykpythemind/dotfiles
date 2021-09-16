@@ -37,6 +37,7 @@ plugin インストールしたら
 ```
 
 reset zgen script
+
 ```
 zgen reset
 ```
@@ -46,7 +47,6 @@ zgen reset
 ```
 :PlugInstall
 ```
-
 
 ## 他
 
