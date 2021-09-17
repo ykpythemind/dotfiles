@@ -168,7 +168,7 @@ endif
 Plug 'Shougo/ddc.vim'
 Plug 'vim-denops/denops.vim'
 
-" Plug 'Shougo/ddc-nvim-lsp'
+Plug 'Shougo/ddc-nvim-lsp'
 Plug 'Shougo/ddc-around'
 Plug 'Shougo/ddc-matcher_head'
 Plug 'hrsh7th/vim-vsnip'
