@@ -110,6 +110,10 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 
 nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line('.'), '') \| endfor<CR>
 
+" 選択範囲をまとめて動かす
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " quickfix
 nnoremap <C-n> :Cnext<CR>
 nnoremap <C-m> :Cprev<CR>
@@ -135,10 +139,6 @@ tnoremap <C-k> <C-\><C-n><C-w>k
 
 tnoremap <silent> <ESC> <C-\><C-n>
 tnoremap <silent> <C-j> <C-\><C-n>
-
-" Easier time when pasting content in terminal mode with <C-v> : https://github.com/vimlab/split-term.vim/blob/a4e28cab77ad07fc8a0ebb62a982768c02eb287c/plugin/split-term.vim#L41
-" tnoremap <buffer> <expr> <C-v> '<C-\><C-N>pi'
-
 nnoremap <C-t> :ToggleTerm<CR>
 tnoremap <C-t> <C-\><C-n>:ToggleTerm<CR>
 
@@ -256,9 +256,6 @@ let g:prettier#autoformat_require_pragma = 0
 let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_enabled = 0
 
-" tmp
-nnoremap <Leader>s :CodeSearch<cr>
-
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
@@ -347,6 +344,7 @@ let g:lightline = {
 set shell=zsh
 lang en_US.UTF-8 " paste issue
 autocmd FileType help nnoremap <buffer> q <C-w>c
+nnoremap T :TestNearest<CR>
 nnoremap <Leader>tt :TestNearest<CR>
 nnoremap <Leader>tl :TestLast<CR>
 let test#neovim#term_position = "botright 30"
