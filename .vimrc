@@ -153,16 +153,15 @@ nnoremap <leader>3 3gt
 
 " Plugin
 call plug#begin('~/.vim/plugged')
-Plug '~/git/github.com/ykpythemind/codesearch.vim'
-
-Plug 'jreybert/vimagit'
-
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
 
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'ray-x/lsp_signature.nvim'
+
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 endif
 
 Plug 'Shougo/ddc.vim'
@@ -187,23 +186,17 @@ Plug 'thinca/vim-qfreplace'
 Plug 'preservim/nerdtree'
 Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+
 Plug 'vim-test/vim-test'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'haya14busa/vim-asterisk'
 Plug 'mopp/autodirmake.vim'
 Plug 'thinca/vim-zenspace'
 Plug 'Asheq/close-buffers.vim'
-Plug 'kana/vim-altr'
 Plug 'mhinz/vim-grepper'
 Plug 'tyru/open-browser.vim'
 Plug 'ykpythemind/toggle-term'
 Plug 'dhruvasagar/vim-zoom'
-if has('nvim')
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
-endif
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'tyru/capture.vim'
@@ -308,7 +301,7 @@ if s:true_color_enabled
   set termguicolors
 endif
 set background=dark
-hi Normal ctermfg=252 ctermbg=16 guifg=#c5c8c6 guibg=#1d1f21
+" hi Normal ctermfg=252 ctermbg=16 guifg=#c5c8c6 guibg=#1d1f21
 
 " vim-asterisk
 map *  <Plug>(asterisk-z*)
@@ -333,6 +326,7 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? expand('%') : '[---]'
 endfunction
 let g:lightline = {
+  \ 'colorscheme': 'one',
   \'active': {
   \  'left': [
   \    ['mode', 'paste', 'zoom'],
@@ -349,26 +343,18 @@ let g:lightline = {
   \'tabline': { 'left': [['gitbranch', 'tabs']], 'right': [] }
 \ }
 
-" altr
-nmap <Leader>J <Plug>(altr-forward)
-nmap <Leader>K <Plug>(altr-back)
-
-call altr#define('app/%/%.rb', 'spec/%/%_spec.rb')
-call altr#define('config/locales/%en.%yml', 'config/locales/%ja.%yml', 'config/locales/%ko.%yml')
-call altr#define('test/test_%.rb', 'test/%_test.rb', 'lib/%.rb', 'spec/%_spec.rb')
-call altr#define('%.go', '%_test.go')
-
-
 " other
 set shell=zsh
 lang en_US.UTF-8 " paste issue
 autocmd FileType help nnoremap <buffer> q <C-w>c
-nnoremap T :TestNearest<CR>
 nnoremap <Leader>tt :TestNearest<CR>
 nnoremap <Leader>tl :TestLast<CR>
 let test#neovim#term_position = "botright 30"
 " let test#strategy = 'neovim'
 let test#strategy = 'vimux'
+
+nnoremap <Leader>tv :call TerminalV()<CR>
+nnoremap <Leader>ts :call TerminalS()<CR>
 
 nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)
@@ -399,4 +385,16 @@ function! Opencode()
   if c != ''
     execute("!code -a " . c)
   endif
+endfunction
+
+function! TerminalV()
+  vsplit
+  terminal
+  startinsert
+endfunction
+
+function! TerminalS()
+  split
+  terminal
+  startinsert
 endfunction
