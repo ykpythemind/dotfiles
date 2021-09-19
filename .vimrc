@@ -111,8 +111,8 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line('.'), '') \| endfor<CR>
 
 " 選択範囲をまとめて動かす
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " quickfix
 nnoremap <C-n> :Cnext<CR>
