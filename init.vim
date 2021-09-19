@@ -110,7 +110,7 @@ lua << LSP
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.solargraph.setup{}
---require'lspconfig'.denols.setup{}
+require'lspconfig'.denols.setup{}
 
 local nvim_lsp = require('lspconfig')
 

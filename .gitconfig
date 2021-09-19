@@ -37,4 +37,21 @@
 [url "git@github.com:"]
     insteadOf = https://github.com/
 [init]
-	defaultBranch = main
+  defaultBranch = main
+
+# for color blindness
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  local = yellow
+  remote = cyan
+[color "diff"]
+  meta = yellow bold
+  frag = yellow reverse
+  old = red
+  new = cyan
+[color "status"]
+  changed = red
+  added = cyan
