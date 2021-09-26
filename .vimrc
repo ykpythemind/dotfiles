@@ -220,7 +220,7 @@ call plug#end()
 
 " ddc
 call ddc#custom#patch_global('sources', [
-\ 'nvimlsp',
+\ 'nvim-lsp',
 \ 'around',
 \ 'vsnip',
 \ ])
@@ -229,7 +229,7 @@ call ddc#custom#patch_global('sourceOptions', {
 \ '_': { 'matchers': ['matcher_head'] },
 \ 'around': {'matchers': ['matcher_head'], 'mark': 'A'},
 \ 'vsnip': {'mark': 'vsnip'},
-\ 'nvimlsp': {
+\ 'nvim-lsp': {
 \   'mark': 'lsp',
 \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
 \   'minAutoCompleteLength': 1
@@ -240,7 +240,7 @@ call ddc#custom#patch_global('sourceParams', {
 \ 'around': {'maxSize': 500},
 \ })
 
-call ddc#custom#patch_filetype(['typescript', 'go', 'rust'], 'sources', ['nvimlsp', 'vsnip'])
+call ddc#custom#patch_filetype(['typescript', 'go', 'rust'], 'sources', ['nvim-lsp', 'vsnip'])
 call ddc#custom#patch_filetype(['ruby', 'vim'], 'sources', ['vsnip'])
 
 inoremap <silent><expr> <TAB>
