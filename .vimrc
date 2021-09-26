@@ -15,6 +15,7 @@ set mouse=a
 set ttimeoutlen=100
 set title
 set number
+set relativenumber
 set wrap
 set cursorline
 set autoindent
