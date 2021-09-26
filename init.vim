@@ -48,10 +48,10 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- color
-require("github-theme").setup({
-  theme_style = "dark_default",
-  -- other config
-})
+--require("github-theme").setup({
+--  theme_style = "dark_default",
+--  -- other config
+--})
 EOF
 
 lua << TELESCOPE

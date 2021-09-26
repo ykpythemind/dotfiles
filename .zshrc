@@ -21,12 +21,6 @@ autoload -Uz compinit; compinit -i
 # tabの補完候補から選択
 zstyle ':completion:*:default' menu select=1
 
-alias la='ls -laG'
-alias vim='nvim'
-
-alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
-alias docker-clean-containers='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
-
 setopt rm_star_wait
 
 setopt auto_pushd
@@ -96,9 +90,22 @@ zstyle ':chpwd:*' recent-dirs-default true
 zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/shell/chpwd-recent-dirs"
 zstyle ':chpwd:*' recent-dirs-pushd true
 
+# alias
+alias dc='docker-compose'
+alias ga='git_fuzzy_stage_files; git status --short'
+alias la='ls -laG'
+alias vim='nvim'
+alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker-clean-containers='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+
+
 #
 # function
 #
+
+function git_fuzzy_stage_files() {
+  git status --porcelain | sed -e 's/^...//' | fzf --multi --ansi --preview="git diff --color {}" | xargs git add
+}
 
 function gcom() {
   local ret
@@ -145,14 +152,8 @@ gpr() {
   fi
 }
 
-kp() {
-  local sig=${1:-15}
-  local pid=$(ps -ef | sed 1d | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[kill (${sig})]'" | awk '{print $2}')
-
-  if [ -n "$pid" ]; then
-    kill -$sig $pid
-    kp
-  fi
+function fzf-process() {
+  ps -ef | sed 1d | fzf ${FZF_DEFAULT_OPTS} -m | awk '{print $2}'
 }
 
 # move to ghq dir

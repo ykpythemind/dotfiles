@@ -2,7 +2,6 @@
     editor = nvim
     quotepath = false
     excludesfile = ~/.gitignore_global
-    precomposeunicode = true
     autocrlf = false
     ignorecase = false
 [rebase]
@@ -23,6 +22,10 @@
     d = diff
     ds = diff --staged
     c = commit
+    p = pull -p
+    f = fetch -p
+    unstage = !git restore --staged . && echo 'unstaged' && git status --short
+    a = !git_fuzzy_stage_files && git status --short
     # for safety cancel https://thinca.hatenablog.com/entry/20120924/1348491052
     cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
 [pager]
@@ -32,7 +35,7 @@
 [ghq]
     root = ~/git
 [user]
-    name = Yukito Ito
+    name = ykpythemind
     email = yukibukiyou@gmail.com
 [url "git@github.com:"]
     insteadOf = https://github.com/
