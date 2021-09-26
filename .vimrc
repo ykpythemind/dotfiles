@@ -145,6 +145,11 @@ tnoremap <C-t> <C-\><C-n>:ToggleTerm<CR>
 
 " }}}
 
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+
 " buffer
 nnoremap <Leader>j :bnext<CR>
 nnoremap <Leader>k :bprevious<CR>
