@@ -48,10 +48,10 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- color
---require("github-theme").setup({
---  theme_style = "dark_default",
---  -- other config
---})
+-- require("github-theme").setup({
+--   theme_style = "dark_default",
+--   -- other config
+-- })
 EOF
 
 lua << TELESCOPE
@@ -110,7 +110,7 @@ lua << LSP
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.solargraph.setup{}
-require'lspconfig'.denols.setup{}
+--require'lspconfig'.denols.setup{}
 
 local nvim_lsp = require('lspconfig')
 
@@ -166,5 +166,3 @@ for _, lsp in ipairs(servers) do
 end
 LSP
 
-" autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
-" autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
