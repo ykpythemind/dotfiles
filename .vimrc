@@ -15,7 +15,7 @@ set mouse=a
 set ttimeoutlen=100
 set title
 set number
-set relativenumber
+" set relativenumber
 set wrap
 set cursorline
 set autoindent
@@ -232,7 +232,7 @@ call ddc#custom#patch_global('sources', [
 
 call ddc#custom#patch_global('sourceOptions', {
 \ '_': { 'matchers': ['matcher_head'] },
-\ 'around': {'matchers': ['matcher_head'], 'mark': 'A'},
+\ 'around': {'mark': 'A'},
 \ 'vsnip': {'mark': 'vsnip'},
 \ 'nvim-lsp': {
 \   'mark': 'lsp',
@@ -365,7 +365,6 @@ vmap <Leader>b <Plug>(openbrowser-smart-search)
 command! CopyCurrentPath :let @+ = expand('%')
 command! Pr exe "!git brws --pr"
 command! Code :call Opencode()
-nnoremap <Leader>C :Code<CR>
 command! Reload bufdo e!
 
 autocmd InsertEnter * :call CheckFileIsEdited()

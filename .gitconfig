@@ -21,7 +21,7 @@
     s = status
     d = diff
     ds = diff --staged
-    c = commit
+    c = commit -v
     p = pull -p
     f = fetch -p
     unstage = !git restore --staged . && echo 'unstaged' && git status --short
