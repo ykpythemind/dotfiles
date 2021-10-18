@@ -2,3 +2,4 @@ bundler
 rails
 pry
 solargraph
+rubocop
