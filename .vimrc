@@ -156,6 +156,7 @@ nnoremap <Leader>k :bprevious<CR>
 nnoremap <leader>1 1gt
 nnoremap <leader>2 2gt
 nnoremap <leader>3 3gt
+nnoremap <C-y> <C-^>
 
 " Plugin
 call plug#begin('~/.vim/plugged')
