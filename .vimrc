@@ -201,14 +201,12 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'haya14busa/vim-asterisk'
 Plug 'mopp/autodirmake.vim'
 Plug 'thinca/vim-zenspace'
-Plug 'Asheq/close-buffers.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'tyru/open-browser.vim'
 Plug 'ykpythemind/toggle-term'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
-Plug 'tyru/capture.vim'
 if $VIM_LEXIV != ""
   Plug 'mattn/vim-lexiv'
 endif
@@ -224,7 +222,6 @@ Plug 'mattn/vim-goimports'
 Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
 Plug 'cocopon/iceberg.vim'
-Plug 'projekt0n/github-nvim-theme'
 call plug#end()
 
 " ddc

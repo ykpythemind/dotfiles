@@ -14,17 +14,6 @@ set inccommand=split
 
 autocmd TermOpen * setlocal nonumber
 
-function! s:small_terminal() abort
-  new
-  wincmd J
-  call nvim_win_set_height(0, 12)
-  set winfixheight
-  term
-  startinsert
-endfunction
-
-nnoremap <leader>st :call <SID>small_terminal()<CR>
-
 nnoremap <C-e> <cmd>Telescope buffers<CR>
 nnoremap L <cmd>Telescope live_grep<cr>
 nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>
@@ -46,13 +35,6 @@ require'nvim-treesitter.configs'.setup {
     }
   }
 }
-
--- color
--- require("github-theme").setup({
---   theme_style = "dark_default",
---   -- other config
--- })
-EOF
 
 lua << TELESCOPE
 local actions = require('telescope.actions')
