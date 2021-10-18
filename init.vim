@@ -35,6 +35,7 @@ require'nvim-treesitter.configs'.setup {
     }
   }
 }
+EOF
 
 lua << TELESCOPE
 local actions = require('telescope.actions')

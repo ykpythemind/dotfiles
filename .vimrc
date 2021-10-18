@@ -120,8 +120,6 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " quickfix
 nnoremap <C-n> :Cnext<CR>
 nnoremap <C-m> :Cprev<CR>
-nnoremap <Leader>cl :cclose<CR>
-nnoremap <Leader>co :copen<CR>
 " In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 autocmd FileType qf nnoremap <buffer><silent> q :<C-u>cclose<CR>
@@ -155,9 +153,6 @@ endif
 " buffer
 nnoremap <Leader>j :bnext<CR>
 nnoremap <Leader>k :bprevious<CR>
-nnoremap <leader>1 1gt
-nnoremap <leader>2 2gt
-nnoremap <leader>3 3gt
 nnoremap <C-y> <C-^>
 
 " Plugin
@@ -210,6 +205,7 @@ Plug 'thinca/vim-localrc'
 if $VIM_LEXIV != ""
   Plug 'mattn/vim-lexiv'
 endif
+Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 
 " Git
 Plug 'rhysd/git-messenger.vim'
@@ -289,7 +285,7 @@ nmap <C-g>m <Plug>(git-messenger)
 
 noremap <C-g>b :Gina browse :
 nnoremap <C-g>s :Gina status -v --opener=split --group=git<cr>
-nnoremap <C-g>c :Gina commit --opener=split --group=git<cr>
+nnoremap <C-g>c :Gina commit -v --opener=split --group=git<cr>
 nnoremap <C-g>l :Gina log<cr>
 nnoremap <C-g>d :Gina diff<cr>
 nnoremap <C-g>D :Gina diff
