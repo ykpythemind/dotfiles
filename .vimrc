@@ -85,6 +85,8 @@ cnoremap <c-x> <c-r>=expand('%:p')<cr>
 cnoremap <c-d> <c-r>=expand('%:p:h')<cr>
 
 nnoremap ! :<C-f>
+nnoremap M mM
+nnoremap gM `M
 
 nnoremap sg :<C-u>%s/\v//g<Left><Left><Left>
 vnoremap sg :s/\v//g<Left><Left><Left>
