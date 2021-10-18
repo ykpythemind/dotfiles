@@ -220,6 +220,7 @@ Plug 'mattn/vim-goimports'
 " view
 Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
+Plug 'cocopon/iceberg.vim'
 Plug 'projekt0n/github-nvim-theme'
 call plug#end()
 
@@ -294,7 +295,8 @@ nnoremap <C-g>d :Gina diff<cr>
 nnoremap <C-g>D :Gina diff
 
 "color
-colorscheme hybrid
+" colorscheme hybrid
+colorscheme iceberg
 hi QuickFixLine ctermbg=none ctermfg=none
 hi MatchParen guifg=none guibg=#585858
 
@@ -329,7 +331,7 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? expand('%') : '[---]'
 endfunction
 let g:lightline = {
-  \ 'colorscheme': 'one',
+  \ 'colorscheme': 'iceberg',
   \'active': {
   \  'left': [
   \    ['mode', 'paste', 'zoom'],
@@ -356,9 +358,6 @@ nnoremap <Leader>tl :TestLast<CR>
 let test#neovim#term_position = "botright 30"
 " let test#strategy = 'neovim'
 let test#strategy = 'vimux'
-
-nnoremap <Leader>tv :call TerminalV()<CR>
-nnoremap <Leader>ts :call TerminalS()<CR>
 
 nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)
@@ -390,14 +389,4 @@ function! Opencode()
   endif
 endfunction
 
-function! TerminalV()
-  vsplit
-  terminal
-  startinsert
-endfunction
-
-function! TerminalS()
-  split
-  terminal
-  startinsert
-endfunction
+" command! Pm :!prettierme %:p >/dev/null 2>&1

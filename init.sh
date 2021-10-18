@@ -14,6 +14,11 @@ ln -sf $CONFPATH/.editorconfig ~/.editorconfig
 ln -sf $CONFPATH/.zshrc ~/.zshrc
 ln -sf $CONFPATH/.zprofile ~/.zprofile
 
+# macOS
+mkdir -p ~/Library/Application\ Support/Hyper
+# ln -sf $CONFPATH/.hyper.js ~/Library/Application\ Support/Hyper/.hyper.js
+ln -sf $CONFPATH/.hyper.js ~/.hyper.js # this is deprecated
+
 echo "* zgen"
 git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 git -C ${HOME}/.zgen pull
