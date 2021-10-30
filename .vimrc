@@ -128,6 +128,10 @@ autocmd FileType qf nnoremap <buffer><silent> q :<C-u>cclose<CR>
 command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
 
+" open if error on make
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
 augroup disable_auto_comment_when_br
   autocmd!
   autocmd BufEnter * setlocal formatoptions-=r
@@ -216,6 +220,7 @@ Plug 'lambdalisue/gina.vim'
 " lang
 Plug 'slim-template/vim-slim'
 Plug 'mattn/vim-goimports'
+Plug 'leafgarland/typescript-vim'
 " view
 Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
@@ -387,4 +392,6 @@ function! Opencode()
   endif
 endfunction
 
-" command! Pm :!prettierme %:p >/dev/null 2>&1
+" makeprg
+autocmd Filetype typescript setlocal makeprg=yarn\ run\ --silent\ tsc
+autocmd Filetype typescriptreact setlocal makeprg=yarn\ run\ --silent\ tsc
