@@ -122,6 +122,8 @@ nnoremap <C-n> :Cnext<CR>
 nnoremap <C-m> :Cprev<CR>
 " In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+autocmd BufReadPost quickfix nnoremap <buffer><silent> <C-o> :colder<CR>
+autocmd BufReadPost quickfix nnoremap <buffer><silent> <C-i> :cnewer<CR>
 autocmd FileType qf nnoremap <buffer><silent> q :<C-u>cclose<CR>
 command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
