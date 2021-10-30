@@ -163,15 +163,18 @@ nnoremap <C-y> <C-^>
 
 " Plugin
 call plug#begin('~/.vim/plugged')
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
 
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'commit': '02a02f7bcdfb1f207de6649c00701ee1fe13a420' } " https://github.com/nvim-telescope/telescope.nvim/issues/1391
   Plug 'ray-x/lsp_signature.nvim'
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+
+  " Plug 'mhartington/formatter.nvim'
 endif
 
 Plug 'Shougo/ddc.vim'
@@ -183,9 +186,8 @@ Plug 'Shougo/ddc-matcher_head'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
-Plug 'Shougo/deol.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/vimux'
 
@@ -261,10 +263,10 @@ inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
 call ddc#enable()
 
 " prettier
-" let g:prettier#autoformat = 1
-" let g:prettier#autoformat_require_pragma = 0
-" let g:prettier#exec_cmd_async = 1
-" let g:prettier#quickfix_enabled = 0
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#exec_cmd_async = 1
+let g:prettier#quickfix_enabled = 0
 
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
@@ -395,3 +397,9 @@ endfunction
 " makeprg
 autocmd Filetype typescript setlocal makeprg=yarn\ run\ --silent\ tsc
 autocmd Filetype typescriptreact setlocal makeprg=yarn\ run\ --silent\ tsc
+
+" coc-prettier
+" nmap <leader>f :Prettier<CR>
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
+"
+" let g:coc_global_extensions = ['coc-prettier']

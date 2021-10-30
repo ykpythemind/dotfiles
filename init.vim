@@ -149,7 +149,7 @@ for _, lsp in ipairs(servers) do
 end
 LSP
 
-lua << MAKE
+lua << SSSS
 -- https://phelipetls.github.io/posts/async-make-in-nvim-with-lua/
 function asyncMake()
   local lines = {""}
@@ -190,6 +190,69 @@ function asyncMake()
     }
   )
 end
-MAKE
+SSSS
 
 command! Make silent lua asyncMake()
+
+lua << FORMATTER
+--require("formatter").setup(
+--  {
+--    logging = true,
+--    filetype = {
+--      typescriptreact = {
+--        function()
+--          return {
+--            exe = "prettier",
+--            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+--            stdin = true
+--          }
+--        end
+--      },
+--      typescript = {
+--        function()
+--          return {
+--            exe = "prettier",
+--            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+--            stdin = true
+--          }
+--        end
+--      },
+--      javascript = {
+--        function()
+--          return {
+--            exe = "prettier",
+--            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+--            stdin = true
+--          }
+--        end
+--      },
+--      javascriptreact = {
+--        function()
+--          return {
+--            exe = "prettier",
+--            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+--            stdin = true
+--          }
+--        end
+--      },
+--      ruby = {
+--        function()
+--          return {
+--            exe = "prettier",
+--            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+--            stdin = true
+--          }
+--        end
+--      },
+--    }
+--  }
+--)
+--vim.api.nvim_exec([[
+--augroup FormatAutogroup
+--  autocmd!
+--  autocmd BufWritePost *.js,*.ts,*.jsx,*tsx FormatWrite
+--augroup END
+--]], true)
+
+FORMATTER
+" nnoremap <silent> <leader>f :Format<CR>
