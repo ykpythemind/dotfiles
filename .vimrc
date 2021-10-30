@@ -183,7 +183,7 @@ Plug 'Shougo/ddc-matcher_head'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'Shougo/deol.nvim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -261,10 +261,10 @@ inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
 call ddc#enable()
 
 " prettier
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-let g:prettier#exec_cmd_async = 1
-let g:prettier#quickfix_enabled = 0
+" let g:prettier#autoformat = 1
+" let g:prettier#autoformat_require_pragma = 0
+" let g:prettier#exec_cmd_async = 1
+" let g:prettier#quickfix_enabled = 0
 
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
