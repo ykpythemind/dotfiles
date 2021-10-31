@@ -132,6 +132,16 @@ command! Cprev try | cprev | catch | clast | catch | endtry
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
+augroup qfopen-bufenter
+  function! s:qfopen_keymap() abort
+    nmap <buffer> a <Plug>(qfopen-action)
+    nmap <buffer> <C-v> <Plug>(qfopen-open-vsplit)
+    nmap <buffer> <C-x> <Plug>(qfopen-open-split)
+  endfunction
+  au!
+  au FileType qf call s:qfopen_keymap()
+augroup END
+
 augroup disable_auto_comment_when_br
   autocmd!
   autocmd BufEnter * setlocal formatoptions-=r
@@ -214,7 +224,7 @@ Plug 'thinca/vim-localrc'
 if $VIM_LEXIV != ""
   Plug 'mattn/vim-lexiv'
 endif
-Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
+Plug 'skanehira/qfopen.vim'
 
 " Git
 Plug 'rhysd/git-messenger.vim'
@@ -412,3 +422,10 @@ autocmd Filetype typescriptreact setlocal makeprg=yarn\ run\ --silent\ tsc
 " command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "
 " let g:coc_global_extensions = ['coc-prettier']
+
+function! s:mygrep(query)
+  execute 'silent grep! ' . a:query
+  redraw!
+endfunction
+
+command! -nargs=? Grep call s:mygrep(<f-args>)
