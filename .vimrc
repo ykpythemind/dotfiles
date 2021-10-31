@@ -183,8 +183,9 @@ Plug 'vim-denops/denops.vim'
 Plug 'Shougo/ddc-nvim-lsp'
 Plug 'Shougo/ddc-around'
 Plug 'Shougo/ddc-matcher_head'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
+" Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'matsui54/ddc-buffer'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
@@ -233,11 +234,13 @@ call plug#end()
 call ddc#custom#patch_global('sources', [
 \ 'nvim-lsp',
 \ 'around',
+\ 'buffer',
 \ 'vsnip',
 \ ])
 
 call ddc#custom#patch_global('sourceOptions', {
 \ '_': { 'matchers': ['matcher_head'] },
+\ 'buffer': {'mark': 'B'},
 \ 'around': {'mark': 'A'},
 \ 'vsnip': {'mark': 'vsnip'},
 \ 'nvim-lsp': {
@@ -249,6 +252,12 @@ call ddc#custom#patch_global('sourceOptions', {
 
 call ddc#custom#patch_global('sourceParams', {
 \ 'around': {'maxSize': 500},
+\ 'buffer': {
+\   'requireSameFiletype': v:false,
+\   'limitBytes': 5000000,
+\   'fromAltBuf': v:true,
+\   'forceCollect': v:true,
+\ },
 \ })
 
 call ddc#custom#patch_filetype(['typescript', 'go', 'rust'], 'sources', ['nvim-lsp', 'vsnip'])
