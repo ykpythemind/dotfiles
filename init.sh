@@ -40,6 +40,7 @@ echo "* neovim"
 mkdir -p ~/.config/nvim
 ln -sf $CONFPATH/init.vim ~/.config/nvim/init.vim
 ln -sf $CONFPATH/coc-settings.json ~/.config/nvim/coc-settings.json
+mkdir -p ~/.vim/undo
 
 mkdir -p ~/.cache/shell
 

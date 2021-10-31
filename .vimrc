@@ -15,7 +15,6 @@ set mouse=a
 set ttimeoutlen=100
 set title
 set number
-" set relativenumber
 set wrap
 set cursorline
 set autoindent
@@ -57,6 +56,9 @@ set ignorecase
 set smartcase
 nnoremap / /\v
 nnoremap ? ?\v
+
+set undodir=~/.vim/undo
+set undofile
 
 let g:mapleader = "\<space>"
 
