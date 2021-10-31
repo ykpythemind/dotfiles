@@ -148,6 +148,10 @@ augroup disable_auto_comment_when_br
   autocmd BufEnter * setlocal formatoptions-=o
 augroup END
 
+let g:winresizer_start_key=''
+let g:winresizer_vert_resize=3
+nnoremap <C-w>r :WinResizerStartResize<CR>
+
 " term {{{
 
 " autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
@@ -225,6 +229,7 @@ if $VIM_LEXIV != ""
   Plug 'mattn/vim-lexiv'
 endif
 Plug 'skanehira/qfopen.vim'
+Plug 'simeji/winresizer'
 
 " Git
 Plug 'rhysd/git-messenger.vim'
