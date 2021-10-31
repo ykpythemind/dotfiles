@@ -429,8 +429,20 @@ autocmd Filetype typescriptreact setlocal makeprg=yarn\ run\ --silent\ tsc
 " let g:coc_global_extensions = ['coc-prettier']
 
 function! s:mygrep(query)
-  execute 'silent grep! ' . a:query
-  redraw!
+  let qu = shellescape(a:query)
+  let ret = systemlist('rg --hidden --vimgrep ' . qu)
+
+  if v:shell_error != 0
+    if len(ret) == 0 " not found
+      return
+    endif
+
+    echo ret
+    return
+  endif
+
+  call setqflist([], ' ', {'lines' : ret})
+  copen
 endfunction
 
 command! -nargs=? Grep call s:mygrep(<f-args>)
