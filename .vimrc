@@ -89,6 +89,7 @@ cnoremap <c-d> <c-r>=expand('%:p:h')<cr>
 nnoremap ! :<C-f>
 nnoremap M mM
 nnoremap gM `M
+nnoremap <C-y> <C-^>
 
 nnoremap sg :<C-u>%s/\v//g<Left><Left><Left>
 vnoremap sg :s/\v//g<Left><Left><Left>
@@ -172,11 +173,6 @@ if executable('rg')
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
-" buffer
-nnoremap <Leader>j :bnext<CR>
-nnoremap <Leader>k :bprevious<CR>
-nnoremap <C-y> <C-^>
-
 " Plugin
 call plug#begin('~/.vim/plugged')
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -185,6 +181,9 @@ if has('nvim')
   Plug 'neovim/nvim-lspconfig'
 
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'ThePrimeagen/harpoon'
+
   Plug 'nvim-telescope/telescope.nvim', { 'commit': '02a02f7bcdfb1f207de6649c00701ee1fe13a420' } " https://github.com/nvim-telescope/telescope.nvim/issues/1391
   Plug 'ray-x/lsp_signature.nvim'
 
@@ -252,14 +251,12 @@ call ddc#custom#patch_global('sources', [
 \ 'nvim-lsp',
 \ 'around',
 \ 'buffer',
-\ 'vsnip',
 \ ])
 
 call ddc#custom#patch_global('sourceOptions', {
 \ '_': { 'matchers': ['matcher_head'] },
 \ 'buffer': {'mark': 'B'},
 \ 'around': {'mark': 'A'},
-\ 'vsnip': {'mark': 'vsnip'},
 \ 'nvim-lsp': {
 \   'mark': 'lsp',
 \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
@@ -277,8 +274,8 @@ call ddc#custom#patch_global('sourceParams', {
 \ },
 \ })
 
-call ddc#custom#patch_filetype(['typescript', 'go', 'rust'], 'sources', ['nvim-lsp', 'vsnip'])
-call ddc#custom#patch_filetype(['ruby', 'vim'], 'sources', ['vsnip'])
+call ddc#custom#patch_filetype(['typescript', 'go', 'rust'], 'sources', ['nvim-lsp'])
+" call ddc#custom#patch_filetype(['ruby', 'vim'], 'sources', ['vsnip'])
 
 inoremap <silent><expr> <TAB>
 \ pumvisible() ? '<C-n>' :
