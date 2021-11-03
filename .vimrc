@@ -181,7 +181,6 @@ if has('nvim')
   Plug 'neovim/nvim-lspconfig'
 
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-lua/popup.nvim'
   Plug 'ThePrimeagen/harpoon'
 
   Plug 'nvim-telescope/telescope.nvim', { 'commit': '02a02f7bcdfb1f207de6649c00701ee1fe13a420' } " https://github.com/nvim-telescope/telescope.nvim/issues/1391
