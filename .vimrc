@@ -10,7 +10,6 @@ set scrolloff=10
 set noswapfile
 set nobackup
 set nowritebackup
-"set ambiwidth=double " break telescope
 set mouse=a
 set ttimeoutlen=100
 set title
@@ -274,7 +273,6 @@ call ddc#custom#patch_global('sourceParams', {
 \ })
 
 call ddc#custom#patch_filetype(['typescript', 'go', 'rust'], 'sources', ['nvim-lsp'])
-" call ddc#custom#patch_filetype(['ruby', 'vim'], 'sources', ['vsnip'])
 
 inoremap <silent><expr> <TAB>
 \ pumvisible() ? '<C-n>' :
@@ -338,8 +336,6 @@ set background=dark
 " vim-asterisk
 map *  <Plug>(asterisk-z*)
 map #  <Plug>(asterisk-z#)
-map g* <Plug>(asterisk-gz*)
-map g# <Plug>(asterisk-gz#)
 
 " expand region
 vmap v <Plug>(expand_region_expand)
