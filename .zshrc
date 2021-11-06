@@ -176,8 +176,16 @@ inc-history() {
   BUFFER=$(history -n -r 1 | fzf -d --reverse --no-height --no-sort +m --query "$LBUFFER" --prompt="History > ")
   CURSOR=$#BUFFER
 }
-zle -N inc-history
-bindkey '^R' inc-history
+
+function peco-history-selection() {
+    BUFFER=`history -n -r 1 | peco --query "$LBUFFER"`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+# zle -N inc-history
+# bindkey '^R' inc-history
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
 
 function inc-cdr() {
     local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf)
