@@ -126,7 +126,7 @@ function pushupstream() {
 gco() {
   local branches branch
   branches=$(git branch -vv) &&
-  branch=$(echo "$branches" | fzf +m) &&
+  branch=$(echo "$branches" | peco) &&
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
@@ -134,7 +134,7 @@ gco() {
 gcor() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" | fzf +m) &&
+  branch=$(echo "$branches" | peco) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 alias gsw='gco'
@@ -158,7 +158,7 @@ function fzf-process() {
 
 # move to ghq dir
 function inc-ghq() {
-  local selected_dir=$(ghq list | fzf --query="$LBUFFER")
+  local selected_dir=$(ghq list | peco --query="$LBUFFER")
 
   if [ -n "$selected_dir" ]; then
     BUFFER="cd $(ghq root)/${selected_dir}"
@@ -188,7 +188,7 @@ zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
 function inc-cdr() {
-    local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf)
+    local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
     if [ -n "$selected_dir" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
