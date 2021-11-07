@@ -176,6 +176,7 @@ endif
 call plug#begin('~/.vim/plugged')
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
 
@@ -233,7 +234,10 @@ Plug 'simeji/winresizer'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify'
-Plug 'lambdalisue/gina.vim'
+
+let gina = $VIM_GINA_ORIGINAL != "" ? 'lambdalisue/gina.vim' : '/Users/ykpythemind/git/github.com/ykpythemind/gina.vim'
+Plug gina
+
 " lang
 Plug 'slim-template/vim-slim'
 Plug 'mattn/vim-goimports'
