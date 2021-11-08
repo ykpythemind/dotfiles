@@ -120,6 +120,9 @@ nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+vnoremap < <gv
+vnoremap > >gv
+
 " quickfix
 nnoremap <C-n> :Cnext<CR>
 nnoremap <C-m> :Cprev<CR>
