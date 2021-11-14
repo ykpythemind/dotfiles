@@ -1,0 +1,17 @@
+set main-view = line-number:no,interval=1 id:yes date:default author:full commit-title:graph=yes,refs=yes,overflow=no
+
+set show-changes    = yes   # Show changes commits in the main view?
+set wrap-lines      = no    # Wrap long lines in pager views?
+
+set pager-view  = line-number:no,interval=1 text
+set stage-view  = line-number:no,interval=1 text
+set log-view  = line-number:no,interval=1 text
+set blob-view = line-number:no,interval=1 text
+set diff-view = line-number:no,interval=1 text:yes,commit-title-overflow=no
+
+set diff-context = 6
+
+bind generic G none
+bind main V !?git revert %(commit)
+
+bind generic y @sh -c "echo %(commit) | pbcopy"
