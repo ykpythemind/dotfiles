@@ -204,6 +204,7 @@ Plug 'Shougo/ddc-matcher_head'
 " Plug 'hrsh7th/vim-vsnip'
 " Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'matsui54/ddc-buffer'
+Plug 'tani/ddc-fuzzy'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
@@ -259,9 +260,14 @@ call ddc#custom#patch_global('sources', [
 \ 'around',
 \ 'buffer',
 \ ])
+" call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
 call ddc#custom#patch_global('sourceOptions', {
-\ '_': { 'matchers': ['matcher_head'] },
+\  '_': {
+\    'matchers': ['matcher_fuzzy'],
+\    'sorters': ['sorter_fuzzy'],
+\    'converters': ['converter_fuzzy']
+\  },
 \ 'buffer': {'mark': 'B'},
 \ 'around': {'mark': 'A'},
 \ 'nvim-lsp': {
