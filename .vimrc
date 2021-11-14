@@ -355,6 +355,12 @@ let s:true_color_enabled = $TERM_PROGRAM ==# 'iTerm.app' || $TERM_PROGRAM ==# 'a
 if s:true_color_enabled
   set termguicolors
 endif
+
+set termguicolors
+
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " 文字色
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色
+
 set background=dark
 " hi Normal ctermfg=252 ctermbg=16 guifg=#c5c8c6 guibg=#1d1f21
 
