@@ -328,6 +328,7 @@ let g:git_messenger_date_format = "%Y/%m/%d %X"
 nmap <C-g>m <Plug>(git-messenger)
 
 noremap <C-g>b :Gina browse :
+noremap <C-g>p :Gina push<cr>
 nnoremap <C-g>s :Gina status -v --opener=split --group=git<cr>
 nnoremap <C-g>c :Gina commit -v --opener=split --group=git<cr>
 nnoremap <C-g>l :Gina log<cr>
