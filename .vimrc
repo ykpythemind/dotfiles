@@ -218,6 +218,7 @@ Plug 'preservim/nerdtree'
 Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
 
+Plug 'tpope/vim-dispatch'
 Plug 'vim-test/vim-test'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'haya14busa/vim-asterisk'
