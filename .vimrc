@@ -193,6 +193,8 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   " Plug 'mhartington/formatter.nvim'
+  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  Plug 'kyazdani42/nvim-tree.lua'
 endif
 
 Plug 'Shougo/ddc.vim'
@@ -216,7 +218,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'thinca/vim-qfreplace'
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
 
@@ -365,12 +367,12 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 " nerdtree
-noremap - :NERDTreeToggle<CR>
-noremap = :NERDTreeFind<CR>
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.DS_Store$', '\.git$'] " ignore files in nerd tree
-let g:NERDTreeWinSize=50
-let NERDTreeMapQuit='='
+" noremap - :NERDTreeToggle<CR>
+" noremap = :NERDTreeFind<CR>
+" let NERDTreeShowHidden=1
+" let NERDTreeIgnore=['\.DS_Store$', '\.git$'] " ignore files in nerd tree
+" let g:NERDTreeWinSize=50
+" let NERDTreeMapQuit='='
 
 " Lightline
 function! LightlineFilename()

@@ -23,7 +23,29 @@ set guicursor=n-c-v:block-nCursor,i-ci:blinkon0-blinkwait0-blinkoff0
 highlight LspDiagnosticsSignError ctermbg=9 ctermfg=15
 highlight LspDiagnosticsSignHint ctermbg=142 ctermfg=15
 
-lua <<EOF
+" nvim-tree (must before 'nvim-tree'.setup() )
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 0,
+    \ 'files': 0,
+    \ 'folder_arrows': 0,
+    \ }
+nnoremap - :NvimTreeToggle<CR>
+nnoremap = :NvimTreeFindFileToggle<CR>
+
+lua <<LUA
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+require'nvim-tree'.setup({
+  view = {
+    mappings = {
+      custom_only = false,
+      list = {
+        { key = "-", cb = tree_cb("close") },
+      }
+    }
+  }
+})
+
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -35,7 +57,7 @@ require'nvim-treesitter.configs'.setup {
     }
   }
 }
-EOF
+LUA
 
 lua << TELESCOPE
 local actions = require('telescope.actions')
