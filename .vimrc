@@ -205,6 +205,7 @@ Plug 'Shougo/ddc-matcher_head'
 " Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'matsui54/ddc-buffer'
 Plug 'tani/ddc-fuzzy'
+Plug 'LumaKernel/ddc-file'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
@@ -259,6 +260,7 @@ call ddc#custom#patch_global('sources', [
 \ 'nvim-lsp',
 \ 'around',
 \ 'buffer',
+\ 'file',
 \ ])
 " call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
@@ -275,7 +277,12 @@ call ddc#custom#patch_global('sourceOptions', {
 \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
 \   'minAutoCompleteLength': 1
 \ },
-\ })
+\ 'file': {
+\   'mark': 'File',
+\   'isVolatile': v:true,
+\   'forceCompletionPattern': '\S/\S*',
+\ },
+\})
 
 call ddc#custom#patch_global('sourceParams', {
 \ 'around': {'maxSize': 500},
