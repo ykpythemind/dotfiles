@@ -26,9 +26,9 @@ highlight LspDiagnosticsSignHint ctermbg=142 ctermfg=15
 " nvim-tree (must before 'nvim-tree'.setup() )
 let g:nvim_tree_show_icons = {
     \ 'git': 1,
-    \ 'folders': 0,
-    \ 'files': 0,
-    \ 'folder_arrows': 0,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
     \ }
 nnoremap - :NvimTreeToggle<CR>
 nnoremap = :NvimTreeFindFileToggle<CR>
