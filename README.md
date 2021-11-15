@@ -55,3 +55,6 @@ zgen reset
 - ~/.git-token に GitHub private access token を置くと git brws コマンドで使える
 - font
   - https://design.ubuntu.com/font/
+  - nerd font
+    - brew tap homebrew/cask-fonts
+    - brew install --cask font-hack-nerd-font
