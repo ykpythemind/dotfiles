@@ -195,6 +195,7 @@ if has('nvim')
   " Plug 'mhartington/formatter.nvim'
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'nvim-lualine/lualine.nvim'
 endif
 
 Plug 'Shougo/ddc.vim'
@@ -252,7 +253,7 @@ Plug 'slim-template/vim-slim'
 Plug 'mattn/vim-goimports'
 Plug 'leafgarland/typescript-vim'
 " view
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
 Plug 'cocopon/iceberg.vim'
 call plug#end()

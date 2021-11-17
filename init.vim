@@ -34,6 +34,42 @@ nnoremap - :NvimTreeToggle<CR>
 nnoremap = :NvimTreeFindFileToggle<CR>
 
 lua <<LUA
+require'lualine'.setup {
+  options = {
+    icons_enabled = false,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {{'diagnostics', sources={'nvim_lsp', 'coc'}}},
+    lualine_c = {'filename'},
+    lualine_x = {'filetype'},
+    lualine_y = {},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {
+    lualine_a = {'branch'},
+    lualine_b = {'filename'},
+    lualine_c = {},
+    lualine_x = {'tabs'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  extensions = {}
+}
+
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 require'nvim-tree'.setup({
   view = {
