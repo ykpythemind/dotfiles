@@ -73,6 +73,7 @@ require'lualine'.setup {
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 require'nvim-tree'.setup({
   view = {
+    width = 40,
     mappings = {
       custom_only = false,
       list = {
