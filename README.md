@@ -30,18 +30,6 @@ sudo vim /etc/shells # `brew --prefix zsh` を追加
 chsh -s /usr/local/bin/zsh # brew --prefix zshの結果
 ```
 
-plugin インストールしたら
-
-```
-  rm -f ~/.zcompdump; compinit
-```
-
-reset zgen script
-
-```
-zgen reset
-```
-
 ## vim
 
 ```

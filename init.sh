@@ -19,10 +19,6 @@ mkdir -p ~/Library/Application\ Support/Hyper
 # ln -sf $CONFPATH/.hyper.js ~/Library/Application\ Support/Hyper/.hyper.js
 ln -sf $CONFPATH/.hyper.js ~/.hyper.js # this is deprecated
 
-echo "* zgen"
-git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
-git -C ${HOME}/.zgen pull
-
 echo "* git-gone"
 curl -fL https://raw.githubusercontent.com/eed3si9n/git-gone/master/git-gone -o /tmp/git-gone
 sudo cp /tmp/git-gone /usr/local/bin/git-gone
@@ -60,11 +56,6 @@ ln -sf $CONFPATH/default_gems ~/.rbenv/default-gems
 
 echo "* link diff-highlight"
 sudo ln -s `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
-
-echo "zsh / pure"
-mkdir -p ${HOME}/.zsh
-git clone https://github.com/sindresorhus/pure.git ${HOME}/.zsh/pure
-git -C ${HOME}/.zsh/pure pull
 
 echo "* kitty"
 mkdir -p ${HOME}/.config/kitty

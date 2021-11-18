@@ -1,15 +1,16 @@
-source "${HOME}/.zgen/zgen.zsh"
-
-if ! zgen saved; then
-  zgen load "MichaelAquilina/zsh-auto-notify"
-  zgen load "zsh-users/zsh-autosuggestions"
-  zgen load "zsh-users/zsh-completions"
-
-  zgen save
+# Clone zcomet if necessary
+if [[ ! -f ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh ]]; then
+  command git clone https://github.com/agkozak/zcomet.git ${ZDOTDIR:-${HOME}}/.zcomet/bin
 fi
+source ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh
 
-fpath+=$HOME/.zsh/pure
+zcomet load "MichaelAquilina/zsh-auto-notify"
+zcomet load "zsh-users/zsh-autosuggestions"
+zcomet load "zsh-users/zsh-completions"
+zcomet load "sindresorhus/pure"
+zcomet compinit
 
+# pure
 autoload -U promptinit; promptinit
 prompt pure
 zstyle ':prompt:pure:prompt:error' color yellow
@@ -27,7 +28,7 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 
 HISTFILE=${HOME}/.zsh_history
-HISTSIZE=10000
+HISTSIZE=1000000
 SAVEHIST=1000000
 setopt hist_ignore_dups
 setopt extended_history

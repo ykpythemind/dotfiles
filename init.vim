@@ -1,7 +1,7 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 
 " deno debug
-set runtimepath^=~/deno_altr
+set runtimepath^=~/deno_altr runtimepath+=~/ghpr-blame.denops
 let g:denops#debug = 1
 " let g:denops#trace = 1
 
