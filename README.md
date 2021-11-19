@@ -46,3 +46,4 @@ chsh -s /usr/local/bin/zsh # brew --prefix zshの結果
   - nerd font
     - brew tap homebrew/cask-fonts
     - brew install --cask font-hack-nerd-font
+  - SF Mono https://developer.apple.com/fonts/

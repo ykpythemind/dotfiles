@@ -3,7 +3,7 @@ module.exports = {
     modifierKeys: { altIsMeta: true },
     webGLRenderer: true,
 
-    fontFamily: '"Hack Nerd Font Mono", Menlo, "DejaVu Sans Mono", monospace',
+    fontFamily: '"SF Mono", "Hack Nerd Font Mono", monospace',
   },
 
   keymaps: {},
