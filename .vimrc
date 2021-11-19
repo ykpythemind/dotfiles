@@ -13,7 +13,7 @@ set nowritebackup
 set mouse=a
 set ttimeoutlen=100
 set title
-set number
+set nonumber
 set wrap
 set cursorline
 set autoindent
