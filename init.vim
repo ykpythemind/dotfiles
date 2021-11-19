@@ -34,6 +34,8 @@ nnoremap - :NvimTreeToggle<CR>
 nnoremap = :NvimTreeFindFileToggle<CR>
 
 lua <<LUA
+require('Comment').setup()
+
 require'lualine'.setup {
   options = {
     icons_enabled = false,
