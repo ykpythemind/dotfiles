@@ -75,14 +75,6 @@ export PAGER=less
 export LESS='--hilite-search -i -M --RAW-CONTROL-CHARS --no-init --shift 4 --quit-if-one-screen'
 export LESSCHARSET=utf-8
 
-# if which rbenv > /dev/null; then
-#   eval "$(rbenv init -)"
-# fi
-#
-# if which nodenv > /dev/null; then
-#   eval "$(nodenv init -)"
-# fi
-
 # cdr
 
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
