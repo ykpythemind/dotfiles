@@ -18,6 +18,9 @@ zstyle ':prompt:pure:prompt:error' color yellow
 eval "$(direnv hook zsh)"
 stty eof undef
 
+. $HOME/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+
 autoload -Uz compinit; compinit -i
 # tabの補完候補から選択
 zstyle ':completion:*:default' menu select=1
@@ -72,13 +75,13 @@ export PAGER=less
 export LESS='--hilite-search -i -M --RAW-CONTROL-CHARS --no-init --shift 4 --quit-if-one-screen'
 export LESSCHARSET=utf-8
 
-if which rbenv > /dev/null; then
-  eval "$(rbenv init -)"
-fi
-
-if which nodenv > /dev/null; then
-  eval "$(nodenv init -)"
-fi
+# if which rbenv > /dev/null; then
+#   eval "$(rbenv init -)"
+# fi
+#
+# if which nodenv > /dev/null; then
+#   eval "$(nodenv init -)"
+# fi
 
 # cdr
 

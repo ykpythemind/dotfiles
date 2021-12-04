@@ -29,9 +29,9 @@
     # for safety cancel https://thinca.hatenablog.com/entry/20120924/1348491052
     cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
 [pager]
-    log = diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
-    show = diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
-    diff = diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
+    log = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
+    show = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
+    diff = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
 [ghq]
     root = ~/git
 [user]

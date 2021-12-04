@@ -40,22 +40,22 @@ mkdir -p ~/.vim/undo
 
 mkdir -p ~/.cache/shell
 
+echo "* asdf"
+# https://asdf-vm.com/guide/getting-started.html#_2-download-asdf
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
+
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+
 echo "* deno"
 mkdir ~/.zsh/completion # create a folder to save your completions. it can be anywhere
 deno completions zsh > ~/.zsh/completion/_deno
 
 echo "* ruby"
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-git -C ${HOME}/.rbenv pull
-mkdir -p ~/.rbenv/plugins
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-git -C ${HOME}/.rbenv/plugins/ruby-build pull
-git clone https://github.com/rbenv/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems
-git -C ${HOME}/.rbenv/plugins/rbenv-default-gems pull
-ln -sf $CONFPATH/default_gems ~/.rbenv/default-gems
+ln -sf $CONFPATH/default_gems ~/.default-gems
 
-echo "* link diff-highlight"
-sudo ln -s `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
+# echo "* link diff-highlight"
+# sudo ln -sf `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
 
 echo "* kitty"
 mkdir -p ${HOME}/.config/kitty
