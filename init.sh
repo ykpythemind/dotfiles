@@ -46,6 +46,7 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
 
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git
 
 echo "* deno"
 mkdir ~/.zsh/completion # create a folder to save your completions. it can be anywhere

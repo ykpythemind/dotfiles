@@ -185,7 +185,9 @@ if has('nvim')
   Plug 'neovim/nvim-lspconfig'
 
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'ThePrimeagen/harpoon'
+
+  " Plug 'ThePrimeagen/harpoon'
+  Plug 'ben-hansske/harpoon' " https://github.com/ThePrimeagen/harpoon/pull/136
 
   Plug 'nvim-telescope/telescope.nvim', { 'commit': '02a02f7bcdfb1f207de6649c00701ee1fe13a420' } " https://github.com/nvim-telescope/telescope.nvim/issues/1391
   Plug 'ray-x/lsp_signature.nvim'
@@ -236,9 +238,6 @@ Plug 'ykpythemind/toggle-term'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
-if $VIM_LEXIV != ""
-  Plug 'mattn/vim-lexiv'
-endif
 Plug 'skanehira/qfopen.vim'
 Plug 'simeji/winresizer'
 
@@ -374,14 +373,6 @@ map #  <Plug>(asterisk-z#)
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" nerdtree
-" noremap - :NERDTreeToggle<CR>
-" noremap = :NERDTreeFind<CR>
-" let NERDTreeShowHidden=1
-" let NERDTreeIgnore=['\.DS_Store$', '\.git$'] " ignore files in nerd tree
-" let g:NERDTreeWinSize=50
-" let NERDTreeMapQuit='='
-
 " Lightline
 function! LightlineFilename()
   return expand('%:t') !=# '' ? expand('%') : '[---]'
@@ -454,25 +445,6 @@ autocmd Filetype typescriptreact setlocal makeprg=yarn\ run\ --silent\ tsc
 " command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "
 " let g:coc_global_extensions = ['coc-prettier']
-
-function! s:mygrep(query)
-  let qu = shellescape(a:query)
-  let ret = systemlist('rg --hidden --vimgrep ' . qu)
-
-  if v:shell_error != 0
-    if len(ret) == 0 " not found
-      return
-    endif
-
-    echo ret
-    return
-  endif
-
-  call setqflist([], ' ', {'lines' : ret})
-  copen
-endfunction
-
-command! -nargs=? Grep call s:mygrep(<f-args>)
 
 if has('mac')
   " set ttimeoutlen=1
