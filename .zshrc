@@ -99,10 +99,6 @@ alias docker-clean-containers='docker rm $(docker ps --filter=status=exited --fi
 # function
 #
 
-function git_fuzzy_stage_files() {
-  git status --porcelain | sed -e 's/^...//' | fzf --multi --ansi --preview="git diff --color {}" | xargs git add
-}
-
 function gcom() {
   local ret
   git branch | grep --silent "main\$"

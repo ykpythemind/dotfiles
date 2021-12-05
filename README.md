@@ -26,8 +26,17 @@ sh ./init.sh
 Mac OS
 
 ```
-sudo vim /etc/shells # `brew --prefix zsh` を追加
-chsh -s /usr/local/bin/zsh # brew --prefix zshの結果
+sudo vim /etc/shells # `brew --prefix zsh` の結果を追加
+chsh -s `brew --prefix zsh`
+```
+
+### zcomet
+
+https://github.com/agkozak/zcomet
+
+```
+zcomet update
+zcomet self-update
 ```
 
 ## vim
@@ -42,7 +51,6 @@ chsh -s /usr/local/bin/zsh # brew --prefix zshの結果
   - https://scrapbox.io/ykpythemind/Mac%E3%81%AB%E5%85%A5%E3%82%8C%E3%81%A6%E3%82%8B%E3%82%A2%E3%83%97%E3%83%AA
 - ~/.git-token に GitHub private access token を置くと git brws コマンドで使える
 - font
-  - https://design.ubuntu.com/font/
   - nerd font
     - brew tap homebrew/cask-fonts
     - brew install --cask font-hack-nerd-font

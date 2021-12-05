@@ -1,7 +1,7 @@
-
 # Direnv stuff
 .direnv
 .envrc
+.env
 
 # OS generated files #
 ######################
@@ -28,3 +28,4 @@ Thumbs.db
 .unison*
 
 .irb_history
+.tool-versions
