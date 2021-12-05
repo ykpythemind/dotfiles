@@ -13,6 +13,7 @@ ln -sf $CONFPATH/.alacritty.yml ~/.alacritty.yml
 ln -sf $CONFPATH/.editorconfig ~/.editorconfig
 ln -sf $CONFPATH/.zshrc ~/.zshrc
 ln -sf $CONFPATH/.zprofile ~/.zprofile
+ln -sf $CONFPATH/asdf/.tool-versions ~/.tool-versions
 
 # macOS
 mkdir -p ~/Library/Application\ Support/Hyper

@@ -58,6 +58,7 @@ export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 export RIPGREP_CONFIG_PATH=$HOME/dotfiles/ripgrep_rc
+export ASDF_CONFIG_FILE=$HOME/dotfiles/asdf/.asdfrc
 
 if [ -e ${HOME}/.git-token ]; then
   export GITHUB_TOKEN=$(cat "${HOME}/.git-token")
