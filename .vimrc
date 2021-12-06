@@ -227,7 +227,8 @@ Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
 
 Plug 'tpope/vim-dispatch'
-Plug 'vim-test/vim-test'
+" Plug 'vim-test/vim-test'
+Plug 'yoann9344/vim-test', { 'branch': 'patch-1' }
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'haya14busa/vim-asterisk'
 Plug 'mopp/autodirmake.vim'
@@ -403,8 +404,12 @@ nnoremap T :TestNearest<CR>
 nnoremap <Leader>tt :TestNearest<CR>
 nnoremap <Leader>tl :TestLast<CR>
 let test#neovim#term_position = "botright 30"
-" let test#strategy = 'neovim'
-let test#strategy = 'vimux'
+if has('nvim')
+  let test#strategy = 'harpoon'
+  let g:test#harpoon_stay_here = 1
+else
+  let test#strategy = 'vimux'
+end
 
 nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)
