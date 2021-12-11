@@ -186,10 +186,9 @@ if has('nvim')
 
   Plug 'nvim-lua/plenary.nvim'
 
-  " Plug 'ThePrimeagen/harpoon'
-  Plug 'ben-hansske/harpoon' " https://github.com/ThePrimeagen/harpoon/pull/136
+  Plug 'ThePrimeagen/harpoon'
 
-  Plug 'nvim-telescope/telescope.nvim', { 'commit': '02a02f7bcdfb1f207de6649c00701ee1fe13a420' } " https://github.com/nvim-telescope/telescope.nvim/issues/1391
+  Plug 'nvim-telescope/telescope.nvim'
   Plug 'ray-x/lsp_signature.nvim'
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
