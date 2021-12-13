@@ -34,6 +34,43 @@ nnoremap - :NvimTreeToggle<CR>
 nnoremap = :NvimTreeFindFileToggle<CR>
 
 lua <<LUA
+
+local formatterConfig = {}
+
+local prettierConfig = function()
+  return {
+    exe = "prettier",
+    args = {'--config-precedence','prefer-file', "--stdin-filepath", vim.fn.shellescape(vim.api.nvim_buf_get_name(0))},
+    stdin = true
+  }
+end
+
+local commonFT = {
+  --"css",
+  --"scss",
+  --"html",
+  "javascript",
+  "javascriptreact",
+  "typescript",
+  "typescriptreact",
+  --"markdown",
+  --"markdown.mdx",
+  --"json"
+}
+for _, ft in ipairs(commonFT) do
+  formatterConfig[ft] = {
+    prettierConfig
+  }
+end
+
+--vim.api.nvim_exec([[
+--augroup FormatAutogroup
+--  autocmd!
+--  autocmd BufWritePost *.js,*.ts,*.jsx,*tsx FormatWrite
+--augroup END
+--]], true)
+require('formatter').setup({ filetype = formatterConfig })
+
 require('Comment').setup()
 
 require'lualine'.setup {
@@ -47,7 +84,7 @@ require'lualine'.setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {{'diagnostics', sources={'nvim_lsp', 'coc'}}},
+    lualine_b = {{'diagnostics', sources = {'nvim_diagnostic'}}},
     lualine_c = {'filename'},
     lualine_x = {'filetype'},
     lualine_y = {},
@@ -186,7 +223,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'g[', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { focusable = false } })<CR>', opts)
   buf_set_keymap('n', 'g]', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { focusable = false } })<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  --buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
 end
 
@@ -264,65 +301,4 @@ nnoremap <leader>n :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <leader>m :lua require("harpoon.ui").nav_file(4)<CR>
 nnoremap <leader>cu :lua require("harpoon.term").gotoTerminal(1)<CR>
 
-lua << FORMATTER
---require("formatter").setup(
---  {
---    logging = true,
---    filetype = {
---      typescriptreact = {
---        function()
---          return {
---            exe = "prettier",
---            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
---            stdin = true
---          }
---        end
---      },
---      typescript = {
---        function()
---          return {
---            exe = "prettier",
---            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
---            stdin = true
---          }
---        end
---      },
---      javascript = {
---        function()
---          return {
---            exe = "prettier",
---            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
---            stdin = true
---          }
---        end
---      },
---      javascriptreact = {
---        function()
---          return {
---            exe = "prettier",
---            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
---            stdin = true
---          }
---        end
---      },
---      ruby = {
---        function()
---          return {
---            exe = "prettier",
---            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
---            stdin = true
---          }
---        end
---      },
---    }
---  }
---)
---vim.api.nvim_exec([[
---augroup FormatAutogroup
---  autocmd!
---  autocmd BufWritePost *.js,*.ts,*.jsx,*tsx FormatWrite
---augroup END
---]], true)
-
-FORMATTER
-" nnoremap <silent> <leader>f :Format<CR>
+nnoremap <leader>f :Format<CR>

@@ -182,21 +182,20 @@ call plug#begin('~/.vim/plugged')
 
 
 if has('nvim')
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'neovim/nvim-lspconfig'
 
   Plug 'nvim-lua/plenary.nvim'
-
   Plug 'ThePrimeagen/harpoon'
-
   Plug 'nvim-telescope/telescope.nvim'
+
   Plug 'ray-x/lsp_signature.nvim'
 
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-  " Plug 'mhartington/formatter.nvim'
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'nvim-lualine/lualine.nvim'
+
+  Plug 'mhartington/formatter.nvim'
 endif
 
 Plug 'Shougo/ddc.vim'
@@ -211,7 +210,7 @@ Plug 'matsui54/ddc-buffer'
 Plug 'tani/ddc-fuzzy'
 Plug 'LumaKernel/ddc-file'
 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/vimux'
@@ -308,7 +307,11 @@ inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
 call ddc#enable()
 
 " prettier
-let g:prettier#autoformat = 1
+" let g:prettier#autoformat = 1
+" let g:prettier#autoformat_require_pragma = 0
+" let g:prettier#exec_cmd_async = 1
+" let g:prettier#quickfix_enabled = 0
+let g:prettier#autoformat = 0
 let g:prettier#autoformat_require_pragma = 0
 let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_enabled = 0
