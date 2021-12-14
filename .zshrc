@@ -112,21 +112,22 @@ function gcom() {
 }
 
 function push() {
-  # git push -u origin `git branch | grep \* | cut -d ' ' -f2`
-  # git brws --pr
-  #
+  local result st a
   result=$(git push 2>&1 -u origin `git branch | grep \* | cut -d ' ' -f2`)
   st=$?
 
   if [ $st = 0 ]; then
     echo 'grep'
     a=$(echo "$result" | grep GitHub)
-    echo "--grep ${a}"
+    if [ -n "$a" ]; then
+      git brws --pr
+    fi
   else
-    echo 'not ok'
+    echo 'git push failed.'
   fi
 
-  # echo $result
+  echo $result
+  # exit status
 }
 
 # checkout git branch
