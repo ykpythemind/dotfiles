@@ -115,7 +115,7 @@ function push() {
   # git push -u origin `git branch | grep \* | cut -d ' ' -f2`
   # git brws --pr
   #
-  result=$(git push -u origin `git branch | grep \* | cut -d ' ' -f2`)
+  result=$(git push -u origin `git branch | grep \* | cut -d ' ' -f2` 2>&1)
   st=$?
 
   if [ $st = 0 ]; then
