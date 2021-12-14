@@ -126,7 +126,7 @@ function push() {
   fi
 
   echo $result
-  exit $st
+  return $st
 }
 
 # checkout git branch
