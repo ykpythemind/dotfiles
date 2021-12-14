@@ -117,8 +117,7 @@ function push() {
   st=$?
 
   if [ $st = 0 ]; then
-    echo 'grep'
-    a=$(echo "$result" | grep GitHub)
+    a=$(echo "$result" | grep 'Create a pull request for')
     if [ -n "$a" ]; then
       git brws --pr
     fi
@@ -127,7 +126,7 @@ function push() {
   fi
 
   echo $result
-  # exit status
+  exit $st
 }
 
 # checkout git branch
