@@ -111,8 +111,9 @@ function gcom() {
   fi
 }
 
-function pushupstream() {
+function push() {
   git push -u origin `git branch | grep \* | cut -d ' ' -f2`
+  git brws --pr
 }
 
 # checkout git branch
