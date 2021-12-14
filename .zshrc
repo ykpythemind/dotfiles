@@ -115,12 +115,12 @@ function push() {
   # git push -u origin `git branch | grep \* | cut -d ' ' -f2`
   # git brws --pr
   #
-  result=$(git push -u origin `git branch | grep \* | cut -d ' ' -f2` 2>&1)
+  result=$(git push 2>&1 -u origin `git branch | grep \* | cut -d ' ' -f2`)
   st=$?
 
   if [ $st = 0 ]; then
     echo 'grep'
-    echo $(echo "$result" | grep GitHub)
+    echo "$result" | grep GitHub
     echo '--grep'
   else
     echo 'not ok'
