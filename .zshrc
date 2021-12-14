@@ -112,8 +112,21 @@ function gcom() {
 }
 
 function push() {
-  git push -u origin `git branch | grep \* | cut -d ' ' -f2`
-  git brws --pr
+  local result st a
+  result=$(git push 2>&1 -u origin `git branch | grep \* | cut -d ' ' -f2`)
+  st=$?
+
+  if [ $st = 0 ]; then
+    a=$(echo "$result" | grep 'Create a pull request for')
+    if [ -n "$a" ]; then
+      git brws --pr
+    fi
+  else
+    echo 'git push failed.'
+  fi
+
+  echo $result
+  return $st
 }
 
 # checkout git branch
