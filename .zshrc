@@ -112,8 +112,21 @@ function gcom() {
 }
 
 function push() {
-  git push -u origin `git branch | grep \* | cut -d ' ' -f2`
-  git brws --pr
+  # git push -u origin `git branch | grep \* | cut -d ' ' -f2`
+  # git brws --pr
+  #
+  result=$(git push -u origin `git branch | grep \* | cut -d ' ' -f2`)
+  st=$?
+
+  if [ $st = 0 ]; then
+    echo 'grep'
+    echo $(echo "$result" | grep GitHub)
+    echo '--grep'
+  else
+    echo 'not ok'
+  fi
+
+  echo $result
 }
 
 # checkout git branch
