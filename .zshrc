@@ -120,13 +120,13 @@ function push() {
 
   if [ $st = 0 ]; then
     echo 'grep'
-    echo "$result" | grep GitHub
-    echo '--grep'
+    a=$(echo "$result" | grep GitHub)
+    echo "--grep ${a}"
   else
     echo 'not ok'
   fi
 
-  echo $result
+  # echo $result
 }
 
 # checkout git branch
