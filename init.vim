@@ -191,6 +191,7 @@ lua << LSP
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.solargraph.setup{}
+require'lspconfig'.rust_analyzer.setup{}
 --require'lspconfig'.denols.setup{}
 
 local nvim_lsp = require('lspconfig')
@@ -236,7 +237,7 @@ vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diag
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'gopls', 'tsserver', 'solargraph' } -- 'denols'
+local servers = { 'gopls', 'tsserver', 'solargraph', 'rust-analyzer' } -- 'denols'
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
