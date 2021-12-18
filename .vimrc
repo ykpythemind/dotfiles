@@ -251,6 +251,7 @@ Plug gina
 Plug 'slim-template/vim-slim'
 Plug 'mattn/vim-goimports'
 Plug 'leafgarland/typescript-vim'
+Plug 'rust-lang/rust.vim'
 " view
 " Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'

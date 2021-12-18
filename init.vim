@@ -53,6 +53,7 @@ local commonFT = {
   "javascriptreact",
   "typescript",
   "typescriptreact",
+  "ruby",
   --"markdown",
   --"markdown.mdx",
   --"json"
