@@ -6,6 +6,7 @@ echo "* symlink"
 ln -sf $CONFPATH/.vimrc ~/.vimrc
 ln -sf $CONFPATH/.gitconfig ~/.gitconfig
 ln -sf $CONFPATH/.gitignore_global ~/.gitignore_global
+ln -sf $CONFPATH/.tigrc ~/.tigrc
 ln -sf $CONFPATH/.tmux.conf ~/.tmux.conf
 ln -sf $CONFPATH/.ignore ~/.ignore
 ln -sf $CONFPATH/.ignore ~/.agignore
