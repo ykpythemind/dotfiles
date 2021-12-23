@@ -25,6 +25,7 @@
     ds = diff --staged
     c = commit -v
     p = pull -p
+    pr = !gh prc
     f = fetch -p
     unstage = !git restore --staged . && echo 'unstaged' && git status --short
     # for safety cancel https://thinca.hatenablog.com/entry/20120924/1348491052
