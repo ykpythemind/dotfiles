@@ -71,7 +71,6 @@ map R <Nop>
 noremap ; :
 
 inoremap <C-j> <Esc>
-" inoremap <C-c> <Esc>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-k> <C-o>D
@@ -178,8 +177,6 @@ endif
 
 " Plugin
 call plug#begin('~/.vim/plugged')
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -212,17 +209,13 @@ Plug 'matsui54/ddc-buffer'
 Plug 'tani/ddc-fuzzy'
 Plug 'LumaKernel/ddc-file'
 
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/vimux'
 
 Plug 'editorconfig/editorconfig-vim'
-" Plug 'tyru/caw.vim'
 Plug 'numToStr/Comment.nvim'
 Plug 'tpope/vim-surround'
 Plug 'thinca/vim-qfreplace'
-" Plug 'preservim/nerdtree'
 Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
 
@@ -255,7 +248,6 @@ Plug 'mattn/vim-goimports'
 Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
 " view
-" Plug 'itchyny/lightline.vim'
 Plug 'w0ng/vim-hybrid'
 Plug 'cocopon/iceberg.vim'
 call plug#end()
@@ -309,22 +301,10 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
 call ddc#enable()
 
-" prettier
-" let g:prettier#autoformat = 1
-" let g:prettier#autoformat_require_pragma = 0
-" let g:prettier#exec_cmd_async = 1
-" let g:prettier#quickfix_enabled = 0
-let g:prettier#autoformat = 0
-let g:prettier#autoformat_require_pragma = 0
-let g:prettier#exec_cmd_async = 1
-let g:prettier#quickfix_enabled = 0
-
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
 vmap <Leader>r <Plug>(quickrun)
-
-" golang
 
 " grepper
 let g:grepper = {
@@ -359,18 +339,12 @@ hi QuickFixLine ctermbg=none ctermfg=none
 hi MatchParen guifg=none guibg=#585858
 
 " colorscheme より後におく
-let s:true_color_enabled = $TERM_PROGRAM ==# 'iTerm.app' || $TERM_PROGRAM ==# 'alacritty' " || $COLORTERM ==# 'truecolor'
-if s:true_color_enabled
-  set termguicolors
-endif
-
 set termguicolors
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " 文字色
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色
 
 set background=dark
-" hi Normal ctermfg=252 ctermbg=16 guifg=#c5c8c6 guibg=#1d1f21
 
 " vim-asterisk
 map *  <Plug>(asterisk-z*)
@@ -379,28 +353,6 @@ map #  <Plug>(asterisk-z#)
 " expand region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-
-" Lightline
-function! LightlineFilename()
-  return expand('%:t') !=# '' ? expand('%') : '[---]'
-endfunction
-let g:lightline = {
-  \ 'colorscheme': 'iceberg',
-  \'active': {
-  \  'left': [
-  \    ['mode', 'paste', 'zoom'],
-  \    ['readonly', 'filename', 'modified'] ],
-  \ 'right': [
-  \            [ 'filetype' ] ]
-  \},
-  \'component_function': {
-    \   'filename': 'LightlineFilename',
-    \   'gitbranch': 'gina#component#repo#branch',
-    \   'zoom': 'zoom#statusline'
-  \},
-  \'mode_map': { 'n': 'N', 'i': 'I', 'v': 'V' },
-  \'tabline': { 'left': [['gitbranch', 'tabs']], 'right': [] }
-\ }
 
 " other
 set shell=zsh
@@ -450,12 +402,6 @@ endfunction
 " makeprg
 autocmd Filetype typescript setlocal makeprg=yarn\ run\ --silent\ tsc
 autocmd Filetype typescriptreact setlocal makeprg=yarn\ run\ --silent\ tsc
-
-" coc-prettier
-" nmap <leader>f :Prettier<CR>
-" command! -nargs=0 Prettier :CocCommand prettier.formatFile
-"
-" let g:coc_global_extensions = ['coc-prettier']
 
 if has('mac')
   " set ttimeoutlen=1
