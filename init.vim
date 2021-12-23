@@ -189,12 +189,6 @@ vim.api.nvim_set_keymap('n', '<C-p>', '<CMD>lua launch_filer()<CR>', {noremap = 
 TELESCOPE
 
 lua << LSP
-require'lspconfig'.gopls.setup{}
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.solargraph.setup{}
-require'lspconfig'.rust_analyzer.setup{}
---require'lspconfig'.denols.setup{}
-
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -236,17 +230,40 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 -- show line diagostics under cursor
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { 'gopls', 'tsserver', 'solargraph', 'rust_analyzer' } -- 'denols'
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
+require'lspconfig'.gopls.setup{
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
   }
-end
+}
+require'lspconfig'.solargraph.setup{
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
+require'lspconfig'.rust_analyzer.setup{
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
+
+require'lspconfig'.tsserver.setup{
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("package.json"),
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
+require'lspconfig'.denols.setup{
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("deno.json", ".deno"),
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
+
 LSP
 
 lua << SSSS
