@@ -420,7 +420,7 @@ end
 nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)
 command! CopyCurrentPath :let @+ = expand('%')
-command! Pr exe "!git brws --pr"
+command! Pr exe "!gh pr view -w"
 command! Code :call Opencode()
 command! Reload bufdo e!
 

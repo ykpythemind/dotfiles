@@ -1,6 +1,5 @@
 tap "aws/tap"
 tap "heroku/brew"
-tap "rhysd/git-brws"
 tap "bibendi/dip"
 
 brew "jq"

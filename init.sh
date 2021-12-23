@@ -67,3 +67,6 @@ ln -sf $CONFPATH/kitty.conf ~/.config/kitty/kitty.conf
 
 echo "* go"
 go install golang.org/x/tools/cmd/goimports@latest
+
+echo "* gh"
+gh alias set --shell prc 'gh pr view -w || gh pr create -w'
