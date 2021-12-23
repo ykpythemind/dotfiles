@@ -61,10 +61,6 @@ ln -sf $CONFPATH/default_gems ~/.default-gems
 # echo "* link diff-highlight"
 # sudo ln -sf `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
 
-echo "* kitty"
-mkdir -p ${HOME}/.config/kitty
-ln -sf $CONFPATH/kitty.conf ~/.config/kitty/kitty.conf
-
 echo "* go"
 go install golang.org/x/tools/cmd/goimports@latest
 
