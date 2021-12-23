@@ -196,6 +196,8 @@ if has('nvim')
   Plug 'nvim-lualine/lualine.nvim'
 
   Plug 'mhartington/formatter.nvim'
+
+  Plug 'rebelot/kanagawa.nvim'
 endif
 
 Plug 'Shougo/ddc.vim'
@@ -351,7 +353,8 @@ nnoremap <C-g>D :Gina diff
 
 "color
 " colorscheme hybrid
-colorscheme iceberg
+" colorscheme iceberg
+colorscheme kanagawa
 hi QuickFixLine ctermbg=none ctermfg=none
 hi MatchParen guifg=none guibg=#585858
 
