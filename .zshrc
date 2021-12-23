@@ -96,7 +96,7 @@ zstyle ':chpwd:*' recent-dirs-pushd true
 # alias
 alias dc='docker-compose'
 alias ga='git_fuzzy_stage_files; git status --short'
-alias ls="ls --color=auto"
+# alias ls="ls -color=auto"
 alias la='ls -laG'
 alias vim='nvim'
 alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
