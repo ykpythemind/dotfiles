@@ -1,16 +1,24 @@
-font:
-    size: 16
-
-env:
-  TERM_PROGRAM: alacritty
-  TERM: xterm-256color
-
 colors:
   primary:
     background: '#000000'
   cursor:
     text: CellBackground
     cursor: CellForeground
+
+font:
+  size: 18
+
+  normal:
+    family: Hack Nerd Font
+    style: Regular
+
+  bold:
+    family: Hack Nerd Font
+    style: Bold
+
+  italic:
+    family: Hack Nerd Font
+    style: Regular Italic
 
 key_bindings:
   # https://github.com/alacritty/alacritty/issues/1359
