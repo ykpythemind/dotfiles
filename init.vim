@@ -268,51 +268,6 @@ require'lspconfig'.denols.setup{
 
 LSP
 
-lua << SSSS
--- https://phelipetls.github.io/posts/async-make-in-nvim-with-lua/
-function asyncMake()
-  local lines = {""}
-  local winnr = vim.fn.win_getid()
-  local bufnr = vim.api.nvim_win_get_buf(winnr)
-
-  local makeprg = vim.api.nvim_buf_get_option(bufnr, "makeprg")
-  if not makeprg then return end
-
-  local cmd = vim.fn.expandcmd(makeprg)
-
-  local function on_event(job_id, data, event)
-    if event == "stdout" or event == "stderr" then
-      if data then
-        vim.list_extend(lines, data)
-      end
-    end
-
-    if event == "exit" then
-      vim.fn.setqflist({}, " ", {
-        title = cmd,
-        lines = lines,
-        efm = vim.api.nvim_buf_get_option(bufnr, "errorformat")
-      })
-      vim.api.nvim_command("doautocmd QuickFixCmdPost")
-    end
-  end
-
-  local job_id =
-    vim.fn.jobstart(
-    cmd,
-    {
-      on_stderr = on_event,
-      on_stdout = on_event,
-      on_exit = on_event,
-      stdout_buffered = true,
-      stderr_buffered = true,
-    }
-  )
-end
-SSSS
-
-command! Make silent lua asyncMake()
-
 nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>
 nnoremap <leader><leader> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <leader>j :lua require("harpoon.ui").nav_file(1)<CR>
