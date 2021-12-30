@@ -155,8 +155,6 @@ tnoremap <C-k> <C-\><C-n><C-w>k
 
 tnoremap <silent> <ESC> <C-\><C-n>
 tnoremap <silent> <C-j> <C-\><C-n>
-nnoremap <C-t> :ToggleTerm<CR>
-tnoremap <C-t> <C-\><C-n>:ToggleTerm<CR>
 
 " }}}
 
@@ -216,7 +214,6 @@ Plug 'mopp/autodirmake.vim'
 Plug 'thinca/vim-zenspace'
 Plug 'mhinz/vim-grepper'
 Plug 'tyru/open-browser.vim'
-Plug 'ykpythemind/toggle-term'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
