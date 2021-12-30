@@ -214,7 +214,6 @@ Plug 'mopp/autodirmake.vim'
 Plug 'thinca/vim-zenspace'
 Plug 'mhinz/vim-grepper'
 Plug 'tyru/open-browser.vim'
-Plug 'dhruvasagar/vim-zoom'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
 Plug 'simeji/winresizer'
@@ -285,7 +284,6 @@ call ddc#enable()
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
-vmap <Leader>r <Plug>(quickrun)
 
 " grepper
 let g:grepper = {
@@ -351,12 +349,8 @@ command! Reload bufdo e!
 autocmd InsertEnter * :call CheckFileIsEdited()
 
 function! CheckFileIsEdited()
-  if &buftype == 'terminal' || &buftype == 'nofile' " ignore some buffer type
+  if getcmdwintype() != '' || &buftype == 'terminal' || &buftype == 'nofile' " ignore some buffer type
     return
-  endif
-
-  if getcmdwintype() != ''
-   return
   endif
 
   checktime

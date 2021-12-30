@@ -173,7 +173,6 @@ require('telescope').setup{
       },
     },
 
-    selection_strategy = "reset",
     sorting_strategy = "descending",
   },
 }
