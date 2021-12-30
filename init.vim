@@ -190,7 +190,7 @@ vim.api.nvim_set_keymap('n', '<C-p>', '<CMD>lua launch_filer()<CR>', {noremap = 
 TELESCOPE
 
 lua << LSP
-local nvim_lsp = require('lspconfig')
+--local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -224,46 +224,46 @@ local on_attach = function(client, bufnr)
 
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
-)
-
--- show line diagostics under cursor
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
-
-require'lspconfig'.gopls.setup{
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  }
-}
-require'lspconfig'.solargraph.setup{
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  }
-}
-require'lspconfig'.rust_analyzer.setup{
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  }
-}
-
-require'lspconfig'.tsserver.setup{
-  on_attach = on_attach,
-  root_dir = nvim_lsp.util.root_pattern("package.json"),
-  flags = {
-    debounce_text_changes = 150,
-  }
-}
-require'lspconfig'.denols.setup{
-  on_attach = on_attach,
-  root_dir = nvim_lsp.util.root_pattern("deno.json", ".deno__"),
-  flags = {
-    debounce_text_changes = 150,
-  }
-}
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--     vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+-- )
+--
+-- -- show line diagostics under cursor
+-- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
+--
+-- require'lspconfig'.gopls.setup{
+--   on_attach = on_attach,
+--   flags = {
+--     debounce_text_changes = 150,
+--   }
+-- }
+-- require'lspconfig'.solargraph.setup{
+--   on_attach = on_attach,
+--   flags = {
+--     debounce_text_changes = 150,
+--   }
+-- }
+-- require'lspconfig'.rust_analyzer.setup{
+--   on_attach = on_attach,
+--   flags = {
+--     debounce_text_changes = 150,
+--   }
+-- }
+--
+-- require'lspconfig'.tsserver.setup{
+--   on_attach = on_attach,
+--   root_dir = nvim_lsp.util.root_pattern("package.json"),
+--   flags = {
+--     debounce_text_changes = 150,
+--   }
+-- }
+-- require'lspconfig'.denols.setup{
+--   on_attach = on_attach,
+--   root_dir = nvim_lsp.util.root_pattern("deno.json", ".deno__"),
+--   flags = {
+--     debounce_text_changes = 150,
+--   }
+-- }
 
 LSP
 
@@ -275,4 +275,4 @@ nnoremap <leader>n :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <leader>m :lua require("harpoon.ui").nav_file(4)<CR>
 nnoremap <leader>cu :lua require("harpoon.term").gotoTerminal(1)<CR>
 
-nnoremap <leader>f :Format<CR>
+" nnoremap <leader>f :Format<CR>
