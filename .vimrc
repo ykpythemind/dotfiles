@@ -397,6 +397,16 @@ function! Opencode()
   endif
 endfunction
 
+command! -nargs=? B :call GHBrowse(<f-args>)
+
+function! GHBrowse(...)
+  let b = ''
+  if a:0 == 1
+    let b = ' --branch ' . a:1
+  end
+  execute("!gh browse " . expand('%:.') . ":" . line(".") . b)
+endfunction
+
 " makeprg
 autocmd Filetype typescript setlocal makeprg=yarn\ run\ --silent\ tsc
 autocmd Filetype typescriptreact setlocal makeprg=yarn\ run\ --silent\ tsc
