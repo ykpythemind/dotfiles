@@ -137,16 +137,6 @@ command! Cprev try | cprev | catch | clast | catch | endtry
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
-augroup qfopen-bufenter
-  function! s:qfopen_keymap() abort
-    nmap <buffer> a <Plug>(qfopen-action)
-    nmap <buffer> <C-v> <Plug>(qfopen-open-vsplit)
-    nmap <buffer> <C-x> <Plug>(qfopen-open-split)
-  endfunction
-  au!
-  au FileType qf call s:qfopen_keymap()
-augroup END
-
 augroup disable_auto_comment_when_br
   autocmd!
   autocmd BufEnter * setlocal formatoptions-=r
@@ -230,7 +220,6 @@ Plug 'ykpythemind/toggle-term'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
-Plug 'skanehira/qfopen.vim'
 Plug 'simeji/winresizer'
 
 " Git
