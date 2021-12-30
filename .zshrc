@@ -95,8 +95,6 @@ zstyle ':chpwd:*' recent-dirs-pushd true
 
 # alias
 alias dc='docker-compose'
-alias ga='git_fuzzy_stage_files; git status --short'
-# alias ls="ls -color=auto"
 alias la='ls -laG'
 alias vim='nvim'
 alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
@@ -127,24 +125,6 @@ function gcom() {
   else
     git switch master
   fi
-}
-
-function push() {
-  local result st a
-  result=$(git push 2>&1 -u origin `git branch | grep \* | cut -d ' ' -f2`)
-  st=$?
-
-  if [ $st = 0 ]; then
-    a=$(echo "$result" | grep 'Create a pull request for')
-    if [ -n "$a" ]; then
-      git brws --pr
-    fi
-  else
-    echo 'git push failed.'
-  fi
-
-  echo $result
-  return $st
 }
 
 # checkout git branch
