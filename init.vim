@@ -175,6 +175,12 @@ require('telescope').setup{
 
     sorting_strategy = "descending",
   },
+  pickers = {
+    buffers = {
+        ignore_current_buffer = true,
+        sort_lastused = true,
+    },
+  }
 }
 
 function launch_filer()
