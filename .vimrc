@@ -341,7 +341,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 let g:coc_global_extensions = [
-\ 'coc-html', 'coc-css', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-rls', 'coc-prettier', 'coc-solargraph', 'coc-go']
+\ 'coc-html', 'coc-css', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-rust-analyzer', 'coc-prettier', 'coc-solargraph', 'coc-go']
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " quickrun
