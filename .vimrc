@@ -416,6 +416,9 @@ function! SmallT()
   " startinsert
 endfunction
 
+autocmd TermEnter,TermOpen * if &buftype ==# 'terminal' | let g:_lastT = win_getid()
+nnoremap <C-t> :call win_gotoid(g:_lastT)<CR>:startinsert<CR>
+
 autocmd InsertEnter * :call CheckFileIsEdited()
 
 function! CheckFileIsEdited()
