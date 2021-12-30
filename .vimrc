@@ -183,6 +183,7 @@ if has('nvim')
   Plug 'nvim-lualine/lualine.nvim'
 
   Plug 'mhartington/formatter.nvim'
+  Plug 'numToStr/Comment.nvim'
 
   Plug 'rebelot/kanagawa.nvim'
 endif
@@ -201,7 +202,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/vimux'
 
 Plug 'editorconfig/editorconfig-vim'
-Plug 'numToStr/Comment.nvim'
 Plug 'tpope/vim-surround'
 Plug 'thinca/vim-qfreplace'
 Plug 'terryma/vim-expand-region'
@@ -347,8 +347,7 @@ end
 
 nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)
-command! CopyCurrentPath :let @+ = expand('%')
-command! Pr exe "!gh pr view -w"
+nnoremap cp :let @+ = expand('%')<CR>
 command! Code :call Opencode()
 command! Reload bufdo e!
 
