@@ -226,9 +226,6 @@ Plug 'simeji/winresizer'
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify'
 
-let gina = $VIM_GINA_ORIGINAL != "" ? 'lambdalisue/gina.vim' : '/Users/ykpythemind/git/github.com/ykpythemind/gina.vim'
-Plug gina
-
 " lang
 Plug 'slim-template/vim-slim'
 Plug 'mattn/vim-goimports'
@@ -309,14 +306,6 @@ let g:grepper.switch = 0
 " git
 let g:git_messenger_date_format = "%Y/%m/%d %X"
 nmap <C-g>m <Plug>(git-messenger)
-
-noremap <C-g>b :Gina browse :
-noremap <C-g>p :Gina push<cr>
-nnoremap <C-g>s :Gina status -v --opener=split --group=git<cr>
-nnoremap <C-g>c :Gina commit -v --opener=split --group=git<cr>
-nnoremap <C-g>l :Gina log<cr>
-nnoremap <C-g>d :Gina diff<cr>
-nnoremap <C-g>D :Gina diff
 
 "color
 " colorscheme hybrid
