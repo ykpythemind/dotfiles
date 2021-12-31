@@ -287,7 +287,6 @@ call plug#end()
 " call ddc#enable()
 
 " COC
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -302,7 +301,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-nmap <leader>ac  <Plug>(coc-codeaction)
 
 command! -nargs=0 Format :call CocAction('format')
 
@@ -317,9 +315,9 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> grn <Plug>(coc-rename)
+nmap <leader>cr <Plug>(coc-rename)
+nmap <leader>ca  <Plug>(coc-codeaction)
 
-" Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -346,10 +344,8 @@ nmap <Leader>r <Plug>(quickrun)
 " grepper
 let g:grepper = {
   \ 'tools': ['rg', 'git'],
-  \ 'rg': {
-  \   'grepprg': 'rg --hidden --vimgrep',
-  \ }
-  \ }
+  \ 'rg': { 'grepprg': 'rg --hidden --vimgrep' },
+  \}
 nnoremap F :Grepper -tool rg<cr>
 nnoremap <leader>F :Grepper -tool rg -buffer<cr>
 xmap F <plug>(GrepperOperator)
