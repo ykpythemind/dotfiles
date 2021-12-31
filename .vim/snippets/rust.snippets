@@ -250,3 +250,14 @@ snippet unim "unimplemented!()"
 	unimplemented!()
 snippet use "use ...;" b
 	use ${1:std::$2};
+snippet vec "Vector"
+	let mut ${1:function_name}: Vec<${2:i32}> = Vec::new();
+
+snippet str "String::from"
+	String::from("${0:${VISUAL}}")
+
+snippet useHash "use std::collections::HashMap"
+	use std::collections::HashMap;
+
+snippet hashmap "initialize HashMap"
+	HashMap::new();

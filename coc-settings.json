@@ -30,7 +30,7 @@
   },
   "snippets.ultisnips.enable": false,
   "snippets.loadFromExtensions": false,
-  "snippets.priority": 100,
+  "snippets.priority": 130,
   "snippets.extends": {
     "javascriptreact": ["javascript"],
     "typescript": ["javascript"],
