@@ -27,5 +27,13 @@
         "usePlaceholders": true
       }
     }
+  },
+  "snippets.ultisnips.enable": false,
+  "snippets.loadFromExtensions": false,
+  "snippets.priority": 100,
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"],
+    "typescriptreact": ["javascript"]
   }
 }

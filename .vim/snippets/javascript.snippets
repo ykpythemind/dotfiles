@@ -1,0 +1,40 @@
+snippet if "if (condition) { ... }"
+	if (${1:true}) {
+		${0:${VISUAL}}
+	}
+
+snippet =>
+	(${1}) => {
+		${2}
+	}
+
+snippet cl "console.log"
+	console.log(${0});
+
+snippet try "try { ... } catch(e) { ... }"
+	try {
+		${0:${VISUAL}}
+	} catch (${1:e}) {
+		${2:/* handle error */}
+	}
+
+snippet for "for (...) {...}"
+	for (let ${1:i} = 0; $1 < ${2:len}; $1++) {
+		${0:${VISUAL}}
+	}
+
+snippet class
+	class ${1:name} {
+		constructor(${2:arg}) {
+			${3:// init}
+		}
+		${4}
+	}
+
+snippet forof
+	for (let ${1:s} of ${2:sequence}) {
+		${3}
+	}
+
+snippet im
+	import ${1:foo} from '${2:bar}'

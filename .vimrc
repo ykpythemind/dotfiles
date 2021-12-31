@@ -2,6 +2,8 @@ scriptencoding utf-8
 filetype plugin indent on
 syntax enable
 
+set runtimepath^=~/dotfiles/.vim
+
 set encoding=utf-8
 set fenc=utf-8
 set autoread
@@ -287,11 +289,14 @@ call plug#end()
 " COC
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+let g:coc_snippet_next = '<tab>'
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <c-y> coc#refresh()
+imap <C-l> <Plug>(coc-snippets-expand)
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -299,12 +304,6 @@ function! s:check_back_space() abort
 endfunction
 nmap <leader>ac  <Plug>(coc-codeaction)
 
-nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 command! -nargs=0 Format :call CocAction('format')
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
@@ -342,7 +341,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 let g:coc_global_extensions = [
-\ 'coc-html', 'coc-css', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-rust-analyzer', 'coc-prettier', 'coc-solargraph', 'coc-go']
+\ 'coc-html', 'coc-css', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-rust-analyzer', 'coc-prettier', 'coc-solargraph', 'coc-go', 'coc-snippets']
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " quickrun
@@ -375,10 +374,8 @@ hi MatchParen guifg=none guibg=#585858
 
 " colorscheme より後におく
 set termguicolors
-
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " 文字色
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色
-
 set background=dark
 
 " vim-asterisk
@@ -457,3 +454,16 @@ if has('mac')
   let g:imeoff = 'osascript -e "tell application \"System Events\" to key code 102"'
   inoremap <silent> <C-c> <ESC>:call system(g:imeoff)<CR>
 endif
+
+fun! Filename(...) " for snippets
+  let template = get(a:000, 0, "$1")
+  let arg2 = get(a:000, 1, "")
+
+  let basename = expand('%:t:r')
+
+  if basename == ''
+    return arg2
+  else
+    return substitute(template, '$1', basename, 'g')
+  endif
+endf
