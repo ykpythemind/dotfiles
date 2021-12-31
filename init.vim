@@ -12,13 +12,13 @@ source ~/.vimrc
 set inccommand=split
 " set pumblend=10
 
+set guicursor=n-c-v:block-nCursor,i-ci:blinkon0-blinkwait0-blinkoff0
+
 autocmd TermOpen * setlocal nonumber
 
 nnoremap <C-e> <cmd>Telescope buffers<CR>
 nnoremap L <cmd>Telescope live_grep<cr>
 nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>
-
-set guicursor=n-c-v:block-nCursor,i-ci:blinkon0-blinkwait0-blinkoff0
 
 highlight LspDiagnosticsSignError ctermbg=9 ctermfg=15
 highlight LspDiagnosticsSignHint ctermbg=142 ctermfg=15
@@ -48,30 +48,13 @@ local prettierConfig = function()
 end
 
 local commonFT = {
-  --"css",
-  --"scss",
-  --"html",
-  "javascript",
-  "javascriptreact",
-  "typescript",
-  "typescriptreact",
+  "javascript", "javascriptreact", "typescript", "typescriptreact",
   "ruby",
-  --"markdown",
-  --"markdown.mdx",
-  --"json"
 }
 for _, ft in ipairs(commonFT) do
-  formatterConfig[ft] = {
-    prettierConfig
-  }
+  formatterConfig[ft] = { prettierConfig }
 end
 
---vim.api.nvim_exec([[
---augroup FormatAutogroup
---  autocmd!
---  autocmd BufWritePost *.js,*.ts,*.jsx,*tsx FormatWrite
---augroup END
---]], true)
 require('formatter').setup({ filetype = formatterConfig })
 
 require('Comment').setup()
@@ -128,12 +111,7 @@ require'nvim-tree'.setup({
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
-    disable = {
-      'lua',
-      'toml',
-      'c_sharp',
-      'vue',
-    }
+    disable = { 'lua', 'toml', 'c_sharp', 'vue' }
   }
 }
 LUA
@@ -162,24 +140,15 @@ require('telescope').setup{
       height = 0.85,
       prompt_position = "bottom",
 
-      horizontal = {
-        preview_width = 0.5,
-      },
+      horizontal = { preview_width = 0.5, },
 
-      vertical = {
-        width = 0.9,
-        height = 0.95,
-        preview_height = 0.5,
-      },
+      vertical = { width = 0.9, height = 0.95, preview_height = 0.5, },
     },
 
     sorting_strategy = "descending",
   },
   pickers = {
-    buffers = {
-        ignore_current_buffer = true,
-        sort_lastused = true,
-    },
+    buffers = { ignore_current_buffer = true, sort_lastused = true, },
   }
 }
 
