@@ -65,4 +65,4 @@ echo "* go"
 go install golang.org/x/tools/cmd/goimports@latest
 
 echo "* gh"
-gh alias set --shell prc 'gh pr view -w || gh pr create -w'
+gh alias set --shell prcreate 'gh pr view -w || gh pr create -w'
