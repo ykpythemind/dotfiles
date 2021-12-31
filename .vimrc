@@ -317,6 +317,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>cr <Plug>(coc-rename)
 nmap <leader>ca  <Plug>(coc-codeaction)
+nnoremap <leader>d :CocDiagnostics<CR>
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
