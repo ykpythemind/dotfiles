@@ -180,7 +180,6 @@ if has('nvim')
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'nvim-lualine/lualine.nvim'
 
-  Plug 'mhartington/formatter.nvim'
   Plug 'numToStr/Comment.nvim'
 
   Plug 'rebelot/kanagawa.nvim'

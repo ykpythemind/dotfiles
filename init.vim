@@ -33,27 +33,6 @@ nnoremap = :NvimTreeFindFileToggle<CR>
 " }}}
 
 lua <<LUA
-
-local formatterConfig = {}
-
-local prettierConfig = function()
-  return {
-    exe = "prettier",
-    args = {'--config-precedence','prefer-file', "--stdin-filepath", vim.fn.shellescape(vim.api.nvim_buf_get_name(0))},
-    stdin = true
-  }
-end
-
-local commonFT = {
-  "javascript", "javascriptreact", "typescript", "typescriptreact",
-  "ruby",
-}
-for _, ft in ipairs(commonFT) do
-  formatterConfig[ft] = { prettierConfig }
-end
-
-require('formatter').setup({ filetype = formatterConfig })
-
 require('Comment').setup()
 
 require'lualine'.setup {
@@ -168,5 +147,3 @@ nnoremap <leader>k :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <leader>n :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <leader>m :lua require("harpoon.ui").nav_file(4)<CR>
 nnoremap <leader>cu :lua require("harpoon.term").gotoTerminal(1)<CR>
-
-" nnoremap <leader>f :Format<CR>
