@@ -171,13 +171,10 @@ call plug#begin('~/.vim/plugged')
 
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'neovim/nvim-lspconfig'
 
   Plug 'nvim-lua/plenary.nvim'
   Plug 'ThePrimeagen/harpoon'
   Plug 'nvim-telescope/telescope.nvim'
-
-  Plug 'ray-x/lsp_signature.nvim'
 
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
@@ -191,15 +188,7 @@ endif
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Plug 'Shougo/ddc.vim'
 Plug 'vim-denops/denops.vim'
-
-" Plug 'Shougo/ddc-nvim-lsp'
-" Plug 'Shougo/ddc-around'
-" Plug 'Shougo/ddc-matcher_head'
-" Plug 'matsui54/ddc-buffer'
-" Plug 'tani/ddc-fuzzy'
-" Plug 'LumaKernel/ddc-file'
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/vimux'
@@ -237,55 +226,6 @@ Plug 'w0ng/vim-hybrid'
 Plug 'cocopon/iceberg.vim'
 call plug#end()
 
-" " ddc
-" call ddc#custom#patch_global('sources', [
-" \ 'nvim-lsp',
-" \ 'around',
-" \ 'buffer',
-" \ 'file',
-" \ ])
-" " call ddc#custom#patch_global('completionMenu', 'pum.vim')
-"
-" call ddc#custom#patch_global('sourceOptions', {
-" \  '_': {
-" \    'matchers': ['matcher_fuzzy'],
-" \    'sorters': ['sorter_fuzzy'],
-" \    'converters': ['converter_fuzzy']
-" \  },
-" \ 'buffer': {'mark': 'B'},
-" \ 'around': {'mark': 'A'},
-" \ 'nvim-lsp': {
-" \   'mark': 'lsp',
-" \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
-" \   'minAutoCompleteLength': 1
-" \ },
-" \ 'file': {
-" \   'mark': 'File',
-" \   'isVolatile': v:true,
-" \   'forceCompletionPattern': '\S/\S*',
-" \ },
-" \})
-"
-" call ddc#custom#patch_global('sourceParams', {
-" \ 'around': {'maxSize': 500},
-" \ 'buffer': {
-" \   'requireSameFiletype': v:false,
-" \   'limitBytes': 5000000,
-" \   'fromAltBuf': v:true,
-" \   'forceCollect': v:true,
-" \ },
-" \ })
-"
-" call ddc#custom#patch_filetype(['typescript', 'go', 'rust'], 'sources', ['nvim-lsp'])
-"
-" inoremap <silent><expr> <TAB>
-" \ pumvisible() ? '<C-n>' :
-" \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-" \ '<TAB>' : ddc#manual_complete()
-"
-" inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
-" call ddc#enable()
-
 " COC
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -301,8 +241,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-command! -nargs=0 Format :call CocAction('format')
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
@@ -337,6 +275,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:coc_global_extensions = [
 \ 'coc-html', 'coc-css', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-rust-analyzer', 'coc-prettier', 'coc-solargraph', 'coc-go', 'coc-snippets']
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 F :call CocAction('format')
+
+let g:coc_disable_transparent_cursor = 1 " https://github.com/neoclide/coc.nvim/issues/1775#issuecomment-757764053
 
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
