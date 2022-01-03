@@ -25,7 +25,7 @@
     ds = diff --staged
     c = commit -v
     p = pull -p
-    pr = !gh prc
+    pr = !gh prcreate
     repo = !gh repo view --web
     f = fetch -p
     unstage = !git restore --staged . && echo 'unstaged' && git status --short
