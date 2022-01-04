@@ -341,8 +341,8 @@ command! Reload bufdo e!
 command! T execute ':new' <bar> execute ':term'
 
 autocmd TermEnter,TermOpen,BufEnter * if &buftype ==# 'terminal' | let g:_lastT = win_getid()
-autocmd WinLeave * if &buftype !=# 'terminal' | let g:_lastW = win_getid()
-nnoremap <expr> <C-t> &buftype ==# 'terminal' ? ':call win_gotoid(g:_lastW)<CR>' : ':call win_gotoid(g:_lastT)<CR>:startinsert<CR>'
+autocmd WinLeave * if (index(['terminal','gitcommit'], &filetype) < 1) | let g:_lastW = win_getid()
+nnoremap <expr> <C-t> (index(['terminal','gitcommit'], &filetype) >= 0) ? ':call win_gotoid(g:_lastW)<CR>' : ':call win_gotoid(g:_lastT)<CR>:startinsert<CR>'
 tnoremap <C-t> <C-\><C-n>:call win_gotoid(g:_lastW)<CR>
 
 autocmd InsertEnter * :call CheckFileIsEdited()
@@ -367,10 +367,7 @@ endfunction
 command! -nargs=? B :call GHBrowse(<f-args>)
 
 function! GHBrowse(...)
-  let b = ''
-  if a:0 == 1
-    let b = ' --branch ' . a:1
-  end
+  let b = a:0 == 1 ? ' --branch ' . a:1 : ''
   execute("!gh browse " . expand('%:.') . ":" . line(".") . b)
 endfunction
 
@@ -396,3 +393,40 @@ fun! Filename(...) " for snippets
     return substitute(template, '$1', basename, 'g')
   endif
 endf
+
+" neovim-remote
+" let nvrcmd      = "nvr --remote-wait -cc 'call NvrBeforeCmd()' -c 'call NvrAfterCmd()'"
+if has('nvim')
+  let nvrcmd      = 'nvr -cc split --remote-wait'
+  let $VISUAL     = nvrcmd
+  let $GIT_EDITOR = nvrcmd
+  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+endif
+
+nnoremap <silent> <Leader>t :<C-u>silent call <SID>tig_status()<CR>
+
+function! s:tig_status() abort
+    call s:open_term('tig status')
+endfunction
+
+function! s:open_term(cmd) abort
+    let split = s:split_type()
+
+    call execute(printf('%s term://%s', split, a:cmd))
+
+    setlocal bufhidden=delete
+    setlocal noswapfile
+    setlocal nobuflisted
+endfunction
+
+function! s:split_type() abort
+    " NOTE: my cell ratio: width:height == 1:2.1
+    let width = winwidth(win_getid())
+    let height = winheight(win_getid()) * 2.1
+
+    if height > width
+        return 'split'
+    else
+        return 'vsplit'
+    endif
+endfunction
