@@ -340,9 +340,9 @@ command! Code :call Opencode()
 command! Reload bufdo e!
 command! T execute ':new' <bar> execute ':term'
 
-autocmd TermEnter,TermOpen,BufEnter * if &buftype ==# 'terminal' | let g:_lastT = win_getid()
-autocmd WinLeave * if (index(['terminal','gitcommit'], &filetype) < 0) | let g:_lastW = win_getid()
-nnoremap <expr> <C-t> (index(['terminal','gitcommit'], &filetype) >= 0) ? ':call win_gotoid(g:_lastW)<CR>' : ':call win_gotoid(g:_lastT)<CR>:startinsert<CR>'
+autocmd TermEnter,TermOpen,BufEnter * if (&buftype ==# 'terminal' && &buftype !=# 'gitcommit') | let g:_lastT = win_getid()
+autocmd WinLeave * if &buftype !=# 'terminal' | let g:_lastW = win_getid()
+nnoremap <expr> <C-t> &buftype ==# 'terminal' ? ':call win_gotoid(g:_lastW)<CR>' : ':call win_gotoid(g:_lastT)<CR>:startinsert<CR>'
 tnoremap <C-t> <C-\><C-n>:call win_gotoid(g:_lastW)<CR>
 
 autocmd InsertEnter * :call CheckFileIsEdited()
