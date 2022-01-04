@@ -64,8 +64,6 @@ set undofile
 
 let g:mapleader = "\<space>"
 
-vnoremap <silent> y y`]
-
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q <Nop>
@@ -100,10 +98,10 @@ vnoremap s <Nop>
 
 nnoremap j gj
 nnoremap k gk
-
 nnoremap n nzvzz
 nnoremap N Nzvzz
 
+vnoremap <silent> y y`]
 nnoremap x "_x
 xnoremap p "_dP
 map <C-b> <Nop>
@@ -151,14 +149,11 @@ let g:winresizer_vert_resize=3
 nnoremap <C-w>r :WinResizerStartResize<CR>
 
 " term {{{
-
 " autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-k> <C-\><C-n><C-w>k
-
 tnoremap <silent> <ESC> <C-\><C-n>
 tnoremap <silent> <C-j> <C-\><C-n>
-
 " }}}
 
 if executable('rg')
@@ -171,37 +166,28 @@ call plug#begin('~/.vim/plugged')
 
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
   Plug 'nvim-lua/plenary.nvim'
   Plug 'ThePrimeagen/harpoon'
   Plug 'nvim-telescope/telescope.nvim'
-
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'nvim-lualine/lualine.nvim'
-
   Plug 'numToStr/Comment.nvim'
 
   Plug 'rebelot/kanagawa.nvim'
 endif
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'vim-denops/denops.vim'
-
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'preservim/vimux'
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'thinca/vim-qfreplace'
 Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
-
-Plug 'tpope/vim-dispatch'
 " Plug 'vim-test/vim-test'
 Plug 'yoann9344/vim-test', { 'branch': 'patch-1' }
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'haya14busa/vim-asterisk'
 Plug 'mopp/autodirmake.vim'
 Plug 'thinca/vim-zenspace'
@@ -214,7 +200,6 @@ Plug 'simeji/winresizer'
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify'
-
 " lang
 Plug 'slim-template/vim-slim'
 Plug 'mattn/vim-goimports'
@@ -329,8 +314,6 @@ let test#neovim#term_position = "botright 30"
 if has('nvim')
   let test#strategy = 'harpoon'
   let g:test#harpoon_stay_here = 1
-else
-  let test#strategy = 'vimux'
 end
 
 nmap <Leader>b <Plug>(openbrowser-smart-search)
@@ -341,27 +324,23 @@ command! Reload bufdo e!
 command! T execute ':new' <bar> execute ':term'
 
 autocmd TermEnter,TermOpen,BufEnter * if &buftype ==# 'terminal' | let g:_lastT = win_getid()
-autocmd WinLeave * if (&buftype !=# 'terminal' && &buftype !=# 'gitcommit') | let g:_lastW = win_getid()
+autocmd WinLeave * if &buftype !=# 'terminal' | let g:_lastW = win_getid()
 nnoremap <expr> <C-t> &buftype ==# 'terminal' ? ':call win_gotoid(g:_lastW)<CR>' : ':call win_gotoid(g:_lastT)<CR>:startinsert<CR>'
 tnoremap <C-t> <C-\><C-n>:call win_gotoid(g:_lastW)<CR>
 
 autocmd InsertEnter * :call CheckFileIsEdited()
 
 function! CheckFileIsEdited()
-  if getcmdwintype() != '' || &buftype == 'terminal' || &buftype == 'nofile' " ignore some buffer type
-    return
+  if getcmdwintype() == '' && &buftype !=# 'terminal' && &buftype !=# 'nofile' " ignore some buffer type
+    checktime
   endif
-
-  checktime
 endfunction
 
 function! Opencode()
   silent
   let c = expand('%')
-  execute("!code " . getcwd())
-  if c != ''
-    execute("!code -a " . c)
-  endif
+  execute("!code -r " . getcwd())
+  execute("!code -r " . (c ==# '' ? getcwd() : c))
 endfunction
 
 command! -nargs=? B :call GHBrowse(<f-args>)
@@ -394,39 +373,10 @@ fun! Filename(...) " for snippets
   endif
 endf
 
-" neovim-remote
-" let nvrcmd      = "nvr --remote-wait -cc 'call NvrBeforeCmd()' -c 'call NvrAfterCmd()'"
 if has('nvim')
+  " neovim-remote
   let nvrcmd      = 'nvr -cc split --remote-wait'
   let $VISUAL     = nvrcmd
   let $GIT_EDITOR = nvrcmd
   autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
 endif
-
-nnoremap <silent> <Leader>t :<C-u>silent call <SID>tig_status()<CR>
-
-function! s:tig_status() abort
-    call s:open_term('tig status')
-endfunction
-
-function! s:open_term(cmd) abort
-    let split = s:split_type()
-
-    call execute(printf('%s term://%s', split, a:cmd))
-
-    setlocal bufhidden=delete
-    setlocal noswapfile
-    setlocal nobuflisted
-endfunction
-
-function! s:split_type() abort
-    " NOTE: my cell ratio: width:height == 1:2.1
-    let width = winwidth(win_getid())
-    let height = winheight(win_getid()) * 2.1
-
-    if height > width
-        return 'split'
-    else
-        return 'vsplit'
-    endif
-endfunction
