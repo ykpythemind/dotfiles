@@ -341,7 +341,7 @@ command! Reload bufdo e!
 command! T execute ':new' <bar> execute ':term'
 
 autocmd TermEnter,TermOpen,BufEnter * if (&buftype ==# 'terminal' && &buftype !=# 'gitcommit') | let g:_lastT = win_getid()
-autocmd WinLeave * if &buftype !=# 'terminal' | let g:_lastW = win_getid()
+autocmd WinLeave * if (&buftype !=# 'terminal' && &buftype !=# 'gitcommit') | let g:_lastW = win_getid()
 nnoremap <expr> <C-t> &buftype ==# 'terminal' ? ':call win_gotoid(g:_lastW)<CR>' : ':call win_gotoid(g:_lastT)<CR>:startinsert<CR>'
 tnoremap <C-t> <C-\><C-n>:call win_gotoid(g:_lastW)<CR>
 
