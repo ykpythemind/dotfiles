@@ -148,13 +148,11 @@ let g:winresizer_start_key=''
 let g:winresizer_vert_resize=3
 nnoremap <C-w>r :WinResizerStartResize<CR>
 
-" term {{{
-" autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
+" term
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <silent> <ESC> <C-\><C-n>
 tnoremap <silent> <C-j> <C-\><C-n>
-" }}}
 
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --no-heading
@@ -299,7 +297,6 @@ set background=dark
 map *  <Plug>(asterisk-z*)
 map #  <Plug>(asterisk-z#)
 
-" expand region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
