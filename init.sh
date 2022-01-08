@@ -3,6 +3,8 @@
 CONFPATH="$PWD"
 
 echo "* symlink"
+mkdir -p $HOME/.config/peco
+
 ln -sf $CONFPATH/.vimrc ~/.vimrc
 ln -sf $CONFPATH/.gitconfig ~/.gitconfig
 ln -sf $CONFPATH/.gitignore_global ~/.gitignore_global
@@ -15,6 +17,7 @@ ln -sf $CONFPATH/.editorconfig ~/.editorconfig
 ln -sf $CONFPATH/.zshrc ~/.zshrc
 ln -sf $CONFPATH/.zprofile ~/.zprofile
 ln -sf $CONFPATH/asdf/.tool-versions ~/.tool-versions
+ln -sf $CONFPATH/peco/config.json $HOME/.config/peco/config.json
 
 # macOS
 mkdir -p ~/Library/Application\ Support/Hyper
@@ -66,3 +69,4 @@ go install golang.org/x/tools/cmd/goimports@latest
 
 echo "* gh"
 gh alias set --shell prcreate 'gh pr view -w || gh pr create -w'
+

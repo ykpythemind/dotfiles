@@ -157,10 +157,6 @@ gpr() {
   fi
 }
 
-function fzf-process() {
-  ps -ef | sed 1d | fzf ${FZF_DEFAULT_OPTS} -m | awk '{print $2}'
-}
-
 # move to ghq dir
 function inc-ghq() {
   local selected_dir=$(ghq list | peco --query="$LBUFFER")
@@ -205,3 +201,9 @@ bindkey '^Y' inc-cdr
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -e '^O' edit-command-line
+
+function peco-kill(){
+    local sig=${1:-15}
+    proc=`ps ax | peco --prompt="kill ${sig}"`
+    echo "$proc" | xargs -I PS echo PS | awk '{print $1}' | xargs -I PS sh -c "echo 'killing($sig) PS...' && kill -$sig PS && echo 'killed PS'"
+}
