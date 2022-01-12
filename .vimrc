@@ -169,7 +169,6 @@ if has('nvim')
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
-  Plug 'nvim-lualine/lualine.nvim'
   Plug 'numToStr/Comment.nvim'
 
   Plug 'rebelot/kanagawa.nvim'
@@ -179,6 +178,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-denops/denops.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
+Plug 'doums/barow'
+Plug 'doums/barowGit'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'thinca/vim-qfreplace'
@@ -250,6 +251,12 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+let g:barow = {
+      \ 'modules': [
+      \   [ 'barowGit#branch', 'BarowHint' ]
+      \ ]
+      \}
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
