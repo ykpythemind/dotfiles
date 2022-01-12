@@ -292,18 +292,13 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " 文字色
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色
 set background=dark
 
-" vim-asterisk
 map *  <Plug>(asterisk-z*)
 map #  <Plug>(asterisk-z#)
-
 vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
 
 " other
 set shell=zsh
 lang en_US.UTF-8 " paste issue
-autocmd FileType help nnoremap <buffer> q <C-w>c
-nnoremap T :TestNearest<CR>
 nnoremap <Leader>tt :TestNearest<CR>
 nnoremap <Leader>tl :TestLast<CR>
 let test#neovim#term_position = "botright 30"
