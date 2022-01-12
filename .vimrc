@@ -15,7 +15,7 @@ set nowritebackup
 set mouse=a
 set ttimeoutlen=100
 set title
-set nonumber
+set number
 set wrap
 set cursorline
 set autoindent
@@ -130,7 +130,6 @@ nnoremap <C-m> :Cprev<CR>
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 autocmd BufReadPost quickfix nnoremap <buffer><silent> <C-o> :colder<CR>
 autocmd BufReadPost quickfix nnoremap <buffer><silent> <C-i> :cnewer<CR>
-autocmd FileType qf nnoremap <buffer><silent> q :<C-u>cclose<CR>
 command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
 
