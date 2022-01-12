@@ -146,11 +146,6 @@ augroup END
 tnoremap <silent> <ESC> <C-\><C-n>
 tnoremap <silent> <C-j> <C-\><C-n>
 
-if executable('rg')
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-endif
-
 " Plugin
 call plug#begin('~/.vim/plugged')
 
@@ -277,7 +272,6 @@ let g:grepper.switch = 0
 " git
 let g:git_messenger_date_format = "%Y/%m/%d %X"
 nmap <C-g>m <Plug>(git-messenger)
-nnoremap <M-w> :Sayonara!<CR>
 
 "color
 " colorscheme hybrid
@@ -297,11 +291,10 @@ map #  <Plug>(asterisk-z#)
 vmap v <Plug>(expand_region_expand)
 
 " other
-set shell=zsh
 lang en_US.UTF-8 " paste issue
+nnoremap <M-w> :Sayonara!<CR>
 nnoremap <Leader>tt :TestNearest<CR>
 nnoremap <Leader>tl :TestLast<CR>
-let test#neovim#term_position = "botright 30"
 if has('nvim')
   let test#strategy = 'harpoon'
   let g:test#harpoon_stay_here = 1
