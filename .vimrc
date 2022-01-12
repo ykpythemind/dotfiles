@@ -327,10 +327,6 @@ function! GHBrowse(...)
   execute("!gh browse " . expand('%:.') . ":" . line(".") . b)
 endfunction
 
-" makeprg
-autocmd Filetype typescript setlocal makeprg=yarn\ run\ --silent\ tsc
-autocmd Filetype typescriptreact setlocal makeprg=yarn\ run\ --silent\ tsc
-
 fun! Filename(...) " for snippets
   let template = get(a:000, 0, "$1")
   let arg2 = get(a:000, 1, "")
