@@ -331,12 +331,6 @@ endfunction
 autocmd Filetype typescript setlocal makeprg=yarn\ run\ --silent\ tsc
 autocmd Filetype typescriptreact setlocal makeprg=yarn\ run\ --silent\ tsc
 
-if has('mac')
-  " set ttimeoutlen=1
-  let g:imeoff = 'osascript -e "tell application \"System Events\" to key code 102"'
-  inoremap <silent> <C-c> <ESC>:call system(g:imeoff)<CR>
-endif
-
 fun! Filename(...) " for snippets
   let template = get(a:000, 0, "$1")
   let arg2 = get(a:000, 1, "")
