@@ -186,7 +186,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'tyru/open-browser.vim'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
-
+Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify'
@@ -277,6 +277,7 @@ let g:grepper.switch = 0
 " git
 let g:git_messenger_date_format = "%Y/%m/%d %X"
 nmap <C-g>m <Plug>(git-messenger)
+nnoremap <M-w> :Sayonara!<CR>
 
 "color
 " colorscheme hybrid
