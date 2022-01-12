@@ -119,7 +119,6 @@ nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line
 " 選択範囲をまとめて動かす
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
-
 vnoremap < <gv
 vnoremap > >gv
 
@@ -144,8 +143,6 @@ augroup disable_auto_comment_when_br
 augroup END
 
 " term
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <silent> <ESC> <C-\><C-n>
 tnoremap <silent> <C-j> <C-\><C-n>
 
