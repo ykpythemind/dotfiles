@@ -144,10 +144,6 @@ augroup disable_auto_comment_when_br
   autocmd BufEnter * setlocal formatoptions-=o
 augroup END
 
-let g:winresizer_start_key=''
-let g:winresizer_vert_resize=3
-nnoremap <C-w>r :WinResizerStartResize<CR>
-
 " term
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-k> <C-\><C-n><C-w>k
@@ -194,7 +190,6 @@ Plug 'mhinz/vim-grepper'
 Plug 'tyru/open-browser.vim'
 Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-localrc'
-Plug 'simeji/winresizer'
 
 " Git
 Plug 'rhysd/git-messenger.vim'
