@@ -310,9 +310,9 @@ end
 nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)
 nnoremap cp :let @+ = expand('%')<CR>
-command! Code :call Opencode()
+command! Code execute 'silent !code -r ' . getcwd() <bar> execute 'silent :!code -r ' . expand('%')
 command! Reload bufdo e!
-command! T execute ':new' <bar> execute ':term'
+nnoremap T :new<CR>:term<CR>
 
 autocmd TermEnter,TermOpen,BufEnter * if &buftype ==# 'terminal' | let g:_lastT = win_getid()
 autocmd WinLeave * if &buftype !=# 'terminal' | let g:_lastW = win_getid()
@@ -325,13 +325,6 @@ function! CheckFileIsEdited()
   if getcmdwintype() == '' && &buftype !=# 'terminal' && &buftype !=# 'nofile' " ignore some buffer type
     checktime
   endif
-endfunction
-
-function! Opencode()
-  silent
-  let c = expand('%')
-  execute("!code -r " . getcwd())
-  execute("!code -r " . (c ==# '' ? getcwd() : c))
 endfunction
 
 command! -nargs=? B :call GHBrowse(<f-args>)
