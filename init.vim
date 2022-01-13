@@ -21,32 +21,32 @@ nnoremap L <cmd>Telescope live_grep<cr>
 nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>
 
 " nvim-tree (must before 'nvim-tree'.setup() ) {{{
-let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-    \ }
-let g:nvim_tree_disable_window_picker = 1
-nnoremap - :NvimTreeToggle<CR>
-nnoremap = :NvimTreeFindFileToggle<CR>
+"let g:nvim_tree_show_icons = {
+"    \ 'git': 1,
+"    \ 'folders': 1,
+"    \ 'files': 1,
+"    \ 'folder_arrows': 1,
+"    \ }
+"let g:nvim_tree_disable_window_picker = 1
+"nnoremap - :NvimTreeToggle<CR>
+"nnoremap = :NvimTreeFindFileToggle<CR>
 " }}}
 
 lua <<LUA
 require('Comment').setup()
 
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-require'nvim-tree'.setup({
-  view = {
-    width = 40,
-    mappings = {
-      custom_only = false,
-      list = {
-        { key = "-", cb = tree_cb("close") },
-      }
-    }
-  }
-})
+--local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+--require'nvim-tree'.setup({
+--  view = {
+--    width = 40,
+--    mappings = {
+--      custom_only = false,
+--      list = {
+--        { key = "-", cb = tree_cb("close") },
+--      }
+--    }
+--  }
+--})
 
 require'nvim-treesitter.configs'.setup {
   highlight = {

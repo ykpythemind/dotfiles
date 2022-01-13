@@ -142,6 +142,14 @@ augroup disable_auto_comment_when_br
   autocmd BufEnter * setlocal formatoptions-=o
 augroup END
 
+" nerdtree
+noremap - :NERDTreeToggle<CR>
+noremap = :NERDTreeFind<CR>
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.DS_Store$', '\.git$'] " ignore files in nerd tree
+let g:NERDTreeWinSize=50
+let NERDTreeMapQuit='='
+
 " term
 tnoremap <silent> <ESC> <C-\><C-n>
 tnoremap <silent> <C-j> <C-\><C-n>
@@ -164,6 +172,7 @@ endif
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-denops/denops.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'preservim/nerdtree'
 
 Plug 'doums/barow'
 Plug 'doums/barowGit'
