@@ -173,6 +173,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-denops/denops.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/nerdtree'
+Plug 'mbbill/undotree'
 
 Plug 'doums/barow'
 Plug 'doums/barowGit'
