@@ -200,6 +200,7 @@ Plug 'slim-template/vim-slim'
 Plug 'mattn/vim-goimports'
 Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
+Plug 'hashivim/vim-terraform'
 " view
 Plug 'w0ng/vim-hybrid'
 Plug 'cocopon/iceberg.vim'
