@@ -53,6 +53,7 @@ asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
 asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
 
 echo "* deno"
 mkdir ~/.zsh/completion # create a folder to save your completions. it can be anywhere

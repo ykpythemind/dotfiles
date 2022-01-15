@@ -207,3 +207,6 @@ function peco-kill(){
     proc=`ps ax | peco --prompt="kill ${sig}"`
     echo "$proc" | xargs -I PS echo PS | awk '{print $1}' | xargs -I PS sh -c "echo 'killing($sig) PS...' && kill -$sig PS && echo 'killed PS'"
 }
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C terraform terraform
