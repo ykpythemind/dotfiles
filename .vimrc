@@ -182,8 +182,7 @@ Plug 'tpope/vim-surround'
 Plug 'thinca/vim-qfreplace'
 Plug 'terryma/vim-expand-region'
 Plug 'ConradIrwin/vim-bracketed-paste'
-" Plug 'vim-test/vim-test'
-Plug 'yoann9344/vim-test', { 'branch': 'patch-1' }
+Plug 'vim-test/vim-test'
 Plug 'haya14busa/vim-asterisk'
 Plug 'mopp/autodirmake.vim'
 Plug 'thinca/vim-zenspace'
@@ -307,14 +306,13 @@ nnoremap <M-w> :Sayonara!<CR>
 nnoremap <Leader>tt :TestNearest<CR>
 nnoremap <Leader>tl :TestLast<CR>
 function! BufferTermStrategy(cmd)
-  if g:_lastT
+  if exists('g:_lastT')
     call win_gotoid(g:_lastT)
-    call jobsend(b:terminal_job_id, a:cmd . "\n")
   else
-    exec 'te ' . a:cmd
+    vsplit | term
   endif
+  call jobsend(b:terminal_job_id, a:cmd . "\n")
 endfunction
-
 let g:test#custom_strategies = {'bufferterm': function('BufferTermStrategy')}
 let test#strategy = 'bufferterm'
 
