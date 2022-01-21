@@ -306,10 +306,17 @@ lang en_US.UTF-8 " paste issue
 nnoremap <M-w> :Sayonara!<CR>
 nnoremap <Leader>tt :TestNearest<CR>
 nnoremap <Leader>tl :TestLast<CR>
-if has('nvim')
-  let test#strategy = 'harpoon'
-  let g:test#harpoon_stay_here = 1
-end
+function! BufferTermStrategy(cmd)
+  if g:_lastT
+    call win_gotoid(g:_lastT)
+    call jobsend(b:terminal_job_id, a:cmd . "\n")
+  else
+    exec 'te ' . a:cmd
+  endif
+endfunction
+
+let g:test#custom_strategies = {'bufferterm': function('BufferTermStrategy')}
+let test#strategy = 'bufferterm'
 
 nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)
