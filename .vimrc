@@ -167,6 +167,7 @@ if has('nvim')
   Plug 'numToStr/Comment.nvim'
 
   Plug 'rebelot/kanagawa.nvim'
+  Plug 'phaazon/hop.nvim'
 endif
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

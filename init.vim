@@ -20,6 +20,8 @@ nnoremap <C-e> <cmd>Telescope buffers<CR>
 nnoremap L <cmd>Telescope live_grep<cr>
 nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>
 
+nnoremap H <cmd>HopChar2<cr>
+
 " nvim-tree (must before 'nvim-tree'.setup() ) {{{
 "let g:nvim_tree_show_icons = {
 "    \ 'git': 1,
@@ -34,6 +36,8 @@ nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = t
 
 lua <<LUA
 require('Comment').setup()
+
+require'hop'.setup()
 
 --local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 --require'nvim-tree'.setup({
