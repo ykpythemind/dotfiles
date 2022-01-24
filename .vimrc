@@ -176,8 +176,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/nerdtree'
 Plug 'mbbill/undotree'
 
-Plug 'doums/barow'
-Plug 'doums/barowGit'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'thinca/vim-qfreplace'
@@ -204,6 +202,8 @@ Plug 'hashivim/vim-terraform'
 " view
 Plug 'w0ng/vim-hybrid'
 Plug 'cocopon/iceberg.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
 call plug#end()
 
 " COC
@@ -248,12 +248,6 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
-
-let g:barow = {
-      \ 'modules': [
-      \   [ 'barowGit#branch', 'BarowHint' ]
-      \ ]
-      \}
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -300,6 +294,24 @@ set background=dark
 map *  <Plug>(asterisk-z*)
 map #  <Plug>(asterisk-z#)
 vmap v <Plug>(expand_region_expand)
+
+function! LightlineFilename()
+  return expand('%:t') !=# '' ? expand('%') : '[---]'
+endfunction
+let g:lightline = {
+  \'active': {
+  \  'left': [
+  \    ['mode', 'paste'],
+  \    ['readonly', 'filename', 'modified'] ],
+  \ 'right': [
+  \    [ 'filetype' ] ]
+  \},
+  \'component_function': {
+    \   'filename': 'LightlineFilename',
+    \   'gitbranch': 'gitbranch#name'
+  \},
+  \'tabline': { 'left': [['gitbranch', 'tabs']], 'right': [] }
+\ }
 
 " other
 lang en_US.UTF-8 " paste issue
