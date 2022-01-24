@@ -295,19 +295,14 @@ map *  <Plug>(asterisk-z*)
 map #  <Plug>(asterisk-z#)
 vmap v <Plug>(expand_region_expand)
 
-function! LightlineFilename()
-  return expand('%:t') !=# '' ? expand('%') : '[---]'
-endfunction
 let g:lightline = {
   \'active': {
   \  'left': [
-  \    ['mode', 'paste'],
-  \    ['readonly', 'filename', 'modified'] ],
+  \    ['readonly', 'relativepath', 'modified'] ],
   \ 'right': [
-  \    [ 'filetype' ] ]
+  \    [ 'lineinfo', 'filetype' ] ]
   \},
   \'component_function': {
-    \   'filename': 'LightlineFilename',
     \   'gitbranch': 'gitbranch#name'
   \},
   \'tabline': { 'left': [['gitbranch', 'tabs']], 'right': [] }
