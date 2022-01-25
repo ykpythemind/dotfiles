@@ -289,11 +289,10 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色
 set background=dark
 
 map *  <Plug>(asterisk-z*)
-map #  <Plug>(asterisk-z#)
 vmap v <Plug>(expand_region_expand)
 
 function! MyTabLine()
-  let s = ''
+  let s = ' ' . gitbranch#name() . ' '
   for i in range(tabpagenr('$'))
     let tab = i + 1 " range() starts at 0
     let winnr = tabpagewinnr(tab) " gets current window of current tab
@@ -301,14 +300,9 @@ function! MyTabLine()
     let bufnr = buflist[winnr - 1] " current buffer number
     let bufname = bufname(bufnr) " gets the name of the current buffer in the current window of the current tab
 
-    let s .= ' ' . gitbranch#name() . ' '
     let s .= '%' . tab . 'T' " start a tab
     let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#') " if this tab is the current tab...set the right highlighting
     let s .= ' ' . tab " current tab number
-    let n = tabpagewinnr(tab,'$') " get the number of windows in the current tab
-    if n > 1
-      let s .= ':' . n " if there's more than one, add a colon and display the count
-    endif
     let bufmodified = getbufvar(bufnr, "&mod")
     if bufmodified
       let s .= ' +'
