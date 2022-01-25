@@ -160,10 +160,8 @@ call plug#begin('~/.vim/plugged')
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'ThePrimeagen/harpoon'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
-  Plug 'kyazdani42/nvim-tree.lua'
   Plug 'numToStr/Comment.nvim'
 
   Plug 'rebelot/kanagawa.nvim'
@@ -193,6 +191,7 @@ Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 " Git
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify'
+Plug 'itchyny/vim-gitbranch'
 " lang
 Plug 'slim-template/vim-slim'
 Plug 'mattn/vim-goimports'
@@ -202,8 +201,6 @@ Plug 'hashivim/vim-terraform'
 " view
 Plug 'w0ng/vim-hybrid'
 Plug 'cocopon/iceberg.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'itchyny/vim-gitbranch'
 call plug#end()
 
 " COC
@@ -295,18 +292,37 @@ map *  <Plug>(asterisk-z*)
 map #  <Plug>(asterisk-z#)
 vmap v <Plug>(expand_region_expand)
 
-let g:lightline = {
-  \'active': {
-  \  'left': [
-  \    ['readonly', 'relativepath', 'modified'] ],
-  \ 'right': [
-  \    [ 'lineinfo', 'filetype' ] ]
-  \},
-  \'component_function': {
-    \   'gitbranch': 'gitbranch#name'
-  \},
-  \'tabline': { 'left': [['gitbranch', 'tabs']], 'right': [] }
-\ }
+function! MyTabLine()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    let tab = i + 1 " range() starts at 0
+    let winnr = tabpagewinnr(tab) " gets current window of current tab
+    let buflist = tabpagebuflist(tab) " list of buffers associated with the windows in the current tab
+    let bufnr = buflist[winnr - 1] " current buffer number
+    let bufname = bufname(bufnr) " gets the name of the current buffer in the current window of the current tab
+
+    let s .= ' ' . gitbranch#name() . ' '
+    let s .= '%' . tab . 'T' " start a tab
+    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#') " if this tab is the current tab...set the right highlighting
+    let s .= ' ' . tab " current tab number
+    let n = tabpagewinnr(tab,'$') " get the number of windows in the current tab
+    if n > 1
+      let s .= ':' . n " if there's more than one, add a colon and display the count
+    endif
+    let bufmodified = getbufvar(bufnr, "&mod")
+    if bufmodified
+      let s .= ' +'
+    endif
+    if bufname != ''
+      let s .= ' ' . bufname . ' ' " or pathshorten(bufname)
+    endif
+  endfor
+  let s .= '%#TabLineFill#' " blank highlighting between the tabs and the righthand close 'X'
+  let s .= '%T' " resets tab page number?
+  let s .= '%=' " seperate left-aligned from right-aligned
+  return s
+endfunction
+set tabline=%!MyTabLine()
 
 " other
 lang en_US.UTF-8 " paste issue
@@ -365,9 +381,7 @@ fun! Filename(...) " for snippets
 endf
 
 if has('nvim')
-  " neovim-remote
-  " let nvrcmd      = 'nvr -cc split --remote-wait'
-  let nvrcmd = '~/neovim-remote --cc split --remote-wait'
+  let nvrcmd      = 'nvr -cc split --remote-wait'
   let $VISUAL     = nvrcmd
   let $GIT_EDITOR = nvrcmd
   autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
