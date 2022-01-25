@@ -20,6 +20,13 @@ font:
     family: Hack Nerd Font
     style: Regular Italic
 
+shell:
+  program: /bin/zsh
+  args:
+    - --login
+    - -c
+    - tmux attach || tmux
+
 key_bindings:
   # https://github.com/alacritty/alacritty/issues/1359
   - { key: Q, mods: Control, chars: "\x11" }
