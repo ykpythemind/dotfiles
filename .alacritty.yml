@@ -6,7 +6,7 @@ colors:
     cursor: CellForeground
 
 font:
-  size: 13
+  size: 15
 
   normal:
     family: Hack Nerd Font
