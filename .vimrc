@@ -158,18 +158,28 @@ tnoremap <silent> <C-j> <C-\><C-n>
 call plug#begin('~/.vim/plugged')
 
 if has('nvim')
+  Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'numToStr/Comment.nvim'
+  Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins' }
 
   Plug 'rebelot/kanagawa.nvim'
   Plug 'phaazon/hop.nvim'
 endif
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-denops/denops.vim'
+
+Plug 'Shougo/ddc.vim'
+Plug 'Shougo/ddc-around'
+Plug 'Shougo/ddc-matcher_head'
+Plug 'Shougo/ddc-sorter_rank'
+Plug 'Shougo/ddc-nvim-lsp'
+Plug 'matsui54/denops-signature_help'
+
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/nerdtree'
 Plug 'mbbill/undotree'
@@ -203,58 +213,60 @@ Plug 'w0ng/vim-hybrid'
 Plug 'cocopon/iceberg.vim'
 call plug#end()
 
-" COC
+" call deoppet#initialize()
+"
+" call deoppet#custom#option('snippets',
+"   \ [{ 'path': expand('~/.vim/snippets')}] + map(globpath(&runtimepath, 'neosnippets', 1, 1), { _, val -> { 'path': val } }))
+" imap <C-k>  <Plug>(deoppet_expand)
+
+" nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+" nmap <silent> g] <Plug>(coc-diagnostic-next)
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+" nmap <leader>cr <Plug>(coc-rename)
+" nmap <leader>ca  <Plug>(coc-codeaction)
+" nnoremap <leader>d :CocDiagnostics<CR>
+"
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+call ddc#custom#patch_global('sources', ['around', 'nvim-lsp', 'deoppet'])
+
+" Use matcher_head and sorter_rank.
+" https://github.com/Shougo/ddc-matcher_head
+" https://github.com/Shougo/ddc-sorter_rank
+call ddc#custom#patch_global('sourceOptions', {
+  \ '_': {
+  \   'matchers': ['matcher_head'], 'sorters': ['sorter_rank'],
+  \ },
+  \ 'nvim-lsp': { 'mark': 'lsp', 'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
+  \ 'deoppet': {'dup': v:true, 'mark': 'dp'},
+  \ })
+
+" Change source options
+call ddc#custom#patch_global('sourceOptions', {
+  \ 'around': {'mark': 'A'},
+  \ })
+call ddc#custom#patch_global('sourceParams', {
+  \ 'around': {'maxSize': 500},
+  \ })
+
+call ddc#custom#patch_filetype('markdown', 'sourceParams', {
+  \ 'around': {'maxSize': 100},
+  \ })
+
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-let g:coc_snippet_next = '<tab>'
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <silent><expr> <c-y> coc#refresh()
-imap <C-l> <Plug>(coc-snippets-expand)
+\ ddc#map#pum_visible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#map#manual_complete()
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+call ddc#enable()
+call signature_help#enable()
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-nmap <silent> g] <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>cr <Plug>(coc-rename)
-nmap <leader>ca  <Plug>(coc-codeaction)
-nnoremap <leader>d :CocDiagnostics<CR>
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-let g:coc_global_extensions = [
-\ 'coc-html', 'coc-css', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-rust-analyzer', 'coc-prettier', 'coc-solargraph', 'coc-go', 'coc-snippets']
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 command! -nargs=0 F :call CocAction('format')
-
-let g:coc_disable_transparent_cursor = 1 " https://github.com/neoclide/coc.nvim/issues/1775#issuecomment-757764053
 
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
@@ -290,6 +302,10 @@ set background=dark
 
 map *  <Plug>(asterisk-z*)
 vmap v <Plug>(expand_region_expand)
+nnoremap H 20h
+nnoremap J 10j
+nnoremap K 10k
+nnoremap L 20l
 
 function! MyTabLine()
   let s = ' ' . gitbranch#name() . ' '
@@ -308,7 +324,7 @@ function! MyTabLine()
       let s .= ' +'
     endif
     if bufname != ''
-      let s .= ' ' . bufname . ' ' " or pathshorten(bufname)
+      let s .= ' ' . pathshorten(bufname) . ' ' " or pathshorten(bufname)
     endif
   endfor
   let s .= '%#TabLineFill#' " blank highlighting between the tabs and the righthand close 'X'
@@ -320,7 +336,7 @@ set tabline=%!MyTabLine()
 
 " other
 lang en_US.UTF-8 " paste issue
-nnoremap <M-w> :Sayonara!<CR>
+nnoremap <M-w> :Sayonara<CR>
 nnoremap <Leader>tt :TestNearest<CR>
 nnoremap <Leader>tl :TestLast<CR>
 function! BufferTermStrategy(cmd)
