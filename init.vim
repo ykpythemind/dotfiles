@@ -20,6 +20,8 @@ nnoremap <C-e> <cmd>Telescope buffers<CR>
 " nnoremap L <cmd>Telescope live_grep<cr>
 nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>
 
+" formatter.nvim
+nnoremap <leader>f :Format<CR>
 
 imap <C-l> <Plug>(deoppet_expand)
 imap <expr> L  deoppet#expandable() ? '<Plug>(deoppet_expand)' : ''
@@ -34,6 +36,25 @@ call deoppet#custom#option('snippets', map(globpath(&runtimepath, 'snippets', 1,
 " nnoremap H <cmd>HopChar2<cr>
 
 lua <<LUA
+
+local formatterConfig = {}
+
+local prettierConfig = function()
+  return {
+    exe = "prettier",
+    args = {'--config-precedence','prefer-file', "--stdin-filepath", vim.fn.shellescape(vim.api.nvim_buf_get_name(0))},
+    stdin = true
+  }
+end
+local commonFT = {
+  "javascript", "javascriptreact", "typescript", "typescriptreact",
+  "ruby",
+}
+for _, ft in ipairs(commonFT) do
+  formatterConfig[ft] = { prettierConfig }
+end
+require('formatter').setup({ filetype = formatterConfig })
+
 require('Comment').setup()
 
 require'hop'.setup()
@@ -67,7 +88,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and

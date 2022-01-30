@@ -168,6 +168,7 @@ if has('nvim')
 
   Plug 'rebelot/kanagawa.nvim'
   Plug 'phaazon/hop.nvim'
+  Plug 'mhartington/formatter.nvim'
 endif
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -239,9 +240,6 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 call ddc#enable()
 call signature_help#enable()
-
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-command! -nargs=0 F :call CocAction('format')
 
 " quickrun
 let g:quickrun_no_default_key_mappings = 1
