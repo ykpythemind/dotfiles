@@ -74,7 +74,7 @@ noremap ; :
 inoremap <C-j> <Esc>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
-inoremap <C-k> <C-o>D
+" inoremap <C-k> <C-o>D
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
 
@@ -213,45 +213,20 @@ Plug 'w0ng/vim-hybrid'
 Plug 'cocopon/iceberg.vim'
 call plug#end()
 
-" call deoppet#initialize()
-"
-" call deoppet#custom#option('snippets',
-"   \ [{ 'path': expand('~/.vim/snippets')}] + map(globpath(&runtimepath, 'neosnippets', 1, 1), { _, val -> { 'path': val } }))
-" imap <C-k>  <Plug>(deoppet_expand)
-
-" nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-" nmap <silent> g] <Plug>(coc-diagnostic-next)
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-" nmap <leader>cr <Plug>(coc-rename)
-" nmap <leader>ca  <Plug>(coc-codeaction)
-" nnoremap <leader>d :CocDiagnostics<CR>
-"
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 call ddc#custom#patch_global('sources', ['around', 'nvim-lsp', 'deoppet'])
 
-" Use matcher_head and sorter_rank.
-" https://github.com/Shougo/ddc-matcher_head
-" https://github.com/Shougo/ddc-sorter_rank
 call ddc#custom#patch_global('sourceOptions', {
-  \ '_': {
-  \   'matchers': ['matcher_head'], 'sorters': ['sorter_rank'],
-  \ },
+  \ '_': { 'matchers': ['matcher_head'], 'sorters': ['sorter_rank'], },
   \ 'nvim-lsp': { 'mark': 'lsp', 'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
   \ 'deoppet': {'dup': v:true, 'mark': 'dp'},
   \ })
 
-" Change source options
 call ddc#custom#patch_global('sourceOptions', {
   \ 'around': {'mark': 'A'},
   \ })
 call ddc#custom#patch_global('sourceParams', {
   \ 'around': {'maxSize': 500},
   \ })
-
 call ddc#custom#patch_filetype('markdown', 'sourceParams', {
   \ 'around': {'maxSize': 100},
   \ })
@@ -302,10 +277,10 @@ set background=dark
 
 map *  <Plug>(asterisk-z*)
 vmap v <Plug>(expand_region_expand)
-nnoremap H 20h
+nnoremap H 10h
 nnoremap J 10j
 nnoremap K 10k
-nnoremap L 20l
+nnoremap L 10l
 
 function! MyTabLine()
   let s = ' ' . gitbranch#name() . ' '

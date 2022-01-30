@@ -1,4 +1,5 @@
-snippet if "if (condition) { ... }"
+snippet if
+abbr "if (condition) { ... }"
 	if (${1:true}) {
 		${0:${VISUAL}}
 	}
@@ -8,17 +9,20 @@ snippet =>
 		${2}
 	}
 
-snippet cl "console.log"
+snippet cl
+abbr "console.log"
 	console.log(${0});
 
-snippet try "try { ... } catch(e) { ... }"
+snippet try
+abbr "try { ... } catch(e) { ... }"
 	try {
 		${0:${VISUAL}}
 	} catch (${1:e}) {
 		${2:/* handle error */}
 	}
 
-snippet for "for (...) {...}"
+snippet for
+abbr "for (...) {...}"
 	for (let ${1:i} = 0; $1 < ${2:len}; $1++) {
 		${0:${VISUAL}}
 	}

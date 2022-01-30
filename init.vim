@@ -20,6 +20,17 @@ nnoremap <C-e> <cmd>Telescope buffers<CR>
 " nnoremap L <cmd>Telescope live_grep<cr>
 nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>
 
+
+imap <C-l> <Plug>(deoppet_expand)
+imap <expr> L  deoppet#expandable() ? '<Plug>(deoppet_expand)' : ''
+  imap <Right>  <Plug>(deoppet_jump_forward)
+  imap <Left>  <Plug>(deoppet_jump_backward)
+  smap <Right>  <Plug>(deoppet_jump_forward)
+  smap <Left>  <Plug>(deoppet_jump_backward)
+call deoppet#initialize()
+call deoppet#custom#option('snippets', map(globpath(&runtimepath, 'snippets', 1, 1),
+  \ { _, val -> { 'path': val } }))
+
 " nnoremap H <cmd>HopChar2<cr>
 
 lua <<LUA
