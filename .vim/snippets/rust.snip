@@ -37,7 +37,7 @@ abbr "format!"
 	format!("${1}{${2}}", ${3});
 snippet d
 abbr "dbg! debugging macro"
-	dbg!(${0:${VISUAL}})
+	dbg!(${0})
 # Testing
 snippet as
 abbr "assert!"
@@ -75,24 +75,24 @@ abbr "Result<T, E>"
 # Control structures
 snippet if
 	if ${1} {
-		${0:${VISUAL}}
+		${0}
 	}
 snippet ife
 abbr "if / else"
 	if ${1} {
-		${2:${VISUAL}}
+		${2}
 	} else {
 		${0}
 	}
 snippet ifl
 abbr "if let (...)"
 	if let ${1:Some($2)} = $3 {
-		${0:${VISUAL}}
+		${0}
 	}
 snippet el
 abbr "else"
 	else {
-		${0:${VISUAL}}
+		${0}
 	}
 snippet match
 abbr "match pattern"
@@ -195,17 +195,17 @@ abbr "macro_rules!" b
 	}
 snippet boxp
 abbr "Box::new()"
-	Box::new(${0:${VISUAL}})
+	Box::new(${0})
 snippet rc
 abbr "Rc::new()"
-	Rc::new(${0:${VISUAL}})
+	Rc::new(${0})
 snippet vec
 abbr "Vector"
 	let mut ${1:function_name}: Vec<${2:i32}> = Vec::new();
 
 snippet str
 abbr "String::from"
-	String::from("${0:${VISUAL}}")
+	String::from("${0}")
 
 snippet useHash
 abbr "use std::collections::HashMap"
