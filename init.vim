@@ -23,15 +23,21 @@ nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = t
 " formatter.nvim
 nnoremap <leader>f :Format<CR>
 
-imap <C-l> <Plug>(deoppet_expand)
-imap <expr> L  deoppet#expandable() ? '<Plug>(deoppet_expand)' : ''
-  imap <Right>  <Plug>(deoppet_jump_forward)
-  imap <Left>  <Plug>(deoppet_jump_backward)
-  smap <Right>  <Plug>(deoppet_jump_forward)
-  smap <Left>  <Plug>(deoppet_jump_backward)
 call deoppet#initialize()
+" imap <C-l> <Plug>(deoppet_expand)
+imap <expr> <C-l> deoppet#expandable() ? '<Plug>(deoppet_expand)' : ''
+smap <expr> <C-l> deoppet#expandable() ? '<Plug>(deoppet_expand)' : ''
+imap <Right>  <Plug>(deoppet_jump_forward)
+imap <Left>  <Plug>(deoppet_jump_backward)
+smap <Right>  <Plug>(deoppet_jump_forward)
+smap <Left>  <Plug>(deoppet_jump_backward)
 call deoppet#custom#option('snippets', map(globpath(&runtimepath, 'snippets', 1, 1),
   \ { _, val -> { 'path': val } }))
+
+call deoppet#custom#option('ft_snippets_map',
+      \ {'typescriptreact': ['typescript', 'javascript']},
+      \ {'typescript': ['typescript', 'javascript']}
+ \ )
 
 " nnoremap H <cmd>HopChar2<cr>
 
@@ -61,8 +67,7 @@ require'hop'.setup()
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
-    enable = true,
-    disable = { 'lua', 'toml', 'c_sharp', 'vue' }
+    enable = true, disable = { 'lua', 'toml', 'c_sharp', 'vue' }
   }
 }
 
