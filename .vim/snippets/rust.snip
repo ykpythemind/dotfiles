@@ -1,0 +1,216 @@
+#################
+# Rust Snippets #
+#################
+
+# Functions
+snippet fn
+abbr "Function definition"
+	fn ${1:function_name}(${2})${3} {
+		${0}
+	}
+snippet bench
+abbr "Bench function" b
+	#[bench]
+	fn ${1:bench_function_name}(b: &mut test::Bencher) {
+		b.iter(|| {
+			${0}
+		})
+	}
+snippet new
+abbr "Constructor function"
+	pub fn new(${2}) -> ${1:Self} {
+		$1 { ${3} }
+	}
+snippet main
+abbr "Main function"
+	pub fn main() {
+		${0}
+	}
+snippet pri
+abbr "print!"
+	print!("${1}");
+snippet pln
+abbr "println!"
+	println!("${1}");
+snippet fmt
+abbr "format!"
+	format!("${1}{${2}}", ${3});
+snippet d
+abbr "dbg! debugging macro"
+	dbg!(${0})
+# Testing
+snippet as
+abbr "assert!"
+	assert!(${1:predicate});
+snippet ase
+abbr "assert_eq!"
+	assert_eq!(${1:expected}, ${2:actual});
+snippet test
+abbr "Unit test function"
+	#[test]
+	fn ${1:function_name}_test() {
+		${0}
+	}
+snippet testmod
+abbr "Test module" b
+	#[cfg(test)]
+	mod tests {
+		use super::${1:*};
+
+		test${0}
+	}
+snippet der
+abbr "#[derive(..)]"
+	#[derive(${1:Debug})]
+snippet attr
+abbr "#[..]"
+	#[${1:inline}]
+# Common types
+snippet opt
+abbr "Option<T>"
+	Option<${1:i32}>
+snippet res
+abbr "Result<T, E>"
+	Result<${1:&str}, ${2:()}>
+# Control structures
+snippet if
+	if ${1} {
+		${0}
+	}
+snippet ife
+abbr "if / else"
+	if ${1} {
+		${2}
+	} else {
+		${0}
+	}
+snippet ifl
+abbr "if let (...)"
+	if let ${1:Some($2)} = $3 {
+		${0}
+	}
+snippet el
+abbr "else"
+	else {
+		${0}
+	}
+snippet match
+abbr "match pattern"
+	match ${1} {
+		${2} => ${3}
+	}
+snippet case
+abbr "Case clause of pattern match"
+	${1:_} => ${2:expression}
+snippet for
+abbr "for ... in ... loop"
+	for ${1:i} in ${2} {
+		${0}
+	}
+# Struct
+snippet st
+abbr "Struct definition"
+	struct ${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} {
+		${0}
+	}
+snippet impl
+abbr "Struct/Trait implementation"
+	impl ${1:Type/Trait}${2: for $3} {
+		${0}
+	}
+snippet stn
+abbr "Struct with new constructor"
+	pub struct ${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} {
+		${0}
+	}
+
+	impl$2 $1$2 {
+		pub fn new(${4}) -> Self {
+			$1 { ${5} }
+		}
+	}
+snippet enum
+abbr "enum definition"
+	enum ${1:Name} {
+		${2},
+	}
+# Traits
+snippet trait
+abbr "Trait definition"
+	trait ${1:Name} {
+		${0}
+	}
+snippet drop
+abbr "Drop trait implementation (destructor)"
+	impl Drop for $1 {
+		fn drop(&mut self) {
+			${0}
+		}
+	}
+# Statics
+snippet ss
+abbr "static string declaration"
+	static ${1}: &'static str = "${0}";
+snippet stat
+abbr "static item declaration"
+	static ${1}: ${2:usize} = ${0};
+# Concurrency
+snippet spawn
+abbr "spawn a thread"
+	thread::spawn(${1:move }|| {
+		${0}
+	});
+snippet chan
+abbr "Declare (Sender, Receiver) pair of asynchronous channel()"
+	let (${1:tx}, ${2:rx}): (Sender<${3:i32}>, Receiver<${4:i32}>) = channel();
+# Implementations
+snippet asref
+abbr "AsRef trait implementation"
+	impl AsRef<${1:Ref}> for ${2:Type} {
+		fn as_ref(&self) -> &${3:$1} {
+			&self.${0:field}
+		}
+	}
+snippet asmut
+abbr "AsMut trait implementation"
+	impl AsMut<${1:Ref}> for ${2:Type} {
+		fn as_mut(&mut self) -> &mut ${3:$1} {
+			&mut self.${0:field}
+		}
+	}
+snippet ||
+abbr "Closure, anonymous function (inline)" i
+	${1:move }|$2| { $3 }
+snippet |}
+abbr "Closure, anonymous function (block)" i
+	${1:move }|$2| {
+		$3
+	}
+snippet macro
+abbr "macro_rules!" b
+	macro_rules! ${1:name} {
+		(${2:matcher}) => (
+			$3
+		)
+	}
+snippet boxp
+abbr "Box::new()"
+	Box::new(${0})
+snippet rc
+abbr "Rc::new()"
+	Rc::new(${0})
+snippet vec
+abbr "Vector"
+	let mut ${1:function_name}: Vec<${2:i32}> = Vec::new();
+
+snippet str
+abbr "String::from"
+	String::from("${0}")
+
+snippet useHash
+abbr "use std::collections::HashMap"
+	use std::collections::HashMap;
+
+snippet hashmap
+abbr "initialize HashMap"
+	HashMap::new();

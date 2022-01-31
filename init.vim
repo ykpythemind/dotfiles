@@ -17,22 +17,97 @@ set guicursor=n-c-v:block-nCursor,i-ci:blinkon0-blinkwait0-blinkoff0
 autocmd TermOpen * setlocal nonumber
 
 nnoremap <C-e> <cmd>Telescope buffers<CR>
-nnoremap L <cmd>Telescope live_grep<cr>
+" nnoremap L <cmd>Telescope live_grep<cr>
 nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>
 
-nnoremap H <cmd>HopChar2<cr>
+" formatter.nvim
+nnoremap <leader>f :Format<CR>
+
+call deoppet#initialize()
+" imap <C-l> <Plug>(deoppet_expand)
+imap <expr> <C-l> deoppet#expandable() ? '<Plug>(deoppet_expand)' : ''
+smap <expr> <C-l> deoppet#expandable() ? '<Plug>(deoppet_expand)' : ''
+imap <Right>  <Plug>(deoppet_jump_forward)
+imap <Left>  <Plug>(deoppet_jump_backward)
+smap <Right>  <Plug>(deoppet_jump_forward)
+smap <Left>  <Plug>(deoppet_jump_backward)
+call deoppet#custom#option('snippets', map(globpath(&runtimepath, 'snippets', 1, 1),
+  \ { _, val -> { 'path': val } }))
+
+call deoppet#custom#option('ft_snippets_map',
+      \ {'typescriptreact': ['typescript', 'javascript']},
+      \ {'typescript': ['typescript', 'javascript']}
+ \ )
+
+" nnoremap H <cmd>HopChar2<cr>
 
 lua <<LUA
+
+local formatterConfig = {}
+
+local prettierConfig = function()
+  return {
+    exe = "prettier",
+    args = {'--config-precedence','prefer-file', "--stdin-filepath", vim.fn.shellescape(vim.api.nvim_buf_get_name(0))},
+    stdin = true
+  }
+end
+local commonFT = {
+  "javascript", "javascriptreact", "typescript", "typescriptreact",
+  "ruby",
+}
+for _, ft in ipairs(commonFT) do
+  formatterConfig[ft] = { prettierConfig }
+end
+require('formatter').setup({ filetype = formatterConfig })
+
 require('Comment').setup()
 
 require'hop'.setup()
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
-    enable = true,
-    disable = { 'lua', 'toml', 'c_sharp', 'vue' }
+    enable = true, disable = { 'lua', 'toml', 'c_sharp', 'vue' }
   }
 }
+
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap=true, silent=true }
+vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+vim.api.nvim_set_keymap('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>k', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'solargraph', 'rust_analyzer', 'tsserver', 'gopls' }
+for _, lsp in pairs(servers) do
+  require('lspconfig')[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      -- This will be the default in neovim 0.7+
+      debounce_text_changes = 150,
+    }
+  }
+end
 LUA
 
 lua << TELESCOPE
