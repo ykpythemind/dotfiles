@@ -182,7 +182,7 @@ Plug 'Shougo/ddc-sorter_rank'
 Plug 'Shougo/ddc-nvim-lsp'
 Plug 'matsui54/denops-signature_help'
 
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/nerdtree'
 Plug 'mbbill/undotree'
 
@@ -276,10 +276,10 @@ set background=dark
 
 map *  <Plug>(asterisk-z*)
 vmap v <Plug>(expand_region_expand)
-nnoremap H 10h
-nnoremap J 10j
-nnoremap K 10k
-nnoremap L 10l
+nnoremap <C-h> 10h
+nnoremap <C-j> 10j
+nnoremap <C-k> 10k
+nnoremap <C-l> 10l
 
 function! MyTabLine()
   let s = ' ' . gitbranch#name() . ' '
