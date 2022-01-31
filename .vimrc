@@ -74,7 +74,7 @@ noremap ; :
 inoremap <C-j> <Esc>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
-" inoremap <C-k> <C-o>D
+inoremap <C-k> <C-o>D
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
 
