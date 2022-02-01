@@ -308,6 +308,10 @@ function! MyTabLine()
 endfunction
 set tabline=%!MyTabLine()
 
+set statusline=%<%f\ %m%h%r
+set statusline+=%=%l/%L
+set statusline+=\ %y
+
 " other
 lang en_US.UTF-8 " paste issue
 nnoremap <M-w> :Sayonara<CR>
