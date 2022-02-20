@@ -16,9 +16,9 @@ set guicursor=n-c-v:block-nCursor,i-ci:blinkon0-blinkwait0-blinkoff0
 
 autocmd TermOpen * setlocal nonumber
 
-nnoremap <C-e> <cmd>Telescope buffers<CR>
+" nnoremap <C-e> <cmd>Telescope buffers<CR>
 " nnoremap L <cmd>Telescope live_grep<cr>
-nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>
+" nnoremap <leader>h <cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>
 
 " formatter.nvim
 nnoremap <leader>f :Format<CR>

@@ -219,7 +219,29 @@ Plug 'Shougo/ddu-ui-ff'
 Plug 'Shougo/ddu-source-file_rec'
 Plug 'Shougo/ddu-filter-matcher_substring'
 Plug 'Shougo/ddu-kind-file'
+
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
+
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git/*"'
+  " let g:ctrlp_use_caching = 0
+endif
+nnoremap <C-e> :<C-u>CtrlPBuffer<CR>
+nnoremap <Leader>h :<C-u>CtrlPMRU<CR>
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:30'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](.git|tmp|node_modules|vendor)',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
+
+let g:ctrlp_prompt_mappings = {
+  \ 'PrtSelectMove("j")':   ['<c-n>', '<down>'],
+  \ 'PrtSelectMove("k")':   ['<c-p>', '<up>'],
+  \ 'PrtHistory(-1)':       ['<c-j>'],
+  \ 'PrtHistory(1)':        ['<c-k>'],
+\ }
 
 call ddu#custom#patch_global({
     \   'ui': 'ff',
