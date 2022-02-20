@@ -213,7 +213,56 @@ Plug 'hashivim/vim-terraform'
 " view
 Plug 'w0ng/vim-hybrid'
 Plug 'cocopon/iceberg.vim'
+
+Plug 'Shougo/ddu.vim'
+Plug 'Shougo/ddu-ui-ff'
+Plug 'Shougo/ddu-source-file_rec'
+Plug 'Shougo/ddu-filter-matcher_substring'
+Plug 'Shougo/ddu-kind-file'
 call plug#end()
+
+call ddu#custom#patch_global({
+    \   'ui': 'ff',
+    \   'sources': [{'name': 'file_rec', 'params': {}}],
+    \   'sourceOptions': {
+    \     '_': {
+    \       'ignoreCase': v:true,
+    \       'matchers': ['matcher_substring'],
+    \     },
+    \   },
+    \   'kindOptions': {
+    \     'file': {
+    \       'defaultAction': 'open',
+    \     },
+    \   },
+    \   'uiParams': {
+    \     'ff': {
+    \       'startFilter': v:true, 'split': 'floating', 'previewFloating': v:true,
+    \     }
+    \   },
+    \ })
+autocmd FileType ddu-ff call s:ddu_my_settings()
+function! s:ddu_my_settings() abort
+  nnoremap <buffer><silent> <CR>
+        \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
+  nnoremap <buffer><silent> <Tab>
+        \ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
+  nnoremap <buffer><silent> i
+        \ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
+  nnoremap <buffer><silent> q
+        \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+endfunction
+
+autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
+function! s:ddu_filter_my_settings() abort
+  inoremap <buffer><silent> <CR>
+  \ <Esc><Cmd>close<CR>
+  nnoremap <buffer><silent> <CR>
+  \ <Cmd>close<CR>
+  nnoremap <buffer><silent> q
+  \ <Cmd>close<CR>
+endfunction
+
 
 call ddc#custom#patch_global('sources', ['around', 'nvim-lsp', 'deoppet'])
 
