@@ -242,6 +242,7 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtHistory(-1)':       ['<c-j>'],
   \ 'PrtHistory(1)':        ['<c-k>'],
 \ }
+let g:ctrlp_match_current_file = 1
 
 call ddu#custom#patch_global({
     \   'ui': 'ff',
