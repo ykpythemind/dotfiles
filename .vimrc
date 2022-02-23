@@ -168,8 +168,8 @@ if has('nvim')
   Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins' }
 
   Plug 'rebelot/kanagawa.nvim'
-  Plug 'phaazon/hop.nvim'
   Plug 'mhartington/formatter.nvim'
+  Plug 'TimUntersberger/neogit'
 endif
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}

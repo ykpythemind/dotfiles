@@ -63,7 +63,8 @@ require('formatter').setup({ filetype = formatterConfig })
 
 require('Comment').setup()
 
-require'hop'.setup()
+local neogit = require('neogit')
+neogit.setup {}
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
