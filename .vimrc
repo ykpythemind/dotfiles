@@ -406,6 +406,7 @@ nnoremap cp :let @+ = expand('%')<CR>
 command! Code execute 'silent !code -r ' . getcwd() <bar> execute 'silent :!code -r ' . expand('%')
 command! Reload bufdo e!
 nnoremap T :new<CR>:term<CR>
+nnoremap <Leader>ng :Neogit<CR>
 
 autocmd TermEnter,TermOpen,BufEnter * if &buftype ==# 'terminal' | let g:_lastT = win_getid()
 autocmd WinLeave * if &buftype !=# 'terminal' | let g:_lastW = win_getid()
