@@ -170,6 +170,9 @@ if has('nvim')
   Plug 'rebelot/kanagawa.nvim'
   Plug 'mhartington/formatter.nvim'
   Plug 'TimUntersberger/neogit'
+
+  " Plug 'cloudhead/neovim-fuzzy'
+  Plug '/Users/ykpythemind/git/github.com/ykpythemind/neovim-fuzzy'
 endif
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -220,15 +223,18 @@ Plug 'Shougo/ddu-source-file_rec'
 Plug 'Shougo/ddu-filter-matcher_substring'
 Plug 'Shougo/ddu-kind-file'
 
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
+
+" nnoremap <C-p> :FuzzyOpen<CR>
+" nnoremap <C-e> :<C-u>FuzzyOpenBuffer<CR>
 
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git/*"'
   " let g:ctrlp_use_caching = 0
 endif
-nnoremap <C-e> :<C-u>CtrlPBuffer<CR>
-nnoremap <Leader>h :<C-u>CtrlPMRU<CR>
+" nnoremap <C-e> :<C-u>CtrlPBuffer<CR>
+" nnoremap <Leader>h :<C-u>CtrlPMRU<CR>
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:30'
 let g:ctrlp_custom_ignore = {
