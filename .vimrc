@@ -226,8 +226,9 @@ Plug 'Shougo/ddu-kind-file'
 " Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
-" nnoremap <C-p> :FuzzyOpen<CR>
-" nnoremap <C-e> :<C-u>FuzzyOpenBuffer<CR>
+nnoremap <C-p> :FuzzyOpen<CR>
+nnoremap <C-e> :FuzzyOpenBuffer<CR>
+nnoremap <Leader>h :FuzzyOpenOldfiles<CR>
 
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git/*"'
