@@ -62,6 +62,7 @@ end
 require('formatter').setup({ filetype = formatterConfig })
 
 require('Comment').setup()
+require('gitsigns').setup()
 
 local neogit = require('neogit')
 neogit.setup {}

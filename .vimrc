@@ -41,7 +41,7 @@ set shortmess+=c
 set shortmess-=S
 set showtabline=2
 set completeopt=menuone,noinsert,noselect
-set signcolumn=number
+" set signcolumn=number
 
 set shiftwidth=2
 set tabstop=4
@@ -173,6 +173,8 @@ if has('nvim')
 
   " Plug 'cloudhead/neovim-fuzzy'
   Plug '/Users/ykpythemind/git/github.com/ykpythemind/neovim-fuzzy'
+
+  Plug 'lewis6991/gitsigns.nvim'
 endif
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -205,7 +207,7 @@ Plug 'thinca/vim-localrc'
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 " Git
 Plug 'rhysd/git-messenger.vim'
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
 Plug 'itchyny/vim-gitbranch'
 " lang
 Plug 'slim-template/vim-slim'
