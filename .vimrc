@@ -231,6 +231,7 @@ call plug#end()
 nnoremap <C-p> :FuzzyOpen<CR>
 nnoremap <C-e> :FuzzyOpenBuffer<CR>
 nnoremap <Leader>h :FuzzyOpenOldfiles<CR>
+nnoremap <Leader><Leader> :FuzzyGrep<CR>
 
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git/*"'
