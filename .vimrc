@@ -191,6 +191,7 @@ Plug 'matsui54/denops-signature_help'
 Plug 'preservim/nerdtree'
 Plug 'mbbill/undotree'
 
+Plug 'kyoh86/vim-ripgrep'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'thinca/vim-qfreplace'
@@ -232,6 +233,8 @@ nnoremap <C-p> :FuzzyOpen<CR>
 nnoremap <C-e> :FuzzyOpenBuffer<CR>
 nnoremap <Leader>h :FuzzyOpenOldfiles<CR>
 nnoremap <Leader><Leader> :FuzzyGrep<CR>
+
+command! -nargs=+ -complete=file Rg :call ripgrep#search(<q-args>)
 
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git/*"'
@@ -347,7 +350,7 @@ nmap <C-g>m <Plug>(git-messenger)
 " colorscheme hybrid
 " colorscheme iceberg
 colorscheme kanagawa
-hi QuickFixLine ctermbg=none ctermfg=none
+" hi QuickFixLine ctermbg=none ctermfg=none
 hi MatchParen guifg=none guibg=#585858
 
 " colorscheme より後におく
