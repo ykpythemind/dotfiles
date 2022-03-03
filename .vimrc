@@ -184,6 +184,7 @@ Plug 'Shougo/ddc.vim'
 Plug 'Shougo/ddc-around'
 Plug 'Shougo/ddc-matcher_head'
 Plug 'Shougo/ddc-sorter_rank'
+Plug 'matsui54/ddc-buffer'
 Plug 'Shougo/ddc-nvim-lsp'
 Plug 'matsui54/denops-signature_help'
 
@@ -300,12 +301,13 @@ function! s:ddu_filter_my_settings() abort
 endfunction
 
 
-call ddc#custom#patch_global('sources', ['around', 'nvim-lsp', 'deoppet'])
+call ddc#custom#patch_global('sources', ['around', 'buffer', 'nvim-lsp', 'deoppet'])
 
 call ddc#custom#patch_global('sourceOptions', {
   \ '_': { 'matchers': ['matcher_head'], 'sorters': ['sorter_rank'], },
   \ 'nvim-lsp': { 'mark': 'lsp', 'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
   \ 'deoppet': {'dup': v:true, 'mark': 'dp'},
+  \ 'buffer': {'mark': 'buf'},
   \ })
 
 call ddc#custom#patch_global('sourceOptions', {
@@ -313,6 +315,12 @@ call ddc#custom#patch_global('sourceOptions', {
   \ })
 call ddc#custom#patch_global('sourceParams', {
   \ 'around': {'maxSize': 500},
+  \ 'buffer': {
+  \   'requireSameFiletype': v:false,
+  \   'limitBytes': 5000000,
+  \   'fromAltBuf': v:true,
+  \   'forceCollect': v:true,
+  \ },
   \ })
 call ddc#custom#patch_filetype('markdown', 'sourceParams', {
   \ 'around': {'maxSize': 100},
