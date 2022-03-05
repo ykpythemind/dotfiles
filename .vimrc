@@ -179,6 +179,7 @@ endif
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-denops/denops.vim'
+Plug 'yuki-yano/fuzzy-motion.vim'
 
 Plug 'Shougo/ddc.vim'
 Plug 'Shougo/ddc-around'
@@ -236,6 +237,8 @@ nnoremap <Leader>h :FuzzyOpenOldfiles<CR>
 nnoremap <Leader><Leader> :FuzzyGrep<CR>
 
 command! -nargs=+ -complete=file Rg :call ripgrep#search(<q-args>)
+
+nnoremap <TAB> :FuzzyMotion<CR>
 
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git/*"'
