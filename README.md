@@ -55,3 +55,4 @@ zcomet self-update
     - brew tap homebrew/cask-fonts
     - brew install --cask font-hack-nerd-font
   - SF Mono https://developer.apple.com/fonts/
+  - Cica https://github.com/miiton/Cica
