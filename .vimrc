@@ -375,7 +375,7 @@ nnoremap <C-k> 10k
 nnoremap <C-l> 10l
 
 function! MyTabLine()
-  let s = ' ' . gitbranch#name() . ' '
+  let s = ' ' . gitbranch#name() . ' '
   for i in range(tabpagenr('$'))
     let tab = i + 1 " range() starts at 0
     let winnr = tabpagewinnr(tab) " gets current window of current tab
