@@ -175,6 +175,7 @@ if has('nvim')
   Plug '/Users/ykpythemind/git/github.com/ykpythemind/neovim-fuzzy'
 
   Plug 'lewis6991/gitsigns.nvim'
+  Plug 'windwp/nvim-autopairs'
 endif
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}

@@ -42,6 +42,7 @@ call deoppet#custom#option('ft_snippets_map',
 " nnoremap H <cmd>HopChar2<cr>
 
 lua <<LUA
+require('nvim-autopairs').setup{}
 
 local formatterConfig = {}
 
