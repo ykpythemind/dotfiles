@@ -1,5 +1,9 @@
 {
     "Keymap": {
         "Tab": "peco.ToggleSelectionAndSelectNext"
+    },
+    "Style": {
+      "Selected": ["underline"],
+      "Matched": ["blue", "on_black"]
     }
 }
