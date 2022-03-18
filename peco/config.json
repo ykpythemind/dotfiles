@@ -3,7 +3,7 @@
         "Tab": "peco.ToggleSelectionAndSelectNext"
     },
     "Style": {
-      "Selected": ["underline"],
+      "Selected": ["underline", "on_black", "white"],
       "Matched": ["blue", "on_black"]
     }
 }
