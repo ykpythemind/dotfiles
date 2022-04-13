@@ -239,10 +239,10 @@ Plug 'Shougo/ddu-kind-file'
 " Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
-nnoremap <C-p> :FuzzyOpen<CR>
-nnoremap <C-e> :FuzzyOpenBuffer<CR>
-nnoremap <Leader>h :FuzzyOpenOldfiles<CR>
-nnoremap <Leader><Leader> :FuzzyGrep<CR>
+" nnoremap <C-p> :FuzzyOpen<CR>
+" nnoremap <C-e> :FuzzyOpenBuffer<CR>
+" nnoremap <Leader>h :FuzzyOpenOldfiles<CR>
+" nnoremap <Leader><Leader> :FuzzyGrep<CR>
 
 command! -nargs=+ -complete=file Rg :call ripgrep#search(<q-args>)
 
