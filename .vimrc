@@ -434,10 +434,10 @@ set background=dark
 
 map *  <Plug>(asterisk-z*)
 vmap v <Plug>(expand_region_expand)
-nnoremap <C-h> 5h
 nnoremap <C-j> 5j
 nnoremap <C-k> 5k
-nnoremap <C-l> 5l
+nnoremap <C-h> 10h
+nnoremap <C-l> 10l
 
 function! MyTabLine()
   let s = ' ' . gitbranch#name() . ' '
