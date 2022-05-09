@@ -169,6 +169,8 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'numToStr/Comment.nvim'
   Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins' }

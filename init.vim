@@ -168,6 +168,7 @@ require('telescope').setup{
     buffers = { ignore_current_buffer = true, sort_lastused = true, },
   }
 }
+require('telescope').load_extension('fzy_native')
 
 function launch_filer()
   local opts = {
