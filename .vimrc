@@ -118,15 +118,12 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 
 nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line('.'), '') \| endfor<CR>
 
-" 選択範囲をまとめて動かす
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
 vnoremap < <gv
 vnoremap > >gv
 
 " quickfix
 nnoremap <C-n> :Cnext<CR>
-nnoremap <C-m> :Cprev<CR>
+nnoremap <C-a> :Cprev<CR>
 " In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 autocmd BufReadPost quickfix nnoremap <buffer><silent> <C-o> :colder<CR>
