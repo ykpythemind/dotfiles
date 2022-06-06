@@ -1,4 +1,4 @@
-ruby 3.0.2
+ruby 3.0.4
 deno 1.19.2
 golang 1.17.4
 nodejs 17.2.0
