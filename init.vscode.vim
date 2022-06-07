@@ -114,6 +114,11 @@ nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line
 vnoremap < <gv
 vnoremap > >gv
 
+nnoremap <C-j> 5j
+nnoremap <C-k> 5k
+nnoremap <C-h> 10h
+nnoremap <C-l> 10l
+
 set runtimepath^=~/dotfiles/.vim
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 call plug#begin('~/.vim/plugged')
