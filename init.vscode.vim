@@ -29,14 +29,11 @@ set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
 set clipboard&
 set clipboard^=unnamed,unnamedplus
 set whichwrap=b,s,h,l,<,>,~,[,]
-" set ttyfast
-" set lazyredraw
 set updatetime=300
 set shortmess+=c
 set shortmess-=S
 set showtabline=2
 set completeopt=menuone,noinsert,noselect
-" set signcolumn=number
 
 set shiftwidth=2
 set tabstop=4
