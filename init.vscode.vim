@@ -7,8 +7,6 @@ set scrolloff=10
 set noswapfile
 set nobackup
 set nowritebackup
-set mouse=a
-set ttimeoutlen=100
 set title
 set number
 set wrap
@@ -29,7 +27,6 @@ set listchars=tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-
 set clipboard&
 set clipboard^=unnamed,unnamedplus
 set whichwrap=b,s,h,l,<,>,~,[,]
-set updatetime=300
 set shortmess+=c
 set shortmess-=S
 set showtabline=2
@@ -50,9 +47,6 @@ set ignorecase
 set smartcase
 nnoremap / /\v
 nnoremap ? ?\v
-
-" set undodir=~/.vim/undo
-" set undofile
 
 let g:mapleader = "\<space>"
 
