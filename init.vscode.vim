@@ -67,24 +67,13 @@ inoremap <C-j> <Esc>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-k> <C-o>D
-inoremap <C-a> <C-o>^
+inoremap <C-a> <cmd>call VSCodeNotify(‘cursorLineStart’)<cr>
 inoremap <C-e> <C-o>$
 
-cnoremap <C-f> <Right>
-cnoremap <C-b> <Left>
-cnoremap <C-a> <C-b>
-cnoremap <C-e> <C-e>
-cnoremap <C-v> <C-f>
-cnoremap <c-x> <c-r>=expand('%:p')<cr>
-cnoremap <c-d> <c-r>=expand('%:p:h')<cr>
-
-nnoremap ! :<C-f>
 nnoremap M mM
 nnoremap gM `M
 nnoremap <C-y> <C-^>
 
-nnoremap sg :<C-u>%s/\v//g<Left><Left><Left>
-vnoremap sg :s/\v//g<Left><Left><Left>
 nnoremap s <Nop>
 vnoremap s <Nop>
 
@@ -101,9 +90,9 @@ map <C-b> <Nop>
 nnoremap <C-b>dd "_dd
 vnoremap <C-b>d "_d
 
-nnoremap <C-s> :w<CR>
+nnoremap <C-s> <cmd>call VSCodeNotify(‘workbench.action.files.save’)<cr>
 
-nnoremap <Leader>l :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-l>
+nnoremap <Leader>l :nohlsearch<CR><C-l>
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><C-l>
 
 nnoremap <silent> <Space>o :<C-u>for i in range(1, v:count1) \| call append(line('.'), '') \| endfor<CR>
