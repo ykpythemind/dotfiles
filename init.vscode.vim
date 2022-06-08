@@ -125,3 +125,8 @@ call plug#end()
 
 map *  <Plug>(asterisk-z*)
 vmap v <Plug>(expand_region_expand)
+
+xmap gc  <Plug>VSCodeCommentary
+nmap gc  <Plug>VSCodeCommentary
+omap gc  <Plug>VSCodeCommentary
+nmap gcc <Plug>VSCodeCommentaryLine
