@@ -108,3 +108,12 @@ call plug#end()
 
 map *  <Plug>(asterisk-z*)
 vmap v <Plug>(expand_region_expand)
+
+xmap gc  <Plug>VSCodeCommentary
+nmap gc  <Plug>VSCodeCommentary
+omap gc  <Plug>VSCodeCommentary
+nmap gcc <Plug>VSCodeCommentaryLine
+
+# https://github.com/vscode-neovim/vscode-neovim/issues/293#issuecomment-1078550921
+nnoremap <C-d> 26j
+nnoremap <C-u> 26k
