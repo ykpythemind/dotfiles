@@ -73,8 +73,11 @@ vnoremap s <Nop>
 
 " https://github.com/vscode-neovim/vscode-neovim/blob/master/vim/vscode-motion.vim
 " https://github.com/vscode-neovim/vscode-neovim/issues/576
-nnoremap k <Cmd>call VSCodeNotify('cursorMove', { 'to': 'up', 'by': 'wrappedLine', 'value': v:count ? v:count : 1 })<CR>
-nnoremap j <Cmd>call VSCodeNotify('cursorMove', { 'to': 'down', 'by': 'wrappedLine', 'value': v:count ? v:count : 1 })<CR>
+"nnoremap k <Cmd>call VSCodeNotify('cursorMove', { 'to': 'up', 'by': 'wrappedLine', 'value': v:count ? v:count : 1 })<CR>
+"nnoremap j <Cmd>call VSCodeNotify('cursorMove', { 'to': 'down', 'by': 'wrappedLine', 'value': v:count ? v:count : 1 })<CR>
+
+nnoremap k gk
+nnoremap j gj
 nnoremap n nzvzz
 nnoremap N Nzvzz
 
