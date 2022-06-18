@@ -181,6 +181,7 @@ if has('nvim')
 
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'windwp/nvim-autopairs'
+  Plug 'elihunter173/dirbuf.nvim'
 endif
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}

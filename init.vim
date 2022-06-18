@@ -5,6 +5,10 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 " let g:denops#debug = 1
 " let g:denops#trace = 1
 
+" for dirbuf
+let g:loaded_netrwPlugin = 1
+let g:loaded_netrw = 1
+
 let &packpath = &runtimepath
 
 source ~/.vimrc
