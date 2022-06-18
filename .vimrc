@@ -176,26 +176,12 @@ if has('nvim')
   Plug 'mhartington/formatter.nvim'
   Plug 'TimUntersberger/neogit'
 
-  " Plug 'cloudhead/neovim-fuzzy'
-  Plug '/Users/ykpythemind/git/github.com/ykpythemind/neovim-fuzzy'
-
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'windwp/nvim-autopairs'
   Plug 'elihunter173/dirbuf.nvim'
 endif
 
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-denops/denops.vim'
-
-if !g:coc
-Plug 'Shougo/ddc.vim'
-Plug 'Shougo/ddc-around'
-Plug 'Shougo/ddc-matcher_head'
-Plug 'Shougo/ddc-sorter_rank'
-Plug 'matsui54/ddc-buffer'
-Plug 'Shougo/ddc-nvim-lsp'
-Plug 'matsui54/denops-signature_help'
-endif
 
 " Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/nerdtree'
@@ -218,7 +204,6 @@ Plug 'thinca/vim-localrc'
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 " Git
 Plug 'rhysd/git-messenger.vim'
-" Plug 'mhinz/vim-signify'
 Plug 'itchyny/vim-gitbranch'
 " lang
 Plug 'slim-template/vim-slim'
@@ -230,85 +215,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'w0ng/vim-hybrid'
 Plug 'cocopon/iceberg.vim'
 
-Plug 'Shougo/ddu.vim'
-Plug 'Shougo/ddu-ui-ff'
-Plug 'Shougo/ddu-source-file_rec'
-Plug 'Shougo/ddu-filter-matcher_substring'
-Plug 'Shougo/ddu-kind-file'
-
-" Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
-
-" nnoremap <C-p> :FuzzyOpen<CR>
-" nnoremap <C-e> :FuzzyOpenBuffer<CR>
-" nnoremap <Leader>h :FuzzyOpenOldfiles<CR>
-" nnoremap <Leader><Leader> :FuzzyGrep<CR>
-
-command! -nargs=+ -complete=file Rg :call ripgrep#search(<q-args>)
-
-if executable('rg')
-  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git/*"'
-  " let g:ctrlp_use_caching = 0
-endif
-" nnoremap <C-e> :<C-u>CtrlPBuffer<CR>
-" nnoremap <Leader>h :<C-u>CtrlPMRU<CR>
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:30'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](.git|tmp|node_modules|vendor)',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
-
-let g:ctrlp_prompt_mappings = {
-  \ 'PrtSelectMove("j")':   ['<c-n>', '<down>'],
-  \ 'PrtSelectMove("k")':   ['<c-p>', '<up>'],
-  \ 'PrtHistory(-1)':       ['<c-j>'],
-  \ 'PrtHistory(1)':        ['<c-k>'],
-\ }
-let g:ctrlp_match_current_file = 1
-
-call ddu#custom#patch_global({
-    \   'ui': 'ff',
-    \   'sources': [{'name': 'file_rec', 'params': {}}],
-    \   'sourceOptions': {
-    \     '_': {
-    \       'ignoreCase': v:true,
-    \       'matchers': ['matcher_substring'],
-    \     },
-    \   },
-    \   'kindOptions': {
-    \     'file': {
-    \       'defaultAction': 'open',
-    \     },
-    \   },
-    \   'uiParams': {
-    \     'ff': {
-    \       'startFilter': v:true, 'split': 'floating', 'previewFloating': v:true,
-    \     }
-    \   },
-    \ })
-autocmd FileType ddu-ff call s:ddu_my_settings()
-function! s:ddu_my_settings() abort
-  nnoremap <buffer><silent> <CR>
-        \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
-  nnoremap <buffer><silent> <Tab>
-        \ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
-  nnoremap <buffer><silent> i
-        \ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
-  nnoremap <buffer><silent> q
-        \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
-endfunction
-
-autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
-function! s:ddu_filter_my_settings() abort
-  inoremap <buffer><silent> <CR>
-  \ <Esc><Cmd>close<CR>
-  nnoremap <buffer><silent> <CR>
-  \ <Cmd>close<CR>
-  nnoremap <buffer><silent> q
-  \ <Cmd>close<CR>
-endfunction
-
 
 if g:coc
   " COC
@@ -363,39 +270,6 @@ if g:coc
 
   let g:coc_disable_transparent_cursor = 1 " https://github.com/neoclide/coc.nvim/issues/1775#issuecomment-757764053
 else
-  call ddc#custom#patch_global('sources', ['around', 'buffer', 'nvim-lsp', 'deoppet'])
-
-  call ddc#custom#patch_global('sourceOptions', {
-    \ '_': { 'matchers': ['matcher_head'], 'sorters': ['sorter_rank'], },
-    \ 'nvim-lsp': { 'mark': 'lsp', 'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
-    \ 'deoppet': {'dup': v:true, 'mark': 'dp'},
-    \ 'buffer': {'mark': 'buf'},
-    \ })
-
-  call ddc#custom#patch_global('sourceOptions', {
-    \ 'around': {'mark': 'A'},
-    \ })
-  call ddc#custom#patch_global('sourceParams', {
-    \ 'around': {'maxSize': 500},
-    \ 'buffer': {
-    \   'requireSameFiletype': v:false,
-    \   'limitBytes': 5000000,
-    \   'fromAltBuf': v:true,
-    \   'forceCollect': v:true,
-    \ },
-    \ })
-  call ddc#custom#patch_filetype('markdown', 'sourceParams', {
-    \ 'around': {'maxSize': 100},
-    \ })
-
-  inoremap <silent><expr> <TAB>
-  \ ddc#map#pum_visible() ? '<C-n>' :
-  \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-  \ '<TAB>' : ddc#map#manual_complete()
-
-  inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
-  call ddc#enable()
-  call signature_help#enable()
 endif
 
 " quickrun
@@ -418,8 +292,6 @@ let g:git_messenger_date_format = "%Y/%m/%d %X"
 nmap <C-g>m <Plug>(git-messenger)
 
 "color
-" colorscheme hybrid
-" colorscheme iceberg
 colorscheme kanagawa
 " hi QuickFixLine ctermbg=none ctermfg=none
 hi MatchParen guifg=none guibg=#585858
