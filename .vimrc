@@ -326,7 +326,7 @@ function! MyTabLine()
       let s .= ' +'
     endif
     if bufname != ''
-      let s .= ' ' . pathshorten(bufname) . ' ' " or pathshorten(bufname)
+      let s .= ' ' . bufname . ' ' " or pathshorten(bufname)
     endif
   endfor
   let s .= '%#TabLineFill#' " blank highlighting between the tabs and the righthand close 'X'
