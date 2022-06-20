@@ -18,6 +18,7 @@ ln -sf $CONFPATH/.zshrc ~/.zshrc
 ln -sf $CONFPATH/.zprofile ~/.zprofile
 ln -sf $CONFPATH/asdf/.tool-versions ~/.tool-versions
 ln -sf $CONFPATH/peco/config.json $HOME/.config/peco/config.json
+ln -sf $CONFPATH/karabiner.json $HOME/.config/karabiner/karabiner.json
 
 # macOS
 mkdir -p ~/Library/Application\ Support/Hyper
