@@ -179,6 +179,7 @@ if has('nvim')
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'windwp/nvim-autopairs'
   Plug 'elihunter173/dirbuf.nvim'
+  Plug 'github/copilot.vim'
 endif
 
 Plug 'vim-denops/denops.vim'

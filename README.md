@@ -45,6 +45,10 @@ zcomet self-update
 :PlugInstall
 ```
 
+```
+:Copilot setup
+```
+
 
 ## 他
 
