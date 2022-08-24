@@ -96,6 +96,7 @@ zstyle ':chpwd:*' recent-dirs-pushd true
 # alias
 alias dc='docker-compose'
 alias la='ls -laG'
+alias g='git'
 alias vim='nvim'
 alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias docker-clean-containers='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
