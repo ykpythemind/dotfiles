@@ -60,5 +60,4 @@ vim.keymap.set('v', '<', '<gv', { noremap = true })
 --command! Cnext try | cnext | catch | cfirst | catch | endtry
 --command! Cprev try | cprev | catch | clast | catch | endtry
 
-
-vim.keymap.set('g', '<ESC>', '<C-\><C-n>', { noremap = true, silent = true })
+vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true, silent = true })

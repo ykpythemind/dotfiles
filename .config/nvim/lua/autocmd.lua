@@ -8,3 +8,5 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
   pattern = "*",
   command = "setlocal fo-=orc"
 })
+
+vim.api.nvim_create_autocmd({"FocusGained"}, { command = [[:checktime]] })

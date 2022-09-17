@@ -47,3 +47,5 @@ vim.opt.smartcase = true
 
 vim.api.nvim_command('set undofile')
 vim.api.nvim_command('set undodir=$HOME/.vim/undo')
+
+vim.api.nvim_command('lang en_US.UTF-8')
