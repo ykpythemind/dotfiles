@@ -1,5 +1,22 @@
 vim.cmd [[packadd packer.nvim]]
 
+
+      function launch_filer()
+        local opts = {
+          shorten_path = false,
+          layout_config = {},
+        }
+        local ok = pcall(require'telescope.builtin'.git_files, opts)
+        if not ok then require'telescope.builtin'.find_files(opts) end
+      end
+
+vim.keymap.set('n', '<C-p>', ':lua launch_filer()<CR>', { noremap = true, silent = false })
+      vim.keymap.set('n', '<C-e>', '<cmd>Telescope buffers<CR>', { noremap = true, silent = false })
+      vim.keymap.set('n', '<Leader>g', '<cmd>Telescope grep_string<CR>', { noremap = true, silent = false })
+      vim.keymap.set('n', '<Leader>y', ":lua require'telescope.builtin'.registers{}<CR>", { noremap = true, silent = true })
+      vim.keymap.set('n', '<Leader>h', ":lua require'telescope.builtin'.oldfiles({ cwd_only = true })<CR>", { noremap = true, silent = true })
+
+
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -35,20 +52,6 @@ return require('packer').startup(function(use)
         }
       }
 
-      function launch_filer()
-        local opts = {
-          shorten_path = false,
-          layout_config = {},
-        }
-        local ok = pcall(require'telescope.builtin'.git_files, opts)
-        if not ok then require'telescope.builtin'.find_files(opts) end
-      end
-
-      vim.keymap.set('n', '<C-p>', ':lua launch_filer()<CR>', { noremap = true, silent = false })
-      vim.keymap.set('n', '<C-e>', '<cmd>Telescope buffers<CR>', { noremap = true, silent = false })
-      vim.keymap.set('n', '<Leader>g', '<cmd>Telescope grep_string<CR>', { noremap = true, silent = false })
-      vim.keymap.set('n', '<Leader>y', ":lua require'telescope.builtin'.registers{}<CR>", { noremap = true, silent = true })
-      vim.keymap.set('n', '<Leader>h', ":lua require'telescope.builtin'.oldfiles({ cwd_only = true })<CR>", { noremap = true, silent = true })
       -- vim.keymap.set('n', '<C-g>l', ":lua require'telescope.builtin'.git_bcommits{}<CR>", { noremap = true, silent = true })
     end
   }
