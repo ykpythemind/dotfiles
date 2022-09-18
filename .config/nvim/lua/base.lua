@@ -1,4 +1,3 @@
-
 vim.opt.autoread = true
 vim.opt.hidden = true
 vim.opt.scrolloff = 10
