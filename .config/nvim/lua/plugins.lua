@@ -1,6 +1,5 @@
 vim.cmd [[packadd packer.nvim]]
 
-
 function launch_filer()
   local opts = {
     shorten_path = false,
@@ -11,11 +10,10 @@ function launch_filer()
 end
 
 vim.keymap.set('n', '<C-p>', ':lua launch_filer()<CR>', { noremap = true, silent = false })
-      vim.keymap.set('n', '<C-e>', '<cmd>Telescope buffers<CR>', { noremap = true, silent = false })
-      vim.keymap.set('n', '<Leader>g', '<cmd>Telescope grep_string<CR>', { noremap = true, silent = false })
-      vim.keymap.set('n', '<Leader>y', ":lua require'telescope.builtin'.registers{}<CR>", { noremap = true, silent = true })
-      vim.keymap.set('n', '<Leader>h', ":lua require'telescope.builtin'.oldfiles({ cwd_only = true })<CR>", { noremap = true, silent = true })
-
+vim.keymap.set('n', '<C-e>', '<cmd>Telescope buffers<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<Leader>g', '<cmd>Telescope grep_string<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<Leader>y', ":lua require'telescope.builtin'.registers{}<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>h', ":lua require'telescope.builtin'.oldfiles({ cwd_only = true })<CR>", { noremap = true, silent = true })
 
 require('packer').startup(function(use)
   -- Packer can manage itself
@@ -73,7 +71,22 @@ require('packer').startup(function(use)
       vim.api.nvim_command('syntax enable')
     end
   }
+
+  use {
+    "preservim/nerdtree",
+    config = function()
+      vim.cmd([[
+        let NERDTreeShowHidden=1
+        let NERDTreeIgnore=['\.DS_Store$', '\.git$'] " ignore files in nerd tree
+        let g:NERDTreeWinSize=50
+        let NERDTreeMapQuit='='
+      ]])
+    end
+  }
 end)
+
+vim.keymap.set('n', '-', '<cmd>NERDTreeToggle<CR>', { noremap = true })
+vim.keymap.set('n', '=', '<cmd>NERDTreeFind<CR>', { noremap = true })
 
 vim.cmd("colorscheme kanagawa")
 
