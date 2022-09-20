@@ -40,8 +40,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 echo "* neovim"
 mkdir -p ~/.config/nvim
-# ln -sf $CONFPATH/init.vim ~/.config/nvim/init.vim
-# ln -sf $CONFPATH/coc-settings.json ~/.config/nvim/coc-settings.json
 
 ln -sf $(pwd)/.config/nvim/init.lua $HOME/.config/nvim/init.lua
 mkdir -p $HOME/.config/nvim/lua

@@ -11,18 +11,18 @@ vim.keymap.set('n', ';', ':', {noremap = true})
 vim.keymap.set('n', '/', '/\\v', {noremap = true})
 vim.keymap.set('n', '?', '?\\v', {noremap = true})
 
-vim.keymap.set('i', '<C-j>', '<Esc>', {noremap = true, silent = true})
-vim.keymap.set('i', '<C-b>', '<Left>', {noremap = true, silent = true})
-vim.keymap.set('i', '<C-f>', '<Right>', {noremap = true, silent = true})
-vim.keymap.set('i', '<C-k>', '<C-o>D', {noremap = true, silent = true})
-vim.keymap.set('i', '<C-a>', '<C-o>^', {noremap = true, silent = true})
-vim.keymap.set('i', '<C-e>', '<C-o>$', {noremap = true, silent = true})
+vim.keymap.set('i', '<C-j>', '<Esc>', {noremap = true})
+vim.keymap.set('i', '<C-b>', '<Left>', {noremap = true})
+vim.keymap.set('i', '<C-f>', '<Right>', {noremap = true})
+vim.keymap.set('i', '<C-k>', '<C-o>D', {noremap = true})
+vim.keymap.set('i', '<C-a>', '<C-o>^', {noremap = true})
+vim.keymap.set('i', '<C-e>', '<C-o>$', {noremap = true})
 
-vim.keymap.set('c', '<C-f>', '<Right>', {noremap = true, silent = true})
-vim.keymap.set('c', '<C-b>', '<Left>', {noremap = true, silent = true})
-vim.keymap.set('c', '<C-a>', '<C-b>', {noremap = true, silent = true})
-vim.keymap.set('c', '<C-e>', '<C-e>', {noremap = true, silent = true})
-vim.keymap.set('c', '<C-v>', '<C-f>', {noremap = true, silent = true})
+vim.keymap.set('c', '<C-f>', '<Right>', {noremap = true})
+vim.keymap.set('c', '<C-b>', '<Left>', {noremap = true})
+vim.keymap.set('c', '<C-a>', '<C-b>', {noremap = true})
+vim.keymap.set('c', '<C-e>', '<C-e>', {noremap = true})
+vim.keymap.set('c', '<C-v>', '<C-f>', {noremap = true})
 vim.keymap.set('c', '<C-x>', "<c-r>=expand('%:p')", {noremap = true})
 vim.keymap.set('c', '<C-d>', "<c-r>=expand('%:p:h')", {noremap = true})
 
@@ -49,6 +49,11 @@ vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true })
 
 vim.keymap.set('v', '>', '>gv', { noremap = true })
 vim.keymap.set('v', '<', '<gv', { noremap = true })
+
+vim.keymap.set('n', '<C-j>', '5j')
+vim.keymap.set('n', '<C-k>', '5k')
+vim.keymap.set('n', '<C-h>', '10h')
+vim.keymap.set('n', '<C-l>', '10l')
 
 --" quickfix
 --nnoremap <C-n> :Cnext<CR>

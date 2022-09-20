@@ -1,21 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
-function launch_filer()
-  local opts = {
-    shorten_path = false,
-    layout_config = {},
-  }
-  local ok = pcall(require'telescope.builtin'.git_files, opts)
-  if not ok then require'telescope.builtin'.find_files(opts) end
-end
-
-vim.keymap.set('n', '<C-p>', ':lua launch_filer()<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<C-e>', '<cmd>Telescope buffers<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<Leader>g', '<cmd>Telescope grep_string<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<Leader>y', ":lua require'telescope.builtin'.registers{}<CR>", { noremap = true, silent = true })
-vim.keymap.set('n', '<Leader>h', ":lua require'telescope.builtin'.oldfiles({ cwd_only = true })<CR>", { noremap = true, silent = true })
-
-require('packer').startup(function(use)
+return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
@@ -64,12 +49,25 @@ require('packer').startup(function(use)
   use "hrsh7th/cmp-path"
   use "hrsh7th/cmp-buffer"
 
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'MunifTanjim/prettier.nvim'
+
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require('nvim-autopairs').setup{} end
+  }
+
   use {
     "rebelot/kanagawa.nvim",
     config = function()
       vim.api.nvim_command('set termguicolors')
       vim.api.nvim_command('syntax enable')
     end
+  }
+
+  use {
+    'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
+    config = function() require('gitsigns').setup() end
   }
 
   use {
@@ -83,95 +81,25 @@ require('packer').startup(function(use)
       ]])
     end
   }
+
+  use 'tpope/vim-surround'
+  use 'thinca/vim-qfreplace'
+  use 'terryma/vim-expand-region'
+  use 'ConradIrwin/vim-bracketed-paste'
+  use 'vim-test/vim-test'
+  use 'haya14busa/vim-asterisk'
+  use 'mopp/autodirmake.vim'
+  use 'thinca/vim-zenspace'
+  use 'mhinz/vim-grepper'
+  use 'tyru/open-browser.vim'
+  use 'thinca/vim-quickrun'
+  use 'thinca/vim-localrc'
+  use 'mhinz/vim-sayonara'
+  use 'rhysd/git-messenger.vim'
+  use 'itchyny/vim-gitbranch'
+  use 'slim-template/vim-slim'
+  use 'mattn/vim-goimports'
+  use 'leafgarland/typescript-vim'
+  use 'rust-lang/rust.vim'
+  use 'hashivim/vim-terraform'
 end)
-
-vim.keymap.set('n', '-', '<cmd>NERDTreeToggle<CR>', { noremap = true })
-vim.keymap.set('n', '=', '<cmd>NERDTreeFind<CR>', { noremap = true })
-
-vim.cmd("colorscheme kanagawa")
-
--- 1. LSP Sever management
-require('mason').setup()
-require('mason-lspconfig').setup_handlers({ function(server)
-  local opt = {
-    -- -- Function executed when the LSP server startup
-    -- on_attach = function(client, bufnr)
-    --   local opts = { noremap=true, silent=true }
-    --   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    --   vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)'
-    -- end,
-    capabilities = require('cmp_nvim_lsp').update_capabilities(
-      vim.lsp.protocol.make_client_capabilities()
-    )
-  }
-  require('lspconfig')[server].setup(opt)
-end })
-
--- 2. build-in LSP function
--- keyboard shortcut
-vim.keymap.set('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-vim.keymap.set('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<CR>')
-vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
--- LSP handlers
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
-)
--- Reference highlight
-vim.cmd [[
-set updatetime=500
-highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-augroup lsp_document_highlight
-  autocmd!
-  autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
-  autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
-augroup END
-]]
-
--- 3. completion (hrsh7th/nvim-cmp)
-local cmp = require("cmp")
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "buffer" },
-    { name = "path" },
-  },
-  mapping = cmp.mapping.preset.insert({
-    ["<C-p>"] = cmp.mapping.select_prev_item(),
-    ["<C-n>"] = cmp.mapping.select_next_item(),
-    ['<C-l>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping.confirm { select = true },
-  }),
-  experimental = {
-    ghost_text = true,
-  },
-})
--- cmp.setup.cmdline('/', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = {
---     { name = 'buffer' }
---   }
--- })
--- cmp.setup.cmdline(":", {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = {
---     { name = "path" },
---     { name = "cmdline" },
---   },
--- })
