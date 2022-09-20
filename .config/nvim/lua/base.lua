@@ -23,7 +23,8 @@ vim.opt.laststatus = 2
 
 vim.opt.backspace = 'indent,eol,start'
 
-vim.opt.listchars = 'tab:>-,eol:↲,extends:»,precedes:«,nbsp:%,trail:-'
+vim.opt.listchars = { tab = '>-', eol = '↲', extends = '»', precedes = '«', nbsp = '%', trail = '-' }
+vim.opt.list = true
 
 vim.opt.clipboard = vim.opt.clipboard + 'unnamedplus'
 
