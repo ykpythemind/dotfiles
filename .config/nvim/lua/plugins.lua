@@ -102,4 +102,6 @@ return require('packer').startup(function(use)
   use 'leafgarland/typescript-vim'
   use 'rust-lang/rust.vim'
   use 'hashivim/vim-terraform'
+
+  use 'kyazdani42/nvim-web-devicons'
 end)

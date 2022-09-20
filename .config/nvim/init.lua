@@ -98,19 +98,6 @@ cmp.setup({
     ghost_text = true,
   },
 })
--- cmp.setup.cmdline('/', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = {
---     { name = 'buffer' }
---   }
--- })
--- cmp.setup.cmdline(":", {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = {
---     { name = "path" },
---     { name = "cmdline" },
---   },
--- })
 
 local null_ls = require("null-ls")
 
@@ -160,3 +147,59 @@ prettier.setup({
   }
 })
 
+
+vim.cmd([[
+nnoremap <M-w> :Sayonara<CR>
+nnoremap <Leader>tt :TestNearest<CR>
+nnoremap <Leader>tl :TestLast<CR>
+function! BufferTermStrategy(cmd)
+  if exists('g:_lastT')
+    call win_gotoid(g:_lastT)
+  else
+    vsplit | term
+  endif
+  call jobsend(b:terminal_job_id, a:cmd . "\n")
+endfunction
+let g:test#custom_strategies = {'bufferterm': function('BufferTermStrategy')}
+let test#strategy = 'bufferterm'
+
+nmap <Leader>b <Plug>(openbrowser-smart-search)
+vmap <Leader>b <Plug>(openbrowser-smart-search)
+nnoremap cp :let @+ = expand('%')<CR>
+command! Code execute 'silent !code -r ' . getcwd() <bar> execute 'silent :!code -r ' . expand('%')
+command! Reload bufdo e!
+nnoremap T :new<CR>:term<CR>
+
+autocmd TermEnter,TermOpen,BufEnter * if &buftype ==# 'terminal' | let g:_lastT = win_getid()
+autocmd WinLeave * if &buftype !=# 'terminal' | let g:_lastW = win_getid()
+nnoremap <expr> <C-t> &buftype ==# 'terminal' ? ':call win_gotoid(g:_lastW)<CR>' : ':call win_gotoid(g:_lastT)<CR>:startinsert<CR>'
+tnoremap <C-t> <C-\><C-n>:call win_gotoid(g:_lastW)<CR>
+
+autocmd InsertEnter * :call CheckFileIsEdited()
+
+function! CheckFileIsEdited()
+  if getcmdwintype() == '' && &buftype !=# 'terminal' && &buftype !=# 'nofile' " ignore some buffer type
+    checktime
+  endif
+endfunction
+
+
+nnoremap <C-n> :Cnext<CR>
+nnoremap <C-a> :Cprev<CR>
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+autocmd BufReadPost quickfix nnoremap <buffer><silent> <C-o> :colder<CR>
+autocmd BufReadPost quickfix nnoremap <buffer><silent> <C-i> :cnewer<CR>
+command! Cnext try | cnext | catch | cfirst | catch | endtry
+command! Cprev try | cprev | catch | clast | catch | endtry
+
+" grepper
+let g:grepper = {
+  \ 'tools': ['rg', 'git'],
+  \ 'rg': { 'grepprg': 'rg --hidden --vimgrep' },
+  \}
+nnoremap F :Grepper -tool rg<cr>
+nnoremap <leader>F :Grepper -tool rg -buffer<cr>
+xmap F <plug>(GrepperOperator)
+let g:grepper.highlight = 1
+let g:grepper.switch = 0
+]])
