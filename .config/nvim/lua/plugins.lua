@@ -59,6 +59,11 @@ return require('packer').startup(function(use)
   }
 
   use {
+    'numToStr/Comment.nvim',
+    config = function() require('Comment').setup() end
+  }
+
+  use {
     "rebelot/kanagawa.nvim",
     config = function()
       vim.api.nvim_command('set termguicolors')

@@ -74,12 +74,12 @@ prettier.setup({
 })
 
 -- command! Reload bufdo e!
+--  let nvrcmd      = 'nvr -cc split --remote-wait'
+--  let $VISUAL     = nvrcmd
+--  let $GIT_EDITOR = nvrcmd
+--  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
 
 vim.cmd([[
-  let nvrcmd      = 'nvr -cc split --remote-wait'
-  let $VISUAL     = nvrcmd
-  let $GIT_EDITOR = nvrcmd
-  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
 
 nnoremap <M-w> :Sayonara<CR>
 nnoremap <Leader>tt :TestNearest<CR>
