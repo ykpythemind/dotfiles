@@ -22,9 +22,6 @@ vim.keymap.set('n', '<Leader>g', '<cmd>Telescope grep_string<CR>', { noremap = t
 vim.keymap.set('n', '<Leader>y', ":lua require'telescope.builtin'.registers{}<CR>", { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>h', ":lua require'telescope.builtin'.oldfiles({ cwd_only = true })<CR>", { noremap = true, silent = true })
 
-vim.keymap.set('n', '-', '<cmd>NERDTreeToggle<CR>', { noremap = true })
-vim.keymap.set('n', '=', '<cmd>NERDTreeFind<CR>', { noremap = true })
-
 local null_ls = require("null-ls")
 
 null_ls.setup({

@@ -79,6 +79,9 @@ return require('packer').startup(function(use)
   use {
     "preservim/nerdtree",
     config = function()
+      vim.keymap.set('n', '-', '<cmd>NERDTreeToggle<CR>', { noremap = true })
+      vim.keymap.set('n', '=', '<cmd>NERDTreeFind<CR>', { noremap = true })
+
       vim.cmd([[
         let NERDTreeShowHidden=1
         let NERDTreeIgnore=['\.DS_Store$', '\.git$'] " ignore files in nerd tree
