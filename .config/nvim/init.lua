@@ -74,7 +74,6 @@ prettier.setup({
 })
 
 -- command! Reload bufdo e!
---
 
 vim.cmd([[
   let nvrcmd      = 'nvr -cc split --remote-wait'
