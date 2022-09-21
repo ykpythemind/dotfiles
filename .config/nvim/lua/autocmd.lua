@@ -9,5 +9,11 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
   command = "setlocal fo-=orc"
 })
 
+
+vim.api.nvim_create_autocmd({"TermOpen"}, {
+  pattern = "*",
+  command = "setlocal nonumber"
+})
+
 -- vim.api.nvim_create_autocmd({"FocusGained"}, { command = [[:checktime]] })
 -- okasii

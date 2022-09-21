@@ -32,6 +32,8 @@ vim.opt.whichwrap = 'b,s,h,l,<,>,~,[,]'
 
 vim.opt.completeopt = 'menuone,noinsert,noselect'
 
+vim.o.signcolumn = "yes"
+
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 4
 vim.opt.smarttab = true
@@ -49,3 +51,5 @@ vim.api.nvim_command('set undofile')
 vim.api.nvim_command('set undodir=$HOME/.vim/undo')
 
 vim.api.nvim_command('lang en_US.UTF-8')
+
+vim.cmd("colorscheme kanagawa")

@@ -36,6 +36,7 @@ return require('packer').startup(function(use)
       }
 
       -- vim.keymap.set('n', '<C-g>l', ":lua require'telescope.builtin'.git_bcommits{}<CR>", { noremap = true, silent = true })
+      --
     end
   }
 
