@@ -36,7 +36,21 @@ return require('packer').startup(function(use)
       }
 
       -- vim.keymap.set('n', '<C-g>l', ":lua require'telescope.builtin'.git_bcommits{}<CR>", { noremap = true, silent = true })
-      --
+
+      function launch_filer()
+        local opts = {
+          shorten_path = false,
+          layout_config = {},
+        }
+        local ok = pcall(require'telescope.builtin'.git_files, opts)
+        if not ok then require'telescope.builtin'.find_files(opts) end
+      end
+
+      vim.keymap.set('n', '<C-p>', ':lua launch_filer()<CR>', { noremap = true, silent = false })
+      vim.keymap.set('n', '<C-e>', '<cmd>Telescope buffers<CR>', { noremap = true, silent = false })
+      vim.keymap.set('n', '<Leader>g', '<cmd>Telescope grep_string<CR>', { noremap = true, silent = false })
+      vim.keymap.set('n', '<Leader>y', ":lua require'telescope.builtin'.registers{}<CR>", { noremap = true, silent = true })
+      vim.keymap.set('n', '<Leader>h', ":lua require'telescope.builtin'.oldfiles({ cwd_only = true })<CR>", { noremap = true, silent = true })
     end
   }
 
@@ -93,24 +107,96 @@ return require('packer').startup(function(use)
 
   use 'tpope/vim-surround'
   use 'thinca/vim-qfreplace'
-  use 'terryma/vim-expand-region'
+
+  use {
+    'terryma/vim-expand-region',
+    config = function()
+      vim.keymap.set('v', 'v', '<Plug>(expand_region_expand)', { noremap = true })
+    end
+  }
+
   use 'ConradIrwin/vim-bracketed-paste'
-  use 'vim-test/vim-test'
-  use 'haya14busa/vim-asterisk'
+  use {
+    'vim-test/vim-test',
+    config = function()
+      vim.keymap.set('n', '<Leader>tt', ':TestNearest<CR>', { noremap = true })
+      vim.keymap.set('n', '<Leader>tl', ':TestLast<CR>', { noremap = true })
+    end
+  }
+
+  use {
+    'haya14busa/vim-asterisk',
+    config = function()
+      vim.keymap.set('n', '*', '<Plug>(asterisk-z*)')
+    end
+  }
+
   use 'mopp/autodirmake.vim'
   use 'thinca/vim-zenspace'
-  use 'mhinz/vim-grepper'
-  use 'tyru/open-browser.vim'
-  use 'thinca/vim-quickrun'
+  use {
+    'mhinz/vim-grepper',
+    config = function()
+      vim.cmd([[
+        let g:grepper = {
+        \ 'tools': ['rg', 'git'],
+        \ 'rg': { 'grepprg': 'rg --hidden --vimgrep' },
+        \}
+      ]])
+
+      vim.g.grepper.highlight = 1
+      vim.g.grepper.switch = 0
+
+      vim.keymap.set('n', 'F', ':Grepper -tool rg<CR>', { noremap = true })
+      vim.keymap.set('n', '<Leader>F', ':Grepper -tool rg -buffer<CR>', { noremap = true })
+      vim.keymap.set('x', 'F', '<Plug>(GrepperOperator)')
+    end
+  }
+
+  use {
+    'tyru/open-browser.vim',
+    config = function()
+      vim.keymap.set('n', '<Leader>b', '<Plug>(openbrowser-smart-search)')
+      vim.keymap.set('v', '<Leader>b', '<Plug>(openbrowser-smart-search)')
+    end
+  }
+
+  use {
+    'thinca/vim-quickrun',
+    config = function()
+      vim.g.quickrun_no_default_key_mappings = 1
+      vim.keymap.set('n', '<Leader>r', '<Plug>(quickrun)')
+    end
+  }
   use 'thinca/vim-localrc'
-  use 'mhinz/vim-sayonara'
-  use 'rhysd/git-messenger.vim'
+
+
+  use {
+    'rhysd/git-messenger.vim',
+    config = function()
+      vim.g.git_messenger_date_format = "%Y/%m/%d %X"
+      vim.keymap.set('n', '<C-g>m', '<Plug>(git-messenger)')
+    end
+  }
+
   use 'itchyny/vim-gitbranch'
+
+  use { 
+    'mhinz/vim-sayonara',
+    config = function()
+      vim.keymap.set('n', '<M-w>', ':Sayonara<CR>', { noremap = true })
+    end
+  }
+
   use 'slim-template/vim-slim'
   use 'mattn/vim-goimports'
   use 'leafgarland/typescript-vim'
   use 'rust-lang/rust.vim'
   use 'hashivim/vim-terraform'
 
-  use 'kyazdani42/nvim-web-devicons'
+  use {
+    'kyazdani42/nvim-web-devicons',
+    config = function()
+      require'nvim-web-devicons'.setup()
+    end
+  }
 end)

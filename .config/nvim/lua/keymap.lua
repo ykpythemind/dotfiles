@@ -66,3 +66,5 @@ vim.keymap.set('n', '<C-l>', '10l')
 --command! Cprev try | cprev | catch | clast | catch | endtry
 
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true, silent = true })
+
+vim.keymap.set('n', 'T', ':new<CR>:term<CR>', { noremap = true })

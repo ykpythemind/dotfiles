@@ -32,15 +32,13 @@ vim.opt.whichwrap = 'b,s,h,l,<,>,~,[,]'
 
 vim.opt.completeopt = 'menuone,noinsert,noselect'
 
+vim.opt.showtabline=2
 vim.o.signcolumn = "yes"
 
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 4
 vim.opt.smarttab = true
 vim.opt.expandtab = true
-
---vim.opt.noerrorbells = true
---vim.opt.novisualbell = true
 
 vim.opt.hlsearch = true
 vim.opt.incsearch = true

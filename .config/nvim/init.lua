@@ -4,33 +4,12 @@ require 'plugins'
 require 'autocmd'
 require 'lsp'
 
-vim.keymap.set('n', '*', '<Plug>(asterisk-z*)')
-vim.keymap.set('v', 'v', '<Plug>(expand_region_expand)')
-
-function launch_filer()
-  local opts = {
-    shorten_path = false,
-    layout_config = {},
-  }
-  local ok = pcall(require'telescope.builtin'.git_files, opts)
-  if not ok then require'telescope.builtin'.find_files(opts) end
-end
-
-vim.keymap.set('n', '<C-p>', ':lua launch_filer()<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<C-e>', '<cmd>Telescope buffers<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<Leader>g', '<cmd>Telescope grep_string<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<Leader>y', ":lua require'telescope.builtin'.registers{}<CR>", { noremap = true, silent = true })
-vim.keymap.set('n', '<Leader>h', ":lua require'telescope.builtin'.oldfiles({ cwd_only = true })<CR>", { noremap = true, silent = true })
-
 local null_ls = require("null-ls")
 
 null_ls.setup({
   on_attach = function(client, bufnr)
     if client.server_capabilities.documentFormattingProvider then
       vim.cmd("nnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.formatting()<CR>")
-
-      -- format on save
-      -- vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
     end
 
     if client.server_capabilities.documentRangeFormattingProvider then
@@ -70,17 +49,7 @@ prettier.setup({
   }
 })
 
--- command! Reload bufdo e!
---  let nvrcmd      = 'nvr -cc split --remote-wait'
---  let $VISUAL     = nvrcmd
---  let $GIT_EDITOR = nvrcmd
---  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
-
 vim.cmd([[
-
-nnoremap <M-w> :Sayonara<CR>
-nnoremap <Leader>tt :TestNearest<CR>
-nnoremap <Leader>tl :TestLast<CR>
 function! BufferTermStrategy(cmd)
   if exists('g:_lastT')
     call win_gotoid(g:_lastT)
@@ -92,11 +61,8 @@ endfunction
 let g:test#custom_strategies = {'bufferterm': function('BufferTermStrategy')}
 let test#strategy = 'bufferterm'
 
-nmap <Leader>b <Plug>(openbrowser-smart-search)
-vmap <Leader>b <Plug>(openbrowser-smart-search)
 nnoremap cp :let @+ = expand('%')<CR>
 command! Code execute 'silent !code -r ' . getcwd() <bar> execute 'silent :!code -r ' . expand('%')
-nnoremap T :new<CR>:term<CR>
 
 autocmd TermEnter,TermOpen,BufEnter * if &buftype ==# 'terminal' | let g:_lastT = win_getid()
 autocmd WinLeave * if &buftype !=# 'terminal' | let g:_lastW = win_getid()
@@ -111,7 +77,6 @@ function! CheckFileIsEdited()
   endif
 endfunction
 
-
 nnoremap <C-n> :Cnext<CR>
 nnoremap <C-a> :Cprev<CR>
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
@@ -120,14 +85,35 @@ autocmd BufReadPost quickfix nnoremap <buffer><silent> <C-i> :cnewer<CR>
 command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
 
-" grepper
-let g:grepper = {
-  \ 'tools': ['rg', 'git'],
-  \ 'rg': { 'grepprg': 'rg --hidden --vimgrep' },
-  \}
-nnoremap F :Grepper -tool rg<cr>
-nnoremap <leader>F :Grepper -tool rg -buffer<cr>
-xmap F <plug>(GrepperOperator)
-let g:grepper.highlight = 1
-let g:grepper.switch = 0
+
+function! MyTabLine()
+  let s = ' ' . gitbranch#name() . ' '
+  for i in range(tabpagenr('$'))
+    let tab = i + 1 " range() starts at 0
+    let winnr = tabpagewinnr(tab) " gets current window of current tab
+    let buflist = tabpagebuflist(tab) " list of buffers associated with the windows in the current tab
+    let bufnr = buflist[winnr - 1] " current buffer number
+    let bufname = bufname(bufnr) " gets the name of the current buffer in the current window of the current tab
+
+    let s .= '%' . tab . 'T' " start a tab
+    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#') " if this tab is the current tab...set the right highlighting
+    let s .= ' ' . tab " current tab number
+    let bufmodified = getbufvar(bufnr, "&mod")
+    if bufmodified
+      let s .= ' +'
+    endif
+    if bufname != ''
+      let s .= ' ' . bufname . ' ' " or pathshorten(bufname)
+    endif
+  endfor
+  let s .= '%#TabLineFill#' " blank highlighting between the tabs and the righthand close 'X'
+  let s .= '%T' " resets tab page number?
+  let s .= '%=' " seperate left-aligned from right-aligned
+  return s
+endfunction
+set tabline=%!MyTabLine()
+
+set statusline=%<%f\ %m%h%r
+set statusline+=%=%l/%L
+set statusline+=\ %y
 ]])
