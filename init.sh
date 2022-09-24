@@ -40,10 +40,15 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 echo "* neovim"
 mkdir -p ~/.config/nvim
-ln -sf $CONFPATH/init.vim ~/.config/nvim/init.vim
-ln -sf $CONFPATH/coc-settings.json ~/.config/nvim/coc-settings.json
-mkdir -p ~/.vim/undo
 
+ln -sf $(pwd)/.config/nvim/init.lua $HOME/.config/nvim/init.lua
+mkdir -p $HOME/.config/nvim/lua
+find .config -type f | xargs -I% ln -sf $(pwd)/% $HOME/%
+
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+mkdir -p ~/.vim/undo
 mkdir -p ~/.cache/shell
 
 echo "* asdf"
