@@ -6,6 +6,11 @@ vim.keymap.set('n', 'Q', '<NOP>', {noremap = true, silent = true})
 vim.keymap.set('', 'R', '<NOP>', {noremap = true, silent = true})
 vim.keymap.set('n', ';', ':', {noremap = true})
 
+vim.keymap.set('n', 'j', 'gj', {noremap = true})
+vim.keymap.set('n', 'k', 'gk', {noremap = true})
+vim.keymap.set('n', 'n', 'nzvzz', {noremap = true})
+vim.keymap.set('n', 'N', 'Nzvzz', {noremap = true})
+
 --nnoremap Y y$
 
 vim.keymap.set('n', '/', '/\\v', {noremap = true})
