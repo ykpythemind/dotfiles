@@ -67,6 +67,15 @@ return require('packer').startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'MunifTanjim/prettier.nvim'
 
+  use { 
+    'Bakudankun/BackAndForward.vim',
+
+    config = function()
+      vim.keymap.set('n', 'gH', '<cmd>Back<CR>', { noremap = true })
+      vim.keymap.set('n', 'gL', '<cmd>Forward<CR>', { noremap = true })
+    end
+  }
+
   use {
     'windwp/nvim-autopairs',
     config = function() require('nvim-autopairs').setup{} end
