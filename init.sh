@@ -15,18 +15,12 @@ ln -sf $CONFPATH/.ignore ~/.agignore
 ln -sf $CONFPATH/.alacritty.yml ~/.alacritty.yml
 ln -sf $CONFPATH/.editorconfig ~/.editorconfig
 ln -sf $CONFPATH/.zshrc ~/.zshrc
-ln -sf $CONFPATH/.zprofile ~/.zprofile
 ln -sf $CONFPATH/asdf/.tool-versions ~/.tool-versions
 ln -sf $CONFPATH/peco/config.json $HOME/.config/peco/config.json
 ln -sf $CONFPATH/karabiner.json $HOME/.config/karabiner/karabiner.json
 
-# macOS
-mkdir -p ~/Library/Application\ Support/Hyper
-# ln -sf $CONFPATH/.hyper.js ~/Library/Application\ Support/Hyper/.hyper.js
-ln -sf $CONFPATH/.hyper.js ~/.hyper.js # this is deprecated
-
 echo "* git-gone"
-curl -fL https://raw.githubusercontent.com/eed3si9n/git-gone/master/git-gone -o /tmp/git-gone
+curl -fL https://raw.githubusercontent.com/ykpythemind/git-gone/master/git-gone -o /tmp/git-gone
 sudo cp /tmp/git-gone /usr/local/bin/git-gone
 sudo chmod +x /usr/local/bin/git-gone
 

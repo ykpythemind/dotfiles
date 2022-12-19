@@ -10,6 +10,9 @@ zcomet load "zsh-users/zsh-completions"
 zcomet load "sindresorhus/pure"
 zcomet compinit
 
+# for arm64
+eval $(/usr/local/bin/brew shellenv)
+
 # pure
 autoload -U promptinit; promptinit
 prompt pure
@@ -64,10 +67,6 @@ export ASDF_CONFIG_FILE=$HOME/dotfiles/asdf/.asdfrc
 
 if [ -e $HOME/.cargo/env ]; then
   source $HOME/.cargo/env
-fi
-
-if [ -e ${HOME}/.git-token ]; then
-  export GITHUB_TOKEN=$(cat "${HOME}/.git-token")
 fi
 
 if which nvim > /dev/null; then
