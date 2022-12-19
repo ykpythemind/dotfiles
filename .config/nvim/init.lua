@@ -35,6 +35,8 @@ require('packer').startup(function(use)
     end,
   }
 
+  use 'kyazdani42/nvim-web-devicons'
+
   use { -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
@@ -56,6 +58,11 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+
+  use "preservim/nerdtree"
+  use 'tyru/open-browser.vim'
+  use 'rhysd/git-messenger.vim'
+  use 'mhinz/vim-grepper'
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -91,8 +98,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
-
-vim.o.hidden = true
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -189,6 +194,37 @@ vim.keymap.set('n', '<C-j>', '5j')
 vim.keymap.set('n', '<C-k>', '5k')
 vim.keymap.set('n', '<C-h>', '10h')
 vim.keymap.set('n', '<C-l>', '10l')
+
+vim.keymap.set('n', '<Leader>b', '<Plug>(openbrowser-smart-search)')
+vim.keymap.set('v', '<Leader>b', '<Plug>(openbrowser-smart-search)')
+vim.g.git_messenger_date_format = "%Y/%m/%d %X"
+vim.keymap.set('n', '<C-g>m', '<Plug>(git-messenger)')
+
+vim.cmd([[
+  let g:grepper = {
+  \ 'tools': ['rg', 'git'],
+  \ 'rg': { 'grepprg': 'rg --hidden --vimgrep' },
+  \}
+]])
+
+vim.g.grepper.highlight = 1
+vim.g.grepper.switch = 0
+
+vim.keymap.set('n', 'F', ':Grepper -tool rg<CR>', { noremap = true })
+vim.keymap.set('n', '<Leader>F', ':Grepper -tool rg -buffer<CR>', { noremap = true })
+vim.keymap.set('x', 'F', '<Plug>(GrepperOperator)')
+
+vim.keymap.set('n', '<C-n>', ':Cnext<CR>')
+vim.keymap.set('n', '<C-a>', ':Cprev<CR>')
+--" In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
+vim.cmd([[
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+autocmd BufReadPost quickfix nnoremap <buffer><silent> <C-o> :colder<CR>
+autocmd BufReadPost quickfix nnoremap <buffer><silent> <C-i> :cnewer<CR>
+command! Cnext try | cnext | catch | cfirst | catch | endtry
+command! Cprev try | cprev | catch | clast | catch | endtry
+]]
+)
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -333,6 +369,16 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
+vim.keymap.set('n', '-', '<cmd>NERDTreeToggle<CR>', { noremap = true })
+vim.keymap.set('n', '=', '<cmd>NERDTreeFind<CR>', { noremap = true })
+
+vim.cmd([[
+  let NERDTreeShowHidden=1
+  let NERDTreeIgnore=['\.DS_Store$', '\.git$'] " ignore files in nerd tree
+  let g:NERDTreeWinSize=50
+  let NERDTreeMapQuit='='
+]])
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
@@ -413,6 +459,8 @@ end
 
 -- Turn on lsp status information
 require('fidget').setup()
+
+require'nvim-web-devicons'.setup()
 
 -- Example custom configuration for lua
 --
