@@ -11,7 +11,7 @@ zcomet load "sindresorhus/pure"
 zcomet compinit
 
 # for arm64
-eval $(/usr/local/bin/brew shellenv)
+eval $(/opt/homebrew/bin/brew shellenv)
 
 # pure
 autoload -U promptinit; promptinit

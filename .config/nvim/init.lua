@@ -63,6 +63,12 @@ require('packer').startup(function(use)
   use 'tyru/open-browser.vim'
   use 'rhysd/git-messenger.vim'
   use 'mhinz/vim-grepper'
+  use 'haya14busa/vim-asterisk'
+  use 'mopp/autodirmake.vim'
+  use 'thinca/vim-zenspace'
+  use 'tpope/vim-surround'
+  use 'thinca/vim-qfreplace'
+  use 'terryma/vim-expand-region'
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -98,6 +104,9 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+-- vim.o.cursorline = true
+vim.o.splitbelow = true
+vim.o.splitright = true
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -127,7 +136,7 @@ vim.o.termguicolors = true
 vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menuone,noselect,noinsert'
 
 vim.opt.clipboard = vim.opt.clipboard + 'unnamedplus'
 vim.api.nvim_command('set undofile')
@@ -190,10 +199,10 @@ vim.keymap.set('n', 'ZZ', '<NOP>', {noremap = true, silent = true})
 vim.keymap.set('n', 'ZQ', '<NOP>', {noremap = true, silent = true})
 vim.keymap.set('n', 'Q', '<NOP>', {noremap = true, silent = true})
 vim.keymap.set('', 'R', '<NOP>', {noremap = true, silent = true})
-vim.keymap.set('n', '<C-j>', '5j')
-vim.keymap.set('n', '<C-k>', '5k')
-vim.keymap.set('n', '<C-h>', '10h')
-vim.keymap.set('n', '<C-l>', '10l')
+-- vim.keymap.set('n', '<C-j>', '5j')
+-- vim.keymap.set('n', '<C-k>', '5k')
+-- vim.keymap.set('n', '<C-h>', '10h')
+-- vim.keymap.set('n', '<C-l>', '10l')
 
 vim.keymap.set('n', '<Leader>b', '<Plug>(openbrowser-smart-search)')
 vim.keymap.set('v', '<Leader>b', '<Plug>(openbrowser-smart-search)')
@@ -237,6 +246,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+vim.api.nvim_create_autocmd({"BufEnter"}, {
+  pattern = "*",
+  command = "setlocal fo-=orc"
+})
+
+vim.api.nvim_create_autocmd({"TermOpen"}, {
+  pattern = "*",
+  command = "setlocal nonumber"
+})
+
 -- Set lualine as statusline
 -- See `:help lualine.txt`
 require('lualine').setup {
@@ -270,6 +289,11 @@ require('gitsigns').setup {
   },
 }
 
+
+-- etc
+vim.keymap.set('v', 'v', '<Plug>(expand_region_expand)', { noremap = true })
+vim.keymap.set('n', '*', '<Plug>(asterisk-z*)')
+
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 
@@ -300,6 +324,7 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
+vim.keymap.set('n', '<C-e>', '<cmd>Telescope buffers<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
