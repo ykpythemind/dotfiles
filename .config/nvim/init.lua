@@ -70,6 +70,8 @@ require('packer').startup(function(use)
   use 'thinca/vim-qfreplace'
   use 'terryma/vim-expand-region'
 
+  use "rebelot/kanagawa.nvim"
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -133,7 +135,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme kanagawa]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect,noinsert'
