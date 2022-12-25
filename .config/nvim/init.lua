@@ -59,6 +59,8 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
+  use 'windwp/nvim-autopairs'
+  use "vim-test/vim-test"
   use "preservim/nerdtree"
   use 'tyru/open-browser.vim'
   use 'rhysd/git-messenger.vim'
@@ -268,6 +270,8 @@ require('lualine').setup {
     section_separators = '',
   },
 }
+
+require('nvim-autopairs').setup()
 
 -- Enable Comment.nvim
 require('Comment').setup()
@@ -559,6 +563,31 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- test
+vim.keymap.set('n', '<Leader>tt', ':TestNearest<CR>', { noremap = true })
+vim.keymap.set('n', '<Leader>tl', ':TestLast<CR>', { noremap = true })
+
+vim.cmd([[
+function! BufferTermStrategy(cmd)
+  if exists('g:_lastT')
+    call win_gotoid(g:_lastT)
+  else
+    vsplit | term
+  endif
+  call jobsend(b:terminal_job_id, a:cmd . "\n")
+endfunction
+let g:test#custom_strategies = {'bufferterm': function('BufferTermStrategy')}
+let test#strategy = 'bufferterm'
+
+nnoremap cp :let @+ = expand('%')<CR>
+command! Code execute 'silent !code -r ' . getcwd() <bar> execute 'silent :!code -r ' . expand('%')
+
+autocmd TermEnter,TermOpen,BufEnter * if &buftype ==# 'terminal' | let g:_lastT = win_getid()
+autocmd WinLeave * if &buftype !=# 'terminal' | let g:_lastW = win_getid()
+nnoremap <expr> <C-t> &buftype ==# 'terminal' ? ':call win_gotoid(g:_lastW)<CR>' : ':call win_gotoid(g:_lastT)<CR>:startinsert<CR>'
+tnoremap <C-t> <C-\><C-n>:call win_gotoid(g:_lastW)<CR>
+]])
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
