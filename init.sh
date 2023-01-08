@@ -66,4 +66,4 @@ go install golang.org/x/tools/cmd/goimports@latest
 
 echo "* gh"
 gh alias set --shell prcreate 'gh pr view -w || gh pr create -w'
-
+gh extension install seachicken/gh-poi
