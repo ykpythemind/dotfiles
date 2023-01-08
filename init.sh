@@ -5,7 +5,6 @@ CONFPATH="$PWD"
 echo "* symlink"
 mkdir -p $HOME/.config/peco
 
-ln -sf $CONFPATH/.vimrc ~/.vimrc
 ln -sf $CONFPATH/.gitconfig ~/.gitconfig
 ln -sf $CONFPATH/.gitignore_global ~/.gitignore_global
 ln -sf $CONFPATH/.tigrc ~/.tigrc
@@ -15,18 +14,12 @@ ln -sf $CONFPATH/.ignore ~/.agignore
 ln -sf $CONFPATH/.alacritty.yml ~/.alacritty.yml
 ln -sf $CONFPATH/.editorconfig ~/.editorconfig
 ln -sf $CONFPATH/.zshrc ~/.zshrc
-ln -sf $CONFPATH/.zprofile ~/.zprofile
 ln -sf $CONFPATH/asdf/.tool-versions ~/.tool-versions
 ln -sf $CONFPATH/peco/config.json $HOME/.config/peco/config.json
 ln -sf $CONFPATH/karabiner.json $HOME/.config/karabiner/karabiner.json
 
-# macOS
-mkdir -p ~/Library/Application\ Support/Hyper
-# ln -sf $CONFPATH/.hyper.js ~/Library/Application\ Support/Hyper/.hyper.js
-ln -sf $CONFPATH/.hyper.js ~/.hyper.js # this is deprecated
-
 echo "* git-gone"
-curl -fL https://raw.githubusercontent.com/eed3si9n/git-gone/master/git-gone -o /tmp/git-gone
+curl -fL https://raw.githubusercontent.com/ykpythemind/git-gone/master/git-gone -o /tmp/git-gone
 sudo cp /tmp/git-gone /usr/local/bin/git-gone
 sudo chmod +x /usr/local/bin/git-gone
 
@@ -44,9 +37,6 @@ mkdir -p ~/.config/nvim
 ln -sf $(pwd)/.config/nvim/init.lua $HOME/.config/nvim/init.lua
 mkdir -p $HOME/.config/nvim/lua
 find .config -type f | xargs -I% ln -sf $(pwd)/% $HOME/%
-
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 mkdir -p ~/.vim/undo
 mkdir -p ~/.cache/shell
@@ -76,4 +66,4 @@ go install golang.org/x/tools/cmd/goimports@latest
 
 echo "* gh"
 gh alias set --shell prcreate 'gh pr view -w || gh pr create -w'
-
+gh extension install seachicken/gh-poi
