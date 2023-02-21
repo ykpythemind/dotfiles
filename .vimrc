@@ -173,6 +173,11 @@ Plug 'cocopon/iceberg.vim'
 
 call plug#end()
 
+      " vim.keymap.set('n', '<C-p>', ':lua launch_filer()<CR>', { noremap = true, silent = false })
+      " vim.keymap.set('n', '<C-e>', '<cmd>Telescope buffers<CR>', { noremap = true, silent = false })
+nnoremap <C-p> <cmd>Telescope find_files<CR>
+nnoremap <C-e> <cmd>Telescope buffers<CR>
+
 " grepper
 let g:grepper = {
   \ 'tools': ['rg', 'git'],
@@ -185,7 +190,7 @@ let g:grepper.highlight = 1
 let g:grepper.switch = 0
 
 "color
-colorscheme morning
+" colorscheme morning
 " hi QuickFixLine ctermbg=none ctermfg=none
 
 " colorscheme より後におく
