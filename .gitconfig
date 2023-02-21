@@ -51,12 +51,12 @@
   branch = auto
   diff = auto
   status = auto
-[color "branch"]
-  local = yellow
-  remote = cyan
+# [color "branch"]
+#   local = yellow
+#   remote = cyan
 [color "diff"]
-  meta = yellow bold
-  frag = yellow reverse
+#   meta = yellow bold
+#   frag = yellow reverse
   old = red
   new = cyan
 [color "status"]
