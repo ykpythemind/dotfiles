@@ -170,6 +170,7 @@ Plug 'itchyny/vim-gitbranch'
 " view
 Plug 'w0ng/vim-hybrid'
 Plug 'cocopon/iceberg.vim'
+Plug 'yasukotelin/shirotelin'
 
 call plug#end()
 
@@ -190,14 +191,14 @@ let g:grepper.highlight = 1
 let g:grepper.switch = 0
 
 "color
-" colorscheme morning
+colorscheme shirotelin
 " hi QuickFixLine ctermbg=none ctermfg=none
 
 " colorscheme より後におく
-set termguicolors
+" set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " 文字色
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色
-" set background=dark
+"set background=dark
 
 map *  <Plug>(asterisk-z*)
 vmap v <Plug>(expand_region_expand)
