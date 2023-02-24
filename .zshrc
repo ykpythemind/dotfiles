@@ -104,18 +104,6 @@ alias docker-clean-containers='docker rm $(docker ps --filter=status=exited --fi
 # function
 #
 
-function rsv-bastion() {
-  if [ $1 = "production" ]; then
-    aws ssm start-session --target i-0642e3259889c17cf
-  elif [ $1 = "staging" ]; then
-    aws ssm start-session --target i-0c15f3b3c92e56be6
-  elif [ $1 = "sandbox" ]; then
-    aws ssm start-session --target i-09252a66bd07c76b8
-  else
-    echo "invalid bastion name ... ${1}"
-  fi
-}
-
 function gcom() {
   local ret
   git branch | grep --silent "main\$"

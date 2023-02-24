@@ -3,19 +3,18 @@
 CONFPATH="$PWD"
 
 echo "* symlink"
-mkdir -p $HOME/.config/peco
+mkdir -p $HOME/.config/nvim
 
 ln -sf $CONFPATH/.gitconfig ~/.gitconfig
 ln -sf $CONFPATH/.gitignore_global ~/.gitignore_global
-ln -sf $CONFPATH/.tigrc ~/.tigrc
 ln -sf $CONFPATH/.tmux.conf ~/.tmux.conf
 ln -sf $CONFPATH/.ignore ~/.ignore
 ln -sf $CONFPATH/.ignore ~/.agignore
 ln -sf $CONFPATH/.alacritty.yml ~/.alacritty.yml
-ln -sf $CONFPATH/.editorconfig ~/.editorconfig
 ln -sf $CONFPATH/.zshrc ~/.zshrc
+ln -sf $CONFPATH/.vimrc ~/.vimrc
+ln -sf $CONFPATH/.vimrc ~/.config/nvim/init.vim
 ln -sf $CONFPATH/asdf/.tool-versions ~/.tool-versions
-ln -sf $CONFPATH/peco/config.json $HOME/.config/peco/config.json
 ln -sf $CONFPATH/karabiner.json $HOME/.config/karabiner/karabiner.json
 
 echo "* git-gone"
@@ -28,15 +27,14 @@ mkdir -p ~/.zsh/completion
 curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose --version | awk 'NR==1{print $NF}')/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose
 
 echo "* vimplug"
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 echo "* neovim"
-mkdir -p ~/.config/nvim
-
-ln -sf $(pwd)/.config/nvim/init.lua $HOME/.config/nvim/init.lua
-mkdir -p $HOME/.config/nvim/lua
-find .config -type f | xargs -I% ln -sf $(pwd)/% $HOME/%
+#mkdir -p ~/.config/nvim
+#ln -sf $(pwd)/.config/nvim/init.lua $HOME/.config/nvim/init.lua
+#mkdir -p $HOME/.config/nvim/lua
+#find .config -type f | xargs -I% ln -sf $(pwd)/% $HOME/%
 
 mkdir -p ~/.vim/undo
 mkdir -p ~/.cache/shell
