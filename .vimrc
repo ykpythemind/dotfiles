@@ -179,6 +179,10 @@ call plug#end()
 nnoremap <C-p> <cmd>Telescope find_files<CR>
 nnoremap <C-e> <cmd>Telescope buffers<CR>
 
+if has('nvim')
+lua require('Comment').setup()
+endif
+
 " grepper
 let g:grepper = {
   \ 'tools': ['rg', 'git'],
