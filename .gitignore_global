@@ -31,3 +31,6 @@ Thumbs.db
 .tool-versions
 
 .deno__
+
+docker-compose.override.yml
+docker-compose.override.yaml
