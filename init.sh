@@ -16,6 +16,7 @@ ln -sf $CONFPATH/.vimrc ~/.vimrc
 ln -sf $CONFPATH/.vimrc ~/.config/nvim/init.vim
 ln -sf $CONFPATH/asdf/.tool-versions ~/.tool-versions
 ln -sf $CONFPATH/karabiner.json $HOME/.config/karabiner/karabiner.json
+ln -sf $CONFPATH/.hammerspoon/init.lua $HOME/.hammerspoon/init.lua
 
 echo "* git-gone"
 curl -fL https://raw.githubusercontent.com/ykpythemind/git-gone/master/git-gone -o /tmp/git-gone
