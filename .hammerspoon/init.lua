@@ -10,7 +10,7 @@ function focus(appName)
 end
 
 hs.hotkey.bind({ "cmd" }, "1", function()
-  focus("Firefox Developer Edition")
+  focus("Sidekick")
 end)
 hs.hotkey.bind({ "cmd" }, "2", function()
   focus("Terminal")
