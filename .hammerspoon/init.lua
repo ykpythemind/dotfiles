@@ -9,12 +9,12 @@ function focus(appName)
   end
 end
 
-hs.hotkey.bind({ "cmd" }, "1", function()
+hs.hotkey.bind({ "ctrl" }, "1", function()
   focus("Sidekick")
 end)
-hs.hotkey.bind({ "cmd" }, "2", function()
+hs.hotkey.bind({ "ctrl" }, "2", function()
   focus("Terminal")
 end)
-hs.hotkey.bind({ "cmd" }, "3", function()
+hs.hotkey.bind({ "ctrl" }, "3", function()
   focus("Visual Studio Code")
 end)
