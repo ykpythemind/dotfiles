@@ -30,15 +30,6 @@ sudo vim /etc/shells # `brew --prefix zsh` の結果を追加
 chsh -s `brew --prefix zsh`
 ```
 
-### zcomet
-
-https://github.com/agkozak/zcomet
-
-```
-zcomet update
-zcomet self-update
-```
-
 ## neovim
 
 ```

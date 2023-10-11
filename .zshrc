@@ -1,21 +1,24 @@
-# Clone zcomet if necessary
-if [[ ! -f ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh ]]; then
-  command git clone https://github.com/agkozak/zcomet.git ${ZDOTDIR:-${HOME}}/.zcomet/bin
-fi
-source ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh
+source ~/.zplug/init.zsh
+zplug "MichaelAquilina/zsh-auto-notify"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
-zcomet load "MichaelAquilina/zsh-auto-notify"
-zcomet load "zsh-users/zsh-autosuggestions"
-zcomet load "zsh-users/zsh-completions"
-zcomet load "sindresorhus/pure"
-zcomet compinit
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+# Then, source plugins and add commands to $PATH
+zplug load
 
 # for arm64
 eval $(/opt/homebrew/bin/brew shellenv)
 
 # pure
-autoload -U promptinit; promptinit
-prompt pure
 zstyle ':prompt:pure:prompt:error' color yellow
 
 eval "$(direnv hook zsh)"
