@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'tempfile'
+
+base_branch = nil
+debug = false
+
+opts = OptionParser.new do |o|
+  o.version = '1.0.0'
+  o.banner = <<-USAGE
+Usage:
+    git tidy
+
+Options:
+  USAGE
+  o.on('--base-branch', 'specify base branch') { base_branch = _1 }
+  o.on('-d', '--debug', 'debug') { debug = true }
+end
+
+if `git status --porcelain`.strip != ''
+  warn 'working directory is not clean'
+  exit 1
+end
+
+if ENV['BASE_BRANCH']
+  base_branch = ENV['BASE_BRANCH']
+end
+
+if base_branch.nil?
+  base_branch = `git remote show origin | grep 'HEAD branch' | awk '{print $NF}'`.strip
+
+  puts "base branch is now #{base_branch}"
+end
+
+current_branch = `git branch --show-current`.strip
+
+if base_branch == current_branch
+  warn 'base branch and current branch are same'
+  exit 1
+end
+
+backup_branch = "backup-#{current_branch}-#{Time.now.strftime('%Y%m%d%H%M%S')}"
+system("git branch -c #{backup_branch}", exception: true)
+puts "backup branch to #{backup_branch}"
+
+# puts `git diff #{base_branch}..#{current_branch}`
+system("git reset --hard #{base_branch}", exception: true)
+system("git merge --squash #{backup_branch}", exception: true)
+
+puts({base_branch: base_branch, current_branch: current_branch, backup_branch: backup_branch}) if debug
