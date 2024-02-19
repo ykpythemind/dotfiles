@@ -34,7 +34,6 @@
     cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
     wip = !git add . && git commit -m 'wip' && git --no-pager diff --name-only HEAD~
     tidy = "!$HOME/dotfiles/git/tidy"
-    # tidy = "!f(){ echo ${1:?"argument-required"} 1>/dev/null 2>&1 && CURRENT=$(git branch --contains | cut -d ' ' -f 2) && A=\"/tmp/diff_$1_and_$CURRENT\" && git diff \"origin/$1\" > "$A" && echo $A && git reset --hard \"origin/$1\" && git apply \"$A\";};f"
 [pager]
     log = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
     show = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
