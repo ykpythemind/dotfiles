@@ -4,6 +4,7 @@ CONFPATH="$PWD"
 
 echo "* symlink"
 mkdir -p $HOME/.config/nvim
+mkdir -p $HOME/.config/direnv
 
 ln -sf $CONFPATH/.gitconfig ~/.gitconfig
 ln -sf $CONFPATH/.gitignore_global ~/.gitignore_global
@@ -14,6 +15,7 @@ ln -sf $CONFPATH/.alacritty.yml ~/.alacritty.yml
 ln -sf $CONFPATH/.zshrc ~/.zshrc
 ln -sf $CONFPATH/.vimrc ~/.vimrc
 ln -sf $CONFPATH/.vimrc ~/.config/nvim/init.vim
+ln -sf $CONFPATH/direnvrc $HOME/.config/direnv/direnvrc
 ln -sf $CONFPATH/asdf/.tool-versions ~/.tool-versions
 ln -sf $CONFPATH/karabiner.json $HOME/.config/karabiner/karabiner.json
 ln -sf $CONFPATH/.hammerspoon/init.lua $HOME/.hammerspoon/init.lua
