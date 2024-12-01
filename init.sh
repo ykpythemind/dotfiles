@@ -13,6 +13,7 @@ ln -sf $CONFPATH/.ignore ~/.ignore
 ln -sf $CONFPATH/.ignore ~/.agignore
 ln -sf $CONFPATH/.alacritty.yml ~/.alacritty.yml
 ln -sf $CONFPATH/.zshrc ~/.zshrc
+ln -sf $CONFPATH/.zprofile ~/.zprofile
 ln -sf $CONFPATH/.vimrc ~/.vimrc
 ln -sf $CONFPATH/.vimrc ~/.config/nvim/init.vim
 ln -sf $CONFPATH/direnvrc $HOME/.config/direnv/direnvrc
@@ -33,6 +34,8 @@ if [[ ! -f ${HOME}/.zplug ]]; then
   # https://github.com/zplug/zplug
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
+
+which mise
 
 echo "* vimplug"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
