@@ -36,3 +36,4 @@ docker-compose.override.yml
 docker-compose.override.yaml
 
 mise.local.toml
+mise.toml
