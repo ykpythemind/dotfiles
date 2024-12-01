@@ -24,8 +24,8 @@ zstyle ':prompt:pure:prompt:error' color yellow
 eval "$(direnv hook zsh)"
 stty eof undef
 
-. $HOME/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
+#. $HOME/.asdf/asdf.sh
+# fpath=(${ASDF_DIR}/completions $fpath)
 
 autoload -Uz compinit; compinit -i
 # tabの補完候補から選択
