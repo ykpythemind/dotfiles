@@ -35,7 +35,7 @@ if [[ ! -f ${HOME}/.zplug ]]; then
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 
-which mise
+which mise || echo "mise not found. please install it. https://mise.jdx.dev/getting-started.html"
 
 echo "* vimplug"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
