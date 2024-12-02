@@ -207,3 +207,7 @@ if [ -f '/Users/ykpythemind/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ykp
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/ykpythemind/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ykpythemind/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+# this sets up interactive sessions
+eval "$(mise activate zsh)"
