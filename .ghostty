@@ -1,0 +1,14 @@
+theme = iTerm2 Light Background
+
+font-feature = -calt
+font-feature = -dlig
+
+keybind = command+h=goto_split:left
+keybind = command+l=goto_split:right
+keybind = command+j=goto_split:bottom
+keybind = command+k=goto_split:top
+
+keybind = option+l=next_tab
+keybind = option+h=previous_tab
+
+window-inherit-working-directory = true

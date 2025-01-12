@@ -24,9 +24,6 @@ zstyle ':prompt:pure:prompt:error' color yellow
 eval "$(direnv hook zsh)"
 stty eof undef
 
-#. $HOME/.asdf/asdf.sh
-# fpath=(${ASDF_DIR}/completions $fpath)
-
 autoload -Uz compinit; compinit -i
 # tabの補完候補から選択
 zstyle ':completion:*:default' menu select=1
@@ -66,7 +63,6 @@ export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 export RIPGREP_CONFIG_PATH=$HOME/dotfiles/ripgrep_rc
-export ASDF_CONFIG_FILE=$HOME/dotfiles/asdf/.asdfrc
 
 if [ -e $HOME/.cargo/env ]; then
   source $HOME/.cargo/env
