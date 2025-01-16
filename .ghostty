@@ -10,5 +10,3 @@ keybind = command+k=goto_split:top
 
 keybind = option+l=next_tab
 keybind = option+h=previous_tab
-
-window-inherit-working-directory = true
