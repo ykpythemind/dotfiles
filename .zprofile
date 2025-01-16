@@ -1,3 +1,3 @@
 # this sets up non-interactive sessions
-eval "$($HOME/.local/bin/mise activate zsh --shims)"
+# eval "$($HOME/.local/bin/mise activate zsh --shims)"
 
