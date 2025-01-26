@@ -13,4 +13,4 @@ keybind = option+h=previous_tab
 
 cursor-opacity = 0.7
 cursor-style = block
-cursor-style-blink = false
+shell-integration-features = no-cursor
