@@ -10,3 +10,7 @@ keybind = command+k=goto_split:top
 
 keybind = option+l=next_tab
 keybind = option+h=previous_tab
+
+cursor-opacity = 0.7
+cursor-style = block
+cursor-style-blink = false
