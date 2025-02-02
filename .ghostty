@@ -13,4 +13,5 @@ keybind = option+h=previous_tab
 
 cursor-opacity = 0.7
 cursor-style = block
-shell-integration-features = no-cursor
+#shell-integration-features = no-cursor
+window-inherit-working-directory = true
