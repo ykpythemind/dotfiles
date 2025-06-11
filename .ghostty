@@ -1,5 +1,6 @@
 theme = iTerm2 Light Background
 
+font-family = JetBrains Mono
 font-feature = -calt
 font-feature = -dlig
 
@@ -14,4 +15,4 @@ keybind = option+h=previous_tab
 cursor-opacity = 0.7
 cursor-style = block
 #shell-integration-features = no-cursor
-window-inherit-working-directory = true
+#window-inherit-working-directory = true

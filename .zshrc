@@ -202,3 +202,11 @@ if [ -f '/Users/ykpythemind/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ykp
 if [ -f '/Users/ykpythemind/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ykpythemind/google-cloud-sdk/completion.zsh.inc'; fi
 
 eval "$(~/.local/bin/mise activate zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/ykpythemind/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
