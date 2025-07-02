@@ -56,6 +56,7 @@ export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export FZF_DEFAULT_OPTS="--reverse"
 export GHQ_SELECTOR="fzf"
+export GHQ_ROOT=~/git
 
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"

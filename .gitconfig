@@ -38,8 +38,6 @@
     log = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
     show = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
     diff = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight|less --RAW-CONTROL-CHARS --quiet -c
-[ghq]
-    root = ~/git
 [user]
     name = ykpythemind
     email = yukibukiyou@gmail.com
