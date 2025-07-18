@@ -18,6 +18,8 @@ zplug load
 # for arm64
 eval $(/opt/homebrew/bin/brew shellenv)
 
+eval "$(~/.local/bin/mise activate zsh)"
+
 # pure
 zstyle ':prompt:pure:prompt:error' color yellow
 
@@ -201,8 +203,6 @@ if [ -f '/Users/ykpythemind/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ykp
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/ykpythemind/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ykpythemind/google-cloud-sdk/completion.zsh.inc'; fi
-
-eval "$(~/.local/bin/mise activate zsh)"
 
 # pnpm
 export PNPM_HOME="/Users/ykpythemind/Library/pnpm"
