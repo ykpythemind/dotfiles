@@ -93,8 +93,10 @@ zstyle ':chpwd:*' recent-dirs-pushd true
 # alias
 alias la='ls -laG'
 alias g='git'
+alias gf='git fetch'
 alias gs='git status'
 alias gd='git diff'
+alias gds='git diff --staged'
 alias ga='git add'
 alias gpl='git pull'
 alias gps='git push'
