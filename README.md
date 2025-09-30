@@ -30,15 +30,6 @@ sudo vim /etc/shells # `brew --prefix zsh` の結果を追加
 chsh -s `brew --prefix zsh`
 ```
 
-## neovim
-
-```
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-:PlugInstall
-```
-
 ## 他
 
 - Mac app
