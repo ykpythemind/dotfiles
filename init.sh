@@ -5,6 +5,7 @@ CONFPATH="$PWD"
 echo "* symlink"
 mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.config/direnv
+mkdir -p $HOME/.claude
 
 ln -sf $CONFPATH/.gitconfig ~/.gitconfig
 ln -sf $CONFPATH/.gitignore_global ~/.gitignore_global
@@ -15,6 +16,7 @@ ln -sf $CONFPATH/.zshrc ~/.zshrc
 ln -sf $CONFPATH/.zprofile ~/.zprofile
 ln -sf $CONFPATH/.vimrc ~/.vimrc
 ln -sf $CONFPATH/.vimrc ~/.config/nvim/init.vim
+ln -sf $CONFPATH/claude/settings.json ~/.claude/settings.json
 
 echo "* git-gone"
 curl -fL https://raw.githubusercontent.com/ykpythemind/git-gone/master/git-gone -o /tmp/git-gone

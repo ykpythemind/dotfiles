@@ -1,0 +1,20 @@
+{
+  "env": {
+    "DISABLE_BUG_COMMAND": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_TELEMETRY": "1"
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title \"Claude Code\" -message \"Waiting for your response...\" -sound default"
+          }
+        ]
+      }
+    ]
+  }
+}
