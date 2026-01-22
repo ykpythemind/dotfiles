@@ -10,7 +10,6 @@
     default = simple
     autoSetupRemote = true
 [pull]
-    rebase = false
 [fetch]
     prune = true
 [alias]
@@ -41,8 +40,8 @@
 [user]
     name = ykpythemind
     email = yukibukiyou@gmail.com
-[url "git@github.com:"]
-    insteadOf = https://github.com/
+#[url "git@github.com:"]
+#    insteadOf = https://github.com/
 [init]
   defaultBranch = main
 
