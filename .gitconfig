@@ -61,3 +61,5 @@
 [color "status"]
   changed = red
   added = cyan
+[wt]
+	basedir = .worktrees

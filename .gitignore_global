@@ -37,3 +37,5 @@ docker-compose.override.yaml
 
 mise.local.toml
 mise.toml
+
+.claude/settings.local.json

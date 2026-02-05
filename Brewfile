@@ -32,6 +32,7 @@ brew "dip"
 
 brew "bluetoothconnector"
 brew "switchaudio-osx"
+brew "k1LoW/tap/git-wt"
 
 cask "ngrok"
 cask "ghostty"

@@ -20,6 +20,8 @@ eval $(/opt/homebrew/bin/brew shellenv)
 
 eval "$(~/.local/bin/mise activate zsh)"
 
+eval "$(git wt --init zsh)"
+
 # pure
 zstyle ':prompt:pure:prompt:error' color yellow
 
@@ -153,6 +155,10 @@ gpr() {
       gh pr view $pr --web
     fi
   fi
+}
+
+wt() {
+  git wt "$(git wt | tail -n +2 | peco | awk '{print $(NF-1)}')"
 }
 
 # move to ghq dir
