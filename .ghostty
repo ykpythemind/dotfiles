@@ -1,5 +1,15 @@
-theme = GitHub Light
+theme = GitHub Light Default
 font-family = BIZ UDGothic
 font-family = HackGen Console
 font-size = 14
 font-feature = -dlig
+keybind = shift+enter=text:\n
+keybind = opt+h=previous_tab
+keybind = opt+l=next_tab
+keybind = ctrl+q>h=goto_split:left
+keybind = ctrl+q>j=goto_split:bottom
+keybind = ctrl+q>k=goto_split:top
+keybind = ctrl+q>l=goto_split:right
+keybind = ctrl+q>v=new_split:right
+keybind = ctrl+q>s=new_split:down
+keybind = ctrl+q>x=close_surface
