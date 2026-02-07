@@ -6,8 +6,9 @@
   },
   "permissions": {
     "allow": [
-      "Read(**/.worktrees/**)",
-      "Read(/tmp/**)",
+      "Read",
+      "Glob",
+      "Grep",
       "Find(file:*)",
       "Bash(open *)",
       "Bash(npm run *)",
@@ -41,10 +42,7 @@
       "Bash(bin/rails *)",
       "Bash(bundle exec rails *)",
       "Bash(bundle exec standardrb *)",
-      "Bash(sips *)",
-      "Read",
-      "Glob",
-      "Grep"
+      "Bash(sips *)"
     ],
     "deny": [
       "Read(**/.worktrees/**/.env*)",
@@ -62,11 +60,7 @@
       "Read(~/.ssh/**)",
       "Read(~/.aws/**)"
     ],
-    "ask": [
-      "Bash(git push *)",
-      "Bash(rm *)",
-      "Bash(mv *)"
-    ]
+    "ask": []
   },
   "hooks": {
     "Stop": [
