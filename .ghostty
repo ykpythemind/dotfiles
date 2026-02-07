@@ -13,3 +13,5 @@ keybind = ctrl+q>l=goto_split:right
 keybind = ctrl+q>v=new_split:right
 keybind = ctrl+q>s=new_split:down
 keybind = ctrl+q>x=close_surface
+unfocused-split-opacity = 0.85
+unfocused-split-fill = #000000
