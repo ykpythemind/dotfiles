@@ -41,7 +41,10 @@
       "Bash(bin/rails *)",
       "Bash(bundle exec rails *)",
       "Bash(bundle exec standardrb *)",
-      "Bash(sips *)"
+      "Bash(sips *)",
+      "Read",
+      "Glob",
+      "Grep"
     ],
     "deny": [
       "Read(**/.worktrees/**/.env*)",
