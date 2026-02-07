@@ -17,6 +17,8 @@ ln -sf $CONFPATH/.zprofile ~/.zprofile
 ln -sf $CONFPATH/.vimrc ~/.vimrc
 ln -sf $CONFPATH/.vimrc ~/.config/nvim/init.vim
 ln -sf $CONFPATH/claude/settings.json ~/.claude/settings.json
+ln -sf $CONFPATH/claude/commands ~/.claude/commands
+ln -sf $CONFPATH/claude/skills ~/.claude/skills
 
 echo "* git-gone"
 curl -fL https://raw.githubusercontent.com/ykpythemind/git-gone/master/git-gone -o /tmp/git-gone
