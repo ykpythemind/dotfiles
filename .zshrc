@@ -109,6 +109,8 @@ alias gcm='git commit'
 alias gst='git stash'
 alias gstp='git stash pop'
 alias vim='nvim'
+alias c='claude'
+alias t='tmux'
 alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias docker-clean-containers='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 

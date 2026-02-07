@@ -1,0 +1,3 @@
+theme = light:GruvboxLight,dark:GruvboxDark
+font-family = HackGen Console
+font-size = 14
