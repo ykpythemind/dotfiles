@@ -25,5 +25,15 @@ else
   git_info=""
 fi
 
-# Output format: directory [git info]
-printf "\033[2m\033[36m$dir_name\033[0m$git_info"
+# Context window usage
+PCT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
+if [ "$PCT" -ge 90 ]; then
+  ctx_color="\033[31m"  # red
+elif [ "$PCT" -ge 70 ]; then
+  ctx_color="\033[33m"  # yellow
+else
+  ctx_color="\033[2m"   # dim
+fi
+
+# Output format: directory [git info] | context %
+printf "\033[2m\033[36m$dir_name\033[0m$git_info \033[2m│\033[0m ${ctx_color}${PCT}%%\033[0m"
