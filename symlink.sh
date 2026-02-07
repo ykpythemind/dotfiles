@@ -5,6 +5,7 @@ CONFPATH="$PWD"
 echo "* symlink"
 mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.config/direnv
+mkdir -p $HOME/.config/ghostty
 mkdir -p $HOME/.claude
 
 ln -sf $CONFPATH/.gitconfig ~/.gitconfig
@@ -16,6 +17,7 @@ ln -sf $CONFPATH/.zshrc ~/.zshrc
 ln -sf $CONFPATH/.zprofile ~/.zprofile
 ln -sf $CONFPATH/.vimrc ~/.vimrc
 ln -sf $CONFPATH/.vimrc ~/.config/nvim/init.vim
+ln -sf $CONFPATH/.ghostty ~/.config/ghostty/config
 ln -sf $CONFPATH/claude/settings.json ~/.claude/settings.json
 ln -sfn $CONFPATH/claude/commands ~/.claude/commands
 ln -sfn $CONFPATH/claude/skills ~/.claude/skills
