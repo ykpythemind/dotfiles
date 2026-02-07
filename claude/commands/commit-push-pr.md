@@ -14,7 +14,7 @@ description: Commit, push, and open a PR
 Based on the above changes:
 
 1. Create a new branch if on main or master
-2. Create commits with appropriate messages for each change
+2. Create commits with appropriate messages for each change. message should be in Japanese.
 3. Push the branch to origin
 4. Create a pull request using `gh pr create --draft` if no pull request exists for the branch
 5. If a pull request exists for the branch, update the pull request with the new commits
