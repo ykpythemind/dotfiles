@@ -1,7 +1,6 @@
 theme = GitHub Light Default
-font-family = BIZ UDGothic
-font-family = HackGen Console
-font-size = 14
+font-family = SF Mono
+font-size = 11
 font-feature = -dlig
 keybind = shift+enter=text:\n
 keybind = opt+h=previous_tab
