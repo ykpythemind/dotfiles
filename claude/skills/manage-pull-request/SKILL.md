@@ -1,5 +1,5 @@
 ---
-name: manage-git-pull-request
+name: manage-pull-request
 description: Manage (create, update) a git pull request
 version: 1.0.0
 ---
