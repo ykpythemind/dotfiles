@@ -1,3 +1,5 @@
-theme = light:GruvboxLight,dark:GruvboxDark
+theme = GitHub Light
+font-family = BIZ UDGothic
 font-family = HackGen Console
 font-size = 14
+font-feature = -dlig
