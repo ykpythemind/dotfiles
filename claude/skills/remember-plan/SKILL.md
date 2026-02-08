@@ -7,6 +7,6 @@ allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git push:*), Bash(git c
 # Your task
 
 - Remember a plan by committing it to a file
-- Path: `{REPOSITORY_ROOT}/.claude/plans/`
+- Plan File Path: settings.jsonの `plansDirectory` を参照する。設定がない場合は `{REPOSITORY_ROOT}/docs/plans` をデフォルトとして使う
 - File name: `{YYYY-MM-DD}-{plan-name}.md`
 - Commit message: `[ci skip] Add plan: {plan-name}`

@@ -9,8 +9,8 @@ disable-model-invocation: true
 
 ## Your task
 
-- Start from an existing plan
-- Path: `{REPOSITORY_ROOT}/.claude/plans/`
+- Start implementation from an existing plan file.
+- Plan File Path: settings.jsonの `plansDirectory` を参照する。設定がない場合は `{REPOSITORY_ROOT}/docs/plans` をデフォルトとして使う
 - File name: `{YYYY-MM-DD}-{plan-name}.md`
 
-if plan is ambiguous, ask the user to specify the plan.
+if plan file location is ambiguous, ask the user to specify the plan.
