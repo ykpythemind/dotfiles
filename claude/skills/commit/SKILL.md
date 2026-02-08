@@ -1,6 +1,7 @@
 ---
-allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
+name: commit
 description: Create git commit
+allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
 ---
 
 ## Context
@@ -13,5 +14,7 @@ description: Create git commit
 ## Your task
 
 Create commits with appropriate messages for each change. message should be in Japanese.
+
+If file changes are only related to `CLAUDE.md` or `.claude/**/*.md`, message should be start with `[ci skip]`.
 
 You have the capability to call multiple tools in a single response. Stage and create the commit using a single message. Do not use any other tools or do anything else. Do not send any other text or messages besides these tool calls.
