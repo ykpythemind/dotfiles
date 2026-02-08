@@ -1,6 +1,8 @@
 ---
 name: claude-log-to-md
-description: Convert Claude Code JSONL conversation logs to readable Markdown. Use when the user wants to export, view, or share a Claude Code session as markdown. Triggers include requests to "export session log", "convert log to markdown", "show session as markdown", "output conversation log", or any task involving rendering Claude Code JSONL session files as human-readable markdown.
+description: Convert Claude Code JSONL conversation logs to readable Markdown. Use when the user wants to export, view, or share a Claude Code session as markdown.
+allowed-tools: Glob, Read, Bash(ruby *)
+disable-model-invocation: true
 ---
 
 # Claude Log to Markdown
