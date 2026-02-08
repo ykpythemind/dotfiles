@@ -1,5 +1,5 @@
 ---
-name: manage-pr
+name: pr
 description: Manage pull request. Automatically check the status of the pull request and try to fix issues.
 allowed-tools: Bash(git checkout --branch:*), Bash(git add:*), Bash(git status:*), Bash(git push:*), Bash(git commit:*), Bash(gh pr checks:*), Bash(gh pr view:*), Bash(gh pr list:*), Bash(gr run view:*), Skill(commit-push-pr)
 ---
