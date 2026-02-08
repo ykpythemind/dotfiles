@@ -1,0 +1,16 @@
+{
+  "name": "ykpythemind-skills",
+  "owner": {
+    "name": "ykpythemind"
+  },
+  "metadata": {
+    "description": "Claude Code skills for PR management and plan-driven development"
+  },
+  "plugins": [
+    {
+      "name": "ykpythemind-skills",
+      "source": "./plugins/ykpythemind-skills",
+      "description": "PR management, plan management, and implementation skills for Claude Code"
+    }
+  ]
+}
