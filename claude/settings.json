@@ -89,6 +89,7 @@
     "context7@claude-plugins-official": true,
     "Notion@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": false,
-    "agent-browser@agent-browser": true
+    "agent-browser@agent-browser": true,
+    "claude-md-management@claude-plugins-official": true
   }
 }
