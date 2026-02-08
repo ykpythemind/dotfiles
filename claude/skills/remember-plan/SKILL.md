@@ -1,6 +1,7 @@
 ---
-allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git push:*), Bash(git commit:*)
+name: remember-plan
 description: Remember a plan with git commit
+allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git push:*), Bash(git commit:*)
 ---
 
 # Your task

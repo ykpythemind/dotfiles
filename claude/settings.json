@@ -27,6 +27,7 @@
       "Bash(echo *)",
       "Bash(pwd)",
       "Bash(date *)",
+      "Bash(find *)",
       "Bash(gh pr list:*)",
       "Bash(gh pr view:*)",
       "Bash(gh pr edit:*)",
@@ -42,7 +43,9 @@
       "Bash(bin/rails *)",
       "Bash(bundle exec rails *)",
       "Bash(bundle exec standardrb *)",
-      "Bash(sips *)"
+      "Bash(sips *)",
+      "Skill(remember-plan)",
+      "Skill(check-pr)"
     ],
     "deny": [
       "Read(**/.worktrees/**/.env*)",
