@@ -19,6 +19,7 @@ ln -sf $CONFPATH/.vimrc ~/.vimrc
 ln -sf $CONFPATH/.vimrc ~/.config/nvim/init.vim
 ln -sf $CONFPATH/.ghostty ~/.config/ghostty/config
 ln -sf $CONFPATH/claude/settings.json ~/.claude/settings.json
+ln -sf $CONFPATH/claude/CLAUDE.md ~/.claude/CLAUDE.md
 ln -sfn $CONFPATH/claude/commands ~/.claude/commands
 ln -sfn $CONFPATH/claude/skills ~/.claude/skills
 ln -sf $CONFPATH/claude/statusline-command.sh ~/.claude/statusline-command.sh
