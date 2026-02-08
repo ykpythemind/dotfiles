@@ -24,7 +24,7 @@ To fix issues, you can use the following tools:
 # Resolve Review Comments
 
 レビューコメントを見て、もしそれが今回のPRに対して重要な指摘だと判断できたら、planファイルにその旨を追記して、修正を試みてください。重要な指摘とは、仕様の変更や致命的なバグの可能性についての言及になります。
-判断が難しい場合は
+判断が難しい場合はユーザーに積極的に質問してください。
 
 # Opening the pull request in the browser
 
