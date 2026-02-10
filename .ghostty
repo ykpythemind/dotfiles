@@ -2,6 +2,8 @@ theme = GitHub Light Default
 font-family = SF Mono
 font-size = 11
 font-feature = -dlig
+font-feature = -calt
+font-feature = -liga
 keybind = shift+enter=text:\n
 keybind = opt+h=previous_tab
 keybind = opt+l=next_tab
