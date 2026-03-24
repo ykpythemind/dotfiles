@@ -21,7 +21,3 @@ Based on the above changes:
 5. If a pull request exists for the branch, update the pull request with the new commits
 6. Open the pull request in the browser
 7. You have the capability to call multiple tools in a single response. You MUST do all of the above in a single message. Do not use any other tools or do anything else. Do not send any other text or messages besides these tool calls.
-
-### Commit Message
-
-If file changes are only related to `CLAUDE.md` or `.claude/**/*.md`, message should be start with `[ci skip]`.
