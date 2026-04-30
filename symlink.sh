@@ -21,5 +21,15 @@ ln -sf $CONFPATH/.ghostty ~/.config/ghostty/config
 ln -sf $CONFPATH/claude/settings.json ~/.claude/settings.json
 ln -sf $CONFPATH/claude/CLAUDE.md ~/.claude/CLAUDE.md
 ln -sfn $CONFPATH/claude/commands ~/.claude/commands
-ln -sfn $CONFPATH/claude/skills ~/.claude/skills
+
+# skillsはディレクトリごとではなく個別にsymlinkする
+# (dotfiles管理外のskillと共存できるようにするため)
+if [ -L "$HOME/.claude/skills" ]; then
+  rm "$HOME/.claude/skills"
+fi
+mkdir -p "$HOME/.claude/skills"
+for skill in "$CONFPATH"/claude/skills/*/; do
+  name=$(basename "$skill")
+  ln -sfn "$skill" "$HOME/.claude/skills/$name"
+done
 ln -sf $CONFPATH/claude/statusline-command.sh ~/.claude/statusline-command.sh
