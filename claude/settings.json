@@ -59,7 +59,8 @@
       "Read(~/.ssh/**)",
       "Read(~/.aws/**)"
     ],
-    "ask": []
+    "ask": [],
+    "defaultMode": "auto"
   },
   "hooks": {
     "Stop": [
@@ -87,5 +88,8 @@
     "commit-commands@claude-plugins-official": false,
     "agent-browser@agent-browser": true,
     "claude-md-management@claude-plugins-official": true
-  }
+  },
+  "theme": "light",
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
 }
