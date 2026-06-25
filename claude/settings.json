@@ -79,7 +79,6 @@
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
   },
-  "skipAutoPermissionPrompt": true,
   "enabledPlugins": {
     "posthog@claude-plugins-official": false,
     "playwright@claude-plugins-official": false,
