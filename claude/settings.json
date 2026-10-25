@@ -1,11 +1,7 @@
 {
-  "env": {},
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
-      "Read",
-      "Glob",
-      "Grep",
-      "Find(file:*)",
       "Bash(open *)",
       "Bash(npm run *)",
       "Bash(yarn *)",
@@ -24,48 +20,42 @@
       "Bash(pwd)",
       "Bash(date *)",
       "Bash(find *)",
-      "Bash(gh pr list:*)",
-      "Bash(gh pr view:*)",
-      "Bash(gh pr edit:*)",
-      "Bash(gh pr diff:*)",
-      "Bash(gh pr checks:*)",
-      "Bash(gh pr create:*)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr edit *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh pr checks *)",
+      "Bash(gh pr create *)",
       "Bash(gh api *)",
-      "Bash(gh run view:*)",
-      "Bash(gh run list:*)",
-      "Bash(gh issue create:*)",
-      "Bash(gh issue edit:*)",
+      "Bash(gh run view *)",
+      "Bash(gh run list *)",
+      "Bash(gh issue create *)",
+      "Bash(gh issue edit *)",
       "Bash(bin/rspec *)",
       "Bash(bin/rails *)",
       "Bash(bundle exec rails *)",
       "Bash(bundle exec standardrb *)",
-      "Bash(sips *)",
-      "Skill(remember-plan)",
-      "Skill(check-pr)"
+      "Bash(sips *)"
     ],
     "deny": [
-      "Read(**/.worktrees/**/.env*)",
-      "Read(**/.worktrees/**/secrets/**)",
       "Bash(git push -f *)",
       "Bash(git reset --hard *)",
       "Bash(npm publish *)",
       "Bash(pnpm publish *)",
       "Bash(curl *)",
       "Bash(wget *)",
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Edit(./.env)",
-      "Edit(./.env.*)",
+      "Read(**/.env*)",
+      "Edit(**/.env*)",
+      "Read(**/secrets/**)",
       "Read(~/.ssh/**)",
       "Read(~/.aws/**)"
     ],
-    "ask": [],
     "defaultMode": "auto"
   },
   "hooks": {
-    "Stop": [
+    "Notification": [
       {
-        "matcher": "",
+        "matcher": "idle_prompt|permission_prompt",
         "hooks": [
           {
             "type": "command",
@@ -78,6 +68,11 @@
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "extraKnownMarketplaces": {
+    "agent-browser": {
+      "source": { "source": "github", "repo": "vercel-labs/agent-browser" }
+    }
   },
   "enabledPlugins": {
     "posthog@claude-plugins-official": false,
